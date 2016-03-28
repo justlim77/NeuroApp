@@ -1,0 +1,52 @@
+<<Textures>>
+
+<Sprites>
+
+Title: page-fold-md.png
+Source: http://www.clker.com/cliparts/J/k/w/J/a/e/page-fold-md.png
+
+Title: Arrow, back icon
+Source: https://www.iconfinder.com/icons/216437/arrow_back_icon
+License: CC BY-SA 3.0
+
+Title: Bubble-talk.png
+Source: https://openclipart.org/image/2400px/svg_to_png/154093/Bubble-talk.png
+License:
+
+Title: buncee_clipart_bubble_26.png
+Source: https://b4c2f8a21b81da4fc85a-7fe02e1d6c60effd37f5972ae62e1324.ssl.cf5.rackcdn.com/images/551/1da/1428102575_buncee_clipart_bubble_26.png
+License:
+
+<<Audio>>
+
+<BGM>
+
+Title: Game_Music_Loops >> In The Middle of July Music Loop
+Author: rhodesmas
+License: CC BY 3.0
+Link: https://www.freesound.org/people/rhodesmas/sounds/323545/
+
+<SFX>
+
+Title: button
+Author: fins
+License: CC0 1.0
+Link: https://www.freesound.org/people/fins/sounds/171521/
+
+Title: pick.wav
+Author: satrebor
+License: CC0 1.0
+Link: https://www.freesound.org/people/satrebor/sounds/113111/
+
+Title: UI Completed Status Alert Notification SFX001.wav
+Author: Headphaze
+License: CC BY 3.0
+Link: https://www.freesound.org/people/Headphaze/sounds/277033/
+
+<Scripts>
+
+Title: iTween
+Author: Bob Berkebile
+License: Free
+Link: http://pixelplacement.com
+

@@ -1,0 +1,26 @@
+///Help
+
+//Terminology
+
+1. ConditionItem - A data representation of a condition and its properties as defined in the settings windows.
+2. ConditionItemList - A list storing multiple conditions from which the patient draws randomly from.
+3. Condition Item Editor - An interactive editor window to add/delete conditions in the ConditionItemList
+   To access, "Window -> Condition Item Editor (Shortcut: Ctrl + Shift + E)""
+
+//Gameplay
+
+The patient's condition is randomized per game session. It draws from a list of conditions which can be edited via
+the Condition Item Editor window. Based on the condition details, the patient will exhibit behaviors relating to
+their underlying condition. The player must use tools such as the tendon tapper, pin prick, tuning fork, and power
+chart to assess the patient and narrow down the possible conditions the patient could be suffering from. Finally,
+the player will have to recommend a concluding test to be performed on the patient.
+
+//Shortcut Keys
+
+FUNCTION					KEY
+
+Condition Item Editor		Ctrl + Shift + E
+Take Screenshot				F3
+Quit Application			Escape (Esc)
+Toggle Between Text Type		Tab
+Reset Tool Cursor			Right Mouse Button

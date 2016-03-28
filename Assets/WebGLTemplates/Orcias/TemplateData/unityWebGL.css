@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: black;
+    width:100%;
+    height:100%;
+  }
+  body.dark {
+  	background-color: #111;
+  }
+  div.header {
+    background-color: red;
+    height: 40px;
+    width: 100%;       
+  }
+  div.footer {
+    position: absolute;
+    background-color: #111;
+    height: 40px; 
+    width: 100%;
+    bottom: 0;
+  }
+  div.fullBrowserWindow {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 80px);
+  }
+  div.fullBrowserWindow canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  div#loadingBox {
+    /*background-color: red;*/
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    text-align: center;
+  }
+  p#loadingInfo {
+    color: #666;
+    letter-spacing: 1px;
+    position: absolute;
+    width: 100%;
+    font-family: "Monaco", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 8px;
+    margin-top: 10px;
+  }
+  div#bgBar {
+  border-radius: 2px;
+  }
+  div#progressBar {
+    left: 50%;
+    position: absolute;
+    margin-left: -100px;
+    width: 0px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  ul.downloads li {
+    float: right;
+    list-style: none;
+    letter-spacing: 1px;
+  }
+
+  ul.downloads li a {
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px 10px 0px 0px;
+    display: block;
+  }
+  ul.downloads li a:hover {
+  	color: white;
+  }
+  body.dark h1 {
+    float: left;
+    display: inline;
+    margin: 10px 0px 0px 10px;
+    padding: 0;
+    width: auto;
+  }

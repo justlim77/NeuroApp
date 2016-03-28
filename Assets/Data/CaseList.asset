@@ -1,0 +1,460 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa7338ef09e61547afa19ed63eaa247, type: 3}
+  m_Name: CaseList
+  m_EditorClassIdentifier: 
+  caseList:
+  - isEnabled: 1
+    caseName: Peripheral neuropathy
+    caseDescription: An 88 year old man presents with bilateral feet numbness and
+      weakness.
+    caseScore: 0
+    caseStars: 1
+    tone: 0
+    plantars: Downgoing bilaterally
+    cranialNerve: Normal
+    cerebellarSigns: Normal
+    tendon_tricep_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_bicep_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_supinator_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_tricep_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_bicep_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_supinator_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_patellar_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_ankle_R:
+      tendonType: 0
+      tendonReflex: 3
+    tendon_plantar_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_patellar_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_ankle_L:
+      tendonType: 0
+      tendonReflex: 3
+    tendon_plantar_L:
+      tendonType: 0
+      tendonReflex: 1
+    UL_T1_R: 1
+    UL_T1_L: 1
+    UL_C5_R: 1
+    UL_C5_L: 1
+    UL_C6_R_1: 1
+    UL_C6_R_2: 1
+    UL_C6_R_3: 1
+    UL_C6_L_1: 1
+    UL_C6_L_2: 1
+    UL_C6_L_3: 1
+    UL_C7_R: 1
+    UL_C7_L: 1
+    UL_C8_R_1: 1
+    UL_C8_R_2: 1
+    UL_C8_R_3: 1
+    UL_C8_L_1: 1
+    UL_C8_L_2: 1
+    UL_C8_L_3: 1
+    LL_L2_R: 1
+    LL_L2_L: 1
+    LL_L3_R: 1
+    LL_L3_L: 1
+    LL_L4_R_1: 1
+    LL_L4_R_2: 0
+    LL_L4_L_1: 1
+    LL_L4_L_2: 0
+    LL_L5_R_1: 1
+    LL_L5_R_2: 0
+    LL_L5_L_1: 1
+    LL_L5_L_2: 0
+    LL_S1_R: 0
+    LL_S1_L: 0
+    UL_Shoulder_A_R: 5
+    UL_Shoulder_A_L: 5
+    UL_Elbow_F_R: 5
+    UL_Elbow_F_L: 5
+    UL_Elbow_E_R: 5
+    UL_Elbow_E_L: 5
+    UL_Wrist_F_R: 5
+    UL_Wrist_F_L: 5
+    UL_Wrist_E_R: 5
+    UL_Wrist_E_L: 5
+    UL_Finger_A_R: 5
+    UL_Finger_A_L: 5
+    UL_Finger_F_R: 5
+    UL_Finger_F_L: 5
+    UL_Finger_E_R: 5
+    UL_Finger_E_L: 5
+    LL_Hip_F_R: 5
+    LL_Hip_F_L: 5
+    LL_Hip_E_R: 5
+    LL_Hip_E_L: 5
+    LL_Knee_F_R: 5
+    LL_Knee_F_L: 5
+    LL_Knee_E_R: 5
+    LL_Knee_E_L: 5
+    LL_Ankle_DF_R: 4+
+    LL_Ankle_DF_L: 4+
+    LL_Ankle_PF_R: 4+
+    LL_Ankle_PF_L: 4+
+    neuraxis_C: 1
+    neuraxis_SC: 1
+    neuraxis_BS: 1
+    neuraxis_SCORD: 1
+    neuraxis_AHC: 1
+    neuraxis_R: 0
+    neuraxis_P: 1
+    neuraxis_PN: 0
+    neuraxis_NMJ: 1
+    neuraxis_M: 1
+    testType: 0
+    optionCount: 4
+    testQuestion: What would you do next?
+    concludingTests:
+    - Lumbar puncture
+    - Hip internal rotation and abduction
+    - HBA1c, B12
+    - MRI lumbosacral spine
+    - 
+    localising: '1. Is it an UMN or LMN lesion? Absent ankle jerks and downgoing plantar
+      responses suggest a LMN lesion, hence we can eliminate cortical to spinal cord
+      lesions.
+
+
+      2. Sensory loss rules out muscle, NMJ and AHC lesions.
+
+
+      3. Bilateral and symmetrical involvement suggests plexus to be unlikely, hence
+      it is eliminated.
+
+
+      4. We are left with roots and peripheral nerves. Peripheral neuropathy is more
+      likely, however the distal foot weakness is not a usual finding in peripheral
+      neuropathy. We should keep bilateral L5/S1 radiculopathy as a secondary possibility
+      as it is not uncommon, and also because lumbar nerve roots originate from a
+      central point (cauda equina), and hence can be bilaterally involved.'
+    localisingSteps:
+    - 1. Is it an UMN or LMN lesion? Absent ankle jerks and downgoing plantar responses
+      suggest a LMN lesion, hence we can eliminate cortical to spinal cord lesions.
+    - 2. Sensory loss rules out muscle, NMJ and AHC lesions.
+    - 3. Bilateral and symmetrical involvement suggests plexus to be unlikely, hence
+      it is eliminated.
+    - 4. We are left with roots and peripheral nerves. Peripheral neuropathy is more
+      likely, however the distal foot weakness is not a usual finding in peripheral
+      neuropathy. We should keep bilateral L5/S1 radiculopathy as a secondary possibility
+      as it is not uncommon, and also because lumbar nerve roots originate from a
+      central point (cauda equina), and hence can be bilaterally involved.
+    answer: 1
+    rationale: At this point, we still need to differentiate between a root vs a peripheral
+      nerve problem. Clinically, weakness of hip internal rotation or hip abduction
+      would suggest L5 radiculopathy over peripheral neuropathy.
+  - isEnabled: 1
+    caseName: Brachiofacial stroke
+    caseDescription: A 58 year old man presents with sudden onset of right upper limb
+      weakness and weakness of the lower half of his right face.
+    caseScore: 0
+    caseStars: 1
+    tone: 0
+    plantars: Downgoing bilaterally
+    cranialNerve: Right facial droop
+    cerebellarSigns: Absent
+    tendon_tricep_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_bicep_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_supinator_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_tricep_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_bicep_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_supinator_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_patellar_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_ankle_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_plantar_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_patellar_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_ankle_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_plantar_L:
+      tendonType: 0
+      tendonReflex: 1
+    UL_T1_R: 1
+    UL_T1_L: 1
+    UL_C5_R: 1
+    UL_C5_L: 1
+    UL_C6_R_1: 1
+    UL_C6_R_2: 1
+    UL_C6_R_3: 1
+    UL_C6_L_1: 1
+    UL_C6_L_2: 1
+    UL_C6_L_3: 1
+    UL_C7_R: 1
+    UL_C7_L: 1
+    UL_C8_R_1: 1
+    UL_C8_R_2: 1
+    UL_C8_R_3: 1
+    UL_C8_L_1: 1
+    UL_C8_L_2: 1
+    UL_C8_L_3: 1
+    LL_L2_R: 1
+    LL_L2_L: 1
+    LL_L3_R: 1
+    LL_L3_L: 1
+    LL_L4_R_1: 1
+    LL_L4_R_2: 1
+    LL_L4_L_1: 1
+    LL_L4_L_2: 1
+    LL_L5_R_1: 1
+    LL_L5_R_2: 1
+    LL_L5_L_1: 1
+    LL_L5_L_2: 1
+    LL_S1_R: 1
+    LL_S1_L: 1
+    UL_Shoulder_A_R: 4
+    UL_Shoulder_A_L: 5
+    UL_Elbow_F_R: 5
+    UL_Elbow_F_L: 5
+    UL_Elbow_E_R: 4
+    UL_Elbow_E_L: 5
+    UL_Wrist_F_R: 5
+    UL_Wrist_F_L: 5
+    UL_Wrist_E_R: 4
+    UL_Wrist_E_L: 5
+    UL_Finger_A_R: 3
+    UL_Finger_A_L: 5
+    UL_Finger_F_R: 5
+    UL_Finger_F_L: 5
+    UL_Finger_E_R: 5
+    UL_Finger_E_L: 5
+    LL_Hip_F_R: 5
+    LL_Hip_F_L: 5
+    LL_Hip_E_R: 5
+    LL_Hip_E_L: 5
+    LL_Knee_F_R: 5
+    LL_Knee_F_L: 5
+    LL_Knee_E_R: 5
+    LL_Knee_E_L: 5
+    LL_Ankle_DF_R: 5
+    LL_Ankle_DF_L: 5
+    LL_Ankle_PF_R: 5
+    LL_Ankle_PF_L: 5
+    neuraxis_C: 0
+    neuraxis_SC: 1
+    neuraxis_BS: 1
+    neuraxis_SCORD: 1
+    neuraxis_AHC: 1
+    neuraxis_R: 1
+    neuraxis_P: 1
+    neuraxis_PN: 1
+    neuraxis_NMJ: 1
+    neuraxis_M: 1
+    testType: 0
+    optionCount: 5
+    testQuestion: What would you examine next?
+    concludingTests:
+    - Rest of the cranial nerves
+    - Visual field testing
+    - Pupillary response
+    - Fatiguability
+    - Plantar response
+    localising: "1. Is it an UMN or LMN lesion? Motor testing of the right UL suggests
+      an UMN pattern of weakness \u2013 distally weaker and extensors of the UL are
+      weaker.\n\n2. The presence of a facial droop suggests a lesion above the spinal
+      cord.\n\n3. The disparate weakness involving the face and UL more than the LL
+      suggest a cortical lesion such as one at the motor homunculus on the lateral
+      surface of the cerebral hemisphere. This is called a brachiofacial pattern of
+      weakness."
+    localisingSteps:
+    - "1. Is it an UMN or LMN lesion? Motor testing of the right UL suggests an UMN
+      pattern of weakness \u2013 distally weaker and extensors of the UL are weaker."
+    - 2. The presence of a facial droop suggests a lesion above the spinal cord.
+    - 3. The disparate weakness involving the face and UL more than the LL suggest
+      a cortical lesion such as one at the motor homunculus on the lateral surface
+      of the cerebral hemisphere. This is called a brachiofacial pattern of weakness.
+    - 
+    answer: 1
+    rationale: To confirm and delineate extent of cortical involvement, we routinely
+      check for other cortical signs eg. visual fields, language, neglect, cortical
+      sensory loss and apraxias. If none are present, then this would be called a
+      brachiofacial syndrome.
+  - isEnabled: 1
+    caseName: Cervical myelopathy
+    caseDescription: A 48 year old lady presents with bilateral fingertip numbness
+      and generalised weakness.
+    caseScore: 0
+    caseStars: 0
+    tone: 0
+    plantars: Upgoing bilaterally
+    cranialNerve: Normal
+    cerebellarSigns: Normal
+    tendon_tricep_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_bicep_R:
+      tendonType: 0
+      tendonReflex: 3
+    tendon_supinator_R:
+      tendonType: 0
+      tendonReflex: 3
+    tendon_tricep_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_bicep_L:
+      tendonType: 0
+      tendonReflex: 3
+    tendon_supinator_L:
+      tendonType: 0
+      tendonReflex: 3
+    tendon_patellar_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_ankle_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_plantar_R:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_patellar_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_ankle_L:
+      tendonType: 0
+      tendonReflex: 1
+    tendon_plantar_L:
+      tendonType: 0
+      tendonReflex: 1
+    UL_T1_R: 1
+    UL_T1_L: 1
+    UL_C5_R: 1
+    UL_C5_L: 1
+    UL_C6_R_1: 1
+    UL_C6_R_2: 1
+    UL_C6_R_3: 1
+    UL_C6_L_1: 1
+    UL_C6_L_2: 1
+    UL_C6_L_3: 1
+    UL_C7_R: 1
+    UL_C7_L: 1
+    UL_C8_R_1: 1
+    UL_C8_R_2: 1
+    UL_C8_R_3: 1
+    UL_C8_L_1: 1
+    UL_C8_L_2: 1
+    UL_C8_L_3: 1
+    LL_L2_R: 1
+    LL_L2_L: 1
+    LL_L3_R: 1
+    LL_L3_L: 1
+    LL_L4_R_1: 1
+    LL_L4_R_2: 1
+    LL_L4_L_1: 1
+    LL_L4_L_2: 1
+    LL_L5_R_1: 1
+    LL_L5_R_2: 1
+    LL_L5_L_1: 1
+    LL_L5_L_2: 1
+    LL_S1_R: 1
+    LL_S1_L: 1
+    UL_Shoulder_A_R: 5
+    UL_Shoulder_A_L: 5
+    UL_Elbow_F_R: 5
+    UL_Elbow_F_L: 5
+    UL_Elbow_E_R: 4
+    UL_Elbow_E_L: 4
+    UL_Wrist_F_R: 5
+    UL_Wrist_F_L: 5
+    UL_Wrist_E_R: 4
+    UL_Wrist_E_L: 4
+    UL_Finger_A_R: 4
+    UL_Finger_A_L: 4
+    UL_Finger_F_R: 5
+    UL_Finger_F_L: 5
+    UL_Finger_E_R: 5
+    UL_Finger_E_L: 5
+    LL_Hip_F_R: 4
+    LL_Hip_F_L: 4
+    LL_Hip_E_R: 5
+    LL_Hip_E_L: 5
+    LL_Knee_F_R: 4
+    LL_Knee_F_L: 4
+    LL_Knee_E_R: 5
+    LL_Knee_E_L: 5
+    LL_Ankle_DF_R: 4
+    LL_Ankle_DF_L: 4
+    LL_Ankle_PF_R: 5
+    LL_Ankle_PF_L: 5
+    neuraxis_C: 1
+    neuraxis_SC: 1
+    neuraxis_BS: 1
+    neuraxis_SCORD: 0
+    neuraxis_AHC: 0
+    neuraxis_R: 1
+    neuraxis_P: 1
+    neuraxis_PN: 1
+    neuraxis_NMJ: 1
+    neuraxis_M: 1
+    testType: 0
+    optionCount: 5
+    testQuestion: What investigation would you do next?
+    concludingTests:
+    - Electromyography (EMG)
+    - MRI thoraic spine
+    - MRI cervical spine
+    - MRI lumbar spine
+    - Nerve conduction studies (NCS)
+    localising: "1. Is it an UMN or LMN lesion? The pattern of weakness and upgoing
+      plantars suggest an UMN lesion. Lesions at the roots and below are unlikely.\n\n2.
+      Normal cranial nerve exam suggests brainstem and above lesions to be unlikely.\n\n3.
+      We are left with either a spinal cord lesion or an AHC lesion (note: normal
+      sensory findings, hence we cannot rule out AHC just yet)\r"
+    localisingSteps:
+    - 1. Is it an UMN or LMN lesion? The pattern of weakness and upgoing plantars
+      suggest an UMN lesion. Lesions at the roots and below are unlikely.
+    - 2. Normal cranial nerve exam suggests brainstem and above lesions to be unlikely.
+    - '3. We are left with either a spinal cord lesion or an AHC lesion (note: normal
+      sensory findings, hence we cannot rule out AHC just yet) '
+    - 
+    answer: 2
+    rationale: A lesion at the C5/6 cervical spine causes absent bicep jerks (C5/C6)
+      and absent supinator (C5/6) jerks, but brisk finger jerks (C8/T1), leading to
+      the appearance of the inverted supinator jerks bilaterally. AHC lesions can
+      cause a similar overall picture, however, usually there are mixed UMN and LMN
+      signs, with the presence of LMN signs below UMN signs. In terms of investigations,
+      it is always crucial to rule out spinal cord compression before anything else.

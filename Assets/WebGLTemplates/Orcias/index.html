@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>%UNITY_WEB_NAME%</title>
+    <meta name="description" content="%UNITY_WEB_NAME%">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="../../css/header.css"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="TemplateData/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="TemplateData/unityWebGL.css">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="../../css/footer.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="../../css/sections.css"> -->
+    <script type="text/javascript" src="https://code.createjs.com/tweenjs-0.6.0.min.js"></script>
+    <script type="text/javascript" src="TemplateData/CSSPlugin.js"></script>
+    <script src="TemplateData/UnityProgress.js"></script>
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="%UNITY_WEB_NAME%" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="INSERT GAME LINK HERE" />
+    <meta property="og:image" content="INSERT IMAGE LINK HERE" />
+    <meta property="og:description" content="%UNITY_WEB_NAME%" />
+
+    <link rel="canonical" href="INSERT GAME URL HERE" />
+</head>
+<body class="dark">
+    <!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2810902-1', 'auto');
+  ga('send', 'pageview');
+
+    </script>-->
+    <!--<header>
+        <div class="centering">
+            <ul>
+                <li id="homelink"><a href="">Home</a></li>
+                <li class="class1"><a href="">Header1</a></li>
+                <li class="class2"><a href="">Header2</a></li>
+                <li class="class3"><a href="">Header3</a></li>
+                <li class="class4"><a href="">Header4</a></li>
+                <li class="class5"><a href="">Header5</a></li>
+                <li class="class6"><a href="">Header6</a></li>
+                <li id="contactlink"><a href="">Contact</a></li>
+            </ul>
+        </div>
+    </header>-->
+    <div class="fullBrowserWindow">
+        <canvas id="canvas" height="%UNITY_HEIGHT%px" width="%UNITY_WIDTH%px"></canvas>
+    </div>
+    <div id="loadingBox">
+        <div id="bgBar" style="position: absolute; width: 200px; height: 2px; display: block; background-color: #333; left:50%; margin-left: -100px"></div>
+        <div id="progressBar"></div>
+        <img id="spinner" src="TemplateData/spinner.gif" style="display: none; margin: 0 auto" />
+        <p id="loadingInfo">Loading...</p>
+    </div>
+    <div class="footer">
+        <h1>NeuroApp</h1>
+        <!--<ul class="downloads">
+            <li id="Win64"><a href="">Download standalone version for Windows</a></li>
+        </ul>-->
+    </div>
+    %UNITY_WEBGL_LOADER_GLUE%
+</body>
+</html>

@@ -1,0 +1,523 @@
+///ChangeLog for NeuroApp
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-09-24
+
+1. Sensation
+(Tool - Pinprick)
+//UPPER LIMB//
+8 arm sections
+3 hand sections
+
+//LOWER LIMB//
+4 limb sections
+3 foot sections
+
+Feedback: "Ouch!" vs "I can't feel it..."
+
+(Tool - Tuning Fork)
+//UPPER LIMB//
+1 wrist
+1 elbow
+
+//LOWER LIMB//
+1 ankle
+1 knee
+
+Feedback: "I can feel it!" vs "I can't feel it..."
+
+2. Cerebellar Test
+	a. Staccatto speech
+	b. Normal speech
+Algorithm: replace chars with dots...
+ 
+	Say phrases
+		e.g. British consttution
+
+<- End of //Changelog_2015-09-24
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-09-26
+
+- Revamped ConditionDatabase prefab custom inspector into ConditionItemList editor window
+- ConditionItemList renamed to ConditionList
+- Condition data now saved to list of ConditionList.asset
+- Editor scripts for ConditionEditor and ConditionListEditor now under subfolder "Window"
+- Editing/adding/deleting of ConditionLists and Conditions are now with Ctrl + Shift + E
+- Removed depreciated Condition scripts
+- Added "Next" and "Prev" GUI buttons to switch panels shown in Game View for visualization (Camera is still static)
+
+<- End of //Changelog_2015-09-26
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-09-29
+
+- New layout for NeuroMan game scene: Bed & patient enlarged and moved to left panel, information moved to right
+- Switched from shared header message to dedicated header messages for reaction, greeting, and tool selection
+- Replaced selection circle sprite with double-arrow selection and enlarged to 32x32
+- Implemented screenshot feature
+	- Press "F3" while in Editor to take screenshots (Unavailable for Web build)
+	- Default screenshot folder path: "~\Assets\Screenshots"
+	- Screenshots are in .png format
+
+<- End of //Changelog_2015-09-29
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-03
+
+- Changed Reflex reaction screen flash color from yellow to blue (As per initial design document)
+- Replaced Reflex selection arrow sprite and changed from red to blue (As per initial design document)
+- Resized Reflex selection arrow sprites to 48px by 24px
+- Implemented proximity-based interaction for Reflex selection arrows
+	- Reflex arrows will still be activated upon choosing the Tendon Tapper tool
+	- Reflex arrows are now hidden by default
+	- Reflex arrows only appear if Tendon Tapper tool is near the desired tendon
+	- Reflex arrows will subsequently dissapear when Tendon Tapper tool is out of the specified radius
+- Removed "Ouch!", "Ow!", and "Hmm." reflex text reactions
+- Added reflex animations to show reflex grading
+	- Animation speed 2x for Hyper (+++)
+	- Animation speed 1x for Normal (++)
+	- Animation speed 0.5x for Hypo (+)
+	- Animation speed 0x for Absent (-)
+- Implemented check to ensure player used each tool at least once before allowing player to assess patient
+	- "I'm ready to assess!" button is hidden by default
+	- Each tool must be used at least once before "I'm ready to assess!" button shows up
+- Changed "Power Chart" background color from yellow to green (As per initial design document)
+- Reduced the size of back/next buttons in all panels
+- Reformatted "Power Chart" table layout with alternating colors between each data row
+- Fixed cursor image not resetting to default when changing panels after an active tool is selected 
+
+<- End of //Changelog_2015-10-03
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-04
+
+- Gameplay
+	- Changed Reflex tendon swing values to the following:
+		- Hyper from 30 to 60 degrees
+		- Normal from 15 to 40 degrees
+		- Hypo from 15 to 10 degrees
+	- Increased time taken for tendon to return to original position before swing from 5 frames to 25 frames
+	- Fixed "PeripheralNeuropathy" condition Right/Left Patellar DTR to be "Normal" instead of "Hypo"
+	- Implemented toggle buttons for Neuraxis Elimination panel
+		- Options are green by default (Before elimination)
+		- Clicking on the options will toggle between green (selected) and gray (deselected)
+	- Added "NeuroAxis_For_Weakness_Diagram_v2_22sep15" as "Help/Cheat Sheet"
+		- Accessed through the "Help" button in-game Welcome panel
+	- Matched Neuraxis Elimation options with reference from "NeuroAxis_For_Weakness_Diagram_v2_22sep15"
+		- Renamed "MNJ" to "NMJ"
+		- Renamed "ANC" to "AHC"
+	- Created temporary data placeholders for concluding test and test answer
+	- Implemented Neuraxis Elimination Game logic to sync with data from condition
+		- "Next" button appears only if player matches 10/10
+
+- UI
+	- Reduced Tendon tapper selection arrow proximity radius to minimize UI clutter
+	- Added shadow text effect to all UI text for easier legibility against background elements
+	- Increased font sizes of most UI elements
+	- All UI text are now the same standard white color (Some were dark grey/black before)
+	- All panels now share the same teal background color (Except the new "Help Panel")
+	- Repositioned and resized main panel elements to fill up empty white space
+	- Changed "Power" data rows' color to alternating gray tones to suit the universal white text
+	- Changed 1x10 layout of "Neuraxis Elimination" to 2x5 to better fit the Web resolution (960x600)
+
+<- End of //Changelog_2015-10-04
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-05
+
+- Game Play
+	- Changed thigh angles to 45 deg near parallel horizontally and shin angles closer to 90 deg
+	- Re-adjusted animation curves and key-frames to match new lower limb orientations
+	- Added configurable wait duration (in seconds) for tendon reflex upon tapping with tendon tapper tool
+	- Added wait duration of 10 milliseconds after tapping before reflex animations kick in
+	- Added feature to remove selected tool by right-mouse click while a tool is selected
+	- Selected tool will now automatically revert to mouse cursor when leaving the patient screen
+	- Added neuraxis text toggle feature to switch between full name and abbreviated name with "TAB" key
+	- For Neuraxis Elimination game, the "Next" button can now toggle back off if the player changes their answers
+	- Tendon tapper only works when hovering over blue arrows indicating test spots
+
+- User Interface
+	- Implemented new tool system to use a floating image instead of replacing the cursor texture
+	- Tendon tapper is now animated with a short swing pivoting from the handle
+	- Added "Summary" button to the Options toolbar in the Main panel
+	- Re-positioned lower limb sprites and UI elements to more accurately mirror left and right values
+
+- Upcoming
+	- Sensation game implementation
+		- 10 subdivisions for Upper Limbs
+		- 8 subdivisions for Lower Limbs
+	- Neuraxis elimination game feedback feature
+
+<- End of //Changelog_2015-10-05
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-06
+
+- Game Play
+	- Corrected offset of -2 to the left of the bed; patient should now be exactly in the center
+	- Rounded off limb sizes for better accuracy and symmetry
+	- Re-adjusted animation curves and key-frames to match new limb sizes
+	- Reduced reference pixels per unit from 100 to 50 (Could have caused flickering through improper scaling)
+	- Turned off pixel perfect mode (Could have also caused flickering due to pixel adjustment)
+	- Corrected "Right Patellar" resting angle by adding 5 degrees to match "Left Patellar" resting angle
+
+- User Interface
+	- Re-positioned lower limb tendon indicators
+	- Reduced the text size for "Description" text to differentiate from header size
+
+- Upcoming
+	- Sensation game implementation
+		- 10 subdivisions for Upper Limbs
+		- 8 subdivisions for Lower Limbs
+	- Neuraxis elimination game feedback feature
+
+<- End of //Changelog_2015-10-06
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-07
+
+- Game Play
+	- NeuroMan game loop is fully linked; Neuraxis Elimination and Concluding Test both now linked to data sets
+	- Fixed condition data set for "Peripheral Neuropathy" by toggling off AHC, NMJ, and M
+	- Changed Neuraxis Elimination game to check for matches by pressing "Submit" instead of on every toggle
+		- Gray by default, upon clicking the game checks for matches
+			- If not matched fully, button shows one of two wrong feedback messages and flashes red for 1 second
+			- If fully matched, button shows "Good job!" and changes to green, Next button then appears
+	- Replaced placeholder static text for Concluding Test game to now be based on condition editor data sets
+	- Changed Concluding Test game to show visual feedback through button colors instead of text
+		- Clicking on wrong options will flash the button red for 1 second
+		- Clicking on correct option will turn the button green and show the End game button
+
+- User Interface
+	- Changed the color for generic "Submit" buttons from dark green to light green(#86BC3DFF)
+	- Re-sizing of UI elements with float values to absolute digits for better performance (e.g. 100.21 -> 100)
+	- Added End game button to Concluding Test game (Toggled off by default)
+
+- Upcoming
+	- Sensation Game implementation
+		- 10 subdivisions for Upper Limbs
+		- 8 subdivisions for Lower Limbs
+	- Power (5 ~ 0) Game tool and animations implementation
+
+<- End of //Changelog_2015-10-07
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-08
+
+- Game Play
+	- Implemented Sensation game RightArm_Pinpoint1 ~ Pinpoint7
+		- For testing, Pinpoint1 is unable to feel sensation whereas Pinpoint2 ~ Pinpoint7 are positive
+	- Added 4th face state "Neutral" as visual feedback when the patient cannot feel the pinprick
+	- "Ouch" face state now uses the tracked eyes instead of a still image; eyes will not reset during feedback
+	- Added eye enlargement scale factor to allow eyes to widen during "Shocked" expression (Default value: 1.0)
+
+- User Interface
+	- Eyes now slightly widen by default when hovering mouse over "Quit" button in the "Welcome" panel
+
+- Upcoming
+	- Implementing full Sensation Game features
+		- 10 subdivisions for Upper Limbs
+		- 8 subdivisions for Lower Limbs
+	- Implementing Power Game tool and animations
+
+<- End of //Changelog_2015-10-08
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-09
+
+- Game Play
+	- Added "Hint" button (lightbulb) for Neuroaxis Elimination game
+		- Available by default in OFF state (dark)
+		- Upon mouse hover, turns to ON state (yellow)
+
+- User Interface
+	- Renamed "Help" button to "Tutorial"
+	- "Quit" button is now an icon on the bottom right
+	- Added new buttons for Welcome screen; "Highscore", "Credits", and an options icon
+	- Re-sized UI elements in Welcome screen
+	- Changed abbreviations in Power chart screen to their respective full names
+	- Changed all font in Power chart screen to Roboto; previously some were Arial
+	- Moved "Anterior Horn Cell" option button to bottom layer
+	- Added cross icon to indicate when Neuroaxis Elimination buttons are toggled OFF (grey)
+	- Changed Neuroaxis Layout to differentiate between Upper and Lower Motor Neuron Syndromes
+
+- Upcoming
+	- Refer to NeuroMan_DesignDocument
+
+<- End of //Changelog_2015-10-09
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-10-10
+
+	- Added new "Select Level" screen after pressing Start
+	- Added 10 placeholder icons/buttons corresponding to the 10 Neuroaxis
+	- Added placeholder 3-star ratings for each level
+	- Replaced all sharp-edged UI sprites with rounded rectangles (64-px radius) to match NeuroMan's features
+	- Reduced the size of all secondary-UI buttons to 32x32 in all scenes to reduce visual clutter
+	- Added an opaque black backdrop for Power chart data rows to accentuate the divisions for better legibility
+	- Edited the page fold UI's color to match the scene backdrop
+	- Reduced the initial size of the page fold; page fold expands when hovering near it to indicate page flip
+	- Added new "Neuroaxis Explanation" screen after Neuroaxis Elimination game
+	- Added new "Case Complete!" screen after MCQ/Checkbox game
+	- Created draft layout of scoring table
+	- Soft-implemented "Level Select" and "Next Case" buttons (i.e. does not fully work as intended yet)
+
+<- End of //Changelog_2015-10-10
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-11-11
+
+	- Added new 4-slide tutorial to show reflex and sensation gameplay
+	- Replaced old sprites with new "thicker" NeuroBot sprites
+	- Re-arranged UI elements for welcome, level select, and main scenes
+	- Increased patient's sceen space and decreased right infopanel screen space
+	- Renamed neurological abbreviations to numbered levels in Level Select screen
+	- Implemented sensation gameplay regions with new sprites provided; sensation prick tool is now active!
+	- Replaced sensation guitar pick with new pin prick sprite
+	- Resized UI elements of right infopanel to accomodate reaction header text
+	- Added new "Clinical examination" tools button to show info of which their gameplay are not implemented yet
+	- Temporarily disabled menu buttons on bottom left
+	- Changed power chart colors to simulate reading info being written on a sheet of paper
+	- Implemented "Steps in localising" and "Rationale" info to sync with selected case
+	- Added semi-transparent black overlay on "Case Complete" scene to signify end of game
+
+<- End of //Changelog_2015-11-11
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-11-12
+
+	- Renamed "Condition" to "Case" to match documentation
+	- Added more customization options to allow unique text in more areas of the game; i.e. specific questions
+	- Added feature to allow concluding tests to have any number of options as required (2 minimum)
+	- Fixed general typos and slight alignment issues
+	- Changed Neuroaxis Game header text to "Please eliminate the unlikely neurolocalisation sites"
+	- Changed Cranial nerves value for Brach. Stroke case from "N/A" to "Right facial droop"
+	- Disabled context menu when right-clicking game in browser due to conflict with game controls
+	- Un-bolded all text in-game for standardization
+	- General script cleanups and tidying
+	- General renaming/restructuring of files/folders
+
+<- End of //Changelog_2015-11-12
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-11-18
+
+	- Disabled Unity's built-in animation system due to inability to change swing angles during gameplay
+	- Implemented custom animation system to allow dynamically changing swing angles/durations
+	- Touched up art assets (limbs) to recalibrate limb resting angles to zero degrees for new animation system
+	- Removed script-dependancy on built-in animation system for all Patient sprites
+	- Added infinite hint functionality for Neuraxis Elimination game; currently consumes 5 points per use
+	- Added attempt limit (2 max) for submitting elimination checking
+	- Implemented final case score to reflect neuraxis elimination game; 10 per correct & -5 per hint use
+
+<- End of //Changelog_2015-11-18
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_2015-11-25
+
+	- Replaced old NeuroBot head on "Final Results" with new NeuroBot Head
+	- Fixed misalignment of NeuroBot head in both starting and ending panels
+	- Implemented Audio System for looping background music and UI interaction sound effects
+		[BGM] In the Middle of July music loop by rhodesmas
+		[SFX] "Pop", "Chik", and "UI Completed" sound effects (Refer to Sourcing doc.)
+	- Implemented star rating system; 2-star for 10/10, 1-star if not, +1 star for correct bonus (first attempt)
+	- Disabled "Quit" button in starting panel as it is redundant in browser build
+
+<- End of //Changelog_2015-11-25
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_v0.793_2015.12.02
+
+	- Added Music ON/OFF toggle on Main Screen
+	- Added SoundFX ON/OFF toggle on Main Screen
+	- Added "Up" swing direction for tendon tapper
+	- Increased "Normal" reflex speed by ~25%-30%
+	- Changed all "N/A" data fields to "Normal"
+	- Added highlights at the end of Neuraxis Elimination game to show all correct eliminations
+	- Changed "Absent" reflex face reaction to "Neutral" instead of "Ouch"
+
+<- End of //Changelog_v0.793_2015.12.02
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_v0.794_2015.12.24
+
+	- Added screen fade in/out to all transitions
+	- Toggle-ing BGM and SFX will now save to preferences
+	- Added scaling "pop" animation for all UI buttons
+	- Every interactable object will now "pop" when hovering over to indicate usability
+	- Re-enabled "Quit" button in each case scenario
+	- Added NeuroMan face reaction animation while hovering over "Quit" button
+	- Implemented new curve-based system for animations
+
+<- End of //Changelog_v0.794_2015.12.24
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_v0.795_2015.12.29
+
+	- Changed "NeuroMan"/"NeuroBot" to "NeuroApp"
+	- Added "Learn" button to main screen
+	- Removed "Sluggish" reflex
+	- Changed "Normal" reflex angle from 30deg to 15deg
+	- Removed tendon indicator reveal-by-distance
+	- Tendon indicators now fully display upon tool selection
+
+<- End of //Changelog_v0.795_2015.12.29
+___________________________________________________________________________________________________________________
+
+-> Start of //Changelog_v0.796_2015.12.30
+
+	- Adjusted sprite anchor positions for better scalability
+	- Increased tool selection and page flip UI sprite sizes
+	- Slightly rearranged screen layout in all scenes
+	- Made adjustments code-side in preparation for WebGL migration
+	- Cleaned up deprecated files and name references to "NeuroBot"
+
+<- End of //Changelog_v0.796_2015.12.30
+___________________________________________________________________________________________________________________
+
+-> Update for 06 Jan 2016
+
+	Layout
+		- Added custom loading landing page
+		- Removed all default Unity logos and headers (except for the mandatory 1-second "Made with Unity Personal" animated logo)
+		- Added temporary space for header (if required)
+		- Added custom footer information
+		- Removed "Fullscreen" and "Instructions"
+	Gameplay
+		- Fixed lag caused when transitioning between scenes by loading all case and patient data at once
+		- Expanded gameplay area to fit any screen size
+		- Fixed misalignment of neuraxis test buttons and power chart tabs due to stretching of layout
+		- Fixed misalignment of multiple NeuroMan sprites due to improper anchoring and pivot placement
+		- Changed canvas resolution scaling to scale with height instead of width to prevent "squishing" of game assets when viewed on different screen resolutions
+		- Offline Build Changes (Will be pushed to Live build tonight)
+		- Added more tendon tapper swinging angles and starting positions to account for tapping accuracy
+		- Re-positioned tendon indicators to better align with tapper swinging angles
+		- Changed hints to show "Steps in localisation" instead of "You got X of X right"
+		- Changed "Tutorial" slides into tutorial case with gameplay
+
+<- End of Update for 06 Jan 2016
+___________________________________________________________________________________________________________________
+
+-> Update for 07 Jan 2016
+
+	Layout
+		- Fixed screen corner UI buttons not scaling properly when clicked/hovered
+		- Re-anchored small UI buttons to scale from center instead of left/right corners
+		- Increased text area for Neuroaxis Elimination game hints section to accomodate different hint lengths
+		- Decreased sizes of tool icons
+	Gameplay
+		- Removed all mouse hover sounds to sync with mobile versions (no hovering sounds)
+		- Removed mouse hover animations and replaced with mouse press animation to sync with mobile versions (touch/tap feedback)
+		- Added custom page flip button animation
+		- Fixed hints iterating in wrong numerical order
+		- Fixed score being able to go negative from overuse of hints
+		- Limited point deductions from using hints to the total number of localising steps multiplied by hint usage cost
+		- Fixed "Hint" and "Submit" buttons being interactable even after neuroaxis elimination game was over
+		- Fixed "Hint" and "Submit" buttons still playing animations and sounds when disabled
+
+<- End of Update for 07 Jan 2016
+___________________________________________________________________________________________________________________
+
+-> Update for 13 Jan 2016
+
+	Gameplay
+		- Increased size of tendon indicators for easier interaction
+		- Mirrored tendon tapper for displaying correct swing animations on right
+		- Changed button animations to depress while holding down and only revert when let go
+
+<- End of Update for 13 Jan 2016
+___________________________________________________________________________________________________________________
+
+-> Update for 04 Feb 2016
+
+	Gameplay
+		- Reduced jerkiness by slowing down mouse movement when using tools
+		- Reflex tapping indicators now move with their respective tendons
+		- Added fade-in transition upon game load
+		- Implemented live tutorial with aided dialogue
+		- Removed slideshow-based tutorial
+	Fixes
+		- Fixed flickering of tapper when hovering over certain tendon arrows
+		- Fixed misalignment of prick tool if used after inverting tapper tool
+		- Fixed background music playing for a split second upon restart even if muted
+		- Fixed rare glitch that caused "Next Page" flip animation to loop endlessly
+		- Fixed potential crash when restart button was pushed too many times
+		- Fixed audio settings not properly saving upon restarting game
+		- Fixed incorrect alignment of bed on different aspect ratios
+	Misc
+		- Several code optimization
+		- Removed redundant/deprecated assets
+		- Cleaned up asset hierarchy
+		- Re-organized assets to optimize pre-loading times
+	Issues
+		- Flickering of screen upon first fade in/out
+		- Unable to skip tutorial
+		- Fast-forwarding of tutorial typing not working
+
+<- End of Update for 04 Feb 2016
+___________________________________________________________________________________________________________________
+
+-> Update for 01 Mar 2016
+
+	Gameplay
+		- Removed both left and right plantar tendon reflexes
+		- Removed "Learn" button from main menu
+	Fixes
+		- Renamed duplicate label for "Flexion" to "Extension"
+		- Fixed tool cursor rendering underneath patient bed during tutorial sequences
+	Misc
+		- Updated to Unity 5.3.3f1 WebGL build
+		- Replaced "Page Flip" UI with "Arrow Back"
+		- Color-coded back and next arrow buttons with red and green respectively
+		- Changed Neuraxis Elimination abbreviations to full name
+		- Capped font size at 24 for each Neuraxis Elimination button text for consistency
+		- Modified several wordings for prompts and headers
+		- Added colour-coding for Power Chart
+	Issues
+		- Flickering of screen upon first fade in/out
+		- Unable to skip tutorial
+		- Fast-forwarding of tutorial typing not working
+
+<- End of Update for 01 Mar 2016
+___________________________________________________________________________________________________________________
+
+-> Update for 08 Mar 2016
+
+	Gameplay
+		[Examination]
+			- Screen now turns gray when no reaction is illicited from patient
+		[Neuraxis Test]
+			- Default Neuraxis button is now yellow; clicking will toggle cross
+			- Likely neurological sites are highlighted green
+			- Unlikely neurological sites are set to grey
+	Fixes
+		- Fixed scenarios not resetting upon returning to level select
+		- Fixed Level Select button not routing back to corresponding page
+		- Fixed loss of functionality of Localise button after changing scenarios
+		- Fixed Examine Patient test panel drawing on same layer as speech bubble sequence
+		- Fixed patient case information not properly updating upon loading of different scenario
+	Misc
+		- Added floating speech bubble to reaction text
+		- General code cleanup & optimization
+		- Modified layout to increase padding for right panel elements
+	Issues
+		- Flickering of screen upon first fade in/out
+		- Unable to skip tutorial
+		- Next Case button does not activate corresponding next scenario
+
+<- End of Update for 08 Mar 2016
+___________________________________________________________________________________________________________________
+
+-> Update for 24 Mar 2016
+
+	Changes
+		- Added new tool: Cranial Nerves tool set
+		- Implemented sample sensation test for cranial nerves segment
+		- Updated facial sprites to most recent Illustrator art assets (higher res.)
+		- Patient's face zooms in when cranial nerves tool is selected
+		- Added the following tool buttons: Prick, Red Hat Pin, Torch (Eye), and Torch (Mouth)
+		- Added "Return" button on cranial nerves segment to return to main examination panel
+
+<- End of Update for 24 Mar 2016
+___________________________________________________________________________________________________________________
