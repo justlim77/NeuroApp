@@ -22,5 +22,4 @@ FUNCTION					KEY
 Condition Item Editor		Ctrl + Shift + E
 Take Screenshot				F3
 Quit Application			Escape (Esc)
-Toggle Between Text Type		Tab
-Reset Tool Cursor			Right Mouse Button
+Toggle Between Text Type	Tab
