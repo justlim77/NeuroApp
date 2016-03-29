@@ -22,7 +22,7 @@ public class Fade : MonoBehaviour {
 
     void Init()
     {
-        iTween.Init(gameObject);
+        //iTween.Init(gameObject);
         m_FadeImage.color = fadeInColor;
         gameObject.transform.localPosition = Vector2.zero;
     }

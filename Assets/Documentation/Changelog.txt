@@ -521,3 +521,15 @@ ________________________________________________________________________________
 
 <- End of Update for 24 Mar 2016
 ___________________________________________________________________________________________________________________
+
+-> Update for 30 Mar 2016
+
+	Changes
+		- Implemented upper cranial hat pin tool reactions (left,right,both)
+		- Implemented middle cranial hat pin tool reactions (left,right,both)
+	Fixes
+		- 
+		- 
+
+<- End of Update for 30 Mar 2016
+___________________________________________________________________________________________________________________

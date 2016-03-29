@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
 
     #region Mouth Variables
     public Image mouth;
@@ -13,12 +14,16 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     #endregion
 
     #region Eye Variables
+    public Sprite ouchEyes;
+    public Sprite squint;
+    public Sprite slantedBrow;
     public Image[] eyes;
     public GameObject[] innerEyes;
     public GameObject[] middleEyes;
     public Eye[] eyeScripts;
-    public Sprite ouchEyes;
-    public Image[] eyeBrows;
+    public RectTransform[] eyeBrows;
+    public Image[] eyeBrowImages;
+    public Image[] wrinkleImages;
     #endregion
 
     #region Serialized Private Fields
@@ -32,23 +37,38 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         Shocked,
         OMG,
         Ouch,
-        Neutral
+        Neutral,
+        RightEyebrowUp,
+        LeftEyebrowUp,
+        BothEyebrowsUp,        
+        RightSquint,
+        LeftSquint,
+        BothSquint    
     }
     public FaceState faceState;
     #endregion
 
     #region Private Variables
-    Sprite m_OriginalEyes;
+    Sprite _OriginalEyes;
+    float _eyeBrowInitialY;
     #endregion
 
     #region Initialization Methods
-    private void Awake() {
+    void Awake() {
+        _OriginalEyes = eyes[0].sprite;
+        m_DefaultEyeSize = eyes[0].GetComponent<RectTransform>().rect.width;
+        _eyeBrowInitialY = eyeBrows[0].anchoredPosition.y;
+
         Init();
     }
 
-    private void Init() {
-        m_OriginalEyes = eyes[0].sprite;
-        m_DefaultEyeSize = eyes[0].GetComponent<RectTransform>().rect.width;
+    void Init() {
+        foreach (var eye in eyes)
+            eye.sprite = _OriginalEyes;
+        foreach (var brow in eyeBrows)
+            brow.anchoredPosition = new Vector2(brow.anchoredPosition.x, _eyeBrowInitialY);
+        foreach (var wrinkle in wrinkleImages)
+            wrinkle.enabled = false;
     }
     #endregion
 
@@ -57,25 +77,47 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         switch (_faceState) {
             case FaceState.Smile:
                 mouth.sprite = mouthSmile;
-                ToggleEyes(m_OriginalEyes, m_DefaultEyeSize);
+                ToggleEyes(_OriginalEyes, m_DefaultEyeSize);
+                foreach (var wrinkle in wrinkleImages)                    
+                    wrinkle.enabled = false;
+                foreach (var brow in eyeBrows)
+                    brow.anchoredPosition = new Vector2(brow.anchoredPosition.x, _eyeBrowInitialY);
                 break;
             case FaceState.Shocked:
                 mouth.sprite = mouthShocked;
-                ToggleEyes(m_OriginalEyes, m_EnlargedEyeSize);
+                ToggleEyes(_OriginalEyes, m_EnlargedEyeSize);
                 break;
             case FaceState.OMG:
                 mouth.sprite = mouthShocked;
-                ToggleEyes(m_OriginalEyes, m_EnlargedEyeSize, true, false);
+                ToggleEyes(_OriginalEyes, m_EnlargedEyeSize, true, true, false);
                 CenterEyes();
                 break;
             case FaceState.Ouch:
                 mouth.sprite = mouthSlanted;
-                ToggleEyes(ouchEyes, m_DefaultEyeSize, false);
+                ToggleEyes(ouchEyes, m_DefaultEyeSize, false, false);
                 break;
             case FaceState.Neutral:
                 mouth.sprite = mouthSlanted;
-                ToggleEyes(m_OriginalEyes, m_DefaultEyeSize, true, false);
+                ToggleEyes(_OriginalEyes, m_DefaultEyeSize, true, true, false);
                 CenterEyes();
+                break;
+            case FaceState.RightEyebrowUp:
+                RaiseBrow(10, eyeBrows[0]);
+                break;
+            case FaceState.LeftEyebrowUp:
+                RaiseBrow(10, eyeBrows[1]);
+                break;
+            case FaceState.BothEyebrowsUp:
+                RaiseBrow(10, eyeBrows);
+                break;
+            case FaceState.RightSquint:
+                Squint(eyes[0]);
+                break;
+            case FaceState.LeftSquint:
+                Squint(eyes[1]);
+                break;
+            case FaceState.BothSquint:
+                Squint(eyes);
                 break;
             default:
                 break;
@@ -94,30 +136,39 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     #endregion
 
     #region Private Methods
-    private void ToggleEyes(Sprite sprite, float size, bool showBrow = true, bool follow = true) {
+    void ToggleEyes(Sprite sprite, float size, bool showBrow = true, bool showInOutEyes = true, bool follow = true)
+    {
         //Swap eye sprites
-        foreach (Image eye in eyes) {
+        foreach (Image eye in eyes)
+        {
             eye.sprite = sprite;
-
-            //RectTransform rect = eye.GetComponent<RectTransform>();
-            //rect.sizeDelta = new Vector2(size, size);
         }
 
         //Toggle brow images
-        foreach (Image brow in eyeBrows)
+        foreach (Image brow in eyeBrowImages)
+        {
             brow.enabled = showBrow;
+        }
 
         //Toggle inner and middle eyes
-        foreach (GameObject innerEye in innerEyes)
-            innerEye.SetActive(showBrow);
-        foreach (GameObject middleEye in middleEyes)
-            middleEye.SetActive(showBrow);
+        foreach (var innerEye in innerEyes)
+        {
+            innerEye.SetActive(showInOutEyes);
+        }
 
-        foreach (Eye script in eyeScripts)
-            script.enabled = follow;
+        foreach (var middleEye in middleEyes)
+        {
+            middleEye.SetActive(showInOutEyes);
+        }
+
+        foreach (var eye in eyeScripts)
+        {
+            eye.enabled = follow;
+        }
     }
 
-    private void CenterEyes() {
+    void CenterEyes()
+    {
         foreach (GameObject middleEye in middleEyes)
         {
             RectTransform rect = middleEye.GetComponent<RectTransform>();
@@ -125,5 +176,29 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 rect.localPosition = Vector2.zero;
         }
     }
+
+    void RaiseBrow(float height = 10.0f, params RectTransform[] brows)
+    {
+        mouth.sprite = mouthSmile;
+        ToggleEyes(_OriginalEyes, m_DefaultEyeSize, true, true, false);
+        CenterEyes();
+
+        foreach (var brow in brows)
+        {
+            brow.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            brow.anchoredPosition = new Vector2(brow.anchoredPosition.x, brow.anchoredPosition.y + height); 
+        }
+    }
+
+    void Squint(params Image[] eyes)
+    {
+        mouth.sprite = mouthSmile;
+        ToggleEyes(squint, m_DefaultEyeSize, true, false, false);
+        CenterEyes();
+
+        foreach (var eye in eyes)
+            eye.sprite = squint;
+    }
+
     #endregion
 }

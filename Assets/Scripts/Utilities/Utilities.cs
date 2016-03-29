@@ -36,8 +36,6 @@ public class Utilities : MonoBehaviour
 
     void Start()
     {
-        //AudioManager.Instance.PlayBGM(bgm);
-
         StartCoroutine(FadeToClear(welcomePanel));
     }
 
@@ -83,8 +81,8 @@ public class Utilities : MonoBehaviour
             _panel.SetActive(true);
 
         m_Fade.fadeType = global::Fade.FadeType.Out;
-        m_Fade.enabled = true;
         fadeObject.SetActive(true);
+        m_Fade.enabled = true;
 
         //Set the current panel to draw on top of every other panel
         _panel.transform.SetSiblingIndex(fadeObject.transform.GetSiblingIndex() - 1);        
@@ -94,8 +92,8 @@ public class Utilities : MonoBehaviour
     {
         m_Fade.SetColor(Color.black);
         m_Fade.fadeType = global::Fade.FadeType.Out;
-        m_Fade.enabled = true;
         fadeObject.SetActive(true);
+        m_Fade.enabled = true;
 
         yield return new WaitForSeconds(0.3f);
 
@@ -107,8 +105,8 @@ public class Utilities : MonoBehaviour
     {
         //m_Fade.SetColor(Color.black);
         m_Fade.fadeType = global::Fade.FadeType.In;
-        m_Fade.enabled = true;
         fadeObject.SetActive(true);
+        m_Fade.enabled = true;
 
         yield return new WaitForSeconds(0.3f);
 
@@ -128,6 +126,7 @@ public class Utilities : MonoBehaviour
 
     IEnumerator RunQuitGame()
     {
+
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #else
