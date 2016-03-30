@@ -21,9 +21,10 @@ public class ToolControl : MonoBehaviour
     public Text[] toggledLabels;
 
     int m_ToolUseCount = 0;
-    Vector2 bedOriginalPos;
+    public Vector2 bedOriginalOffsetMin;
+    public Vector2 bedOriginalOffsetMax;
     Vector2 bedOriginalScale;
-    Vector2 speechOriginalPos;
+    public Vector2 speechOriginalPos;
     Vector2 speechOriginalScale;
 
     [SerializeField] bool debug = false;
@@ -38,13 +39,13 @@ public class ToolControl : MonoBehaviour
             tools.Add(tool);
         }
 
-        bedOriginalPos = bedRectTrans.anchoredPosition;
         bedOriginalScale = bedRectTrans.localScale;
-
-        speechOriginalPos = speechRectTrans.anchoredPosition;
         speechOriginalScale = speechRectTrans.localScale;
 
-        Init();
+        //Init();
+        ResetTools();
+
+        gameObject.SetActive(activeOnStart);
     }
 
     public bool Init()
@@ -52,7 +53,7 @@ public class ToolControl : MonoBehaviour
         bool result = true;
 
         // Clear selected tool text
-        while(!string.IsNullOrEmpty(selectedToolText.text))
+        while (!string.IsNullOrEmpty(selectedToolText.text))
             selectedToolText.text = string.Empty;
         result = string.IsNullOrEmpty(selectedToolText.text);
         if (result == false)
@@ -87,7 +88,7 @@ public class ToolControl : MonoBehaviour
             while (gameObject.activeInHierarchy)
                 gameObject.SetActive(false);
 
-        //ToggleCranial(false);
+        ToggleCranial(false);
 
         return result;
     }
@@ -131,7 +132,7 @@ public class ToolControl : MonoBehaviour
             text.enabled = !value;
         speechRectTrans.gameObject.SetActive(false);
 
-        if (value == true)
+        if (value)
         {
             bedRectTrans.anchoredPosition = cranialBedPos;
             bedRectTrans.localScale = cranialBedScale;
@@ -141,11 +142,12 @@ public class ToolControl : MonoBehaviour
         }
         else
         {
-            bedRectTrans.anchoredPosition = bedOriginalPos;
-            bedRectTrans.localScale = bedOriginalScale;
+            bedRectTrans.offsetMin = bedOriginalOffsetMin;
+            bedRectTrans.offsetMax = bedOriginalOffsetMax;
+            bedRectTrans.localScale = Vector3.one;
 
             speechRectTrans.anchoredPosition = speechOriginalPos;
-            speechRectTrans.localScale = speechOriginalScale;
+            speechRectTrans.localScale = Vector3.one;
         }
     }
 }

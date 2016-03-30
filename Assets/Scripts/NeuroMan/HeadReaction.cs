@@ -16,6 +16,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     #region Eye Variables
     public Sprite ouchEyes;
     public Sprite squint;
+    public Sprite defaultBrow;
     public Sprite slantedBrow;
     public Image[] eyes;
     public GameObject[] innerEyes;
@@ -80,8 +81,10 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 ToggleEyes(_OriginalEyes, m_DefaultEyeSize);
                 foreach (var wrinkle in wrinkleImages)                    
                     wrinkle.enabled = false;
-                foreach (var brow in eyeBrows)
+                foreach (var brow in eyeBrows)                
                     brow.anchoredPosition = new Vector2(brow.anchoredPosition.x, _eyeBrowInitialY);
+                foreach (var image in eyeBrowImages)
+                    image.sprite = defaultBrow;
                 break;
             case FaceState.Shocked:
                 mouth.sprite = mouthShocked;
@@ -111,13 +114,13 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 RaiseBrow(10, eyeBrows);
                 break;
             case FaceState.RightSquint:
-                Squint(eyes[0]);
+                Squint(0, eyes[0]);
                 break;
             case FaceState.LeftSquint:
-                Squint(eyes[1]);
+                Squint(1, eyes[1]);
                 break;
             case FaceState.BothSquint:
-                Squint(eyes);
+                Squint(2, eyes);
                 break;
             default:
                 break;
@@ -190,14 +193,34 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
     }
 
-    void Squint(params Image[] eyes)
+    void Squint(int browIndex, params Image[] eyes)
     {
         mouth.sprite = mouthSmile;
-        ToggleEyes(squint, m_DefaultEyeSize, true, false, false);
+        ToggleEyes(_OriginalEyes, m_DefaultEyeSize, true, false, false);
         CenterEyes();
 
+        // Change to squint
         foreach (var eye in eyes)
             eye.sprite = squint;
+
+        // Change brow
+        switch (browIndex)
+        {
+            case 0:
+                eyeBrowImages[0].sprite = slantedBrow;
+                innerEyes[1].SetActive(true);
+                middleEyes[1].SetActive(true);
+                break;
+            case 1:
+                eyeBrowImages[1].sprite = slantedBrow;
+                innerEyes[0].SetActive(true);
+                middleEyes[0].SetActive(true);
+                break;
+            case 2:
+                eyeBrowImages[0].sprite = slantedBrow;
+                eyeBrowImages[1].sprite = slantedBrow;
+                break;
+        }
     }
 
     #endregion

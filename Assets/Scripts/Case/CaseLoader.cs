@@ -11,6 +11,7 @@ public class CaseLoader : MonoBehaviour
     // Reinitialize from scenario selection
     public GameObject localiseButton;
     public ToolControl toolControl;
+    public ToolControl cranialToolControl;
     public NeuraxisTest neuraxisTest;
     public ConcludingTest concludeTest;
 
@@ -36,7 +37,7 @@ public class CaseLoader : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        RunReinitializeAll();
+        yield return RunReinitializeAll();
 
         utilities.ActivatePanel(nextPanel);
     }
@@ -56,6 +57,11 @@ public class CaseLoader : MonoBehaviour
         result = toolControl.Init();
         if (result == false)
             print("Failed to reinitialize ToolControl!");
+
+        // Reinitialize Cranial Tool Control
+        result = cranialToolControl.Init();
+        if (result == false)
+            print("Failed to reinitialize Cranial ToolControl!");
 
         // Reinitialize Neuraxis Test
         result = neuraxisTest.Init();

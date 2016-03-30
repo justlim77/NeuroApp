@@ -522,14 +522,21 @@ ________________________________________________________________________________
 <- End of Update for 24 Mar 2016
 ___________________________________________________________________________________________________________________
 
--> Update for 30 Mar 2016
+-> Update for 30 Mar 2016 (Revised)
 
 	Changes
-		- Implemented upper cranial hat pin tool reactions (left,right,both)
-		- Implemented middle cranial hat pin tool reactions (left,right,both)
+		- Implemented upper cranial hat pin tool brows test (left,right,both)
+		- Implemented middle cranial hat pin tool squint test (left,right,both) 
+		- Cancel Case button will now be disabled while in Cranial test mode
 	Fixes
-		- 
-		- 
+		- Fixed a crash that would occur when accessing the Clinical Examination panel
+		- Fixed improper scaling of Bed when returning from Cranial tools to main panel
+		- Fixed test panel more than once during transition fading
+		- Fixed rare instance of Localise button being enabled by default
+		- Fixed loss of functionality when Cancel button was pressed while in Cranial tool mode
+	Issues
+		- Flickering of initial fade screen
+		- Bottom cranial hat pin test is temporarily set as variant of Upper cranial reaction
 
 <- End of Update for 30 Mar 2016
 ___________________________________________________________________________________________________________________

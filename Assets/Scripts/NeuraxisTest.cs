@@ -57,7 +57,7 @@ public class NeuraxisTest : MonoBehaviour
         neuraxisDict.Add("NMJ", Patient.g_PatientCase.neuraxis_NMJ);
         neuraxisDict.Add("M", Patient.g_PatientCase.neuraxis_M);
 
-        Init();
+        //Init();
     }
 
     public bool Init() 
