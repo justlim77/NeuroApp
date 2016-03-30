@@ -33,6 +33,7 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         //Setup tool sprite reference
         m_ToolSprite = GetComponent<Image>().sprite;
+        cursorSprite = m_ToolSprite;
 
         Init();
     }
