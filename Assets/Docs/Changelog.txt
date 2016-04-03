@@ -525,6 +525,7 @@ ________________________________________________________________________________
 -> Update for 30 Mar 2016 (Revised)
 
 	Changes
+		- Reduced opacity of cranial sensation lines
 		- Implemented upper cranial hat pin tool brows test (left,right,both)
 		- Implemented middle cranial hat pin tool squint test (left,right,both) 
 		- Cancel Case button will now be disabled while in Cranial test mode
@@ -539,4 +540,22 @@ ________________________________________________________________________________
 		- Bottom cranial hat pin test is temporarily set as variant of Upper cranial reaction
 
 <- End of Update for 30 Mar 2016
+___________________________________________________________________________________________________________________
+
+-> Update for 03 Apr 2016
+
+	Changes
+		- Implemented lower cranial hat pin tool grit power test (left,right,both)
+		- Implemented eye examination test (dilated + constricted)
+		- Added gradient effect for both pen torch tools (eye,mouth)
+		- Optimized sprite textures into 1024x- and 2048x-sized texture atlases
+	Fixes
+		- Fixed missing sprite for Localise UI button
+		- Fixed screenshot button ("F3") failing to capture screenshot
+	Issues
+		- Shocked face reaction does not revert to default after hovering out of tendon
+		- Flickering of initial fade screen
+		- Bottom cranial hat pin test is temporarily set as variant of Upper cranial reaction
+
+<- End of Update for 03 Apr 2016
 ___________________________________________________________________________________________________________________

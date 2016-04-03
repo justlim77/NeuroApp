@@ -12,6 +12,7 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public string animationTrigger = "Enter trigger name";
     public Text footer;
     public string test;
+    public bool hasGradient = false;
     public List<GameObject> interactiveObjects = new List<GameObject>();
 
     ToolControl m_ToolControl;
@@ -20,6 +21,7 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     Animator m_ToolCursorAnim;
     Image m_ToolCursorImage;
     Sprite m_ToolSprite;
+    Image _gradientImage;
 
     void Awake()
     {
@@ -30,6 +32,7 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         m_ToolCursorScript = toolCursor.GetComponent<ToolCursor>();
         m_ToolCursorAnim = toolCursor.GetComponent<Animator>();
         m_ToolCursorImage = toolCursor.GetComponent<Image>();
+        _gradientImage = toolCursor.transform.GetChild(0).GetComponent<Image>();
 
         //Setup tool sprite reference
         m_ToolSprite = GetComponent<Image>().sprite;
@@ -73,6 +76,8 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     void SetToolCursor()
     {
         m_ToolCursorImage.sprite = cursorSprite;
+
+        _gradientImage.enabled = hasGradient;
 
         Cursor.visible = false;
 
