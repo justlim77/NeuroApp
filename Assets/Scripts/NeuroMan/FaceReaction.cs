@@ -1,19 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using NeuroApp;
 
 public class FaceReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    #region Serialized Private Fields
-    [SerializeField] private GameObject m_Head;
-    [SerializeField] private HeadReaction.FaceState m_FaceState;
-    #endregion
+    [SerializeField] GameObject m_Head;
+    [SerializeField] FaceState m_FaceState;
 
-    #region Private Variables
-    private HeadReaction m_HeadReaction;
-    #endregion
+    HeadReaction m_HeadReaction;
 
-    #region Initialization Methods
-    private void Start()
+    void Start()
     {
         Init();
     }
@@ -23,9 +19,7 @@ public class FaceReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (m_Head)
             m_HeadReaction = m_Head.GetComponent<HeadReaction>();
     }
-    #endregion
 
-    #region Public Methods
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (m_HeadReaction)
@@ -35,7 +29,6 @@ public class FaceReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerExit(PointerEventData eventData)
     {
         if (m_HeadReaction)
-            m_HeadReaction.Reaction(HeadReaction.FaceState.Smile);
+            m_HeadReaction.Reaction(FaceState.Smile);
     }
-    #endregion
 }

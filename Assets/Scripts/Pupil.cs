@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using NeuroApp;
 
 public class Pupil : MonoBehaviour
 {
-    public enum PupilState { Default, Dilated, Constricted }
     public PupilState pupilState = PupilState.Default;
     public HeadReaction head;
     public float activationRadius = 40.0f;
@@ -49,13 +49,13 @@ public class Pupil : MonoBehaviour
                         break;
                 }
 
-                head.SetMouth(HeadReaction.MouthState.OMG);
+                head.SetMouth(MouthState.OMG);
             }
             else
             {
                 _TargetedPupil = null;
                 ResizeEyes(normalSize);
-                head.SetMouth(HeadReaction.MouthState.Smile);
+                head.SetMouth(MouthState.Neutral);
             }
         }            
     }

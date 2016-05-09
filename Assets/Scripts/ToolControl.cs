@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using NeuroApp;
 
 public class ToolControl : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class ToolControl : MonoBehaviour
 
     [SerializeField] bool debug = false;
     [SerializeField] bool activeOnStart = true;
+    [SerializeField] Color panelColor;
 
     void Awake()
     {
@@ -112,16 +114,21 @@ public class ToolControl : MonoBehaviour
     {
         m_ToolUseCount++;
 
-        if (m_ToolUseCount >= tools.Count)
-        {
-            localiseButton.SetActive(true);
-        }
+        if(activeOnStart)
+            if (m_ToolUseCount >= tools.Count)
+                localiseButton.SetActive(true);
     }
 
     public void SwitchToolset()
     {
+        // Test for main tool panel to show localise button
+        if (activeOnStart)
+            if (m_ToolUseCount >= tools.Count)
+                localiseButton.SetActive(true);
+
         alternateSet.SetActive(true);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+       
     }
 
     public void ToggleCranial(bool value)
@@ -148,6 +155,8 @@ public class ToolControl : MonoBehaviour
 
             speechRectTrans.anchoredPosition = speechOriginalPos;
             speechRectTrans.localScale = Vector3.one;
+
+            PanelManager.Instance.PanelColor(PanelType.Main, panelColor);
         }
     }
 }

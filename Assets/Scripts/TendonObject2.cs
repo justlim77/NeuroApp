@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
+using NeuroApp;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,7 +12,6 @@ public class TendonObject2 : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
 {
 
     public Tendon tendon = new Tendon();
-    public enum SwingDirection { Up, Down };
     public SwingDirection swingDirection;
     public HeadReaction head;
     public Text header;
@@ -51,7 +51,7 @@ public class TendonObject2 : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        head.Reaction(HeadReaction.FaceState.Shocked);
+        head.Reaction(FaceState.Shocked);
 
         ToolCursor.canAnimate = true;
     }
@@ -61,7 +61,7 @@ public class TendonObject2 : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
         if (m_Swinging)
             return;
 
-        head.Reaction(HeadReaction.FaceState.Ouch);
+        head.Reaction(FaceState.Ouch);
         mainPanel.color = reactionColor;
         switch (tendon.tendonReflex)
         {
@@ -92,7 +92,7 @@ public class TendonObject2 : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        head.Reaction(HeadReaction.FaceState.Smile);
+        head.Reaction(FaceState.Smile);
         mainPanel.color = m_OriginalColor;
         header.text = string.Empty;
 

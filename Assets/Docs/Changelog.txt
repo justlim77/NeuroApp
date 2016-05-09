@@ -559,3 +559,23 @@ ________________________________________________________________________________
 
 <- End of Update for 03 Apr 2016
 ___________________________________________________________________________________________________________________
+
+-> Update for 09 May 2016
+
+	Changes
+		- Added "Cranial Exam" button for Cranial Nerves section
+		- Clicking on Eye Pen Torch tool now dims background to near-black
+		- Patient now smiles less... o_o
+		- Changed Eye Pen Torch pupil test eye dilation to match artist's rendition
+		- Separated back button from Cranial Tools panel
+	Fixes
+		- Panel color not reverting back to original after using Pen Torch
+		- Fixed squinting eyebrow being stuck
+		- Fixed tool panels dissapearing if Localise was pressed while in Cranial Test mode
+	Issues
+		- Shocked face reaction does not revert to default after hovering out of tendon
+		- Flickering of initial fade screen
+		- Bottom cranial hat pin test is temporarily set as variant of Upper cranial reaction
+
+<- End of Update for 09 May 2016
+___________________________________________________________________________________________________________________

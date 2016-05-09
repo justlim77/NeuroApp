@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
+using NeuroApp;
 
 public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     #region Mouth Variables
     public Image mouth;
+    public Sprite mouthNeutral;
     public Sprite mouthSmile;
     public Sprite mouthShocked;
     public Sprite mouthWideO;
@@ -36,32 +37,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] private float _enlargedEyeSize = 10.0f;
     #endregion
 
-    #region Enumerations
-    public enum FaceState {
-        Smile,
-        Shocked,
-        OMG,
-        Ouch,
-        Neutral,
-        RightEyebrowUp,
-        LeftEyebrowUp,
-        BothEyebrowsUp,        
-        RightSquint,
-        LeftSquint,
-        BothSquint,
-        RightGritTeeth,
-        LeftGritTeeth,
-        BothGritTeeth
-    }
+    #region Enums
     public FaceState faceState;
-
-    public enum MouthState {
-        Smile,
-        Shocked,
-        OMG,
-        Ouch,
-        Neutral
-    }
     public MouthState mouthState;
     #endregion
 
@@ -124,6 +101,11 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 ToggleEyes(ouchEyes, _defaultEyeSize, 3.0f, false, false);
                 break;
             case FaceState.Neutral:
+                mouth.sprite = mouthNeutral;
+                ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
+                CenterEyes();
+                break;
+            case FaceState.NoReaction:
                 mouth.sprite = mouthSlanted;
                 ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
                 CenterEyes();
@@ -171,7 +153,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (_isFrozen)
             return;
-        Reaction(FaceState.Smile);
+        Reaction(FaceState.Neutral);
     }
     #endregion
 
@@ -182,7 +164,10 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             eye.sprite = sprite;
 
         foreach (Image brow in eyeBrowImages)
+        {
+            brow.sprite = defaultBrow;
             brow.enabled = showBrow;
+        }
 
         foreach (var innerEye in innerEyes)
             innerEye.SetActive(showInOutEyes);
@@ -219,7 +204,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void RaiseBrow(float height = 10.0f, params RectTransform[] brows)
     {
-        mouth.sprite = mouthSmile;
+        mouth.sprite = mouthNeutral;
         ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
         CenterEyes();
 
@@ -232,7 +217,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void Squint(int browIndex, params Image[] eyes)
     {
-        mouth.sprite = mouthSmile;
+        mouth.sprite = mouthNeutral;
         ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, false, false);
         CenterEyes();
 
@@ -269,19 +254,31 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void FreezeState(bool state)
     {
-        foreach (var pupil in pupils)
+        foreach (var pupil in middleEyes)
         {
             Pupil pupilScript = pupil.GetComponent<Pupil>();
             if (pupilScript != null)
+            {
                 pupilScript.enabled = state;
+            }
+        }
+
+        foreach (var pupil in pupils)
+        {
+            pupil.gameObject.SetActive(!state);
         }
 
         if (state)
-            ToggleEyes(_originalEyes, midSize: 12, pupilSize: 6, follow: false);
+        {
+            ToggleEyes(_originalEyes, midSize: 9, pupilSize: 6, follow: false);
+            SetMouth(MouthState.Neutral);
+        }
         else
+        {
             ToggleEyes(_originalEyes);
+            SetMouth(MouthState.Smile);
+        }
 
-        SetMouth(MouthState.Smile);
         _isFrozen = state;
     }
 
@@ -297,6 +294,9 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 break;
             case MouthState.Ouch:
                 mouth.sprite = mouthSlanted;
+                break;
+            case MouthState.Neutral:
+                mouth.sprite = mouthNeutral;
                 break;
             default:
                 break;

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using NeuroApp;
 
 public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -14,6 +15,7 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public string test;
     public bool hasGradient = false;
     public List<GameObject> interactiveObjects = new List<GameObject>();
+    public Color backgroundColor;
 
     ToolControl m_ToolControl;
     bool m_ToolUsed = false;
@@ -50,6 +52,8 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         footer.text = test;
 
         SetToolCursor();
+
+        PanelManager.Instance.mainPanel.color = backgroundColor;
 
         foreach (GameObject interactiveObject in interactiveObjects)
             interactiveObject.SetActive(true);

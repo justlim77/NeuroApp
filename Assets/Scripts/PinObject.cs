@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
+using NeuroApp;
 
 [System.Serializable]
 public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
@@ -19,7 +20,7 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
 
     Color m_OriginalColor;
     Image m_Image;
-    HeadReaction.FaceState m_ReactionState;
+    FaceState m_ReactionState;
     Color m_VisibleColor = new Color(1, 1, 1, 1);
     Color m_InvisibleColor = new Color(1, 1, 1, 0);
 
@@ -33,7 +34,7 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     void Start()
     {
         Init();
-        m_ReactionState = canFeel ? HeadReaction.FaceState.Ouch : HeadReaction.FaceState.Neutral;
+        m_ReactionState = canFeel ? FaceState.Ouch : FaceState.NoReaction;
     }
 
     void LateUpdate()
@@ -51,20 +52,30 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         m_Image.color = m_VisibleColor;
-        head.Reaction(HeadReaction.FaceState.Shocked);
+        head.Reaction(FaceState.Shocked);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        head.Reaction(m_ReactionState);
-        mainPanel.color = canFeel ? reactionColor : noReactionColor;
-        header.text = canFeel ? positiveMessage : negativeMessage;
+        StartCoroutine(PinReaction());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         m_Image.color = m_InvisibleColor;
-        head.Reaction(HeadReaction.FaceState.Smile);
+        head.Reaction(FaceState.Neutral);
+    }
+
+    IEnumerator PinReaction()
+    {
+        head.Reaction(m_ReactionState);
+        mainPanel.color = canFeel ? reactionColor : noReactionColor;
+        header.text = canFeel ? positiveMessage : negativeMessage;
+
+        yield return new WaitForSeconds(Constants.const_reaction_delay);
+
+        m_Image.color = m_InvisibleColor;
+        head.Reaction(FaceState.Neutral);
         mainPanel.color = m_OriginalColor;
         header.text = string.Empty;
     }

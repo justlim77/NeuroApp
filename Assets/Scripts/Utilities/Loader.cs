@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Loader : MonoBehaviour {
 
-    public GameObject am;
+    public GameObject audioManager;
     public AudioClip bgm;
 
     void Awake()
     {
-        if (am)
+        if (audioManager)
             AudioManager.Instance.PlayBGM(bgm);
     }
 }

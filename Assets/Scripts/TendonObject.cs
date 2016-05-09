@@ -5,18 +5,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using NeuroApp;
+using System;
 
 [System.Serializable]
-public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
+public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
 {
     public Tendon tendon = new Tendon();
-    public enum Orientation { Left, Right }
     public Orientation orientation;
     public RectTransform limbRect;
-    public enum SwingDirection { Up, Down };
     public SwingDirection swingDirection;
     public Tool tool;
-    public enum ToolSwingDirection { Up, Down };
     public ToolSwingDirection toolSwingDirection;
 
     public HeadReaction head;
@@ -30,7 +29,6 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
     public string normalReflexMessage = "Ow!";
     public string hypoReflexMessage = "Hmm.";
     public string absentReflexMessage = "...";
-    public float tapperDelay = 0.1f;
 
     private Color m_OriginalColor;
     private float m_OriginalAngle;
@@ -65,7 +63,7 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        head.Reaction(HeadReaction.FaceState.Shocked);
+        head.Reaction(FaceState.Shocked);
 
         ToolCursor.canAnimate = true;
     }
@@ -77,10 +75,7 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
             return;
 
         // Visual feedback: Face reaction
-        head.Reaction(HeadReaction.FaceState.Ouch);
-
-        // Visual feedback: Panel color
-        //mainPanel.color = reactionColor;
+        head.Reaction(FaceState.Ouch);
 
         // Visual feedback: Swing
         switch (tendon.tendonReflex)
@@ -111,7 +106,7 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
                 break;
             case Tendon.TendonReflex.Absent:
                 //ReflexReaction(0.0f);
-                head.Reaction(HeadReaction.FaceState.Neutral);
+                head.Reaction(FaceState.NoReaction);
                 header.text = absentReflexMessage;
                 mainPanel.color = noReactionColor;
                 m_InitialInterval = 0.1f;
@@ -129,11 +124,13 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         tool.AnimateTool(animTrigger);
 
         //Small delay for tapper animation before reacting
-        yield return new WaitForSeconds(tapperDelay);
+        yield return new WaitForSeconds(Constants.const_tapper_delay);
 
         yield return StartCoroutine(Swing(angle, m_InitialInterval, m_BackInterval));
 
-        head.Reaction(HeadReaction.FaceState.Smile);
+        yield return new WaitForSeconds(Constants.const_reaction_delay); // Delay reaction color
+
+        head.Reaction(FaceState.Neutral);
         mainPanel.color = m_OriginalColor;
         header.text = string.Empty;
 
@@ -188,5 +185,10 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
 
         // Reset swing check
         m_Swinging = false;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        head.Reaction(FaceState.Neutral);
     }
 }
