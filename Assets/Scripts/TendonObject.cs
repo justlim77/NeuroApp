@@ -32,7 +32,6 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
 
     private Color m_OriginalColor;
     private float m_OriginalAngle;
-    private bool m_Swinging;
     private float m_InitialInterval = 0.1f;
     private float m_BackInterval = 0.05f;
 
@@ -68,11 +67,14 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         ToolCursor.canAnimate = true;
     }
 
+    static bool m_Swinging = false;
     public void OnPointerDown(PointerEventData eventData)
     {
         // Don't execute if mid-swing
         if (m_Swinging)
             return;
+
+        m_Swinging = true;
 
         // Visual feedback: Face reaction
         head.Reaction(FaceState.Ouch);
@@ -135,6 +137,7 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         header.text = string.Empty;
 
         ToolCursor.canAnimate = true;
+        m_Swinging = false;
     }
 
     IEnumerator Swing(float amount, float initialInterval, float backInterval)
@@ -184,7 +187,7 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
             yield return new WaitForSeconds(0.5f);
 
         // Reset swing check
-        m_Swinging = false;
+        //m_Swinging = false;
     }
 
     public void OnPointerExit(PointerEventData eventData)

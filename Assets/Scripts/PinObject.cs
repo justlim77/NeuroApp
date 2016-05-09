@@ -63,20 +63,28 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         m_Image.color = m_InvisibleColor;
-        head.Reaction(FaceState.Neutral);
+        if(!_isPoking)
+            head.Reaction(FaceState.Neutral);
     }
 
+    static bool _isPoking = false;
     IEnumerator PinReaction()
     {
+        if (_isPoking)
+            yield break;
+
+        _isPoking = true;
+
         head.Reaction(m_ReactionState);
         mainPanel.color = canFeel ? reactionColor : noReactionColor;
         header.text = canFeel ? positiveMessage : negativeMessage;
 
         yield return new WaitForSeconds(Constants.const_reaction_delay);
 
-        m_Image.color = m_InvisibleColor;
         head.Reaction(FaceState.Neutral);
         mainPanel.color = m_OriginalColor;
         header.text = string.Empty;
+
+        _isPoking = false;
     }
 }

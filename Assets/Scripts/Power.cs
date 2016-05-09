@@ -31,7 +31,8 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
     public void OnPointerEnter(PointerEventData eventData)
     {
         _image.color = _visibleColor;
-        head.Reaction(FaceState.Neutral);
+        if(!_isTesting)
+            head.Reaction(FaceState.Neutral);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -42,14 +43,23 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
     public void OnPointerExit(PointerEventData eventData)
     {
         _image.color = _invisibleColor;
-        head.Reaction(FaceState.Neutral);
+        if(!_isTesting)
+            head.Reaction(FaceState.Neutral);
     }
 
+    static bool _isTesting = false;
     IEnumerator PowerReaction()
     {
+        if (_isTesting)
+            yield break;
+
+        _isTesting = true;
+
         head.Reaction(faceState);
         yield return new WaitForSeconds(Constants.const_reaction_delay);
 
         head.Reaction(FaceState.Neutral);
+
+        _isTesting = false;
     }
 }

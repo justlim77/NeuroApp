@@ -24,10 +24,8 @@ namespace NeuroApp
         {
             if (_Instance == null)
                 _Instance = this;
-            else if (_Instance != this)
-                Destroy(gameObject);
 
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
 
         // Use this for initialization
