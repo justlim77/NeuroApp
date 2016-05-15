@@ -12,6 +12,7 @@ public class TextTyper : MonoBehaviour {
 
     Text m_Text;
     WaitForSeconds m_LetterPause;
+    bool _skip = false;
 
     void Awake()
     {
@@ -38,8 +39,13 @@ public class TextTyper : MonoBehaviour {
             m_Text.text += letter;
             if (typeSound1 && typeSound2)
                 AudioManager.Instance.RandomizeSFX(typeSound1, typeSound2);
-            yield return 0;
-            yield return m_LetterPause;
+            if (_skip)
+            {
+                Skip();
+                yield break;
+            }
+            else            
+                yield return m_LetterPause;
         }
     }
 
@@ -47,6 +53,12 @@ public class TextTyper : MonoBehaviour {
     {
         m_Text.text = string.Empty;
         message = string.Empty;
+        _skip = false;
+    }
+
+    public void Skip()
+    {
+        m_Text.text = message;
     }
 
     public void FadeText()

@@ -288,7 +288,7 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.Space();
 
         //Eliminate from neuraxis (Absolute options)
-        EditorGUILayout.LabelField("Eliminate from Neuraxis (Check to eliminate)", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Eliminate from Neuraxis (Leave blank to eliminate)", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
         g_Case.neuraxis_C = EditorGUILayout.ToggleLeft("C", g_Case.neuraxis_C, GUILayout.MaxWidth(120));
         g_Case.neuraxis_SC = EditorGUILayout.ToggleLeft("SC", g_Case.neuraxis_SC, GUILayout.MaxWidth(120));

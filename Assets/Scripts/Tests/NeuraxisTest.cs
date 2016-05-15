@@ -46,16 +46,16 @@ public class NeuraxisTest : MonoBehaviour
     private void Start()
     {
         // Add neuraxis elimination data to neuraxisDictionary
-        neuraxisDict.Add("C", Patient.g_PatientCase.neuraxis_C);
-        neuraxisDict.Add("SC", Patient.g_PatientCase.neuraxis_SC);
-        neuraxisDict.Add("BS", Patient.g_PatientCase.neuraxis_BS);
-        neuraxisDict.Add("SCORD", Patient.g_PatientCase.neuraxis_SCORD);
-        neuraxisDict.Add("AHC", Patient.g_PatientCase.neuraxis_AHC);
-        neuraxisDict.Add("R", Patient.g_PatientCase.neuraxis_R);
-        neuraxisDict.Add("P", Patient.g_PatientCase.neuraxis_P);
-        neuraxisDict.Add("PN", Patient.g_PatientCase.neuraxis_PN);
-        neuraxisDict.Add("NMJ", Patient.g_PatientCase.neuraxis_NMJ);
-        neuraxisDict.Add("M", Patient.g_PatientCase.neuraxis_M);
+        neuraxisDict.Add("C", !Patient.g_PatientCase.neuraxis_C);
+        neuraxisDict.Add("SC", !Patient.g_PatientCase.neuraxis_SC);
+        neuraxisDict.Add("BS", !Patient.g_PatientCase.neuraxis_BS);
+        neuraxisDict.Add("SCORD", !Patient.g_PatientCase.neuraxis_SCORD);
+        neuraxisDict.Add("AHC", !Patient.g_PatientCase.neuraxis_AHC);
+        neuraxisDict.Add("R", !Patient.g_PatientCase.neuraxis_R);
+        neuraxisDict.Add("P", !Patient.g_PatientCase.neuraxis_P);
+        neuraxisDict.Add("PN", !Patient.g_PatientCase.neuraxis_PN);
+        neuraxisDict.Add("NMJ", !Patient.g_PatientCase.neuraxis_NMJ);
+        neuraxisDict.Add("M", !Patient.g_PatientCase.neuraxis_M);
 
         //Init();
     }
@@ -65,16 +65,16 @@ public class NeuraxisTest : MonoBehaviour
         bool result = true;
 
         // Re-initialize dictionary
-        neuraxisDict["C"] = Patient.g_PatientCase.neuraxis_C;
-        neuraxisDict["SC"] = Patient.g_PatientCase.neuraxis_SC;
-        neuraxisDict["BS"] = Patient.g_PatientCase.neuraxis_BS;
-        neuraxisDict["SCORD"] = Patient.g_PatientCase.neuraxis_SCORD;
-        neuraxisDict["AHC"] = Patient.g_PatientCase.neuraxis_AHC;
-        neuraxisDict["R"] = Patient.g_PatientCase.neuraxis_R;
-        neuraxisDict["P"] = Patient.g_PatientCase.neuraxis_P;
-        neuraxisDict["PN"] = Patient.g_PatientCase.neuraxis_PN;
-        neuraxisDict["NMJ"] = Patient.g_PatientCase.neuraxis_NMJ;
-        neuraxisDict["M"] = Patient.g_PatientCase.neuraxis_M;
+        neuraxisDict["C"] = !Patient.g_PatientCase.neuraxis_C;
+        neuraxisDict["SC"] = !Patient.g_PatientCase.neuraxis_SC;
+        neuraxisDict["BS"] = !Patient.g_PatientCase.neuraxis_BS;
+        neuraxisDict["SCORD"] = !Patient.g_PatientCase.neuraxis_SCORD;
+        neuraxisDict["AHC"] = !Patient.g_PatientCase.neuraxis_AHC;
+        neuraxisDict["R"] = !Patient.g_PatientCase.neuraxis_R;
+        neuraxisDict["P"] = !Patient.g_PatientCase.neuraxis_P;
+        neuraxisDict["PN"] = !Patient.g_PatientCase.neuraxis_PN;
+        neuraxisDict["NMJ"] = !Patient.g_PatientCase.neuraxis_NMJ;
+        neuraxisDict["M"] = !Patient.g_PatientCase.neuraxis_M;
 
         // Setup buttons
         m_ButtonList.Clear();
@@ -194,7 +194,7 @@ public class NeuraxisTest : MonoBehaviour
                 btn.SetHighlight();
             }
 
-            scoreText.text = string.Format("You scored {0} out of 100.", GetScore());
+            scoreText.text = string.Format("You scored {0} out of 100.", Score);
         }
 
         // Finally, perform star rating check
@@ -235,12 +235,11 @@ public class NeuraxisTest : MonoBehaviour
         return localisationString;
     }
 
-    private int GetScore() 
+    int Score
     {
-        int finalScore = 0;
-
-        finalScore = Mathf.Clamp(((m_NumOfCorrect * scorePerCorrect) - (m_NumOfHintsUsed * hintCost)), 0, 100);
-
-        return finalScore;
+        get
+        {
+           return Mathf.Clamp(((m_NumOfCorrect * scorePerCorrect) - (m_NumOfHintsUsed * hintCost)), 0, 100);
+        }
     }
 }

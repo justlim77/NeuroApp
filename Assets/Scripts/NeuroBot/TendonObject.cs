@@ -21,32 +21,31 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
     public HeadReaction head;
     public Text header;
     public Image mainPanel;
-    public Color reactionColor = new Color32(251, 221, 97, 255);
-    public Color noReactionColor = new Color32(36, 36, 36, 255);
-    public float activationRadius = 50.0f;
-
-    public string hyperReflexMessage = "Ouch!";
-    public string normalReflexMessage = "Ow!";
-    public string hypoReflexMessage = "Hmm.";
-    public string absentReflexMessage = "...";
 
     private Color m_OriginalColor;
     private float m_OriginalAngle;
     private float m_InitialInterval = 0.1f;
     private float m_BackInterval = 0.05f;
+    private WaitForSeconds _tapperDelay;
+    private WaitForSeconds _reactionDelay;
+    private WaitForSeconds _absentDelay;
 
     void Start()
     {
         m_OriginalColor = mainPanel.color;
         m_OriginalAngle = limbRect.localRotation.z;
         m_Swinging = false;
+
+        _tapperDelay = new WaitForSeconds(Constants.const_tapper_delay);
+        _reactionDelay = new WaitForSeconds(Constants.const_reaction_delay);
+        _absentDelay = new WaitForSeconds(Constants.const_absent_delay);
     }
 
+    bool _isNear = false;
     void Update()
     {
-        bool isNear = false;
-        isNear = Vector2.Distance(Input.mousePosition, transform.position) < activationRadius;
-        if (isNear)
+        _isNear = Vector2.Distance(Input.mousePosition, transform.position) < Constants.const_tap_active_radius;
+        if (_isNear)
         {
             switch (orientation)
             {
@@ -83,8 +82,8 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         switch (tendon.tendonReflex)
         {
             case Tendon.TendonReflex.Hyperactive:
-                header.text = hyperReflexMessage;
-                mainPanel.color = reactionColor;
+                header.text = Constants.const_tap_hyper_msg;
+                mainPanel.color = Constants.const_tap_reaction_color;
                 //Hyper 60degrees
                 m_InitialInterval = 0.1f;
                 m_BackInterval = 0.05f;
@@ -92,16 +91,16 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
                 break;
             case Tendon.TendonReflex.Normal:
                 //Normal 15degrees
-                header.text = normalReflexMessage;
-                mainPanel.color = reactionColor;
+                header.text = Constants.const_tap_norm_msg;
+                mainPanel.color = Constants.const_tap_reaction_color;
                 m_InitialInterval = 0.125f;
                 m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(15.0f));
                 break;
             case Tendon.TendonReflex.Sluggish:  // Deprecated
                 //Hypo 10degrees
-                header.text = hypoReflexMessage;
-                mainPanel.color = reactionColor;
+                header.text = Constants.const_tap_hypo_msg;
+                mainPanel.color = Constants.const_tap_reaction_color;
                 m_InitialInterval = 0.1f;
                 m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(10.0f));
@@ -109,8 +108,8 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
             case Tendon.TendonReflex.Absent:
                 //ReflexReaction(0.0f);
                 head.Reaction(FaceState.NoReaction);
-                header.text = absentReflexMessage;
-                mainPanel.color = noReactionColor;
+                header.text = Constants.const_tap_absent_msg;
+                mainPanel.color = Constants.const_tap_no_reaction_color;
                 m_InitialInterval = 0.1f;
                 m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(0.0f));
@@ -126,11 +125,11 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         tool.AnimateTool(animTrigger);
 
         //Small delay for tapper animation before reacting
-        yield return new WaitForSeconds(Constants.const_tapper_delay);
+        yield return _tapperDelay;
 
         yield return StartCoroutine(Swing(angle, m_InitialInterval, m_BackInterval));
 
-        yield return new WaitForSeconds(Constants.const_reaction_delay); // Delay reaction color
+        yield return _reactionDelay;
 
         head.Reaction(FaceState.Neutral);
         mainPanel.color = m_OriginalColor;
@@ -184,10 +183,7 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
 
         // Add slight delay if absent reflexes
         if (tendon.tendonReflex == Tendon.TendonReflex.Absent)
-            yield return new WaitForSeconds(0.5f);
-
-        // Reset swing check
-        //m_Swinging = false;
+            yield return _absentDelay;
     }
 
     public void OnPointerExit(PointerEventData eventData)
