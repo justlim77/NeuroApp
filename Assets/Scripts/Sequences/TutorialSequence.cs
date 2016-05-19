@@ -37,7 +37,8 @@ public class TutorialSequence : MonoBehaviour
         StartCoroutine(RunTutorial());
     }
 
-    void Start() { }
+    void Start() {
+    }
 
     IEnumerator RunTutorial()
     {
@@ -96,6 +97,7 @@ public class TutorialSequence : MonoBehaviour
     {
         button.interactable = false;
         proceed = false;
+        print(msg);
         yield return textTyper.RunTypeText(msg);
         button.interactable = true;
         while (!proceed)

@@ -14,15 +14,22 @@ public class TextTyper : MonoBehaviour {
     WaitForSeconds m_LetterPause;
     bool _skip = false;
 
+    void OnEnable()
+    {
+        if (m_Text == null)
+            m_Text = GetComponent<Text>();
+        Clear();
+    }
+
     void Awake()
     {
-        m_Text = GetComponent<Text>();
+        if (m_Text == null)
+            m_Text = GetComponent<Text>();
         m_LetterPause = new WaitForSeconds(letterPause);
     }
 
     void Start()
     {
-        Clear();
     }
 
     public IEnumerator RunTypeText(string messageToType)
@@ -31,7 +38,8 @@ public class TextTyper : MonoBehaviour {
 
         // Initialize
         message = messageToType;
-        char[] messageArray = message.ToCharArray();
+        char[] messageArray = new char[0];
+        messageArray = message.ToCharArray();
 
         // Type staggered chars
         foreach (char letter in messageArray)
@@ -51,7 +59,8 @@ public class TextTyper : MonoBehaviour {
 
     public void Clear()
     {
-        m_Text.text = string.Empty;
+        if (m_Text != null)
+            m_Text.text = string.Empty;
         message = string.Empty;
         _skip = false;
     }

@@ -17,7 +17,7 @@ public class CaseLoader : MonoBehaviour
 
     public void LoadCase(string caseName)
     {
-        StartCoroutine(LoadCase_(caseName));
+        StartCoroutine(RunLoadCase(caseName));
     }
 
     public void ReinitializeAll()
@@ -27,7 +27,7 @@ public class CaseLoader : MonoBehaviour
             print("Failed to reinitialize!");
     }
 
-    IEnumerator LoadCase_(string caseName)
+    IEnumerator RunLoadCase(string caseName)
     {
         patient.LoadCase(caseName);
 
