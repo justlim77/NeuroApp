@@ -11,7 +11,6 @@ public class Patient : MonoBehaviour
 
     #region Clinical Exam Variables
     public Text toneText;                       //Tone
-    public Text plantarsText;                   //Plantars
     public Text cranialNerveText;               //Cranial Nerve
     public Text cerebellarSignsText;            //Cerebellar Signs
     #endregion
@@ -29,12 +28,18 @@ public class Patient : MonoBehaviour
     public Text UL_Wrist_F_L;
     public Text UL_Wrist_E_R;
     public Text UL_Wrist_E_L;
-    public Text UL_Finger_A_R;
-    public Text UL_Finger_A_L;
     public Text UL_Finger_F_R;
     public Text UL_Finger_F_L;
     public Text UL_Finger_E_R;
     public Text UL_Finger_E_L;
+    public Text UL_Finger_A_R;
+    public Text UL_Finger_A_L;
+    public Text UL_Thumb_F_R;
+    public Text UL_Thumb_F_L;
+    public Text UL_Thumb_E_R;
+    public Text UL_Thumb_E_L;
+    public Text UL_Thumb_A_R;
+    public Text UL_Thumb_A_L;
     //Lower limb
     public Text LL_Hip_F_R;
     public Text LL_Hip_F_L;
@@ -48,6 +53,10 @@ public class Patient : MonoBehaviour
     public Text LL_Ankle_DF_L;
     public Text LL_Ankle_PF_R;
     public Text LL_Ankle_PF_L;
+    public Text LL_Toe_DF_R;
+    public Text LL_Toe_DF_L;
+    public Text LL_Toe_PF_R;
+    public Text LL_Toe_PF_L;
     #endregion
 
     #region Sensation Variables
@@ -88,8 +97,8 @@ public class Patient : MonoBehaviour
     public TendonObject tendon_plantar_L;
     #endregion
 
-    #region Neuroaxis Variables
-    //Neuraxis Elimination
+    #region Elimination Variables
+    //Neuroaxis Elimination
     public bool neuraxis_C;
     public bool neuraxis_SC;
     public bool neuraxis_BS;
@@ -117,7 +126,6 @@ public class Patient : MonoBehaviour
         caseDescriptionText.text = g_PatientCase.caseDescription;   //Case description setup
         caseStars = 0;                                              //Case star system setup
         toneText.text = g_PatientCase.tone.ToString();              //Tone setup
-        plantarsText.text = g_PatientCase.plantars;                 //Plantars setup
         cranialNerveText.text = g_PatientCase.cranialNerve;         //Cranial nerve setup
         cerebellarSignsText.text = g_PatientCase.cerebellarSigns;   //Cerebellar signs setup
 
@@ -174,6 +182,13 @@ public class Patient : MonoBehaviour
         UL_Finger_F_L.text = g_PatientCase.UL_Finger_F_L;
         UL_Finger_E_R.text = g_PatientCase.UL_Finger_E_R;
         UL_Finger_E_L.text = g_PatientCase.UL_Finger_E_L;
+        //Thumb
+        UL_Thumb_A_R.text = g_PatientCase.UL_Thumb_A_R;
+        UL_Thumb_A_L.text = g_PatientCase.UL_Thumb_A_L;
+        UL_Thumb_F_R.text = g_PatientCase.UL_Thumb_F_R;
+        UL_Thumb_F_L.text = g_PatientCase.UL_Thumb_F_L;
+        UL_Thumb_E_R.text = g_PatientCase.UL_Thumb_E_R;
+        UL_Thumb_E_L.text = g_PatientCase.UL_Thumb_E_L;
         //Lower limbs
         //Hip
         LL_Hip_F_R.text = g_PatientCase.LL_Hip_F_R;
@@ -265,22 +280,10 @@ public class Patient : MonoBehaviour
         return true;
     }
 
-    public void LoadCase(string abbreviation)
+    public void LoadCase(int index)
     {
-        switch (abbreviation)
-        {
-            case ("Peripheral neuropathy"):
-                g_PatientCase = m_CaseDatabase.m_CaseList.caseList[0];
-                break;
-            case ("Brachiofacial stroke"):
-                g_PatientCase = m_CaseDatabase.m_CaseList.caseList[1];
-                break;
-            case ("Cervical myelopathy"):
-                g_PatientCase = m_CaseDatabase.m_CaseList.caseList[2];
-                break;
-            default:
-                break;
-        }
+        g_PatientCase = m_CaseDatabase.m_CaseList.caseList[index];
+
         Init();
     }
 }

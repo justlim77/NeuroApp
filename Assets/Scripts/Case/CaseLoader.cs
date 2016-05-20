@@ -15,9 +15,9 @@ public class CaseLoader : MonoBehaviour
     public NeuraxisTest neuraxisTest;
     public ConcludingTest concludeTest;
 
-    public void LoadCase(string caseName)
+    public void LoadCase(int index)
     {
-        StartCoroutine(RunLoadCase(caseName));
+        StartCoroutine(RunLoadCase(index));
     }
 
     public void ReinitializeAll()
@@ -27,9 +27,9 @@ public class CaseLoader : MonoBehaviour
             print("Failed to reinitialize!");
     }
 
-    IEnumerator RunLoadCase(string caseName)
+    IEnumerator RunLoadCase(int index)
     {
-        patient.LoadCase(caseName);
+        patient.LoadCase(index);
 
         foreach (GameObject panel in playPanels)
         {

@@ -43,7 +43,7 @@ public class TutorialSequence : MonoBehaviour
     IEnumerator RunTutorial()
     {
         // Load case 1 : Peripheral neuropathy as tutorial stage
-        caseLoader.LoadCase("Peripheral neuropathy");
+        caseLoader.LoadCase(0);
 
         // Set parent to main panel > border panel render top
         transform.SetParent(bed.parent);

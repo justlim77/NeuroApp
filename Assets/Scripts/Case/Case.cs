@@ -8,7 +8,6 @@ public class Case {
     public int caseStars = 0;                               //Case star rating system
     public enum Tone { Normal, Abnormal }                   //Tone enumeration
     public Tone tone;                                       //Tone
-    public string plantars;                                 //Plantars
     public string cranialNerve;                             //Cranial nerve
     public string cerebellarSigns;                          //Cerebellar signs
     #endregion
@@ -71,12 +70,19 @@ public class Case {
     public string UL_Wrist_F_L;                             //Upper Limb - Wrist - Flexion - Left
     public string UL_Wrist_E_R;                             //Upper Limb - Wrist - Extension - Right
     public string UL_Wrist_E_L;                             //Upper Limb - Wrist - Extension - Left
-    public string UL_Finger_A_R;                            //Upper Limb - Finger - Abduction - Right
-    public string UL_Finger_A_L;                            //Upper Limb - Finger - Abduction - Left
     public string UL_Finger_F_R;                            //Upper Limb - Finger - Flexion - Right
     public string UL_Finger_F_L;                            //Upper Limb - Finger - Flexion - Left
     public string UL_Finger_E_R;                            //Upper Limb - Finger - Extension - Right
     public string UL_Finger_E_L;                            //Upper Limb - Finger - Extension - Left
+    public string UL_Finger_A_R;                            //Upper Limb - Finger - Abduction - Right
+    public string UL_Finger_A_L;                            //Upper Limb - Finger - Abduction - Left
+    public string UL_Thumb_F_R;                            //Upper Limb - Thumb - Flexion - Right
+    public string UL_Thumb_F_L;                            //Upper Limb - Thumb - Flexion - Left
+    public string UL_Thumb_E_R;                            //Upper Limb - Thumb - Extension - Right
+    public string UL_Thumb_E_L;                            //Upper Limb - Thumb - Extension - Left
+    public string UL_Thumb_A_R;                            //Upper Limb - Thumb - Adduction - Right
+    public string UL_Thumb_A_L;                            //Upper Limb - Thumb - Adduction - Left
+
     public string LL_Hip_F_R;                               //Lower Limb - Hip - Flexion - Right
     public string LL_Hip_F_L;                               //Lower Limb - Hip - Flexion - Left
     public string LL_Hip_E_R;                               //Lower Limb - Hip - Extension - Right
@@ -89,6 +95,11 @@ public class Case {
     public string LL_Ankle_DF_L;                            //Lower Limb - Ankle - Dorsiflexion - Left
     public string LL_Ankle_PF_R;                            //Lower Limb - Ankle - Plantarflexion - Right
     public string LL_Ankle_PF_L;                            //Lower Limb - Ankle - Plantarflexion - Left
+    public string LL_Toe_DF_R;                              //Lower Limb - Toe - Dorsiflexion - Right
+    public string LL_Toe_DF_L;                              //Lower Limb - Toe - Dorsiflexion - Left
+    public string LL_Toe_PF_R;                              //Lower Limb - Toe - Plantarflexion - Right
+    public string LL_Toe_PF_L;                              //Lower Limb - Toe - Plantarflexion - Left
+
     #endregion
 
     #region Neuroaxis Variables
@@ -104,6 +115,10 @@ public class Case {
     public bool neuraxis_PN;        //Peripheral Nerves
     public bool neuraxis_NMJ;       //Neuro Muscular Junction
     public bool neuraxis_M;         //Muscle
+    #endregion
+
+    #region Elimination hint variables
+    public string[] neuraxis_hints;
     #endregion
 
     #region Concluding Test Variables

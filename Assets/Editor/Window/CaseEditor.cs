@@ -43,11 +43,6 @@ public class CaseEditor : EditorWindow {
         g_Case.tone = (Case.Tone)EditorGUILayout.EnumPopup(g_Case.tone);
         EditorGUILayout.Space();
 
-        //Plantars
-        EditorGUILayout.LabelField("Plantars", EditorStyles.boldLabel);
-        g_Case.plantars = EditorGUILayout.TextArea(g_Case.plantars);
-        EditorGUILayout.Space();
-
         //Cranial Nerve
         EditorGUILayout.LabelField("Cranial Nerve", EditorStyles.boldLabel);
         g_Case.cranialNerve = EditorGUILayout.TextArea(g_Case.cranialNerve);
@@ -228,12 +223,6 @@ public class CaseEditor : EditorWindow {
 
         //Finger
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Finger   /   Abduction", EditorStyles.boldLabel);
-        g_Case.UL_Finger_A_R = EditorGUILayout.TextField(g_Case.UL_Finger_A_R);
-        g_Case.UL_Finger_A_L = EditorGUILayout.TextField(g_Case.UL_Finger_A_L);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("UL  /   Finger   /   Flexion", EditorStyles.boldLabel);
         g_Case.UL_Finger_F_R = EditorGUILayout.TextField(g_Case.UL_Finger_F_R);
         g_Case.UL_Finger_F_L = EditorGUILayout.TextField(g_Case.UL_Finger_F_L);
@@ -243,6 +232,31 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.LabelField("UL  /   Finger   /   Extension", EditorStyles.boldLabel);
         g_Case.UL_Finger_E_R = EditorGUILayout.TextField(g_Case.UL_Finger_E_R);
         g_Case.UL_Finger_E_L = EditorGUILayout.TextField(g_Case.UL_Finger_E_L);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("UL  /   Finger   /   Abduction", EditorStyles.boldLabel);
+        g_Case.UL_Finger_A_R = EditorGUILayout.TextField(g_Case.UL_Finger_A_R);
+        g_Case.UL_Finger_A_L = EditorGUILayout.TextField(g_Case.UL_Finger_A_L);
+        EditorGUILayout.EndHorizontal();
+
+        //Thumb
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("UL  /   Thumb   /   Flexion", EditorStyles.boldLabel);
+        g_Case.UL_Thumb_F_R = EditorGUILayout.TextField(g_Case.UL_Thumb_F_R);
+        g_Case.UL_Thumb_F_L = EditorGUILayout.TextField(g_Case.UL_Thumb_F_L);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("UL  /   Thumb   /   Extension", EditorStyles.boldLabel);
+        g_Case.UL_Thumb_E_R = EditorGUILayout.TextField(g_Case.UL_Thumb_E_R);
+        g_Case.UL_Thumb_E_L = EditorGUILayout.TextField(g_Case.UL_Thumb_E_L);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("UL  /   Thumb   /   Adduction", EditorStyles.boldLabel);
+        g_Case.UL_Thumb_A_R = EditorGUILayout.TextField(g_Case.UL_Thumb_A_R);
+        g_Case.UL_Thumb_A_L = EditorGUILayout.TextField(g_Case.UL_Thumb_A_L);
         EditorGUILayout.EndHorizontal();
 
         //Lower limbs
