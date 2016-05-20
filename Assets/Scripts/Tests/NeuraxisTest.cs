@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using NeuroApp;
 
 public class NeuraxisTest : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class NeuraxisTest : MonoBehaviour
 
     [SerializeField] private int scorePerCorrect = 10;
     [SerializeField] private int numOfAllowedAttempts = 2;
-    [SerializeField] private int hintCost = 5;
     [SerializeField] private int numOfLocalisingSteps;
+    [SerializeField] private int _hintCost;
 
     [SerializeField] private Text scoreText;
 
@@ -40,7 +41,7 @@ public class NeuraxisTest : MonoBehaviour
     {      
         m_SubmitText = submitBtn.GetComponentInChildren<Text>();
         m_SubmitImage = submitBtn.GetComponent<Image>();
-        m_OriginalColor = m_SubmitImage.color;     
+        m_OriginalColor = m_SubmitImage.color;
     }
 
     private void Start()
@@ -239,7 +240,7 @@ public class NeuraxisTest : MonoBehaviour
     {
         get
         {
-           return Mathf.Clamp(((m_NumOfCorrect * scorePerCorrect) - (m_NumOfHintsUsed * hintCost)), 0, 100);
+           return Mathf.Clamp(((m_NumOfCorrect * scorePerCorrect) - (m_NumOfHintsUsed * _hintCost)), 0, 100);
         }
     }
 }
