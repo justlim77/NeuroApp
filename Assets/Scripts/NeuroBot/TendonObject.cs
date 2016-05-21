@@ -129,7 +129,7 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
 
         yield return StartCoroutine(Swing(angle, m_InitialInterval, m_BackInterval));
 
-        yield return _reactionDelay;
+        //yield return _reactionDelay;
 
         head.Reaction(FaceState.Neutral);
         mainPanel.color = m_OriginalColor;

@@ -8,9 +8,10 @@ public class NeuraxisTest : MonoBehaviour
 {
     #region Serialized Private variables
     [SerializeField] private Dictionary<string, bool> neuraxisDict = new Dictionary<string, bool>();
-    [SerializeField] private GameObject nextBtn;
-    [SerializeField] private Button submitBtn;
-    [SerializeField] private Button hintBtn;
+    [SerializeField] private GameObject btnNext;
+    [SerializeField] private Button btnCheat;
+    [SerializeField] private Button btnHint;
+    [SerializeField] private Button btnSubmit;
     [SerializeField] private Text hintText;
     [SerializeField] private string[] localisingSteps;
 
@@ -39,24 +40,24 @@ public class NeuraxisTest : MonoBehaviour
 
     private void Awake() 
     {      
-        m_SubmitText = submitBtn.GetComponentInChildren<Text>();
-        m_SubmitImage = submitBtn.GetComponent<Image>();
+        m_SubmitText = btnSubmit.GetComponentInChildren<Text>();
+        m_SubmitImage = btnSubmit.GetComponent<Image>();
         m_OriginalColor = m_SubmitImage.color;
     }
 
     private void Start()
     {
         // Add neuraxis elimination data to neuraxisDictionary
-        neuraxisDict.Add("C", !Patient.g_PatientCase.neuraxis_C);
-        neuraxisDict.Add("SC", !Patient.g_PatientCase.neuraxis_SC);
-        neuraxisDict.Add("BS", !Patient.g_PatientCase.neuraxis_BS);
-        neuraxisDict.Add("SCORD", !Patient.g_PatientCase.neuraxis_SCORD);
-        neuraxisDict.Add("AHC", !Patient.g_PatientCase.neuraxis_AHC);
-        neuraxisDict.Add("R", !Patient.g_PatientCase.neuraxis_R);
-        neuraxisDict.Add("P", !Patient.g_PatientCase.neuraxis_P);
-        neuraxisDict.Add("PN", !Patient.g_PatientCase.neuraxis_PN);
-        neuraxisDict.Add("NMJ", !Patient.g_PatientCase.neuraxis_NMJ);
-        neuraxisDict.Add("M", !Patient.g_PatientCase.neuraxis_M);
+        neuraxisDict.Add("C", !Patient.CaseData.neuraxis_C);
+        neuraxisDict.Add("SC", !Patient.CaseData.neuraxis_SC);
+        neuraxisDict.Add("BS", !Patient.CaseData.neuraxis_BS);
+        neuraxisDict.Add("SCORD", !Patient.CaseData.neuraxis_SCORD);
+        neuraxisDict.Add("AHC", !Patient.CaseData.neuraxis_AHC);
+        neuraxisDict.Add("R", !Patient.CaseData.neuraxis_R);
+        neuraxisDict.Add("P", !Patient.CaseData.neuraxis_P);
+        neuraxisDict.Add("PN", !Patient.CaseData.neuraxis_PN);
+        neuraxisDict.Add("NMJ", !Patient.CaseData.neuraxis_NMJ);
+        neuraxisDict.Add("M", !Patient.CaseData.neuraxis_M);
 
         //Init();
     }
@@ -66,16 +67,16 @@ public class NeuraxisTest : MonoBehaviour
         bool result = true;
 
         // Re-initialize dictionary
-        neuraxisDict["C"] = !Patient.g_PatientCase.neuraxis_C;
-        neuraxisDict["SC"] = !Patient.g_PatientCase.neuraxis_SC;
-        neuraxisDict["BS"] = !Patient.g_PatientCase.neuraxis_BS;
-        neuraxisDict["SCORD"] = !Patient.g_PatientCase.neuraxis_SCORD;
-        neuraxisDict["AHC"] = !Patient.g_PatientCase.neuraxis_AHC;
-        neuraxisDict["R"] = !Patient.g_PatientCase.neuraxis_R;
-        neuraxisDict["P"] = !Patient.g_PatientCase.neuraxis_P;
-        neuraxisDict["PN"] = !Patient.g_PatientCase.neuraxis_PN;
-        neuraxisDict["NMJ"] = !Patient.g_PatientCase.neuraxis_NMJ;
-        neuraxisDict["M"] = !Patient.g_PatientCase.neuraxis_M;
+        neuraxisDict["C"] = !Patient.CaseData.neuraxis_C;
+        neuraxisDict["SC"] = !Patient.CaseData.neuraxis_SC;
+        neuraxisDict["BS"] = !Patient.CaseData.neuraxis_BS;
+        neuraxisDict["SCORD"] = !Patient.CaseData.neuraxis_SCORD;
+        neuraxisDict["AHC"] = !Patient.CaseData.neuraxis_AHC;
+        neuraxisDict["R"] = !Patient.CaseData.neuraxis_R;
+        neuraxisDict["P"] = !Patient.CaseData.neuraxis_P;
+        neuraxisDict["PN"] = !Patient.CaseData.neuraxis_PN;
+        neuraxisDict["NMJ"] = !Patient.CaseData.neuraxis_NMJ;
+        neuraxisDict["M"] = !Patient.CaseData.neuraxis_M;
 
         // Setup buttons
         m_ButtonList.Clear();
@@ -87,7 +88,7 @@ public class NeuraxisTest : MonoBehaviour
         }
 
         // Add localising steps array
-        localisingSteps = Patient.g_PatientCase.localisingSteps;
+        localisingSteps = Patient.CaseData.localisingSteps;
         numOfLocalisingSteps = 0;
 
         // Count number of valid localising steps (empty fields excluded)
@@ -98,18 +99,13 @@ public class NeuraxisTest : MonoBehaviour
                 numOfLocalisingSteps++;
         }
 
-        // Reset hint & submit buttons
-        hintBtn.interactable = true;
-        hintBtn.GetComponent<PlaySFX>().enabled = true;
-        hintBtn.GetComponent<ButtonPressed>().enabled = true;
-        submitBtn.interactable = true;
-        submitBtn.GetComponent<PlaySFX>().enabled = true;
-        submitBtn.GetComponent<ButtonPressed>().enabled = true;
+        // Reset buttons
+        ToggleButtons(true);        
 
         // Reset 'Next' button
-        while (nextBtn.activeInHierarchy == true)
-            nextBtn.SetActive(false);
-        result = !nextBtn.activeInHierarchy;
+        while (btnNext.activeInHierarchy == true)
+            btnNext.SetActive(false);
+        result = !btnNext.activeInHierarchy;
         if (result == false)
             print("Failed to disable Neuraxis Next button!");
 
@@ -144,7 +140,7 @@ public class NeuraxisTest : MonoBehaviour
         m_NumOfHintsUsed++;
         m_NumOfHintsUsed = Mathf.Clamp(m_NumOfHintsUsed, 0, numOfLocalisingSteps);
 
-        hintText.text = m_NumOfCorrect == 10
+        hintText.text = m_NumOfCorrect == m_RequiredCorrect
             ? string.Format("You got {0} of {1} correct!", m_NumOfCorrect, m_RequiredCorrect) // All correct     
             : numOfAllowedAttempts > 0 ? GetRandomLocalisation()                              // Show random localising step hint
             : string.Format("You got {0} of {1} correct. Try again next time.", m_NumOfCorrect, m_RequiredCorrect);
@@ -162,17 +158,19 @@ public class NeuraxisTest : MonoBehaviour
                 m_NumOfCorrect++;
         }
 
-        hintText.text = m_NumOfCorrect == 10
+        hintText.text = m_NumOfCorrect == m_RequiredCorrect
             ? string.Format("You got {0} of {1} correct!", m_NumOfCorrect, m_RequiredCorrect)
             : numOfAllowedAttempts > 0 ? string.Format("You got {0} of {1} correct. Please try again.", m_NumOfCorrect, m_RequiredCorrect)            
             : string.Format("You got {0} of {1} correct. Try again next time.", m_NumOfCorrect, m_RequiredCorrect);
 
         bool hasWon = m_NumOfCorrect >= m_RequiredCorrect;
         StartCoroutine(ShowFeedback(hasWon));
-        nextBtn.SetActive(hasWon);
+        btnNext.SetActive(hasWon);
 
-        //if (hasWon) {
-        //    for (int i = 0; i < transform.childCount; i++) {
+        //if (hasWon)
+        //{
+        //    for (int i = 0; i < transform.childCount; i++)
+        //    {
         //        NeuraxisButton btn = transform.GetChild(i).GetChild(0).GetComponent<NeuraxisButton>();
         //        btn.SetHighlight();
         //    }
@@ -181,13 +179,8 @@ public class NeuraxisTest : MonoBehaviour
         // If run out of attempts or got all correct
         if (numOfAllowedAttempts <= 0 || hasWon) 
         {
-            hintBtn.interactable = false;
-            hintBtn.GetComponent<PlaySFX>().enabled = false;
-            hintBtn.GetComponent<ButtonPressed>().enabled = false;
-            submitBtn.interactable = false;
-            submitBtn.GetComponent<PlaySFX>().enabled = false;
-            submitBtn.GetComponent<ButtonPressed>().enabled = false;
-            nextBtn.SetActive(true);
+            ToggleButtons(false);
+            btnNext.SetActive(true);
 
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -197,9 +190,6 @@ public class NeuraxisTest : MonoBehaviour
 
             scoreText.text = string.Format("You scored {0} out of 100.", Score);
         }
-
-        // Finally, perform star rating check
-        Patient.g_PatientCase.caseStars = m_NumOfCorrect == m_RequiredCorrect ? 2 : 1;
     }
 
     private IEnumerator ShowFeedback(bool value) 
@@ -210,7 +200,8 @@ public class NeuraxisTest : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             m_SubmitImage.color = m_OriginalColor;
             m_SubmitText.text = "Submit";
-        } else 
+        }
+        else 
         {
             m_SubmitImage.color = correctColor;
             m_SubmitText.text = correctString;
@@ -242,5 +233,20 @@ public class NeuraxisTest : MonoBehaviour
         {
            return Mathf.Clamp(((m_NumOfCorrect * scorePerCorrect) - (m_NumOfHintsUsed * _hintCost)), 0, 100);
         }
+    }
+
+    bool ToggleButtons(bool val)
+    {
+        btnCheat.interactable = val;
+        btnCheat.GetComponent<PlaySFX>().enabled = val;
+        btnCheat.GetComponent<ButtonPressed>().enabled = val;
+        btnHint.interactable = val;
+        btnHint.GetComponent<PlaySFX>().enabled = val;
+        btnHint.GetComponent<ButtonPressed>().enabled = val;
+        btnSubmit.interactable = val;
+        btnSubmit.GetComponent<PlaySFX>().enabled = val;
+        btnSubmit.GetComponent<ButtonPressed>().enabled = val;
+        btnNext.SetActive(!val);
+        return true;
     }
 }

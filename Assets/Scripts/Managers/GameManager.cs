@@ -19,9 +19,9 @@ public class GameManager : Singleton<GameManager> {
         FileStream file = File.Create(Application.persistentDataPath + "/caseInfo.dat");
 
         CaseInfo info = new CaseInfo();
-        info.caseName = Patient.g_PatientCase.caseName;
-        info.caseScore = Patient.g_PatientCase.caseScore;
-        info.caseStars = Patient.g_PatientCase.caseScore;
+        info.caseName = Patient.CaseData.caseName;
+        info.caseScore = Patient.CaseData.caseScore;
+        info.caseStars = Patient.CaseData.caseScore;
 
         bf.Serialize(file, info);
         file.Close();

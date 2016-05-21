@@ -5,10 +5,10 @@ public class Case {
     public string caseName = "<DefaultCase>";               //What is the condition's name?
     public string caseDescription = "<CaseDescription>";    //A description for the condition
     public int caseScore = 0;                               //Case highest score
-    public int caseStars = 0;                               //Case star rating system
+    public bool bonusCorrect = false;                       //Case star rating system
     public enum Tone { Normal, Abnormal }                   //Tone enumeration
     public Tone tone;                                       //Tone
-    public string cranialNerve;                             //Cranial nerve
+    public string plantars;                                 //Plantars
     public string cerebellarSigns;                          //Cerebellar signs
     #endregion
 
