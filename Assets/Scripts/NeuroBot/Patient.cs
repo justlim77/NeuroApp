@@ -70,11 +70,11 @@ public class Patient : MonoBehaviour
     //Upper limbs (From shoulder to fingertip)
     public PinObject UL_T1_R, UL_T1_L;
     public PinObject UL_C5_R, UL_C5_L;
-    public PinObject UL_C6_R_1, UL_C6_R_2, UL_C6_R_3;
-    public PinObject UL_C6_L_1, UL_C6_L_2, UL_C6_L_3;
+    public PinObject UL_C6_R_1, UL_C6_R_2;
+    public PinObject UL_C6_L_1, UL_C6_L_2;
     public PinObject UL_C7_R, UL_C7_L;
-    public PinObject UL_C8_R_1, UL_C8_R_2, UL_C8_R_3;
-    public PinObject UL_C8_L_1, UL_C8_L_2, UL_C8_L_3;
+    public PinObject UL_C8_R_1, UL_C8_R_2;
+    public PinObject UL_C8_L_1, UL_C8_L_2;
     //Lower limbs (From hip to toe)
     public PinObject LL_L2_R, LL_L2_L;
     public PinObject LL_L3_R, LL_L3_L;
@@ -95,10 +95,11 @@ public class Patient : MonoBehaviour
     public TendonObject tendon_supinator_L;
     public TendonObject tendon_patellar_R;
     public TendonObject tendon_ankle_R;
-    public TendonObject tendon_plantar_R;
     public TendonObject tendon_patellar_L;
     public TendonObject tendon_ankle_L;
-    public TendonObject tendon_plantar_L;
+    #endregion
+
+    #region Cranial
     #endregion
 
     #region Elimination Variables
@@ -131,10 +132,14 @@ public class Patient : MonoBehaviour
     }
     private bool Init()
     {        
-        caseDescriptionText.text = CaseData.caseDescription;   //Case description setup
-        toneText.text = CaseData.tone.ToString();              //Tone setup
-        plantarsText.text = CaseData.plantars;                 //Plantars setup
-        cerebellarSignsText.text = CaseData.cerebellarSigns;   //Cerebellar signs setup
+        //General
+        caseDescriptionText.text = CaseData.caseDescription;    //Case description setup
+        toneText.text = CaseData.tone;                          //Tone setup
+        plantarsText.text = CaseData.plantars;                  //Plantars setup
+        cerebellarSignsText.text = CaseData.cerebellarSigns;    //Cerebellar signs setup
+
+        //Cranial
+
 
         //Upper limbs
         //Shoulder
@@ -192,10 +197,8 @@ public class Patient : MonoBehaviour
         //Lower limbs
         tendon_patellar_R.tendon = CaseData.tendon_patellar_R;
         tendon_ankle_R.tendon = CaseData.tendon_ankle_R;
-        tendon_plantar_R.tendon = CaseData.tendon_plantar_R;
         tendon_patellar_L.tendon = CaseData.tendon_patellar_L;
         tendon_ankle_L.tendon = CaseData.tendon_ankle_L;
-        tendon_plantar_L.tendon = CaseData.tendon_plantar_L;
 
         //Sensation setup
         //Upper limbs
@@ -205,18 +208,14 @@ public class Patient : MonoBehaviour
         UL_C5_L.canFeel = CaseData.UL_C5_L;
         UL_C6_R_1.canFeel = CaseData.UL_C6_R_1;
         UL_C6_R_2.canFeel = CaseData.UL_C6_R_2;
-        UL_C6_R_3.canFeel = CaseData.UL_C6_R_3;
         UL_C6_L_1.canFeel = CaseData.UL_C6_L_1;
         UL_C6_L_2.canFeel = CaseData.UL_C6_L_2;
-        UL_C6_L_3.canFeel = CaseData.UL_C6_L_3;
         UL_C7_R.canFeel = CaseData.UL_C7_R;
         UL_C7_L.canFeel = CaseData.UL_C7_L;
         UL_C8_R_1.canFeel = CaseData.UL_C8_R_1;
         UL_C8_R_2.canFeel = CaseData.UL_C8_R_2;
-        UL_C8_R_3.canFeel = CaseData.UL_C8_R_3;
         UL_C8_L_1.canFeel = CaseData.UL_C8_L_1;
         UL_C8_L_2.canFeel = CaseData.UL_C8_L_2;
-        UL_C8_L_3.canFeel = CaseData.UL_C8_L_3;
         //Lower limbs
         LL_L2_R.canFeel = CaseData.LL_L2_R;
         LL_L2_L.canFeel = CaseData.LL_L2_L;
@@ -248,7 +247,7 @@ public class Patient : MonoBehaviour
         localisingText.text = CaseData.localising;     //Localising setup
         localisingSteps = CaseData.localisingSteps;    //Localising steps string array setup
         testQuestionText.text = CaseData.testQuestion; //Concluding Test Question setup
-        concludingTests = CaseData.concludingTests;    //Concluding Test Game setup
+        concludingTests = CaseData.concludingTests;    //Concluding Test setup
         answer = CaseData.answer;                      //Answer setup
         rationaleText.text = CaseData.rationale;       //Rationale setup
 

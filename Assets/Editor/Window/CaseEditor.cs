@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using NeuroApp;
 
 [System.Serializable]
 public class CaseEditor : EditorWindow {
@@ -40,7 +41,7 @@ public class CaseEditor : EditorWindow {
 
         //Tone
         EditorGUILayout.LabelField("Tone", EditorStyles.boldLabel);
-        CaseData.tone = (Case.Tone)EditorGUILayout.EnumPopup(CaseData.tone);
+        CaseData.tone = EditorGUILayout.TextArea(CaseData.tone);
         EditorGUILayout.Space();
 
         //Plantars
@@ -101,11 +102,6 @@ public class CaseEditor : EditorWindow {
 
         //Sensation
         EditorGUILayout.LabelField("Sensation (Check if can feel)", EditorStyles.boldLabel);
-        EditorGUILayout.BeginHorizontal();
-        //EditorGUILayout.LabelField("", EditorStyles.boldLabel);
-        //EditorGUILayout.LabelField("R", EditorStyles.boldLabel);
-        //EditorGUILayout.LabelField("L", EditorStyles.boldLabel);
-        EditorGUILayout.EndHorizontal();
 
         //Upper limbs
         EditorGUILayout.LabelField("Upper limb regions", EditorStyles.boldLabel);
@@ -120,12 +116,10 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.BeginHorizontal();
         CaseData.UL_C6_R_1 = EditorGUILayout.ToggleLeft("C6 Right 1", CaseData.UL_C6_R_1, GUILayout.MaxWidth(120));
         CaseData.UL_C6_R_2 = EditorGUILayout.ToggleLeft("C6 Right 2", CaseData.UL_C6_R_2, GUILayout.MaxWidth(120));
-        CaseData.UL_C6_R_3 = EditorGUILayout.ToggleLeft("C6 Right 3", CaseData.UL_C6_R_3, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.UL_C6_L_1 = EditorGUILayout.ToggleLeft("C6 Left 1", CaseData.UL_C6_L_1, GUILayout.MaxWidth(120));
         CaseData.UL_C6_L_2 = EditorGUILayout.ToggleLeft("C6 Left 2", CaseData.UL_C6_L_2, GUILayout.MaxWidth(120));
-        CaseData.UL_C6_L_3 = EditorGUILayout.ToggleLeft("C6 Left 3", CaseData.UL_C6_L_3, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.UL_C7_R = EditorGUILayout.ToggleLeft("C7 Right", CaseData.UL_C7_R, GUILayout.MaxWidth(120));
@@ -134,12 +128,10 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.BeginHorizontal();
         CaseData.UL_C8_R_1 = EditorGUILayout.ToggleLeft("C8 Right 1", CaseData.UL_C8_R_1, GUILayout.MaxWidth(120));
         CaseData.UL_C8_R_2 = EditorGUILayout.ToggleLeft("C8 Right 2", CaseData.UL_C8_R_2, GUILayout.MaxWidth(120));
-        CaseData.UL_C8_R_3 = EditorGUILayout.ToggleLeft("C8 Right 3", CaseData.UL_C8_R_3, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.UL_C8_L_1 = EditorGUILayout.ToggleLeft("C8 Left 1", CaseData.UL_C8_L_1, GUILayout.MaxWidth(120));
         CaseData.UL_C8_L_2 = EditorGUILayout.ToggleLeft("C8 Left 2", CaseData.UL_C8_L_2, GUILayout.MaxWidth(120));
-        CaseData.UL_C8_L_3 = EditorGUILayout.ToggleLeft("C8 Left 3", CaseData.UL_C8_L_3, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
 
         //Lower limbs
@@ -297,7 +289,77 @@ public class CaseEditor : EditorWindow {
 
         EditorGUILayout.Space();
 
-        //Eliminate from neuraxis (Absolute options)
+        //Cranial
+        EditorGUILayout.LabelField("Cranial", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        EditorGUILayout.LabelField("R", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("L", EditorStyles.boldLabel);
+        EditorGUILayout.EndHorizontal();
+
+        //Torch
+        EditorGUILayout.LabelField("(Torch)", EditorStyles.miniBoldLabel);
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Pupils", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.state_Pupil_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Pupil_R);
+        CaseData.state_Pupil_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Pupil_L);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Tongue", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.state_Tongue_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Tongue_R);
+        CaseData.state_Tongue_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Tongue_L);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Palate", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.state_Palate_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Palate_R);
+        CaseData.state_Palate_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Palate_L);
+        EditorGUILayout.EndHorizontal();
+
+        //Power
+        EditorGUILayout.LabelField("(Power)", EditorStyles.miniBoldLabel);
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Eyebrows", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.state_Brow_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Brow_R);
+        CaseData.state_Brow_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Brow_L);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Eyes", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.state_Eye_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Eye_R);
+        CaseData.state_Eye_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Eye_L);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Mouth", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.state_Mouth_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Mouth_R);
+        CaseData.state_Mouth_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Mouth_L);
+        EditorGUILayout.EndHorizontal();
+
+        //Others
+        EditorGUILayout.LabelField("(Others)", EditorStyles.miniBoldLabel);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Hearing", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.hearing = EditorGUILayout.TextField(CaseData.hearing);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Corneal Reflex", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.cornealReflex = EditorGUILayout.TextField(CaseData.cornealReflex);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Visual Fields", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.visualFields = EditorGUILayout.TextField(CaseData.visualFields);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Gag Reflex", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.gagReflex = EditorGUILayout.TextField(CaseData.gagReflex);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Speech", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.speech = EditorGUILayout.TextField(CaseData.speech);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+
+        //Elimination
         EditorGUILayout.LabelField("Eliminate from Neuraxis (Leave blank to eliminate)", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
         CaseData.neuraxis_C = EditorGUILayout.ToggleLeft("C", CaseData.neuraxis_C, GUILayout.MaxWidth(120));
@@ -372,7 +434,7 @@ public class CaseEditor : EditorWindow {
         //Rationale
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Rationale: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.rationale = EditorGUILayout.TextArea(CaseData.rationale, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.MaxHeight(100));
+        CaseData.rationale = EditorGUILayout.TextArea(CaseData.rationale, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -382,8 +444,7 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.Space();
 
         //Close
-        if (GUILayout.Button("Save & Close")) {
+        if (GUILayout.Button("Save & Close"))
             Close();
-        }
     }
 }

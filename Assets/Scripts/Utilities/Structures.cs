@@ -41,7 +41,11 @@ namespace NeuroApp
         Dilated,
         Constricted
     }
-
+    public enum State
+    {
+        Normal,
+        Abnormal
+    }
     public enum FaceState
     {
         Smile,

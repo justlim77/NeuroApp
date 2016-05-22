@@ -5,7 +5,6 @@ using NeuroApp;
 
 public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    #region Mouth Variables
     public Image mouth;
     public Sprite mouthNeutral;
     public Sprite mouthSmile;
@@ -15,9 +14,10 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public Image teeth;
     public Sprite mouthTeethDefault;
     public Sprite mouthTeethCurved;
-    #endregion
+    public Image palate;
+    public Sprite palateNormal;
+    public Sprite palateAbnormal;
 
-    #region Eye Variables
     public Sprite ouchEyes;
     public Sprite squint;
     public Sprite defaultBrow;
@@ -30,33 +30,27 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public RectTransform[] eyeBrows;
     public Image[] eyeBrowImages;
     public Image[] wrinkleImages;
-    #endregion
 
-    #region Serialized Private Fields
     [SerializeField] private float _defaultEyeSize = 8.0f;
     [SerializeField] private float _enlargedEyeSize = 10.0f;
-    #endregion
 
-    #region Enums
     public FaceState faceState;
     public MouthState mouthState;
-    #endregion
 
-    #region Private Variables
     Sprite _originalEyes;
     float _eyeBrowInitialY;
     bool _isFrozen;
-    #endregion
 
-    #region Initialization Methods
-    void Awake() {
+    void Awake()
+    {
         _originalEyes = eyes[0].sprite;
         _eyeBrowInitialY = eyeBrows[0].anchoredPosition.y;
 
         Init();
     }
 
-    void Init() {
+    void Init()
+    {
         foreach (var eye in eyes)
             eye.sprite = _originalEyes;
         foreach (var brow in eyeBrows)
@@ -69,11 +63,11 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         FreezeState(false);
     }
-    #endregion
 
-    #region Public Methods
-    public void Reaction(FaceState _faceState) {
-        switch (_faceState) {
+    public void Reaction(FaceState _faceState)
+    {
+        switch (_faceState)
+        {
             case FaceState.Smile:
                 mouth.sprite = mouthSmile;
                 ToggleEyes(_originalEyes, _defaultEyeSize);
@@ -155,9 +149,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             return;
         Reaction(FaceState.Neutral);
     }
-    #endregion
 
-    #region Private Methods
     void ToggleEyes(Sprite sprite, float midSize = 8.0f, float pupilSize = 3.0f, bool showBrow = true, bool showInOutEyes = true, bool follow = true)
     {
         foreach (Image eye in eyes)
@@ -302,6 +294,4 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 break;
         }
     }
-
-    #endregion
 }

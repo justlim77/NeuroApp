@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using NeuroApp;
+
+[System.Serializable]
 public class Case {
     #region Generic Variables
     public bool isEnabled = true;                           //Will this condition item be enabled in the list?
@@ -7,7 +9,7 @@ public class Case {
     public int caseScore = 0;                               //Case highest score
     public bool bonusCorrect = false;                       //Case star rating system
     public enum Tone { Normal, Abnormal }                   //Tone enumeration
-    public Tone tone;                                       //Tone
+    public string tone;                                     //Tone
     public string plantars;                                 //Plantars
     public string cerebellarSigns;                          //Cerebellar signs
     #endregion
@@ -38,11 +40,11 @@ public class Case {
     //Upper limbs (From shoulder to fingertip)
     public bool UL_T1_R, UL_T1_L;
     public bool UL_C5_R, UL_C5_L;
-    public bool UL_C6_R_1, UL_C6_R_2, UL_C6_R_3;
-    public bool UL_C6_L_1, UL_C6_L_2, UL_C6_L_3;
+    public bool UL_C6_R_1, UL_C6_R_2;
+    public bool UL_C6_L_1, UL_C6_L_2;
     public bool UL_C7_R, UL_C7_L;
-    public bool UL_C8_R_1, UL_C8_R_2, UL_C8_R_3;
-    public bool UL_C8_L_1, UL_C8_L_2, UL_C8_L_3;
+    public bool UL_C8_R_1, UL_C8_R_2;
+    public bool UL_C8_L_1, UL_C8_L_2;
     //Lower limbs (From hip to toe)
     public bool LL_L2_R, LL_L2_L;
     public bool LL_L3_R, LL_L3_L;
@@ -99,7 +101,29 @@ public class Case {
     public string LL_Toe_DF_L;                              //Lower Limb - Toe - Dorsiflexion - Left
     public string LL_Toe_PF_R;                              //Lower Limb - Toe - Plantarflexion - Right
     public string LL_Toe_PF_L;                              //Lower Limb - Toe - Plantarflexion - Left
+    #endregion
 
+    #region Cranial
+    //Torch
+    public State state_Pupil_R;
+    public State state_Pupil_L;
+    public State state_Tongue_R;
+    public State state_Tongue_L;
+    public State state_Palate_R;
+    public State state_Palate_L;
+    //Power
+    public State state_Brow_R;
+    public State state_Brow_L;
+    public State state_Eye_R;
+    public State state_Eye_L;
+    public State state_Mouth_R;
+    public State state_Mouth_L;
+    //Others
+    public string hearing;
+    public string cornealReflex;
+    public string visualFields;
+    public string gagReflex;
+    public string speech;
     #endregion
 
     #region Neuroaxis Variables
