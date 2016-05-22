@@ -8,10 +8,9 @@ public class Case {
     public string caseDescription = "<CaseDescription>";    //A description for the condition
     public int caseScore = 0;                               //Case highest score
     public bool bonusCorrect = false;                       //Case star rating system
-    public enum Tone { Normal, Abnormal }                   //Tone enumeration
-    public string tone;                                     //Tone
-    public string plantars;                                 //Plantars
-    public string cerebellarSigns;                          //Cerebellar signs
+    public string tone = "Normal";                          //Tone
+    public string plantars = "Normal";                      //Plantars
+    public string cerebellarSigns = "Normal";               //Cerebellar signs
     #endregion
 
     #region Deep Tendon Reflexes (DTR)
@@ -38,21 +37,21 @@ public class Case {
     //False - Decreased
     //Format - LIMB_REGION_SIDE_SECTION
     //Upper limbs (From shoulder to fingertip)
-    public bool UL_T1_R, UL_T1_L;
-    public bool UL_C5_R, UL_C5_L;
-    public bool UL_C6_R_1, UL_C6_R_2;
-    public bool UL_C6_L_1, UL_C6_L_2;
-    public bool UL_C7_R, UL_C7_L;
-    public bool UL_C8_R_1, UL_C8_R_2;
-    public bool UL_C8_L_1, UL_C8_L_2;
+    public bool UL_T1_R = true, UL_T1_L = true;
+    public bool UL_C5_R = true, UL_C5_L = true;
+    public bool UL_C6_R_1 = true, UL_C6_R_2 = true;
+    public bool UL_C6_L_1 = true, UL_C6_L_2 = true;
+    public bool UL_C7_R = true, UL_C7_L = true;
+    public bool UL_C8_R_1 = true, UL_C8_R_2 = true;
+    public bool UL_C8_L_1 = true, UL_C8_L_2 = true;
     //Lower limbs (From hip to toe)
-    public bool LL_L2_R, LL_L2_L;
-    public bool LL_L3_R, LL_L3_L;
-    public bool LL_L4_R_1, LL_L4_R_2;
-    public bool LL_L4_L_1, LL_L4_L_2;
-    public bool LL_L5_R_1, LL_L5_R_2;
-    public bool LL_L5_L_1, LL_L5_L_2;
-    public bool LL_S1_R, LL_S1_L;
+    public bool LL_L2_R = true, LL_L2_L = true;
+    public bool LL_L3_R = true, LL_L3_L = true;
+    public bool LL_L4_R_1 = true, LL_L4_R_2 = true;
+    public bool LL_L4_L_1 = true, LL_L4_L_2 = true;
+    public bool LL_L5_R_1 = true, LL_L5_R_2 = true;
+    public bool LL_L5_L_1 = true, LL_L5_L_2 = true;
+    public bool LL_S1_R = true, LL_S1_L = true;
     #endregion
 
     #region Power Variables
@@ -62,68 +61,72 @@ public class Case {
     //3 - Can overcome gravity but not resistance
     //4 - Moderate movement against resistance
     //5 - Normal power
-    public string UL_Shoulder_A_R;                          //Upper Limb - Shoulder - Abduction - Right
-    public string UL_Shoulder_A_L;                          //Upper Limb - Shoulder - Abduction - Left
-    public string UL_Elbow_F_R;                             //Upper Limb - Elbow - Flexion - Right
-    public string UL_Elbow_F_L;                             //Upper Limb - Elbow - Flexion - Left
-    public string UL_Elbow_E_R;                             //Upper Limb - Elbow - Extension - Right
-    public string UL_Elbow_E_L;                             //Upper Limb - Elbow - Extension - Left
-    public string UL_Wrist_F_R;                             //Upper Limb - Wrist - Flexion - Right
-    public string UL_Wrist_F_L;                             //Upper Limb - Wrist - Flexion - Left
-    public string UL_Wrist_E_R;                             //Upper Limb - Wrist - Extension - Right
-    public string UL_Wrist_E_L;                             //Upper Limb - Wrist - Extension - Left
-    public string UL_Finger_F_R;                            //Upper Limb - Finger - Flexion - Right
-    public string UL_Finger_F_L;                            //Upper Limb - Finger - Flexion - Left
-    public string UL_Finger_E_R;                            //Upper Limb - Finger - Extension - Right
-    public string UL_Finger_E_L;                            //Upper Limb - Finger - Extension - Left
-    public string UL_Finger_A_R;                            //Upper Limb - Finger - Abduction - Right
-    public string UL_Finger_A_L;                            //Upper Limb - Finger - Abduction - Left
-    public string UL_Thumb_F_R;                            //Upper Limb - Thumb - Flexion - Right
-    public string UL_Thumb_F_L;                            //Upper Limb - Thumb - Flexion - Left
-    public string UL_Thumb_E_R;                            //Upper Limb - Thumb - Extension - Right
-    public string UL_Thumb_E_L;                            //Upper Limb - Thumb - Extension - Left
-    public string UL_Thumb_A_R;                            //Upper Limb - Thumb - Adduction - Right
-    public string UL_Thumb_A_L;                            //Upper Limb - Thumb - Adduction - Left
+    public string UL_Shoulder_A_R = "5";                    //Upper Limb - Shoulder - Abduction - Right
+    public string UL_Shoulder_A_L = "5";                    //Upper Limb - Shoulder - Abduction - Left
+    public string UL_Elbow_F_R = "5";                       //Upper Limb - Elbow - Flexion - Right
+    public string UL_Elbow_F_L = "5";                       //Upper Limb - Elbow - Flexion - Left
+    public string UL_Elbow_E_R = "5";                       //Upper Limb - Elbow - Extension - Right
+    public string UL_Elbow_E_L = "5";                       //Upper Limb - Elbow - Extension - Left
+    public string UL_Wrist_F_R = "5";                       //Upper Limb - Wrist - Flexion - Right
+    public string UL_Wrist_F_L = "5";                       //Upper Limb - Wrist - Flexion - Left
+    public string UL_Wrist_E_R = "5";                       //Upper Limb - Wrist - Extension - Right
+    public string UL_Wrist_E_L = "5";                       //Upper Limb - Wrist - Extension - Left
+    public string UL_Finger_F_R = "5";                      //Upper Limb - Finger - Flexion - Right
+    public string UL_Finger_F_L = "5";                      //Upper Limb - Finger - Flexion - Left
+    public string UL_Finger_E_R = "5";                      //Upper Limb - Finger - Extension - Right
+    public string UL_Finger_E_L = "5";                      //Upper Limb - Finger - Extension - Left
+    public string UL_Finger_A_R = "5";                      //Upper Limb - Finger - Abduction - Right
+    public string UL_Finger_A_L = "5";                      //Upper Limb - Finger - Abduction - Left
+    public string UL_Thumb_F_R = "5";                       //Upper Limb - Thumb - Flexion - Right
+    public string UL_Thumb_F_L = "5";                       //Upper Limb - Thumb - Flexion - Left
+    public string UL_Thumb_E_R = "5";                       //Upper Limb - Thumb - Extension - Right
+    public string UL_Thumb_E_L = "5";                       //Upper Limb - Thumb - Extension - Left
+    public string UL_Thumb_A_R = "5";                       //Upper Limb - Thumb - Adduction - Right
+    public string UL_Thumb_A_L = "5";                        //Upper Limb - Thumb - Adduction - Left
 
-    public string LL_Hip_F_R;                               //Lower Limb - Hip - Flexion - Right
-    public string LL_Hip_F_L;                               //Lower Limb - Hip - Flexion - Left
-    public string LL_Hip_E_R;                               //Lower Limb - Hip - Extension - Right
-    public string LL_Hip_E_L;                               //Lower Limb - Hip - Extension - Left
-    public string LL_Knee_F_R;                              //Lower Limb - Knee - Flexion - Right
-    public string LL_Knee_F_L;                              //Lower Limb - Knee - Flexion - Left
-    public string LL_Knee_E_R;                              //Lower Limb - Knee - Extension - Right
-    public string LL_Knee_E_L;                              //Lower Limb - Knee - Extension - Left
-    public string LL_Ankle_DF_R;                            //Lower Limb - Ankle - Dorsiflexion - Right
-    public string LL_Ankle_DF_L;                            //Lower Limb - Ankle - Dorsiflexion - Left
-    public string LL_Ankle_PF_R;                            //Lower Limb - Ankle - Plantarflexion - Right
-    public string LL_Ankle_PF_L;                            //Lower Limb - Ankle - Plantarflexion - Left
-    public string LL_Toe_DF_R;                              //Lower Limb - Toe - Dorsiflexion - Right
-    public string LL_Toe_DF_L;                              //Lower Limb - Toe - Dorsiflexion - Left
-    public string LL_Toe_PF_R;                              //Lower Limb - Toe - Plantarflexion - Right
-    public string LL_Toe_PF_L;                              //Lower Limb - Toe - Plantarflexion - Left
+    public string LL_Hip_F_R = "5";                         //Lower Limb - Hip - Flexion - Right
+    public string LL_Hip_F_L = "5";                         //Lower Limb - Hip - Flexion - Left
+    public string LL_Hip_E_R = "5";                         //Lower Limb - Hip - Extension - Right
+    public string LL_Hip_E_L = "5";                         //Lower Limb - Hip - Extension - Left
+    public string LL_Knee_F_R = "5";                        //Lower Limb - Knee - Flexion - Right
+    public string LL_Knee_F_L = "5";                        //Lower Limb - Knee - Flexion - Left
+    public string LL_Knee_E_R = "5";                        //Lower Limb - Knee - Extension - Right
+    public string LL_Knee_E_L = "5";                        //Lower Limb - Knee - Extension - Left
+    public string LL_Ankle_DF_R = "5";                      //Lower Limb - Ankle - Dorsiflexion - Right
+    public string LL_Ankle_DF_L = "5";                      //Lower Limb - Ankle - Dorsiflexion - Left
+    public string LL_Ankle_PF_R = "5";                      //Lower Limb - Ankle - Plantarflexion - Right
+    public string LL_Ankle_PF_L = "5";                      //Lower Limb - Ankle - Plantarflexion - Left
+    public string LL_Toe_DF_R = "5";                        //Lower Limb - Toe - Dorsiflexion - Right
+    public string LL_Toe_DF_L = "5";                        //Lower Limb - Toe - Dorsiflexion - Left
+    public string LL_Toe_PF_R = "5";                        //Lower Limb - Toe - Plantarflexion - Right
+    public string LL_Toe_PF_L = "5";                        //Lower Limb - Toe - Plantarflexion - Left
     #endregion
 
     #region Cranial
-    //Torch
+    // Torch
     public State state_Pupil_R;
     public State state_Pupil_L;
     public State state_Tongue_R;
     public State state_Tongue_L;
     public State state_Palate_R;
     public State state_Palate_L;
-    //Power
+    // Power
     public State state_Brow_R;
     public State state_Brow_L;
     public State state_Eye_R;
     public State state_Eye_L;
     public State state_Mouth_R;
     public State state_Mouth_L;
-    //Others
-    public string hearing;
-    public string cornealReflex;
-    public string visualFields;
-    public string gagReflex;
-    public string speech;
+    // Sensation
+    public bool face_upper_R = true, face_upper_L = true;
+    public bool face_mid_R = true, face_mid_L = true;
+    public bool face_lower_R = true, face_lower_L = true;
+    // Others
+    public string hearing = "Normal";
+    public string cornealReflex = "Normal";
+    public string visualFields = "Normal";
+    public string gagReflex = "Normal";
+    public string speech = "Nil";
     #endregion
 
     #region Neuroaxis Variables
@@ -141,17 +144,28 @@ public class Case {
     public bool neuraxis_M;         //Muscle
     #endregion
 
-    #region Elimination hint variables
+    #region Elimination hint
     public string[] neuraxis_hints;
     #endregion
 
-    #region Concluding Test Variables
-    //Type of test: Single-answer or multi-answer
-    public enum TestType { Single, Multiple };
-    public TestType testType = TestType.Single;
+    #region Localising Steps
+    // Steps in localising
+    public string localising = "<Enter localising steps>";
 
-    //Number of options (MCQ); Default: 5
-    public int optionCount = 5;
+    // Localising steps array
+    public string[] localisingSteps = new string[] {
+        "Localising Step #1",
+        "Localising Step #2",
+        "Localising Step #3",
+        "Localising Step #4"
+    };
+    // Localising rationale
+    public string localisingRationale = "<Enter localising rationale>";
+    #endregion
+
+    #region Concluding Test
+    //Type of test: Single-answer or multi-answer
+    public TestType testType = TestType.Single;
 
     //Q: What specific test would you do next? (A/B/C/D/E)
     public string testQuestion = "<Enter test question>";
@@ -165,41 +179,11 @@ public class Case {
         "Concluding Test #5"
     };
 
-    //Steps in localising
-    public string localising = "<Enter localising steps>";
-
-    //Localising steps...
-    public string[] localisingSteps = new string[] {
-        "Localising Step #1",
-        "Localising Step #2",
-        "Localising Step #3",
-        "Localising Step #4"
-    };
 
     //A: Correct answer is?
-    public enum Answer {
-        A = 0,
-        B = 1,
-        C = 2,
-        D = 3,
-        E = 4
-    }
     public Answer answer;
 
     //Rationale
-    public string rationale = "<Enter rationale>";
-    #endregion
-
-    #region To-be-implemented
-    //+++++++++Not yet implemented+++++++++//
-
-    //Obsolete
-    //Temperature
-    //Arms, face, trunk, hands, legs, and feet
-
-    //Obsolete
-    //Proprioception (Joint position sense)
-    //Upper Limb - Distal interphalangeal joint of the index finger
-    //Lower Limb - Interphalangeal joint of the big toe
+    public string concludingRationale = "<Enter rationale>";
     #endregion
 }

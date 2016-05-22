@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using NeuroApp;
 
 public class ConcludingTest : MonoBehaviour
 {
-    public Case.TestType m_TestType = Case.TestType.Single;
+    public TestType m_TestType = TestType.Single;
     public List<Text> optionsText = new List<Text>();
     public string[] optionsPrefix = { "A) ", "B) ", "C) ", "D) ", "E) " };
     public Color32 m_CorrectColor;
@@ -15,9 +16,9 @@ public class ConcludingTest : MonoBehaviour
     public Text[] m_RationaleTexts;
     public GameObject scrollView;
 
-    Case.Answer m_Answer;
-    int m_OptionCount;
+    Answer m_Answer;
     bool m_FirstAttempt;
+    int _optionCount;
 
 	void Start ()
     {
@@ -41,28 +42,31 @@ public class ConcludingTest : MonoBehaviour
         // Clear any previous instantiated buttons
         transform.Clear();
 
-        // Assign new option count
-        m_OptionCount = 0;
-        m_OptionCount = Patient.CaseData.optionCount;
-
         // Assign new answer
         m_Answer = Patient.CaseData.answer;
 
         // Iterate thru loop to create buttons...
         optionsText.Clear();
 
-        for (int i = 0; i < m_OptionCount; i++)
+        _optionCount = 0;
+        string[] testOptions = Patient.CaseData.concludingTests;
+
+        foreach (string option in testOptions)
+            if (option != string.Empty)
+                _optionCount++;
+
+        for (int i = 0; i < _optionCount; i++)
         {
             GameObject newButton = (GameObject) Instantiate(m_ButtonPrefab, Vector2.zero, Quaternion.identity);
             newButton.transform.SetParent(transform);
             ConcludingButton buttonScript = newButton.GetComponent<ConcludingButton>();
             buttonScript.Init();
-            buttonScript.option = (Case.Answer)i;
+            buttonScript.option = (Answer)i;
             buttonScript.correctColor = m_CorrectColor;
             buttonScript.wrongColor = m_WrongColor;
             buttonScript.buttonFlashDuration = m_FlashDuration;
             optionsText.Add(newButton.GetComponentInChildren<Text>());
-            optionsText[i].text = optionsPrefix[i] + Patient.CaseData.concludingTests[i];
+            optionsText[i].text = optionsPrefix[i] + testOptions[i];
         }
 
         // Reset first attempt
@@ -71,17 +75,19 @@ public class ConcludingTest : MonoBehaviour
         return result;
     }
 
-    public bool ValidateAnswer(Case.Answer answer) {
+    public bool ValidateAnswer(Answer answer)
+    {
+        bool bonusCorrect = false;
+
         switch (m_TestType)
         {
-            case Case.TestType.Single:
+            case TestType.Single:
                 if (answer == m_Answer)
                 {
                     // Star system check
                     if (m_FirstAttempt)
                     {
-                        Patient.CaseData.bonusCorrect = true;
-                        Core.BroadcastEvent("OnUpdateBonus", this, Patient.CaseData.bonusCorrect);
+                        bonusCorrect = true;
                         m_FirstAttempt = false;
                     }
 
@@ -99,12 +105,13 @@ public class ConcludingTest : MonoBehaviour
                 }
                 else
                 {
-                    m_FirstAttempt = false;
+                    bonusCorrect = m_FirstAttempt = false;
                 }
 
+                Core.BroadcastEvent("OnUpdateBonus", this, bonusCorrect);
                 return false;
 
-            case Case.TestType.Multiple:
+            case TestType.Multiple:
                 return false;
         }
 

@@ -78,4 +78,22 @@ namespace NeuroApp
     {
         Main
     }
+    public enum TestType
+    {
+        Single,
+        Multiple
+    }
+    public enum Tone
+    {
+        Normal,
+        Abnormal
+    }
+    public enum Answer
+    {
+        A = 0,
+        B = 1,
+        C = 2,
+        D = 3,
+        E = 4
+    }
 }

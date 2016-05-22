@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using NeuroApp;
 
 public class Patient : MonoBehaviour
 {
@@ -100,6 +101,10 @@ public class Patient : MonoBehaviour
     #endregion
 
     #region Cranial
+    // Sensation
+    public PinObject face_upper_R, face_upper_L;
+    public PinObject face_mid_R, face_mid_L;
+    public PinObject face_lower_R, face_lower_L;
     #endregion
 
     #region Elimination Variables
@@ -119,12 +124,12 @@ public class Patient : MonoBehaviour
     public string[] localisingSteps;    //Localising steps
     public Text testQuestionText;       //Concluding test question
     public string[] concludingTests;    //Concluding tests
-    public Case.Answer answer;          //Correct concluding test choice
+    public Answer answer;          //Correct concluding test choice
     public Text rationaleText;          //Rationale for test choice
     #endregion
 
     //Case database (DB) reference
-    [SerializeField] private CaseDatabase m_CaseDatabase;
+    [SerializeField] CaseDatabase _caseDatabase;
 
     void OnDestroy()
     {
@@ -232,6 +237,10 @@ public class Patient : MonoBehaviour
         LL_S1_R.canFeel = CaseData.LL_S1_R;
         LL_S1_L.canFeel = CaseData.LL_S1_L;
 
+        // Cranial
+        // Sensation
+        //face_upper_R.canFeel = CaseData.face_upper_R;
+
         //Neuraxis Elimination Game setup
         neuraxis_C = CaseData.neuraxis_C;
         neuraxis_SC = CaseData.neuraxis_SC;
@@ -244,19 +253,27 @@ public class Patient : MonoBehaviour
         neuraxis_NMJ = CaseData.neuraxis_NMJ;
         neuraxis_M = CaseData.neuraxis_M;
 
-        localisingText.text = CaseData.localising;     //Localising setup
-        localisingSteps = CaseData.localisingSteps;    //Localising steps string array setup
-        testQuestionText.text = CaseData.testQuestion; //Concluding Test Question setup
-        concludingTests = CaseData.concludingTests;    //Concluding Test setup
-        answer = CaseData.answer;                      //Answer setup
-        rationaleText.text = CaseData.rationale;       //Rationale setup
+        // Build localising steps from array
+        localisingSteps = CaseData.localisingSteps;         //Localising steps string array setup
+        string content = "";
+        int index = 0;
+        foreach (string step in localisingSteps)
+        {
+            index++;
+            content += string.Format("{0}. {1}\n", index, step);
+        }
+        localisingText.text = content;                      //Localising setup
+        testQuestionText.text = CaseData.testQuestion;      //Concluding Test Question setup
+        concludingTests = CaseData.concludingTests;         //Concluding Test setup
+        answer = CaseData.answer;                           //Answer setup
+        rationaleText.text = CaseData.concludingRationale;  //Rationale setup
 
         return true;
     }
 
     public void LoadCase(int index)
     {
-        CaseData = m_CaseDatabase.m_CaseList.caseList[index];
+        CaseData = _caseDatabase.caseList.caseList[index];
 
         Init();
     }

@@ -2,10 +2,11 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using NeuroApp;
 
 public class ConcludingButton : MonoBehaviour, IPointerClickHandler {
 
-    public Case.Answer option;
+    public Answer option;
     public Color32 correctColor;
     public Color32 wrongColor;
     public float buttonFlashDuration = 1.0f;

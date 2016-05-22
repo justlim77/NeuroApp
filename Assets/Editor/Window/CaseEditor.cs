@@ -289,72 +289,90 @@ public class CaseEditor : EditorWindow {
 
         EditorGUILayout.Space();
 
-        //Cranial
-        EditorGUILayout.LabelField("Cranial", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        // Cranial
+        EditorGUILayout.LabelField("Cranial", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        EditorGUILayout.LabelField("R", EditorStyles.boldLabel);
-        EditorGUILayout.LabelField("L", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        EditorGUILayout.LabelField("R", EditorStyles.boldLabel, GUILayout.MaxWidth(60));
+        EditorGUILayout.LabelField("L", EditorStyles.boldLabel, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
 
-        //Torch
+        // Sensation
+        EditorGUILayout.LabelField("(Sensation)", EditorStyles.miniBoldLabel);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Upper Face", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.face_upper_R = EditorGUILayout.Toggle(CaseData.face_upper_R, GUILayout.MaxWidth(60));
+        CaseData.face_upper_L = EditorGUILayout.Toggle(CaseData.face_upper_L, GUILayout.MaxWidth(60));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Mid Face", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.face_mid_R = EditorGUILayout.Toggle(CaseData.face_mid_R, GUILayout.MaxWidth(60));
+        CaseData.face_mid_L = EditorGUILayout.Toggle(CaseData.face_mid_L, GUILayout.MaxWidth(60));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Lower Face", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.face_lower_R = EditorGUILayout.Toggle(CaseData.face_lower_R, GUILayout.MaxWidth(60));
+        CaseData.face_lower_L = EditorGUILayout.Toggle(CaseData.face_lower_L, GUILayout.MaxWidth(60));
+        EditorGUILayout.EndHorizontal();
+
+        // Torch
         EditorGUILayout.LabelField("(Torch)", EditorStyles.miniBoldLabel);
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Pupils", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.state_Pupil_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Pupil_R);
-        CaseData.state_Pupil_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Pupil_L);
+        EditorGUILayout.LabelField("Pupils", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.state_Pupil_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Pupil_R, GUILayout.MaxWidth(60));
+        CaseData.state_Pupil_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Pupil_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Tongue", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.state_Tongue_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Tongue_R);
-        CaseData.state_Tongue_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Tongue_L);
+        EditorGUILayout.LabelField("Tongue", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.state_Tongue_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Tongue_R, GUILayout.MaxWidth(60));
+        CaseData.state_Tongue_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Tongue_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Palate", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.state_Palate_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Palate_R);
-        CaseData.state_Palate_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Palate_L);
+        EditorGUILayout.LabelField("Palate", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.state_Palate_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Palate_R, GUILayout.MaxWidth(60));
+        CaseData.state_Palate_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Palate_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
 
         //Power
         EditorGUILayout.LabelField("(Power)", EditorStyles.miniBoldLabel);
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Eyebrows", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.state_Brow_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Brow_R);
-        CaseData.state_Brow_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Brow_L);
+        EditorGUILayout.LabelField("Eyebrows", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.state_Brow_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Brow_R, GUILayout.MaxWidth(60));
+        CaseData.state_Brow_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Brow_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Eyes", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.state_Eye_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Eye_R);
-        CaseData.state_Eye_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Eye_L);
+        EditorGUILayout.LabelField("Eyes", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.state_Eye_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Eye_R, GUILayout.MaxWidth(60));
+        CaseData.state_Eye_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Eye_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Mouth", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.state_Mouth_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Mouth_R);
-        CaseData.state_Mouth_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Mouth_L);
+        EditorGUILayout.LabelField("Mouth", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+        CaseData.state_Mouth_R = (State)EditorGUILayout.EnumPopup(CaseData.state_Mouth_R, GUILayout.MaxWidth(60));
+        CaseData.state_Mouth_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Mouth_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
 
         //Others
         EditorGUILayout.LabelField("(Others)", EditorStyles.miniBoldLabel);
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Hearing", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        EditorGUILayout.LabelField("Hearing", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
         CaseData.hearing = EditorGUILayout.TextField(CaseData.hearing);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Corneal Reflex", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        EditorGUILayout.LabelField("Corneal Reflex", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
         CaseData.cornealReflex = EditorGUILayout.TextField(CaseData.cornealReflex);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Visual Fields", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        EditorGUILayout.LabelField("Visual Fields", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
         CaseData.visualFields = EditorGUILayout.TextField(CaseData.visualFields);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Gag Reflex", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        EditorGUILayout.LabelField("Gag Reflex", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
         CaseData.gagReflex = EditorGUILayout.TextField(CaseData.gagReflex);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Speech", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        EditorGUILayout.LabelField("Speech", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
         CaseData.speech = EditorGUILayout.TextField(CaseData.speech);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
@@ -378,17 +396,17 @@ public class CaseEditor : EditorWindow {
 
         EditorGUILayout.Space();
 
+        //Test type (Single/Multiple)
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Test Type", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.testType = (TestType)EditorGUILayout.EnumPopup(CaseData.testType, GUILayout.MaxWidth(100));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+
         //Test question
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Test Question: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
         CaseData.testQuestion = EditorGUILayout.TextArea(CaseData.testQuestion, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.MaxHeight(100));
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.Space();
-
-        //Test type (Single/Multiple)
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Test Type", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.testType = (Case.TestType)EditorGUILayout.EnumPopup(CaseData.testType, GUILayout.MaxWidth(100));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -399,21 +417,6 @@ public class CaseEditor : EditorWindow {
         CaseData.concludingTests[2] = EditorGUILayout.TextField("Enter option for C)", CaseData.concludingTests[2]);
         CaseData.concludingTests[3] = EditorGUILayout.TextField("Enter option for D)", CaseData.concludingTests[3]);
         CaseData.concludingTests[4] = EditorGUILayout.TextField("Enter option for E)", CaseData.concludingTests[4]);
-        EditorGUILayout.Space();
-        
-        //Number of options
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Number of options: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.optionCount = EditorGUILayout.IntField(CaseData.optionCount, GUILayout.MaxWidth(50));
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.Space();
-
-        //Steps in localising
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Steps in localising: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.localising = EditorGUILayout.TextArea(CaseData.localising, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.MaxHeight(100));
-        EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         //Localising steps
@@ -427,14 +430,14 @@ public class CaseEditor : EditorWindow {
         //Answer to Concluding Test
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Correct Answer: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.answer = (Case.Answer) EditorGUILayout.EnumPopup(CaseData.answer, GUILayout.MaxWidth(50));
+        CaseData.answer = (Answer) EditorGUILayout.EnumPopup(CaseData.answer, GUILayout.MaxWidth(50));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         //Rationale
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Rationale: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.rationale = EditorGUILayout.TextArea(CaseData.rationale, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
+        CaseData.concludingRationale = EditorGUILayout.TextArea(CaseData.concludingRationale, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 

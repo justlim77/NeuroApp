@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class CaseDatabase : MonoBehaviour {
-    public CaseList m_CaseList;
+public class CaseDatabase : MonoBehaviour
+{
+    public CaseList caseList;
 }

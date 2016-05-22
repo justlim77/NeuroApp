@@ -18,10 +18,12 @@ public class StarSystem : MonoBehaviour
     }
     object OnUpdateBonus(object sender, object args)
     {
-        bool bonusCorrect = false;
         if (args is bool)
-            bonusCorrect = (bool)args;
-        ToggleStar(bonusCorrect);
+        {
+            bool bonusCorrect = (bool)args;
+            Patient.CaseData.bonusCorrect = bonusCorrect;
+            ToggleStar(bonusCorrect);
+        }
         return null;
     }
 
