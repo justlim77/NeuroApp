@@ -18,13 +18,16 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
 
     void Start()
     {
-        _image = GetComponent<Image>();
-
         Init();
     }
 
     public void Init()
     {
+        if(_image == null)
+            _image = GetComponent<Image>();
+
+
+
         _image.color = _invisibleColor;
     }
 

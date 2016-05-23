@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using NeuroApp;
+using System.Collections;
 
 public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -12,8 +13,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public Sprite mouthWideO;
     public Sprite mouthSlanted;
     public Image teeth;
-    public Sprite mouthTeethDefault;
-    public Sprite mouthTeethCurved;
+    public Image dimpleRight, dimpleLeft;
+    public Sprite gritNormal, gritAbnormal;
     public Image palate;
     public Sprite palateNormal;
     public Sprite palateAbnormal;
@@ -58,8 +59,14 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         foreach (var wrinkle in wrinkleImages)
             wrinkle.enabled = false;
 
-        if(teeth != null)
+        if (teeth != null)
             teeth.enabled = false;
+
+        if (dimpleLeft != null)
+            dimpleLeft.enabled = false;
+        
+        if (dimpleRight != null)
+            dimpleRight.enabled = false;
 
         FreezeState(false);
     }
@@ -78,7 +85,11 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 foreach (var image in eyeBrowImages)
                     image.sprite = defaultBrow;
                 if (teeth != null)
-                    teeth.enabled = false;
+                    teeth.enabled = false;  
+                if (dimpleLeft != null)          
+                    dimpleLeft.enabled = false;
+                if (dimpleRight != null)
+                    dimpleRight.enabled = false;
                 FreezeState(false);
                 break;
             case FaceState.Shocked:
@@ -89,6 +100,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 mouth.sprite = mouthWideO;
                 ToggleEyes(_originalEyes, _enlargedEyeSize, 3.0f, true, true, false);
                 CenterEyes();
+                if (teeth != null)
+                    teeth.enabled = false;
                 break;
             case FaceState.Ouch:
                 mouth.sprite = mouthSlanted;
@@ -98,20 +111,32 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 mouth.sprite = mouthNeutral;
                 ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
                 CenterEyes();
+                if (teeth != null)
+                    teeth.enabled = false;
+                if (dimpleLeft != null)
+                    dimpleLeft.enabled = false;
+                if (dimpleRight != null)
+                    dimpleRight.enabled = false;
                 break;
             case FaceState.NoReaction:
                 mouth.sprite = mouthSlanted;
                 ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
                 CenterEyes();
+                if (teeth != null)
+                    teeth.enabled = false;
+                if (dimpleLeft != null)
+                    dimpleLeft.enabled = false;
+                if (dimpleRight != null)
+                    dimpleRight.enabled = false;
                 break;
             case FaceState.RightEyebrowUp:
-                RaiseBrow(10, eyeBrows[0]);
+                StartCoroutine(RaiseBrow(10, eyeBrows[0]));
                 break;
             case FaceState.LeftEyebrowUp:
-                RaiseBrow(10, eyeBrows[1]);
+                StartCoroutine(RaiseBrow(10, eyeBrows[1]));
                 break;
             case FaceState.BothEyebrowsUp:
-                RaiseBrow(10, eyeBrows);
+                StartCoroutine(RaiseBrow(10, eyeBrows));
                 break;
             case FaceState.RightSquint:
                 Squint(0, eyes[0]);
@@ -123,13 +148,19 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 Squint(2, eyes);
                 break;
             case FaceState.LeftGritTeeth:
-                Grit(mouthTeethCurved, 1);
+                Grit(gritAbnormal, -1);
+                dimpleLeft.enabled = true;
+                dimpleRight.enabled = false;
                 break;
             case FaceState.RightGritTeeth:
-                Grit(mouthTeethCurved, -1);
+                Grit(gritAbnormal, 1);
+                dimpleLeft.enabled = false;
+                dimpleRight.enabled = true;
                 break;
             case FaceState.BothGritTeeth:
-                Grit(mouthTeethDefault);
+                Grit(gritNormal);
+                dimpleLeft.enabled = true;
+                dimpleRight.enabled = true;
                 break;
             default:
                 break;
@@ -194,8 +225,13 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
     }
 
-    void RaiseBrow(float height = 10.0f, params RectTransform[] brows)
+    bool _isRaising = false;
+    IEnumerator RaiseBrow(float height = 10.0f, params RectTransform[] brows)
     {
+        if (_isRaising)
+            yield break;
+
+        _isRaising = true;
         mouth.sprite = mouthNeutral;
         ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
         CenterEyes();
@@ -205,6 +241,16 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             brow.transform.GetChild(0).GetComponent<Image>().enabled = true;
             brow.anchoredPosition = new Vector2(brow.anchoredPosition.x, brow.anchoredPosition.y + height); 
         }
+
+        yield return new WaitForSeconds(Constants.const_reaction_delay);
+
+        foreach (var brow in brows)
+        {
+            brow.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            brow.anchoredPosition = new Vector2(brow.anchoredPosition.x, brow.anchoredPosition.y - height);
+        }
+
+        _isRaising = false;
     }
 
     void Squint(int browIndex, params Image[] eyes)
@@ -241,7 +287,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         mouth.sprite = sprite;
         teeth.enabled = true;
 
-        ToggleEyes(ouchEyes, showBrow:false, showInOutEyes:false, follow:false);
+        ToggleEyes(_originalEyes, follow:false);
     }
 
     public void FreezeState(bool state)

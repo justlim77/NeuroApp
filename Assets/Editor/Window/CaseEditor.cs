@@ -287,6 +287,19 @@ public class CaseEditor : EditorWindow {
         CaseData.LL_Ankle_PF_L = EditorGUILayout.TextField(CaseData.LL_Ankle_PF_L);
         EditorGUILayout.EndHorizontal();
 
+        //Toe
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("LL  /   Toe    /   Dorsiflexion", EditorStyles.boldLabel);
+        CaseData.LL_Toe_DF_R = EditorGUILayout.TextField(CaseData.LL_Toe_DF_R);
+        CaseData.LL_Toe_DF_L = EditorGUILayout.TextField(CaseData.LL_Toe_DF_L);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("LL  /   Toe    /   Plantarflexion", EditorStyles.boldLabel);
+        CaseData.LL_Toe_PF_R = EditorGUILayout.TextField(CaseData.LL_Toe_PF_R);
+        CaseData.LL_Toe_PF_L = EditorGUILayout.TextField(CaseData.LL_Toe_PF_L);
+        EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.Space();
 
         // Cranial
@@ -396,6 +409,14 @@ public class CaseEditor : EditorWindow {
 
         EditorGUILayout.Space();
 
+        //Localising steps
+        EditorGUILayout.LabelField("Localising steps (Leave blank if necessary)", EditorStyles.boldLabel);
+        CaseData.localisingSteps[0] = EditorGUILayout.TextField("Enter localising step #1", CaseData.localisingSteps[0]);
+        CaseData.localisingSteps[1] = EditorGUILayout.TextField("Enter localising step #2", CaseData.localisingSteps[1]);
+        CaseData.localisingSteps[2] = EditorGUILayout.TextField("Enter localising step #3", CaseData.localisingSteps[2]);
+        CaseData.localisingSteps[3] = EditorGUILayout.TextField("Enter localising step #4", CaseData.localisingSteps[3]);
+        EditorGUILayout.Space();
+
         //Test type (Single/Multiple)
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Test Type", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
@@ -417,14 +438,6 @@ public class CaseEditor : EditorWindow {
         CaseData.concludingTests[2] = EditorGUILayout.TextField("Enter option for C)", CaseData.concludingTests[2]);
         CaseData.concludingTests[3] = EditorGUILayout.TextField("Enter option for D)", CaseData.concludingTests[3]);
         CaseData.concludingTests[4] = EditorGUILayout.TextField("Enter option for E)", CaseData.concludingTests[4]);
-        EditorGUILayout.Space();
-
-        //Localising steps
-        EditorGUILayout.LabelField("Localising steps (Leave blank if necessary)", EditorStyles.boldLabel);
-        CaseData.localisingSteps[0] = EditorGUILayout.TextField("Enter localising step #1", CaseData.localisingSteps[0]);
-        CaseData.localisingSteps[1] = EditorGUILayout.TextField("Enter localising step #2", CaseData.localisingSteps[1]);
-        CaseData.localisingSteps[2] = EditorGUILayout.TextField("Enter localising step #3", CaseData.localisingSteps[2]);
-        CaseData.localisingSteps[3] = EditorGUILayout.TextField("Enter localising step #4", CaseData.localisingSteps[3]);
         EditorGUILayout.Space();
 
         //Answer to Concluding Test

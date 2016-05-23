@@ -149,9 +149,6 @@ public class Case {
     #endregion
 
     #region Localising Steps
-    // Steps in localising
-    public string localising = "<Enter localising steps>";
-
     // Localising steps array
     public string[] localisingSteps = new string[] {
         "Localising Step #1",

@@ -105,6 +105,13 @@ public class Patient : MonoBehaviour
     public PinObject face_upper_R, face_upper_L;
     public PinObject face_mid_R, face_mid_L;
     public PinObject face_lower_R, face_lower_L;
+
+    public TorchObject palate;
+
+    // Power
+    public Power face_power_upper;
+    public Power face_power_mid;
+    public Power face_power_lower;
     #endregion
 
     #region Elimination Variables
@@ -190,6 +197,11 @@ public class Patient : MonoBehaviour
         LL_Ankle_DF_L.text = CaseData.LL_Ankle_DF_L;
         LL_Ankle_PF_R.text = CaseData.LL_Ankle_PF_R;
         LL_Ankle_PF_L.text = CaseData.LL_Ankle_PF_L;
+        //Toe
+        LL_Toe_DF_R.text = CaseData.LL_Toe_DF_R;
+        LL_Toe_DF_L.text = CaseData.LL_Toe_DF_L;
+        LL_Toe_PF_R.text = CaseData.LL_Toe_PF_R;
+        LL_Toe_PF_L.text = CaseData.LL_Toe_PF_L;
 
         //DTR setup
         //Upper limbs
@@ -239,7 +251,39 @@ public class Patient : MonoBehaviour
 
         // Cranial
         // Sensation
-        //face_upper_R.canFeel = CaseData.face_upper_R;
+        face_upper_R.canFeel = CaseData.face_upper_R;
+        face_upper_L.canFeel = CaseData.face_upper_R;
+        face_mid_R.canFeel = CaseData.face_mid_R;
+        face_mid_L.canFeel = CaseData.face_mid_L;
+        face_lower_R.canFeel = CaseData.face_lower_R;
+        face_lower_L.canFeel = CaseData.face_lower_L;
+
+        // Palate & Tongue
+        if (palate != null)
+            palate.Init();
+
+        // Power
+        // Upper - Eyebrows raising
+        if (CaseData.state_Brow_R == State.Normal && CaseData.state_Brow_R == State.Normal)
+            face_power_upper.faceState = FaceState.BothEyebrowsUp;
+        else if (CaseData.state_Brow_R == State.Abnormal)
+            face_power_upper.faceState = FaceState.LeftEyebrowUp;
+        else if (CaseData.state_Brow_L == State.Abnormal)
+            face_power_upper.faceState = FaceState.RightEyebrowUp;
+        // Mid - Eyes squinting
+        if (CaseData.state_Eye_R == State.Normal && CaseData.state_Eye_R == State.Normal)
+            face_power_mid.faceState = FaceState.BothSquint;
+        else if (CaseData.state_Eye_R == State.Abnormal)
+            face_power_mid.faceState = FaceState.LeftSquint;
+        else if (CaseData.state_Eye_L == State.Abnormal)
+            face_power_mid.faceState = FaceState.RightSquint;
+        // Lower - Teeth gritting
+        if (CaseData.state_Mouth_R == State.Normal && CaseData.state_Mouth_L == State.Normal)
+            face_power_lower.faceState = FaceState.BothGritTeeth;
+        else if (CaseData.state_Mouth_R == State.Abnormal)
+            face_power_lower.faceState = FaceState.LeftGritTeeth;
+        else if (CaseData.state_Mouth_L == State.Abnormal)
+            face_power_lower.faceState = FaceState.RightGritTeeth;
 
         //Neuraxis Elimination Game setup
         neuraxis_C = CaseData.neuraxis_C;
@@ -259,8 +303,11 @@ public class Patient : MonoBehaviour
         int index = 0;
         foreach (string step in localisingSteps)
         {
-            index++;
-            content += string.Format("{0}. {1}\n", index, step);
+            if (step != "")
+            {
+                index++;
+                content += string.Format("{0}. {1}\n\n", index, step);
+            }
         }
         localisingText.text = content;                      //Localising setup
         testQuestionText.text = CaseData.testQuestion;      //Concluding Test Question setup
