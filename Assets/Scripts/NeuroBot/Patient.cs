@@ -324,7 +324,7 @@ public class Patient : MonoBehaviour
         }
         string subContent = CaseData.localisingExplanation;
         if (subContent != string.Empty)
-            content += string.Format("\n\nExplanation\n\n{0}", CaseData.localisingExplanation);
+            content += string.Format("\nExplanation\n{0}", CaseData.localisingExplanation);
 
         localisingText.text = content;                                  // Localising setup
         testQuestionText.text = CaseData.testQuestion;                  // Concluding Test Question setup
