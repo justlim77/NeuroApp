@@ -50,8 +50,13 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.Space();
 
         //Cerebellar Explanation
-        EditorGUILayout.LabelField("Cerebellar Explanation", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Cerebellar Examination", EditorStyles.boldLabel);
         CaseData.cerebellar = EditorGUILayout.TextArea(CaseData.cerebellar);
+        EditorGUILayout.Space();
+
+        //Comments
+        EditorGUILayout.LabelField("Other important tests", EditorStyles.boldLabel);
+        CaseData.otherTests = EditorGUILayout.TextArea(CaseData.otherTests);
         EditorGUILayout.Space();
 
         //DTR
@@ -101,8 +106,8 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.Space();
 
         //Sensation
-        EditorGUILayout.LabelField("Sensation (Check if can feel)", EditorStyles.boldLabel);
-
+        EditorGUILayout.LabelField("Sensation", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("(Check if can feel)", EditorStyles.miniBoldLabel);
         //Upper limbs
         EditorGUILayout.LabelField("Upper limb regions", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
@@ -353,7 +358,7 @@ public class CaseEditor : EditorWindow {
         CaseData.state_Palate_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Palate_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
 
-        //Power
+        // Power
         EditorGUILayout.LabelField("(Power)", EditorStyles.miniBoldLabel);
 
         EditorGUILayout.BeginHorizontal();
@@ -372,7 +377,7 @@ public class CaseEditor : EditorWindow {
         CaseData.state_Mouth_L = (State)EditorGUILayout.EnumPopup(CaseData.state_Mouth_L, GUILayout.MaxWidth(60));
         EditorGUILayout.EndHorizontal();
 
-        //Others
+        // Others
         EditorGUILayout.LabelField("(Others)", EditorStyles.miniBoldLabel);
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Hearing", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
@@ -396,7 +401,7 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        //Elimination
+        // Elimination
         EditorGUILayout.LabelField("Eliminate from Neuraxis (Leave blank to eliminate)", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
         CaseData.neuraxis_C = EditorGUILayout.ToggleLeft("C", CaseData.neuraxis_C, GUILayout.MaxWidth(120));
@@ -415,7 +420,7 @@ public class CaseEditor : EditorWindow {
 
         EditorGUILayout.Space();
 
-        //Localising steps
+        // Localising steps
         EditorGUILayout.LabelField("Localising steps (Leave blank if necessary)", EditorStyles.boldLabel);
         CaseData.localisingSteps[0] = EditorGUILayout.TextField("Enter localising step #1", CaseData.localisingSteps[0]);
         CaseData.localisingSteps[1] = EditorGUILayout.TextField("Enter localising step #2", CaseData.localisingSteps[1]);
@@ -423,28 +428,28 @@ public class CaseEditor : EditorWindow {
         CaseData.localisingSteps[3] = EditorGUILayout.TextField("Enter localising step #4", CaseData.localisingSteps[3]);
         EditorGUILayout.Space();
 
-        //Explanation
+        // Explanation
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Explanation: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
         CaseData.localisingExplanation = EditorGUILayout.TextArea(CaseData.localisingExplanation, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        //Test type (Single/Multiple)
+        // Test type (Single/Multiple)
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Test Type", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
         CaseData.testType = (TestType)EditorGUILayout.EnumPopup(CaseData.testType, GUILayout.MaxWidth(100));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        //Test question
+        // Test question
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Test Question: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
         CaseData.testQuestion = EditorGUILayout.TextArea(CaseData.testQuestion, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.MaxHeight(100));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        //Concluding Test
+        // Concluding Test
         EditorGUILayout.LabelField("Concluding Test (Leave blank if necessary)", EditorStyles.boldLabel);
         CaseData.concludingTests[0] = EditorGUILayout.TextField("Enter option for A)", CaseData.concludingTests[0]);
         CaseData.concludingTests[1] = EditorGUILayout.TextField("Enter option for B)", CaseData.concludingTests[1]);
@@ -453,14 +458,14 @@ public class CaseEditor : EditorWindow {
         CaseData.concludingTests[4] = EditorGUILayout.TextField("Enter option for E)", CaseData.concludingTests[4]);
         EditorGUILayout.Space();
 
-        //Answer to Concluding Test
+        // Answer to Concluding Test
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Correct Answer: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
         CaseData.answer = (Answer) EditorGUILayout.EnumPopup(CaseData.answer, GUILayout.MaxWidth(50));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        //Explanation
+        // Answer Explanation
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Explanation: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
         CaseData.answerExplanation = EditorGUILayout.TextArea(CaseData.answerExplanation, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
@@ -472,7 +477,7 @@ public class CaseEditor : EditorWindow {
         //END//
         EditorGUILayout.Space();
 
-        //Close
+        // Close
         if (GUILayout.Button("Save & Close"))
             Close();
     }

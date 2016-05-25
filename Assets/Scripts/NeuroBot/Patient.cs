@@ -18,6 +18,7 @@ public class Patient : MonoBehaviour
     public Text toneText;                       // Tone
     public Text plantarsText;                   // Plantars
     public Text cerebellarExamText;             // Cerebellar Exam
+    public Text otherTestsText;                 // Other important tests
     #endregion
 
     #region Power Variables
@@ -132,12 +133,13 @@ public class Patient : MonoBehaviour
     public bool neuraxis_NMJ;
     public bool neuraxis_M;
 
-    public string[] localisingSteps;    // Localising steps
-    public Text localisingText;         // Explanation (Localising Steps)
-    public Text testQuestionText;       // Concluding test question
-    public string[] concludingTests;    // Concluding tests
-    public Answer answer;               // Correct test answer
-    public Text answerText;             // Explanation for test answer
+    public string[] localisingSteps;    // Localising steps string array
+    public Text localisingText;         // Localising Steps text component
+    public Text localisingExplainText;  // Localising explanation text component
+    public Text testQuestionText;       // Concluding test question text component
+    public string[] concludingTests;    // Concluding tests string array
+    public Answer answer;               // Correct test answer enum
+    public Text answerText;             // Explanation for test answer text component
     #endregion
 
     // Case database (DB) reference
@@ -150,10 +152,11 @@ public class Patient : MonoBehaviour
     private bool Init()
     {        
         // General
-        caseDescriptionText.text = CaseData.caseDescription;    //Case description setup
-        toneText.text = CaseData.tone;                          //Tone setup
-        plantarsText.text = CaseData.plantars;                  //Plantars setup
-        cerebellarExamText.text = CaseData.cerebellar;          //Cerebellar exam setup
+        caseDescriptionText.text = CaseData.caseDescription;    // Case description setup
+        toneText.text = CaseData.tone;                          // Tone setup
+        plantarsText.text = CaseData.plantars;                  // Plantars setup
+        cerebellarExamText.text = CaseData.cerebellar;          // Cerebellar exam setup
+        otherTestsText.text = CaseData.otherTests;              // Other important tests
 
         // Upper limbs
         // Shoulder
@@ -319,11 +322,15 @@ public class Patient : MonoBehaviour
                 content += string.Format("{0}. {1}\n\n", index, step);
             }
         }
-        localisingText.text = content;                      // Localising setup
-        testQuestionText.text = CaseData.testQuestion;      // Concluding Test Question setup
-        concludingTests = CaseData.concludingTests;         // Concluding Test setup
-        answer = CaseData.answer;                           // Answer setup
-        answerText.text = CaseData.answerExplanation;       // Answer explanation setup
+        string subContent = CaseData.localisingExplanation;
+        if (subContent != string.Empty)
+            content += string.Format("\n\nExplanation\n\n{0}", CaseData.localisingExplanation);
+
+        localisingText.text = content;                                  // Localising setup
+        testQuestionText.text = CaseData.testQuestion;                  // Concluding Test Question setup
+        concludingTests = CaseData.concludingTests;                     // Concluding Test setup
+        answer = CaseData.answer;                                       // Answer setup
+        answerText.text = CaseData.answerExplanation;                   // Answer explanation setup
 
         return true;
     }

@@ -3,40 +3,41 @@
 [System.Serializable]
 public class Case {
     #region Generic Variables
-    public bool isEnabled = true;                           //Will this condition item be enabled in the list?
-    public string caseName = "<DefaultCase>";               //What is the condition's name?
-    public string caseDescription = "<CaseDescription>";    //A description for the condition
-    public int caseScore = 0;                               //Case highest score
-    public bool bonusCorrect = false;                       //Case star rating system
-    public string tone = "Normal";                          //Tone
-    public string plantars = "Normal";                      //Plantars
-    public string cerebellar = "Normal";                    //Cerebellar examination
+    public bool isEnabled = true;                           // Will this condition item be enabled in the list?
+    public string caseName = "<DefaultCase>";               // What is the condition's name?
+    public string caseDescription = "<CaseDescription>";    // A description for the condition
+    public int caseScore = 0;                               // Case highest score
+    public bool bonusCorrect = false;                       // Case star rating system
+    public string tone = "Normal";                          // Tone
+    public string plantars = "Normal";                      // Plantars
+    public string cerebellar = "Normal";                    // Cerebellar examination
+    public string otherTests = "Nil";                       // Other important tests
     #endregion
 
     #region Deep Tendon Reflexes (DTR)
-    //(+++) - Hyperactive
-    //(++) - Normal
-    //(+) - Sluggish
-    //(-) - Absent
-    public Tendon tendon_tricep_R = new Tendon();           //Tendon Tricep R
-    public Tendon tendon_bicep_R = new Tendon();            //Tendon Bicep R
-    public Tendon tendon_supinator_R = new Tendon();        //Tendon Supinator R
-    public Tendon tendon_tricep_L = new Tendon();           //Tendon Tricep L
-    public Tendon tendon_bicep_L = new Tendon();            //Tendon Bicep L
-    public Tendon tendon_supinator_L = new Tendon();        //Tendon Supinator L
-    public Tendon tendon_patellar_R = new Tendon();         //Tendon Patellar R
-    public Tendon tendon_ankle_R = new Tendon();            //Tendon Ankle R
-    public Tendon tendon_plantar_R = new Tendon();          //Tendon Plantar R
-    public Tendon tendon_patellar_L = new Tendon();         //Tendon Patellar L
-    public Tendon tendon_ankle_L = new Tendon();            //Tendon Ankle L
-    public Tendon tendon_plantar_L = new Tendon();          //Tendon Plantar L
+    // (+++) - Hyperactive
+    // (++) - Normal
+    // (+) - Sluggish
+    // (-) - Absent
+    public Tendon tendon_tricep_R = new Tendon();           // Tendon Tricep R
+    public Tendon tendon_bicep_R = new Tendon();            // Tendon Bicep R
+    public Tendon tendon_supinator_R = new Tendon();        // Tendon Supinator R
+    public Tendon tendon_tricep_L = new Tendon();           // Tendon Tricep L
+    public Tendon tendon_bicep_L = new Tendon();            // Tendon Bicep L
+    public Tendon tendon_supinator_L = new Tendon();        // Tendon Supinator L
+    public Tendon tendon_patellar_R = new Tendon();         // Tendon Patellar R
+    public Tendon tendon_ankle_R = new Tendon();            // Tendon Ankle R
+    public Tendon tendon_plantar_R = new Tendon();          // Tendon Plantar R
+    public Tendon tendon_patellar_L = new Tendon();         // Tendon Patellar L
+    public Tendon tendon_ankle_L = new Tendon();            // Tendon Ankle L
+    public Tendon tendon_plantar_L = new Tendon();          // Tendon Plantar L
     #endregion
 
     #region Sensation Variables
-    //True - Normal
-    //False - Decreased
-    //Format - LIMB_REGION_SIDE_SECTION
-    //Upper limbs (From shoulder to fingertip)
+    // True - Normal
+    // False - Decreased
+    // Format - LIMB_REGION_SIDE_SECTION
+    // Upper limbs (From shoulder to fingertip)
     public bool UL_T1_R = true, UL_T1_L = true;
     public bool UL_C5_R = true, UL_C5_L = true;
     public bool UL_C6_R_1 = true, UL_C6_R_2 = true;
@@ -44,7 +45,7 @@ public class Case {
     public bool UL_C7_R = true, UL_C7_L = true;
     public bool UL_C8_R_1 = true, UL_C8_R_2 = true;
     public bool UL_C8_L_1 = true, UL_C8_L_2 = true;
-    //Lower limbs (From hip to toe)
+    // Lower limbs (From hip to toe)
     public bool LL_L2_R = true, LL_L2_L = true;
     public bool LL_L3_R = true, LL_L3_L = true;
     public bool LL_L4_R_1 = true, LL_L4_R_2 = true;
@@ -55,12 +56,12 @@ public class Case {
     #endregion
 
     #region Power Variables
-    //0 - No movement
-    //1 - Flicker of contraction
-    //2 - Movement if gravity eliminated
-    //3 - Can overcome gravity but not resistance
-    //4 - Moderate movement against resistance
-    //5 - Normal power
+    // 0 - No movement
+    // 1 - Flicker of contraction
+    // 2 - Movement if gravity eliminated
+    // 3 - Can overcome gravity but not resistance
+    // 4 - Moderate movement against resistance
+    // 5 - Normal power
     public string UL_Shoulder_AB_R = "5";                   //Upper Limb - Shoulder - Abduction - Right
     public string UL_Shoulder_AB_L = "5";                   //Upper Limb - Shoulder - Abduction - Left
     public string UL_Shoulder_AD_R = "5";                   //Upper Limb - Shoulder - Adduction - Right
@@ -132,18 +133,18 @@ public class Case {
     #endregion
 
     #region Neuroaxis Variables
-    //Neuroaxis
-    //Q: Please eliminate from neuroaxis:
-    public bool neuraxis_C;         //Cortex
-    public bool neuraxis_SC;        //Sub Cortex
-    public bool neuraxis_BS;        //Brain Stem
-    public bool neuraxis_SCORD;     //Spinal Cord
-    public bool neuraxis_AHC;       //Anterior Horn Cell
-    public bool neuraxis_R;         //Root
-    public bool neuraxis_P;         //Plexus
-    public bool neuraxis_PN;        //Peripheral Nerves
-    public bool neuraxis_NMJ;       //Neuro Muscular Junction
-    public bool neuraxis_M;         //Muscle
+    // Neuroaxis
+    // Q: Please eliminate from neuroaxis:
+    public bool neuraxis_C;         // Cortex
+    public bool neuraxis_SC;        // Sub Cortex
+    public bool neuraxis_BS;        // Brain Stem
+    public bool neuraxis_SCORD;     // Spinal Cord
+    public bool neuraxis_AHC;       // Anterior Horn Cell
+    public bool neuraxis_R;         // Root
+    public bool neuraxis_P;         // Plexus
+    public bool neuraxis_PN;        // Peripheral Nerves
+    public bool neuraxis_NMJ;       // Neuro Muscular Junction
+    public bool neuraxis_M;         // Muscle
     #endregion
 
     #region Elimination hint
@@ -163,13 +164,13 @@ public class Case {
     #endregion
 
     #region Concluding Test
-    //Type of test: Single-answer or multi-answer
+    // Type of test: Single-answer or multi-answer
     public TestType testType = TestType.Single;
 
-    //Q: What specific test would you do next? (A/B/C/D/E)
+    // Q: What specific test would you do next? (A/B/C/D/E)
     public string testQuestion = "<Enter test question>";
 
-    //Test options for player to choose from...
+    // Test options for player to choose from...
     public string[] concludingTests = new string [] {
         "Concluding Test #1",
         "Concluding Test #2",
@@ -179,10 +180,10 @@ public class Case {
     };
 
 
-    //A: Correct answer is?
+    // A: Correct answer is?
     public Answer answer;
 
-    //Rationale
+    // Answer explanation
     public string answerExplanation = "<Enter answer explanation>";
     #endregion
 }
