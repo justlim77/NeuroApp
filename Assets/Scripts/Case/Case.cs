@@ -10,7 +10,7 @@ public class Case {
     public bool bonusCorrect = false;                       //Case star rating system
     public string tone = "Normal";                          //Tone
     public string plantars = "Normal";                      //Plantars
-    public string cerebellarSigns = "Normal";               //Cerebellar signs
+    public string cerebellar = "Normal";                    //Cerebellar examination
     #endregion
 
     #region Deep Tendon Reflexes (DTR)
@@ -61,8 +61,10 @@ public class Case {
     //3 - Can overcome gravity but not resistance
     //4 - Moderate movement against resistance
     //5 - Normal power
-    public string UL_Shoulder_A_R = "5";                    //Upper Limb - Shoulder - Abduction - Right
-    public string UL_Shoulder_A_L = "5";                    //Upper Limb - Shoulder - Abduction - Left
+    public string UL_Shoulder_AB_R = "5";                   //Upper Limb - Shoulder - Abduction - Right
+    public string UL_Shoulder_AB_L = "5";                   //Upper Limb - Shoulder - Abduction - Left
+    public string UL_Shoulder_AD_R = "5";                   //Upper Limb - Shoulder - Adduction - Right
+    public string UL_Shoulder_AD_L = "5";                   //Upper Limb - Shoulder - Adduction - Left
     public string UL_Elbow_F_R = "5";                       //Upper Limb - Elbow - Flexion - Right
     public string UL_Elbow_F_L = "5";                       //Upper Limb - Elbow - Flexion - Left
     public string UL_Elbow_E_R = "5";                       //Upper Limb - Elbow - Extension - Right
@@ -75,14 +77,14 @@ public class Case {
     public string UL_Finger_F_L = "5";                      //Upper Limb - Finger - Flexion - Left
     public string UL_Finger_E_R = "5";                      //Upper Limb - Finger - Extension - Right
     public string UL_Finger_E_L = "5";                      //Upper Limb - Finger - Extension - Left
-    public string UL_Finger_A_R = "5";                      //Upper Limb - Finger - Abduction - Right
-    public string UL_Finger_A_L = "5";                      //Upper Limb - Finger - Abduction - Left
+    public string UL_Finger_AB_R = "5";                     //Upper Limb - Finger - Abduction - Right
+    public string UL_Finger_AB_L = "5";                     //Upper Limb - Finger - Abduction - Left
     public string UL_Thumb_F_R = "5";                       //Upper Limb - Thumb - Flexion - Right
     public string UL_Thumb_F_L = "5";                       //Upper Limb - Thumb - Flexion - Left
     public string UL_Thumb_E_R = "5";                       //Upper Limb - Thumb - Extension - Right
     public string UL_Thumb_E_L = "5";                       //Upper Limb - Thumb - Extension - Left
-    public string UL_Thumb_A_R = "5";                       //Upper Limb - Thumb - Adduction - Right
-    public string UL_Thumb_A_L = "5";                        //Upper Limb - Thumb - Adduction - Left
+    public string UL_Thumb_AB_R = "5";                      //Upper Limb - Thumb - Abduction - Right
+    public string UL_Thumb_AB_L = "5";                      //Upper Limb - Thumb - Abduction - Left
 
     public string LL_Hip_F_R = "5";                         //Lower Limb - Hip - Flexion - Right
     public string LL_Hip_F_L = "5";                         //Lower Limb - Hip - Flexion - Left
@@ -156,8 +158,8 @@ public class Case {
         "Localising Step #3",
         "Localising Step #4"
     };
-    // Localising rationale
-    public string localisingRationale = "<Enter localising rationale>";
+    // Localising explanation
+    public string localisingExplanation = "<Enter localising explanation>";
     #endregion
 
     #region Concluding Test
@@ -181,6 +183,6 @@ public class Case {
     public Answer answer;
 
     //Rationale
-    public string concludingRationale = "<Enter rationale>";
+    public string answerExplanation = "<Enter answer explanation>";
     #endregion
 }

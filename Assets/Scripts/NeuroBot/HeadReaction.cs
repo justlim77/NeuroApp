@@ -292,7 +292,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void FreezeState(bool state)
     {
-        foreach (var pupil in middleEyes)
+        foreach (var pupil in innerEyes)
         {
             Pupil pupilScript = pupil.GetComponent<Pupil>();
             if (pupilScript != null)

@@ -1,68 +1,63 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using NeuroApp;
+using System;
 
-public class Pupil : MonoBehaviour
+public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public PupilState pupilState = PupilState.Default;
+    public State pupilState = State.Normal;
+    public Pupil otherPupil;
     public HeadReaction head;
+    public RectTransform pupilImage;
     public float activationRadius = 40.0f;
     public float normalSize;
+    public float halfSize;
     public float dilatedSize;
     public float constrictedSize;
 
-    RectTransform _imageRect;
-    public static Transform _TargetedPupil = null;
-
-	void Awake ()
-    {
-        _imageRect = GetComponent<RectTransform>();
-	}
-
     void Start()
-    {
-        if(_TargetedPupil == null)
-            _TargetedPupil = this.transform;
+    {        
     }
 
-    void LateUpdate()
+    public bool Init(State state)
     {
-        bool inProximity = Vector2.Distance(Input.mousePosition, transform.position) < activationRadius + 10.0f;
-        if (inProximity)
+        pupilState = state;
+        return true;
+    }
+
+    void Update()
+    {        
+    }
+
+    public void ResizeEyes(float pupilSize)
+    {
+        pupilImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pupilSize);
+        pupilImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, pupilSize);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        switch (pupilState)
         {
-            _TargetedPupil = this.transform;
-            bool inTargetProximity = Vector2.Distance(Input.mousePosition, transform.position) < activationRadius;
-            if (inTargetProximity)
-            {
-                switch (pupilState)
-                {
-                    case PupilState.Default:
-                        break;
-                    case PupilState.Dilated:
-                        ResizeEyes(dilatedSize);
-                        break;
-                    case PupilState.Constricted:
-                        ResizeEyes(constrictedSize);
-                        break;
-                    default:
-                        break;
-                }
+            case State.Normal:
+                this.ResizeEyes(constrictedSize);
+                otherPupil.ResizeEyes(constrictedSize);
+                break;
+            case State.Abnormal:
+                this.ResizeEyes(halfSize);
+                otherPupil.ResizeEyes(halfSize);
+                break;
+        }
 
-                head.SetMouth(MouthState.OMG);
-            }
-            else
-            {
-                _TargetedPupil = null;
-                ResizeEyes(normalSize);
-                head.SetMouth(MouthState.Neutral);
-            }
-        }            
+        head.SetMouth(MouthState.OMG);
     }
 
-    void ResizeEyes(float pupilSize)
+    public void OnPointerExit(PointerEventData eventData)
     {
-        _imageRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pupilSize);
-        _imageRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, pupilSize);
+        this.ResizeEyes(normalSize);
+        otherPupil.ResizeEyes(normalSize);
+        head.SetMouth(MouthState.Neutral);
     }
 }

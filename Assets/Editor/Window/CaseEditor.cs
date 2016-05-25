@@ -49,9 +49,9 @@ public class CaseEditor : EditorWindow {
         CaseData.plantars = EditorGUILayout.TextArea(CaseData.plantars);
         EditorGUILayout.Space();
 
-        //Cerebellar Signs
-        EditorGUILayout.LabelField("Cerebellar Signs", EditorStyles.boldLabel);
-        CaseData.cerebellarSigns = EditorGUILayout.TextArea(CaseData.cerebellarSigns);
+        //Cerebellar Explanation
+        EditorGUILayout.LabelField("Cerebellar Explanation", EditorStyles.boldLabel);
+        CaseData.cerebellar = EditorGUILayout.TextArea(CaseData.cerebellar);
         EditorGUILayout.Space();
 
         //DTR
@@ -115,10 +115,10 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.UL_C6_R_1 = EditorGUILayout.ToggleLeft("C6 Right 1", CaseData.UL_C6_R_1, GUILayout.MaxWidth(120));
-        CaseData.UL_C6_R_2 = EditorGUILayout.ToggleLeft("C6 Right 2", CaseData.UL_C6_R_2, GUILayout.MaxWidth(120));
+        CaseData.UL_C6_L_1 = EditorGUILayout.ToggleLeft("C6 Left 1", CaseData.UL_C6_L_1, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        CaseData.UL_C6_L_1 = EditorGUILayout.ToggleLeft("C6 Left 1", CaseData.UL_C6_L_1, GUILayout.MaxWidth(120));
+        CaseData.UL_C6_R_2 = EditorGUILayout.ToggleLeft("C6 Right 2", CaseData.UL_C6_R_2, GUILayout.MaxWidth(120));
         CaseData.UL_C6_L_2 = EditorGUILayout.ToggleLeft("C6 Left 2", CaseData.UL_C6_L_2, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
@@ -127,10 +127,10 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.UL_C8_R_1 = EditorGUILayout.ToggleLeft("C8 Right 1", CaseData.UL_C8_R_1, GUILayout.MaxWidth(120));
-        CaseData.UL_C8_R_2 = EditorGUILayout.ToggleLeft("C8 Right 2", CaseData.UL_C8_R_2, GUILayout.MaxWidth(120));
+        CaseData.UL_C8_L_1 = EditorGUILayout.ToggleLeft("C8 Left 1", CaseData.UL_C8_L_1, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        CaseData.UL_C8_L_1 = EditorGUILayout.ToggleLeft("C8 Left 1", CaseData.UL_C8_L_1, GUILayout.MaxWidth(120));
+        CaseData.UL_C8_R_2 = EditorGUILayout.ToggleLeft("C8 Right 2", CaseData.UL_C8_R_2, GUILayout.MaxWidth(120));
         CaseData.UL_C8_L_2 = EditorGUILayout.ToggleLeft("C8 Left 2", CaseData.UL_C8_L_2, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
 
@@ -146,18 +146,18 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.LL_L4_R_1 = EditorGUILayout.ToggleLeft("L4 Right 1", CaseData.LL_L4_R_1, GUILayout.MaxWidth(120));
-        CaseData.LL_L4_R_2 = EditorGUILayout.ToggleLeft("L4 Right 2", CaseData.LL_L4_R_2, GUILayout.MaxWidth(120));
+        CaseData.LL_L4_L_1 = EditorGUILayout.ToggleLeft("L4 Left 1", CaseData.LL_L4_L_1, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        CaseData.LL_L4_L_1 = EditorGUILayout.ToggleLeft("L4 Left 1", CaseData.LL_L4_L_1, GUILayout.MaxWidth(120));
+        CaseData.LL_L4_R_2 = EditorGUILayout.ToggleLeft("L4 Right 2", CaseData.LL_L4_R_2, GUILayout.MaxWidth(120));
         CaseData.LL_L4_L_2 = EditorGUILayout.ToggleLeft("L4 Left 2", CaseData.LL_L4_L_2, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.LL_L5_R_1 = EditorGUILayout.ToggleLeft("L5 Right 1", CaseData.LL_L5_R_1, GUILayout.MaxWidth(120));
-        CaseData.LL_L5_R_2 = EditorGUILayout.ToggleLeft("L5 Right 2", CaseData.LL_L5_R_2, GUILayout.MaxWidth(120));
+        CaseData.LL_L5_L_1 = EditorGUILayout.ToggleLeft("L5 Left 1", CaseData.LL_L5_L_1, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        CaseData.LL_L5_L_1 = EditorGUILayout.ToggleLeft("L5 Left 1", CaseData.LL_L5_L_1, GUILayout.MaxWidth(120));
+        CaseData.LL_L5_R_2 = EditorGUILayout.ToggleLeft("L5 Right 2", CaseData.LL_L5_R_2, GUILayout.MaxWidth(120));
         CaseData.LL_L5_L_2 = EditorGUILayout.ToggleLeft("L5 Left 2", CaseData.LL_L5_L_2, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
@@ -179,8 +179,14 @@ public class CaseEditor : EditorWindow {
         //Shoulder
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("UL  /   Shoulder   /   Abduction", EditorStyles.boldLabel);
-        CaseData.UL_Shoulder_A_R = EditorGUILayout.TextField(CaseData.UL_Shoulder_A_R);
-        CaseData.UL_Shoulder_A_L = EditorGUILayout.TextField(CaseData.UL_Shoulder_A_L);
+        CaseData.UL_Shoulder_AB_R = EditorGUILayout.TextField(CaseData.UL_Shoulder_AB_R);
+        CaseData.UL_Shoulder_AB_L = EditorGUILayout.TextField(CaseData.UL_Shoulder_AB_L);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("UL  /   Shoulder   /   Adduction", EditorStyles.boldLabel);
+        CaseData.UL_Shoulder_AD_R = EditorGUILayout.TextField(CaseData.UL_Shoulder_AD_R);
+        CaseData.UL_Shoulder_AD_L = EditorGUILayout.TextField(CaseData.UL_Shoulder_AD_L);
         EditorGUILayout.EndHorizontal();
 
         //Elbow
@@ -224,8 +230,8 @@ public class CaseEditor : EditorWindow {
 
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("UL  /   Finger   /   Abduction", EditorStyles.boldLabel);
-        CaseData.UL_Finger_A_R = EditorGUILayout.TextField(CaseData.UL_Finger_A_R);
-        CaseData.UL_Finger_A_L = EditorGUILayout.TextField(CaseData.UL_Finger_A_L);
+        CaseData.UL_Finger_AB_R = EditorGUILayout.TextField(CaseData.UL_Finger_AB_R);
+        CaseData.UL_Finger_AB_L = EditorGUILayout.TextField(CaseData.UL_Finger_AB_L);
         EditorGUILayout.EndHorizontal();
 
         //Thumb
@@ -242,9 +248,9 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Thumb   /   Adduction", EditorStyles.boldLabel);
-        CaseData.UL_Thumb_A_R = EditorGUILayout.TextField(CaseData.UL_Thumb_A_R);
-        CaseData.UL_Thumb_A_L = EditorGUILayout.TextField(CaseData.UL_Thumb_A_L);
+        EditorGUILayout.LabelField("UL  /   Thumb   /   Abduction", EditorStyles.boldLabel);
+        CaseData.UL_Thumb_AB_R = EditorGUILayout.TextField(CaseData.UL_Thumb_AB_R);
+        CaseData.UL_Thumb_AB_L = EditorGUILayout.TextField(CaseData.UL_Thumb_AB_L);
         EditorGUILayout.EndHorizontal();
 
         //Lower limbs
@@ -417,6 +423,13 @@ public class CaseEditor : EditorWindow {
         CaseData.localisingSteps[3] = EditorGUILayout.TextField("Enter localising step #4", CaseData.localisingSteps[3]);
         EditorGUILayout.Space();
 
+        //Explanation
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Explanation: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.localisingExplanation = EditorGUILayout.TextArea(CaseData.localisingExplanation, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+
         //Test type (Single/Multiple)
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Test Type", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
@@ -447,10 +460,10 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        //Rationale
+        //Explanation
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Rationale: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.concludingRationale = EditorGUILayout.TextArea(CaseData.concludingRationale, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
+        EditorGUILayout.LabelField("Explanation: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.answerExplanation = EditorGUILayout.TextArea(CaseData.answerExplanation, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
