@@ -22,7 +22,7 @@ public class ToolControl : MonoBehaviour
     public Text[] toggledLabels;
     public Button cranialBackButton;
 
-    int m_ToolUseCount = 0;
+    [SerializeField] int m_ToolUseCount = 0;
     public Vector2 bedOriginalOffsetMin;
     public Vector2 bedOriginalOffsetMax;
     Vector2 bedOriginalScale;
@@ -33,14 +33,21 @@ public class ToolControl : MonoBehaviour
     [SerializeField] bool activeOnStart = true;
     [SerializeField] Color panelColor;
 
+    void OnEnable()
+    {
+        if (activeOnStart == true)
+            if (m_ToolUseCount >= tools.Count)
+                localiseButton.SetActive(true);
+    }
+
     void Awake()
     {
         // Add tools to list
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Tool tool = transform.GetChild(i).GetComponent<Tool>();
-            tools.Add(tool);
-        }
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    Tool tool = transform.GetChild(i).GetComponent<Tool>();
+        //    tools.Add(tool);
+        //}
 
         bedOriginalScale = bedRectTrans.localScale;
         speechOriginalScale = speechRectTrans.localScale;
@@ -82,6 +89,16 @@ public class ToolControl : MonoBehaviour
         // Reset tools and tool count
         m_ToolUseCount = 0;
 
+        // Add tools to list
+        tools.Clear();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Tool tool = transform.GetChild(i).GetComponent<Tool>();
+            if (tool != null)
+                tools.Add(tool);
+
+        }
+
         foreach (Tool tool in tools)
             result = tool.Init();
         if (result == false)
@@ -90,8 +107,8 @@ public class ToolControl : MonoBehaviour
         if(activeOnStart == false)
             while (gameObject.activeInHierarchy)
                 gameObject.SetActive(false);
-
-        ToggleCranial(false);
+        else
+            ToggleCranial(false);
 
         return result;
     }
@@ -115,7 +132,7 @@ public class ToolControl : MonoBehaviour
     {
         m_ToolUseCount++;
 
-        if(activeOnStart)
+        if(activeOnStart && gameObject.activeSelf)
             if (m_ToolUseCount >= tools.Count)
                 localiseButton.SetActive(true);
     }
@@ -123,9 +140,9 @@ public class ToolControl : MonoBehaviour
     public void SwitchToolset()
     {
         // Test for main tool panel to show localise button
-        if (activeOnStart)
-            if (m_ToolUseCount >= tools.Count)
-                localiseButton.SetActive(true);
+        //if (activeOnStart && gameObject.activeSelf)
+        //    if (m_ToolUseCount >= tools.Count)
+        //        localiseButton.SetActive(true);
 
         alternateSet.SetActive(true);
         gameObject.SetActive(false);
@@ -150,6 +167,11 @@ public class ToolControl : MonoBehaviour
 
             speechRectTrans.anchoredPosition = cranialSpeechPos;
             speechRectTrans.localScale = cranialSpeechScale;
+
+
+            localiseButton.SetActive(false);
+
+            Core.BroadcastEvent("OnToggleCranial", this, Constants.const_zoom_delta);
         }
         else
         {
@@ -161,6 +183,12 @@ public class ToolControl : MonoBehaviour
             speechRectTrans.localScale = Vector3.one;
 
             PanelManager.Instance.PanelColor(PanelType.Main, panelColor);
+
+            if (activeOnStart == true)
+                if (m_ToolUseCount >= tools.Count)
+                    localiseButton.SetActive(true);
+
+            Core.BroadcastEvent("OnToggleCranial", this, Constants.const_default_delta);
         }
     }
 }

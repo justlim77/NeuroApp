@@ -13,7 +13,7 @@ public class ScrollManager : MonoBehaviour {
 
     void Awake()
     {
-        if (_Instance == null)
+        //if (_Instance == null)
             _Instance = this;
     }
     void Start () {

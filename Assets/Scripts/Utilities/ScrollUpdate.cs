@@ -8,11 +8,7 @@ public class ScrollUpdate : MonoBehaviour {
     [Range(0, 1)]
     public float initialScrollValue = 1.0f;
 
-    Scrollbar scrollBar;
-
-    void Awake() {
-        scrollBar = this.GetComponent<Scrollbar>();
-    }
+    public Scrollbar scrollBar;
 
     public bool Init()
     {

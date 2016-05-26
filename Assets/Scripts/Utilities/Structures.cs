@@ -15,6 +15,8 @@ namespace NeuroApp
         public static string const_tap_norm_msg = "Ow!";
         public static string const_tap_hypo_msg = "Hmm.";
         public static string const_tap_absent_msg = "...";
+        public static float const_default_delta = 1.0f;
+        public static float const_zoom_delta = 6.0f;
     }
 
     public enum Orientation
