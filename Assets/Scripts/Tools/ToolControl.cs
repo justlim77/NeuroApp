@@ -20,6 +20,7 @@ public class ToolControl : MonoBehaviour
     public Vector2 cranialSpeechScale;
     public Image[] toggledImages;
     public Text[] toggledLabels;
+    public Button cranialBackButton;
 
     int m_ToolUseCount = 0;
     public Vector2 bedOriginalOffsetMin;
@@ -138,6 +139,9 @@ public class ToolControl : MonoBehaviour
         foreach (Text text in toggledLabels)
             text.enabled = !value;
         speechRectTrans.gameObject.SetActive(false);
+
+        // Back button
+        cranialBackButton.gameObject.SetActive(value);
 
         if (value)
         {

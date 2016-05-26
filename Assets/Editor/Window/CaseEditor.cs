@@ -397,7 +397,7 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Speech", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
-        CaseData.speech = EditorGUILayout.TextField(CaseData.speech);
+        CaseData.speech = EditorGUILayout.TextArea(CaseData.speech, GUILayout.MaxWidth(400), GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -431,7 +431,7 @@ public class CaseEditor : EditorWindow {
         // Explanation
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Explanation: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.localisingExplanation = EditorGUILayout.TextArea(CaseData.localisingExplanation, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
+        CaseData.localisingExplanation = EditorGUILayout.TextArea(CaseData.localisingExplanation, GUILayout.MaxWidth(600), GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -445,7 +445,7 @@ public class CaseEditor : EditorWindow {
         // Test question
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Test Question: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.testQuestion = EditorGUILayout.TextArea(CaseData.testQuestion, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.MaxHeight(100));
+        CaseData.testQuestion = EditorGUILayout.TextArea(CaseData.testQuestion, GUILayout.MaxWidth(600), GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -468,7 +468,7 @@ public class CaseEditor : EditorWindow {
         // Answer Explanation
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Explanation: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.answerExplanation = EditorGUILayout.TextArea(CaseData.answerExplanation, GUILayout.ExpandWidth(false), GUILayout.Width(400), GUILayout.Height(200), GUILayout.MaxHeight(200));
+        CaseData.answerExplanation = EditorGUILayout.TextArea(CaseData.answerExplanation, GUILayout.MaxWidth(600), GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 

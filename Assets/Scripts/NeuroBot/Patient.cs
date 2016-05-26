@@ -118,6 +118,14 @@ public class Patient : MonoBehaviour
     public Power face_power_upper;
     public Power face_power_mid;
     public Power face_power_lower;
+
+    // Clinical exam
+    public Text hearingText;
+    public Text cornealReflexText;
+    public Text visualFieldsText;
+    public Text gagReflexText;
+    public Text speechText;
+    public Button speechButton;
     #endregion
 
     #region Elimination Variables
@@ -277,14 +285,14 @@ public class Patient : MonoBehaviour
 
         // Power
         // Upper - Eyebrows raising
-        if (CaseData.state_Brow_R == State.Normal && CaseData.state_Brow_R == State.Normal)
+        if (CaseData.state_Brow_R == State.Normal && CaseData.state_Brow_L == State.Normal)
             face_power_upper.faceState = FaceState.BothEyebrowsUp;
         else if (CaseData.state_Brow_R == State.Abnormal)
             face_power_upper.faceState = FaceState.LeftEyebrowUp;
         else if (CaseData.state_Brow_L == State.Abnormal)
             face_power_upper.faceState = FaceState.RightEyebrowUp;
         // Mid - Eyes squinting
-        if (CaseData.state_Eye_R == State.Normal && CaseData.state_Eye_R == State.Normal)
+        if (CaseData.state_Eye_R == State.Normal && CaseData.state_Eye_L == State.Normal)
             face_power_mid.faceState = FaceState.BothSquint;
         else if (CaseData.state_Eye_R == State.Abnormal)
             face_power_mid.faceState = FaceState.LeftSquint;
@@ -297,6 +305,17 @@ public class Patient : MonoBehaviour
             face_power_lower.faceState = FaceState.LeftGritTeeth;
         else if (CaseData.state_Mouth_L == State.Abnormal)
             face_power_lower.faceState = FaceState.RightGritTeeth;
+
+        // Clinical exam
+        hearingText.text = CaseData.hearing;
+        cornealReflexText.text = CaseData.cornealReflex;
+        visualFieldsText.text = CaseData.visualFields;
+        gagReflexText.text = CaseData.gagReflex;
+        string speech = CaseData.speech;
+        if (string.IsNullOrEmpty(speech) || speech == "Normal" || speech == "Nil")
+            speechButton.gameObject.SetActive(false);
+        else
+            speechText.text = CaseData.speech;
 
         // Neuraxis Elimination Game setup
         neuraxis_C = CaseData.neuraxis_C;

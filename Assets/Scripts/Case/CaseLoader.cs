@@ -73,6 +73,11 @@ public class CaseLoader : MonoBehaviour
         if (result == false)
             print("Failed to reinitialize ConcludingTest!");
 
+        // Initialize Scroll Bars
+        result = ScrollManager.Instance.Init();
+        if (result == false)
+            print("Failed to reinitialize Scroll bars!");
+
         return result;
     }
 }
