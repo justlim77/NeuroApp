@@ -22,7 +22,7 @@ public class ConcludingTest : MonoBehaviour
 
 	void Start ()
     {
-        Init();
+        //Init();
 	}
 
     public bool Init()
@@ -101,20 +101,20 @@ public class ConcludingTest : MonoBehaviour
                     // Enable content
                     scrollView.SetActive(true);
 
+                    Core.BroadcastEvent("OnUpdateBonus", this, bonusCorrect);
                     return true;
                 }
                 else
                 {
                     bonusCorrect = m_FirstAttempt = false;
+                    Core.BroadcastEvent("OnUpdateBonus", this, bonusCorrect);
+                    return false;
                 }
 
-                Core.BroadcastEvent("OnUpdateBonus", this, bonusCorrect);
-                return false;
-
             case TestType.Multiple:
-                return false;
+                break;
         }
 
-        return false;
+        return true;
     }
 }

@@ -69,8 +69,6 @@ public class ToolControl : MonoBehaviour
         if (result == false)
             print("Failed to clear tool label!");
 
-        // Deselect any active tools
-        ResetTools();
 
         // Deactivate tool cursor image
         while (toolCursor.activeInHierarchy)
@@ -90,19 +88,21 @@ public class ToolControl : MonoBehaviour
         m_ToolUseCount = 0;
 
         // Add tools to list
-        tools.Clear();
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Tool tool = transform.GetChild(i).GetComponent<Tool>();
-            if (tool != null)
-                tools.Add(tool);
-
-        }
+        //tools.Clear();
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    Tool tool = transform.GetChild(i).GetComponent<Tool>();
+        //    if (tool != null)
+        //        tools.Add(tool);
+        //}
 
         foreach (Tool tool in tools)
             result = tool.Init();
         if (result == false)
             print("Failed to initialize tools!");
+
+        // Deselect any active tools
+        ResetTools();
 
         if(activeOnStart == false)
             while (gameObject.activeInHierarchy)
@@ -115,11 +115,8 @@ public class ToolControl : MonoBehaviour
 
     void Update()
     {
-        if (debug)
-        {
-            //Debug.Log("Bed anchored position: " + bedRectTrans.anchoredPosition);
-            Debug.Log("Speech bubble anchored position: " + speechRectTrans.anchoredPosition);
-        }
+        //Debug.Log("Bed anchored position: " + bedRectTrans.anchoredPosition);
+        //Debug.Log("Speech bubble anchored position: " + speechRectTrans.anchoredPosition);
     }
 
     public void ResetTools()

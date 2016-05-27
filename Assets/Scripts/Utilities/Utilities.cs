@@ -32,6 +32,8 @@ public class Utilities : MonoBehaviour
 
         m_Fade = fadeObject.GetComponent<Fade>();
         m_CurrentScene = SceneManager.GetActiveScene();
+        QualitySettings.SetQualityLevel(0);
+        qualityIndex = QualitySettings.GetQualityLevel();
     }
 
     void Start()
@@ -141,5 +143,17 @@ public class Utilities : MonoBehaviour
         m_Rayhit2D = Physics2D.Raycast(worldPoint, Vector2.zero);
         if (m_Rayhit2D.collider != null)
             Debug.Log(m_Rayhit2D.collider.name);
+    }
+
+    int qualityIndex;
+    int maxQualityIndex = 3;
+    public void ChangeQuality()
+    {
+        //qualityIndex += 1;
+        qualityIndex = qualityIndex == maxQualityIndex ? 0 : qualityIndex + 1;
+
+        QualitySettings.SetQualityLevel(qualityIndex);
+
+        Debug.Log("Quality level set to " + QualitySettings.GetQualityLevel());
     }
 }

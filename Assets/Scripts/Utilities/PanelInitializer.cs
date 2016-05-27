@@ -24,7 +24,12 @@ public class PanelInitializer : MonoBehaviour {
             m_rect.anchoredPosition = new Vector2(pos.x, pos.y);
         }
 
+        Invoke("Init", 0.01f);
+    }
 
+    bool Init()
+    {
         gameObject.SetActive(!isOffByDefault);
+        return true;
     }
 }

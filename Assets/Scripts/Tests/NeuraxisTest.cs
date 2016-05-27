@@ -48,16 +48,16 @@ public class NeuraxisTest : MonoBehaviour
     private void Start()
     {
         // Add neuraxis elimination data to neuraxisDictionary
-        neuraxisDict.Add("C", !Patient.CaseData.neuraxis_C);
-        neuraxisDict.Add("SC", !Patient.CaseData.neuraxis_SC);
-        neuraxisDict.Add("BS", !Patient.CaseData.neuraxis_BS);
-        neuraxisDict.Add("SCORD", !Patient.CaseData.neuraxis_SCORD);
-        neuraxisDict.Add("AHC", !Patient.CaseData.neuraxis_AHC);
-        neuraxisDict.Add("R", !Patient.CaseData.neuraxis_R);
-        neuraxisDict.Add("P", !Patient.CaseData.neuraxis_P);
-        neuraxisDict.Add("PN", !Patient.CaseData.neuraxis_PN);
-        neuraxisDict.Add("NMJ", !Patient.CaseData.neuraxis_NMJ);
-        neuraxisDict.Add("M", !Patient.CaseData.neuraxis_M);
+        neuraxisDict.Add("C", false);
+        neuraxisDict.Add("SC", false);
+        neuraxisDict.Add("BS", false);
+        neuraxisDict.Add("SCORD", false);
+        neuraxisDict.Add("AHC", false);
+        neuraxisDict.Add("R", false);
+        neuraxisDict.Add("P", false);
+        neuraxisDict.Add("PN", false);
+        neuraxisDict.Add("NMJ", false);
+        neuraxisDict.Add("M", false);
 
         //Init();
     }
@@ -108,6 +108,10 @@ public class NeuraxisTest : MonoBehaviour
         result = !btnNext.activeInHierarchy;
         if (result == false)
             print("Failed to disable Neuraxis Next button!");
+
+        // Reset 'Submit' button's color and text
+        m_SubmitImage.color = m_OriginalColor;
+        m_SubmitText.text = "Submit";
 
         // Require the player to match all neuraxis specifications as per condition
         m_RequiredCorrect = transform.childCount;
