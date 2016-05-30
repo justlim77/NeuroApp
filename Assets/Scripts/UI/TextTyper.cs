@@ -10,22 +10,18 @@ public class TextTyper : MonoBehaviour {
     public AudioClip typeSound1;
     public AudioClip typeSound2;
 
-    Text m_Text;
-    WaitForSeconds m_LetterPause;
+    Text _text;
+    WaitForSeconds _letterPause;
     bool _skip = false;
 
-    void OnEnable()
+    public bool Init()
     {
-        if (m_Text == null)
-            m_Text = GetComponent<Text>();
-        Clear();
-    }
+        if (_text == null)
+            _text = GetComponent<Text>();
 
-    void Awake()
-    {
-        if (m_Text == null)
-            m_Text = GetComponent<Text>();
-        m_LetterPause = new WaitForSeconds(letterPause);
+        _letterPause = new WaitForSeconds(letterPause);
+
+        return true;
     }
 
     void Start()
@@ -44,7 +40,7 @@ public class TextTyper : MonoBehaviour {
         // Type staggered chars
         foreach (char letter in messageArray)
         {
-            m_Text.text += letter;
+            _text.text += letter;
             if (typeSound1 && typeSound2)
                 AudioManager.Instance.RandomizeSFX(typeSound1, typeSound2);
             if (_skip)
@@ -53,25 +49,25 @@ public class TextTyper : MonoBehaviour {
                 yield break;
             }
             else            
-                yield return m_LetterPause;
+                yield return _letterPause;
         }
     }
 
     public void Clear()
     {
-        if (m_Text != null)
-            m_Text.text = string.Empty;
+        if (_text != null)
+            _text.text = string.Empty;
         message = string.Empty;
         _skip = false;
     }
 
     public void Skip()
     {
-        m_Text.text = message;
+        _text.text = message;
     }
 
     public void FadeText()
     {
-        m_Text.CrossFadeAlpha(0.0f, 1.0f, true);
+        _text.CrossFadeAlpha(0.0f, 1.0f, true);
     }
 }

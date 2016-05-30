@@ -17,10 +17,10 @@ public class Utilities : MonoBehaviour
     #endregion
 
     #region Private Member Variables
-    private Ray2D m_Ray2D;
-    private RaycastHit2D m_Rayhit2D;
-    private Fade m_Fade;
-    private Scene m_CurrentScene;
+    private Ray2D _ray2D;
+    private RaycastHit2D _rayHit2D;
+    private Fade _fade;
+    private Scene _currentScene;
     #endregion
 
     void Awake ()
@@ -30,8 +30,8 @@ public class Utilities : MonoBehaviour
         if (quitKey == KeyCode.None)
             quitKey = KeyCode.Escape;
 
-        m_Fade = fadeObject.GetComponent<Fade>();
-        m_CurrentScene = SceneManager.GetActiveScene();
+        _fade = fadeObject.GetComponent<Fade>();
+        _currentScene = SceneManager.GetActiveScene();
         QualitySettings.SetQualityLevel(0);
         qualityIndex = QualitySettings.GetQualityLevel();
     }
@@ -70,32 +70,30 @@ public class Utilities : MonoBehaviour
     }
     #endregion
 
-    IEnumerator Fade(GameObject _panel)
+    IEnumerator Fade(GameObject panel)
     {
-        m_Fade.fadeType = global::Fade.FadeType.In;
-        m_Fade.enabled = true;
-        fadeObject.SetActive(true);
-
-        yield return new WaitForSeconds(0.3f);
+        _fade.fadeType = global::Fade.FadeType.In;
+        yield return _fade.FadeRoutine();
 
         //Only activate panel if it is currently not active
-        if (!_panel.activeInHierarchy)
-            _panel.SetActive(true);
+        if (!panel.activeInHierarchy)
+            panel.SetActive(true);
 
-        m_Fade.fadeType = global::Fade.FadeType.Out;
-        fadeObject.SetActive(true);
-        m_Fade.enabled = true;
 
         //Set the current panel to draw on top of every other panel
-        _panel.transform.SetSiblingIndex(fadeObject.transform.GetSiblingIndex() - 1);        
+        panel.transform.SetSiblingIndex(fadeObject.transform.GetSiblingIndex() - 1);        
+
+        _fade.fadeType = global::Fade.FadeType.Out;
+        yield return _fade.FadeRoutine();
+
     }
 
     IEnumerator FadeToClear(GameObject panel)
     {
-        m_Fade.SetColor(Color.black);
-        m_Fade.fadeType = global::Fade.FadeType.Out;
+        _fade.SetColor(Color.black);
+        _fade.fadeType = global::Fade.FadeType.Out;
         fadeObject.SetActive(true);
-        m_Fade.enabled = true;
+        _fade.enabled = true;
 
         yield return new WaitForSeconds(0.3f);
 
@@ -106,9 +104,9 @@ public class Utilities : MonoBehaviour
     IEnumerator FadeToBlack(GameObject panel)
     {
         //m_Fade.SetColor(Color.black);
-        m_Fade.fadeType = global::Fade.FadeType.In;
+        _fade.fadeType = global::Fade.FadeType.In;
         fadeObject.SetActive(true);
-        m_Fade.enabled = true;
+        _fade.enabled = true;
 
         yield return new WaitForSeconds(0.3f);
 
@@ -119,7 +117,7 @@ public class Utilities : MonoBehaviour
     IEnumerator RunRestartGame()
     {
 #if UNITY_5_3
-        SceneManager.LoadScene(m_CurrentScene.buildIndex);
+        SceneManager.LoadScene(_currentScene.buildIndex);
 #else
         Application.LoadLevel(Application.loadedLevel);
 #endif
@@ -140,9 +138,9 @@ public class Utilities : MonoBehaviour
     void CheckRaycast()
     {
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        m_Rayhit2D = Physics2D.Raycast(worldPoint, Vector2.zero);
-        if (m_Rayhit2D.collider != null)
-            Debug.Log(m_Rayhit2D.collider.name);
+        _rayHit2D = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (_rayHit2D.collider != null)
+            Debug.Log(_rayHit2D.collider.name);
     }
 
     int qualityIndex;

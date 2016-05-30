@@ -27,7 +27,7 @@ public class CaseLoader : MonoBehaviour
             print("Failed to reinitialize!");
     }
 
-    IEnumerator RunLoadCase(int index)
+    public IEnumerator RunLoadCase(int index, bool activateNextPanel = true)
     {
         patient.LoadCase(index);
 
@@ -39,7 +39,10 @@ public class CaseLoader : MonoBehaviour
 
         yield return RunReinitializeAll();
 
-        utilities.ActivatePanel(nextPanel);
+        if (activateNextPanel)
+        {
+            utilities.ActivatePanel(nextPanel);
+        }
     }
 
     bool RunReinitializeAll()

@@ -22,28 +22,38 @@ public class TutorialSequence : MonoBehaviour
     public Transform toolCursor;
 
     Button button;
-    bool proceed = false;
+    Image _image;
+    bool _proceed = false;
 
     void Awake()
     {
         button = tutorialLabel.GetComponent<Button>();
-
-        tutorialLabel.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        _image = GetComponent<Image>();
+        _image.enabled = false;
     }
 
     void OnEnable()
     {
-        StartCoroutine(RunTutorial());
+        //StartCoroutine(RunTutorial());
     }
 
-    void Start() {
-    }
-
-    IEnumerator RunTutorial()
+    void Start()
     {
-        // Load case 1 : Peripheral neuropathy as tutorial stage
-        caseLoader.LoadCase(0);
+    }
+
+    public void RunTutorial()
+    {
+        StartCoroutine(TutorialRoutine());
+    }
+
+    IEnumerator TutorialRoutine()
+    {
+        _image.enabled = true;
+        tutorialLabel.gameObject.SetActive(true);
+
+        // Load case 1 as tutorial stage
+        //caseLoader.LoadCase(0);
+        yield return caseLoader.RunLoadCase(0);
 
         // Set parent to main panel > border panel render top
         transform.SetParent(bed.parent);
@@ -83,24 +93,25 @@ public class TutorialSequence : MonoBehaviour
 
         // End
         tutorialLabel.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        _image.enabled = false;
 
         yield break;
     }
 
     public void Proceed()
     {
-        proceed = true;
+        _proceed = true;
     }
 
     IEnumerator Type(string msg)
     {
         button.interactable = false;
-        proceed = false;
+        _proceed = false;
         print(msg);
         yield return textTyper.RunTypeText(msg);
         button.interactable = true;
-        while (!proceed)
+        while (!_proceed)
             yield return 0;
     }
 }

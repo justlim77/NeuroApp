@@ -3,38 +3,45 @@ using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent(typeof(Image))]
-public class Fade : MonoBehaviour {
-
+public class Fade : MonoBehaviour
+{
     public Color fadeOutColor = new Color(0, 0, 0, 0);
     public Color fadeInColor = new Color(0, 0, 0, 1);
     public enum FadeType { In, Out };
     public FadeType fadeType = FadeType.Out;
     public float fadeDuration = 0.3f;
 
-    Image m_FadeImage;
+    Image _fadeImage;
 
     void Awake()
     {
-        m_FadeImage = GetComponent<Image>();
+        _fadeImage = GetComponent<Image>();
 
         Init();
     }
 
-    void Init()
+    bool Init()
     {
-        //iTween.Init(gameObject);
-        m_FadeImage.color = fadeInColor;
+        _fadeImage.color = fadeInColor;
         gameObject.transform.localPosition = Vector2.zero;
+        return true;
     }
 
-    void OnEnable()
+    void Start()
     {
-        StartCoroutine(RunFade());
+        RunFade();
     }
 
-    IEnumerator RunFade()
+    public void RunFade()
+    {
+        StartCoroutine(FadeRoutine());
+    }
+
+    public IEnumerator FadeRoutine()
     {
         transform.SetAsLastSibling();
+
+        _fadeImage.enabled = true;
 
         switch (fadeType)
         {
@@ -48,16 +55,16 @@ public class Fade : MonoBehaviour {
 
         yield return new WaitForSeconds(fadeDuration);
 
-        gameObject.SetActive(false);
+        _fadeImage.enabled = false;
     }
 
     void FadeAlpha(Color newColor)
     {
-        m_FadeImage.color = newColor;
+        _fadeImage.color = newColor;
     }
 
     public void SetColor(Color color)
     {
-        m_FadeImage.color = color;
+        _fadeImage.color = color;
     }
 }
