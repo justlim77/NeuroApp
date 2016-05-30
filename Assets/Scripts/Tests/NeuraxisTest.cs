@@ -216,7 +216,7 @@ public class NeuraxisTest : MonoBehaviour
     {
         string localisationString = string.Empty;
         int arrayLength = localisingSteps.Length;
-
+        
         m_PrevHintIndex++;
         if (m_PrevHintIndex >= arrayLength)
             m_PrevHintIndex = 0;

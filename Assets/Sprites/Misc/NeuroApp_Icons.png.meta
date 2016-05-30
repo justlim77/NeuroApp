@@ -1,0 +1,711 @@
+fileFormatVersion: 2
+guid: a824b16ab64ed364e9cdc06131a457d4
+timeCreated: 1459360099
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: NeuroApp_Icons_0
+    21300002: NeuroApp_Icons_1
+    21300004: NeuroApp_Icons_2
+    21300006: NeuroApp_Icons_3
+    21300008: NeuroApp_Icons_4
+    21300010: NeuroApp_Icons_5
+    21300012: NeuroApp_Icons_6
+    21300014: NeuroApp_Icons_7
+    21300016: NeuroApp_Icons_8
+    21300018: NeuroApp_Icons_9
+    21300020: NeuroApp_Icons_10
+    21300022: NeuroApp_Icons_11
+    21300024: NeuroApp_Icons_12
+    21300026: NeuroApp_Icons_13
+    21300028: NeuroApp_Icons_14
+    21300030: NeuroApp_Icons_15
+    21300032: NeuroApp_Icons_16
+    21300034: NeuroApp_Icons_17
+    21300036: NeuroApp_Icons_18
+    21300038: NeuroApp_Icons_19
+    21300040: NeuroApp_Icons_20
+    21300042: NeuroApp_Icons_21
+    21300044: NeuroApp_Icons_22
+    21300046: NeuroApp_Icons_23
+    21300048: NeuroApp_Icons_24
+    21300050: NeuroApp_Icons_25
+    21300052: NeuroApp_Icons_26
+    21300054: NeuroApp_Icons_27
+    21300056: NeuroApp_Icons_28
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: NeuroApp_Icons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: -60}
+        - {x: -32, y: -60}
+        - {x: 63, y: 22}
+        - {x: 63, y: 56}
+        - {x: 57, y: 64}
+        - {x: 24, y: 64}
+        - {x: -50, y: 12}
+        - {x: -63, y: -21}
+    - name: NeuroApp_Icons_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31, y: 55}
+        - {x: 12, y: 63}
+        - {x: -11, y: 63}
+        - {x: -14, y: 56}
+        - {x: -12, y: 43}
+        - {x: -64, y: -40}
+        - {x: -64, y: -49}
+        - {x: -52, y: -63}
+        - {x: -42, y: -63}
+        - {x: 56, y: -10}
+        - {x: 60, y: 0}
+        - {x: 60, y: 18}
+    - name: NeuroApp_Icons_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 63}
+        - {x: -61, y: 18}
+        - {x: -61, y: -24}
+        - {x: 19, y: -63}
+        - {x: 63, y: -63}
+        - {x: 64, y: -62}
+        - {x: 64, y: -30}
+        - {x: 16, y: 63}
+    - name: NeuroApp_Icons_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 64}
+        - {x: -63, y: 56}
+        - {x: -63, y: -29}
+        - {x: -43, y: -60}
+        - {x: -27, y: -62}
+        - {x: 41, y: -62}
+        - {x: 63, y: -52}
+        - {x: 63, y: 58}
+        - {x: 53, y: 64}
+    - name: NeuroApp_Icons_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 60, y: -45}
+        - {x: 60, y: 62}
+        - {x: 38, y: 62}
+        - {x: -44, y: 51}
+        - {x: -64, y: -7}
+        - {x: -64, y: -63}
+        - {x: -16, y: -63}
+        - {x: -8, y: -47}
+        - {x: 25, y: -59}
+        - {x: 58, y: -62}
+    - name: NeuroApp_Icons_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: 50}
+        - {x: -63, y: 25}
+        - {x: -63, y: -28}
+        - {x: -61, y: -37}
+        - {x: -24, y: -51}
+        - {x: 43, y: -51}
+        - {x: 63, y: -39}
+        - {x: 63, y: 29}
+        - {x: 54, y: 50}
+    - name: NeuroApp_Icons_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: -15}
+        - {x: 15, y: -63}
+        - {x: 63, y: -63}
+        - {x: 63, y: -39}
+        - {x: 20, y: 56}
+        - {x: 10, y: 63}
+        - {x: -45, y: 63}
+        - {x: -63, y: 57}
+    - name: NeuroApp_Icons_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 64}
+        - {x: -63, y: 39}
+        - {x: -63, y: -34}
+        - {x: -59, y: -48}
+        - {x: -34, y: -62}
+        - {x: 24, y: -62}
+        - {x: 62, y: -49}
+        - {x: 63, y: -46}
+        - {x: 63, y: 32}
+        - {x: 35, y: 64}
+    - name: NeuroApp_Icons_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 63}
+        - {x: -39, y: 49}
+        - {x: -41, y: 47}
+        - {x: -41, y: -46}
+        - {x: -37, y: -57}
+        - {x: -21, y: -63}
+        - {x: 6, y: -63}
+        - {x: 17, y: -59}
+        - {x: 40, y: -3}
+        - {x: 40, y: 51}
+        - {x: 25, y: 63}
+      - - {x: -26, y: -34}
+        - {x: -26, y: -35}
+        - {x: -24, y: -37}
+        - {x: -22, y: -37}
+        - {x: -19, y: -34}
+        - {x: -20, y: -31}
+        - {x: -23, y: -31}
+      - - {x: 12, y: -34}
+        - {x: 12, y: -35}
+        - {x: 14, y: -37}
+        - {x: 16, y: -37}
+        - {x: 19, y: -34}
+        - {x: 18, y: -31}
+        - {x: 15, y: -31}
+    - name: NeuroApp_Icons_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53, y: 56}
+        - {x: -63, y: 49}
+        - {x: -63, y: -26}
+        - {x: -39, y: -55}
+        - {x: 27, y: -55}
+        - {x: 63, y: -26}
+        - {x: 63, y: 31}
+        - {x: 50, y: 56}
+    - name: NeuroApp_Icons_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 63}
+        - {x: -63, y: 63}
+        - {x: -63, y: 6}
+        - {x: -44, y: -51}
+        - {x: -31, y: -63}
+        - {x: 32, y: -63}
+        - {x: 63, y: -46}
+        - {x: 63, y: 22}
+        - {x: 55, y: 42}
+    - name: NeuroApp_Icons_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: 63}
+        - {x: -63, y: 48}
+        - {x: -38, y: -63}
+        - {x: 2, y: -63}
+        - {x: 63, y: 4}
+        - {x: 63, y: 46}
+        - {x: -10, y: 63}
+    - name: NeuroApp_Icons_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: 10}
+        - {x: 18, y: -63}
+        - {x: 63, y: -63}
+        - {x: 63, y: -32}
+        - {x: 13, y: 63}
+        - {x: -37, y: 63}
+        - {x: -47, y: 56}
+        - {x: -63, y: 29}
+    - name: NeuroApp_Icons_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49, y: 64}
+        - {x: -64, y: 54}
+        - {x: -64, y: -47}
+        - {x: -33, y: -62}
+        - {x: 35, y: -62}
+        - {x: 62, y: -58}
+        - {x: 62, y: 49}
+        - {x: 31, y: 64}
+    - name: NeuroApp_Icons_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 47}
+        - {x: -55, y: 14}
+        - {x: -55, y: -4}
+        - {x: -28, y: -47}
+        - {x: 55, y: -47}
+        - {x: 55, y: 2}
+        - {x: 26, y: 47}
+    - name: NeuroApp_Icons_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 61, y: 62}
+        - {x: 18, y: 62}
+        - {x: -64, y: -4}
+        - {x: -64, y: -28}
+        - {x: -35, y: -62}
+        - {x: -15, y: -62}
+        - {x: -3, y: -48}
+        - {x: 61, y: 32}
+    - name: NeuroApp_Icons_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 62}
+        - {x: -40, y: 47}
+        - {x: -40, y: 9}
+        - {x: -26, y: -62}
+        - {x: -24, y: -63}
+        - {x: 19, y: -63}
+        - {x: 39, y: 4}
+        - {x: 39, y: 49}
+        - {x: 24, y: 62}
+    - name: NeuroApp_Icons_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 62}
+        - {x: -40, y: 52}
+        - {x: -40, y: -14}
+        - {x: -23, y: -64}
+        - {x: 15, y: -64}
+        - {x: 40, y: -16}
+        - {x: 40, y: 43}
+        - {x: 31, y: 62}
+    - name: NeuroApp_Icons_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 60}
+        - {x: 6, y: 62}
+        - {x: -10, y: 62}
+        - {x: -63, y: 26}
+        - {x: -63, y: -64}
+        - {x: 53, y: -64}
+        - {x: 63, y: -15}
+        - {x: 63, y: 25}
+    - name: NeuroApp_Icons_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60, y: 0}
+        - {x: -64, y: 0}
+        - {x: -64, y: -64}
+        - {x: 0, y: -64}
+        - {x: 0, y: -50}
+        - {x: -9, y: -4}
+    - name: NeuroApp_Icons_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51, y: 46}
+        - {x: -54, y: 61}
+        - {x: -64, y: 61}
+        - {x: -64, y: -64}
+        - {x: 61, y: -64}
+        - {x: 61, y: -61}
+        - {x: 60, y: -58}
+    - name: NeuroApp_Icons_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: 63}
+        - {x: -63, y: 22}
+        - {x: -6, y: -61}
+        - {x: -3, y: -63}
+        - {x: 6, y: -63}
+        - {x: 63, y: 28}
+        - {x: 63, y: 63}
+    - name: NeuroApp_Icons_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 3}
+        - {x: -63, y: 1}
+        - {x: -63, y: -1}
+        - {x: -1, y: -63}
+        - {x: 1, y: -63}
+        - {x: 63, y: -1}
+        - {x: 63, y: 1}
+        - {x: 61, y: 3}
+      - - {x: -62, y: 63}
+        - {x: -63, y: 60}
+        - {x: -1, y: -2}
+        - {x: 1, y: -2}
+        - {x: 63, y: 60}
+        - {x: 62, y: 63}
+    - name: NeuroApp_Icons_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 63}
+        - {x: -64, y: -21}
+        - {x: -64, y: -27}
+        - {x: 16, y: -63}
+        - {x: 25, y: -63}
+        - {x: 62, y: -29}
+        - {x: 62, y: -18}
+        - {x: 27, y: 63}
+    - name: NeuroApp_Icons_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 61, y: 62}
+        - {x: -58, y: 62}
+        - {x: -63, y: 61}
+        - {x: -63, y: -63}
+        - {x: 55, y: -63}
+        - {x: 63, y: -55}
+        - {x: 63, y: 56}
+    - name: NeuroApp_Icons_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: 41}
+        - {x: -63, y: -29}
+        - {x: -48, y: -63}
+        - {x: 43, y: -63}
+        - {x: 63, y: -49}
+        - {x: 63, y: 39}
+        - {x: 60, y: 46}
+        - {x: 25, y: 63}
+        - {x: -21, y: 63}
+        - {x: -42, y: 59}
+    - name: NeuroApp_Icons_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55, y: 62}
+        - {x: -64, y: 60}
+        - {x: -64, y: 35}
+        - {x: -41, y: 11}
+        - {x: -64, y: -39}
+        - {x: -64, y: -57}
+        - {x: -57, y: -64}
+        - {x: 57, y: -64}
+        - {x: 62, y: -63}
+        - {x: 62, y: 62}
+    - name: NeuroApp_Icons_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 61, y: -64}
+        - {x: 61, y: -46}
+        - {x: 44, y: 49}
+        - {x: -40, y: 61}
+        - {x: -64, y: 61}
+        - {x: -64, y: -64}
+    - name: NeuroApp_Icons_28
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 62, y: -15}
+        - {x: 62, y: 46}
+        - {x: -20, y: 46}
+        - {x: -28, y: 26}
+        - {x: -28, y: -28}
+        - {x: -11, y: -62}
+        - {x: 8, y: -62}
+        - {x: 10, y: -61}
+        - {x: 62, y: -55}
+        - {x: 62, y: -52}
+        - {x: 47, y: -36}
+      - - {x: -29, y: -21}
+        - {x: -46, y: -35}
+        - {x: -46, y: -45}
+        - {x: -45, y: -47}
+        - {x: -36, y: -47}
+        - {x: -19, y: -27}
+        - {x: -19, y: -22}
+        - {x: -21, y: -21}
+      - - {x: -61, y: 6}
+        - {x: -64, y: 5}
+        - {x: -64, y: -3}
+        - {x: -60, y: -7}
+        - {x: -55, y: -7}
+        - {x: -32, y: -4}
+        - {x: -31, y: -3}
+        - {x: -31, y: 4}
+        - {x: -34, y: 6}
+      - - {x: -39, y: 47}
+        - {x: -45, y: 47}
+        - {x: -49, y: 45}
+        - {x: -49, y: 38}
+        - {x: -39, y: 28}
+        - {x: -29, y: 22}
+        - {x: -26, y: 20}
+        - {x: -24, y: 20}
+        - {x: -21, y: 23}
+        - {x: -22, y: 27}
+        - {x: -30, y: 37}
+      - - {x: -2, y: 63}
+        - {x: -4, y: 62}
+        - {x: -4, y: 33}
+        - {x: 0, y: 31}
+        - {x: 5, y: 31}
+        - {x: 7, y: 36}
+        - {x: 9, y: 58}
+        - {x: 7, y: 63}
+    outline: []
+  spritePackingTag: misc
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

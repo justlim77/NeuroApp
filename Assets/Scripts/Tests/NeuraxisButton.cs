@@ -17,10 +17,12 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
     public Text text;
 
     private Image m_Image;
+    Button _button;
 
     void Awake() 
     {
         m_Image = GetComponent<Image>();
+        _button = GetComponent<Button>();
     }
 
     void Start() 
@@ -41,6 +43,8 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
         if (crossImage.enabled)
             crossImage.enabled = false;
 
+        _button.interactable = true;
+
         return result;
     }
 
@@ -56,9 +60,10 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
     }
 
     public void OnPointerClick(PointerEventData eventData)
-    {
-        //Toggle between colors
-        //m_Image.color = m_Image.color == correctColor ? wrongColor : correctColor;
+    {        
+        // If button isn't interactable, return
+        if (!_button.interactable)
+            return;
 
         //Toggle between selected & deselected
         eliminate = !eliminate;
@@ -84,5 +89,6 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
     public void SetHighlight()
     {
         m_Image.color = correctAnswer ? wrongColor : correctColor;
+        _button.interactable = false;
     }
 }

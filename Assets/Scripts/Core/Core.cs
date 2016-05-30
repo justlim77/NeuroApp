@@ -31,7 +31,7 @@ public static partial class Core
     }
     public static void UnsubscribeEvent(string eventName, GameEvent eventObj)
     {
-         //try to fetch event
+        //try to fetch event
         GameEvent existing = null;
         if (_eventBag.TryGetValue(eventName, out existing))
             existing -= eventObj; //delegate unsubscribe
@@ -46,6 +46,6 @@ public static partial class Core
 
     public static string GetAbsolutePath(string localPath)
     {
-        return string.Format("{0}/{1}",Application.dataPath, localPath);
+        return string.Format("{0}/{1}", Application.dataPath, localPath);
     }
 }

@@ -17,4 +17,9 @@ public class ScrollUpdate : MonoBehaviour {
 
         return true;
     }
+
+    void OnEnable()
+    {
+        Init();
+    }
 }
