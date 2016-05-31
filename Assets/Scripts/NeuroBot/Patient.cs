@@ -158,7 +158,7 @@ public class Patient : MonoBehaviour
         _CaseData = null;
     }
     private bool Init()
-    {        
+    {
         // General
         caseDescriptionText.text = CaseData.caseDescription;    // Case description setup
         toneText.text = CaseData.tone;                          // Tone setup
@@ -354,9 +354,12 @@ public class Patient : MonoBehaviour
         return true;
     }
 
-    public void LoadCase(int index)
+    public static int CaseIdx = 0;
+    public void LoadCase(int idx)
     {
-        CaseData = _caseDatabase.caseList.caseList[index];
+        CaseData = _caseDatabase.caseList.caseList[idx];
+
+        CaseIdx = idx;
 
         Init();
     }

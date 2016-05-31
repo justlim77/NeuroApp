@@ -14,18 +14,28 @@ public class TextTyper : MonoBehaviour {
     WaitForSeconds _letterPause;
     bool _skip = false;
 
-    public bool Init()
+    bool Init()
     {
+        bool result = true;
+
         if (_text == null)
+        {
             _text = GetComponent<Text>();
+            if (_text == null)
+            {
+                result = false;
+                Debug.Log("Failed to initialize TextTyper!");
+            }
+        }
 
         _letterPause = new WaitForSeconds(letterPause);
 
-        return true;
+        return result;
     }
 
     void Start()
     {
+        Init();
     }
 
     public IEnumerator RunTypeText(string messageToType)

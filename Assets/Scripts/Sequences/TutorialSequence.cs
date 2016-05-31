@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using NeuroApp;
 
 public class TutorialSequence : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class TutorialSequence : MonoBehaviour
     {
         _image.enabled = true;
         tutorialLabel.gameObject.SetActive(true);
+        PanelManager.Instance.EnablePanel(PanelType.Main);
 
         // Load case 1 as tutorial stage
         //caseLoader.LoadCase(0);
@@ -60,7 +62,7 @@ public class TutorialSequence : MonoBehaviour
         tutorialLabel.SetParent(bed.parent);
         tutorialLabel.SetAsLastSibling();
         transform.SetSiblingIndex(tutorialLabel.GetSiblingIndex() - 1);
-        yield return Type(introMsg);
+        yield return StartCoroutine(Type(introMsg));
 
         // Highlight patient & bed
         tutorialLabel.SetAsLastSibling();
@@ -72,12 +74,14 @@ public class TutorialSequence : MonoBehaviour
         transform.SetParent(rightPanel);
         tutorialLabel.SetParent(rightPanel);
         speechBubble.SetAsLastSibling();
+        speechBubble.gameObject.SetActive(true);    // Enable speech bubble
         tutorialLabel.SetAsLastSibling();
         transform.SetSiblingIndex(tutorialLabel.GetSiblingIndex() - 1);
         yield return Type(reactionMsg);
 
         // Highlight description header & text
         speechBubble.SetSiblingIndex(bed.GetSiblingIndex() + 1);
+        speechBubble.gameObject.SetActive(false);    // Disable speech bubble
         descHeader.SetAsLastSibling();
         descText.SetAsLastSibling();
         yield return Type(descMsg);
@@ -112,6 +116,6 @@ public class TutorialSequence : MonoBehaviour
         yield return textTyper.RunTypeText(msg);
         button.interactable = true;
         while (!_proceed)
-            yield return 0;
+            yield return null;
     }
 }

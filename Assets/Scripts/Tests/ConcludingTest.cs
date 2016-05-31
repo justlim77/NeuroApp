@@ -100,6 +100,7 @@ public class ConcludingTest : MonoBehaviour
 
                     // Enable content
                     scrollView.SetActive(true);
+                    scrollView.Init();
 
                     Core.BroadcastEvent("OnUpdateBonus", this, bonusCorrect);
                     return true;

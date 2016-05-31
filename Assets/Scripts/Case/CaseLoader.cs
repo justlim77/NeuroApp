@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CaseLoader : MonoBehaviour
 {
@@ -19,7 +20,21 @@ public class CaseLoader : MonoBehaviour
     {
         StartCoroutine(RunLoadCase(index));
     }
+    public void LoadNextCase()
+    {
+        int caseIdx = Patient.CaseIdx;
+        caseIdx += 1;
+        try
+        {
+            LoadCase(caseIdx);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+            LoadCase(0);
+        }
 
+    }
     public void ReinitializeAll()
     {
         bool result = RunReinitializeAll();
@@ -29,7 +44,15 @@ public class CaseLoader : MonoBehaviour
 
     public IEnumerator RunLoadCase(int index, bool activateNextPanel = true)
     {
-        patient.LoadCase(index);
+        try
+        {
+            patient.LoadCase(index);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+            patient.LoadCase(0);
+        }
 
         foreach (GameObject panel in playPanels)
         {
