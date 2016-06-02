@@ -23,7 +23,8 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     Animator m_ToolCursorAnim;
     Image m_ToolCursorImage;
     Sprite m_ToolSprite;
-    Image _gradientImage;
+    Image _image;
+    Image _gradientImage;    
 
     void Awake()
     {
@@ -35,9 +36,10 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         m_ToolCursorAnim = toolCursor.GetComponent<Animator>();
         m_ToolCursorImage = toolCursor.GetComponent<Image>();
         _gradientImage = toolCursor.transform.GetChild(0).GetComponent<Image>();
-
+        
         //Setup tool sprite reference
-        m_ToolSprite = GetComponent<Image>().sprite;
+        _image = this.GetComponent<Image>();
+        m_ToolSprite = _image.sprite;
         cursorSprite = m_ToolSprite;
 
         Init();
@@ -57,6 +59,9 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         foreach (GameObject interactiveObject in interactiveObjects)
             interactiveObject.SetActive(true);
+
+        // Set tool color to used color
+        _image.color = Constants.const_tool_use_color;
     }
 
     public void DeselectTool()
@@ -133,6 +138,9 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         bool result = true;
 
+        if(_image == null)
+            _image = this.GetComponent<Image>();    
+
         //Disable all interactive objects on awake
         foreach (GameObject interactiveObject in interactiveObjects)
         {
@@ -142,6 +150,9 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         // Reset tool use flag
         m_ToolUsed = false;
+
+        // Reset color
+        _image.color = Color.white;
 
         return result;
     }

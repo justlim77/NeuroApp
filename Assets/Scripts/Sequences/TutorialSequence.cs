@@ -75,6 +75,7 @@ public class TutorialSequence : MonoBehaviour
         tutorialLabel.SetParent(rightPanel);
         speechBubble.SetAsLastSibling();
         speechBubble.gameObject.SetActive(true);    // Enable speech bubble
+        speechBubble.gameObject.GetComponentInChildren<Text>().text = "Hello!";
         tutorialLabel.SetAsLastSibling();
         transform.SetSiblingIndex(tutorialLabel.GetSiblingIndex() - 1);
         yield return Type(reactionMsg);

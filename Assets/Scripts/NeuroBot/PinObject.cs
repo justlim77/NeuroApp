@@ -34,7 +34,6 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     void Start()
     {
         Init();
-        m_ReactionState = canFeel ? FaceState.Ouch : FaceState.NoReaction;
     }
 
     void LateUpdate()
@@ -47,12 +46,14 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
         m_OriginalColor = mainPanel.color;
         m_Image = GetComponent<Image>();
         m_Image.color = m_Image.color = m_InvisibleColor;
+        m_ReactionState = canFeel ? FaceState.NoReaction : FaceState.Shocked;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         m_Image.color = m_VisibleColor;
-        head.Reaction(FaceState.Shocked);
+        if(!_isPoking)
+            head.Reaction(FaceState.Shocked);
     }
 
     public void OnPointerDown(PointerEventData eventData)

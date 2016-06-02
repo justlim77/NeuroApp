@@ -164,7 +164,8 @@ public class NeuraxisTest : MonoBehaviour
 
         hintText.text = m_NumOfCorrect == m_RequiredCorrect
             ? string.Format("You got {0} of {1} correct!", m_NumOfCorrect, m_RequiredCorrect)
-            : numOfAllowedAttempts > 0 ? string.Format("You got {0} of {1} correct. Please try again.", m_NumOfCorrect, m_RequiredCorrect)            
+            //: numOfAllowedAttempts > 0 ? string.Format("You got {0} of {1} correct. Please try again.", m_NumOfCorrect, m_RequiredCorrect)            
+            : numOfAllowedAttempts > 0 ? "You have one more try."
             : string.Format("You got {0} of {1} correct. Try again next time.", m_NumOfCorrect, m_RequiredCorrect);
 
         bool hasWon = m_NumOfCorrect >= m_RequiredCorrect;

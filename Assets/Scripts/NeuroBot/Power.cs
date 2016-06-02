@@ -26,8 +26,6 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
         if(_image == null)
             _image = GetComponent<Image>();
 
-
-
         _image.color = _invisibleColor;
     }
 
@@ -35,7 +33,7 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
     {
         _image.color = _visibleColor;
         if(!_isTesting)
-            head.Reaction(FaceState.Neutral);
+            head.Reaction(FaceState.Shocked);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -46,7 +44,7 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
     public void OnPointerExit(PointerEventData eventData)
     {
         _image.color = _invisibleColor;
-        if(!_isTesting)
+        if (!_isTesting)
             head.Reaction(FaceState.Neutral);
     }
 
