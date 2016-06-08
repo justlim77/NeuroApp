@@ -14,6 +14,10 @@ public class Case {
     public string otherTests = "Nil";                       // Other important tests
     #endregion
 
+    #region Face
+    public Face face;
+    #endregion
+
     #region Deep Tendon Reflexes (DTR)
     // (+++) - Hyperactive
     // (++) - Normal
@@ -178,7 +182,6 @@ public class Case {
         "Concluding Test #4",
         "Concluding Test #5"
     };
-
 
     // A: Correct answer is?
     public Answer answer;

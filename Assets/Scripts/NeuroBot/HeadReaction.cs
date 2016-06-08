@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using NeuroApp;
 using System.Collections;
+using System;
 
 public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -30,10 +31,12 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public Eye[] eyeScripts;
     public RectTransform[] eyeBrows;
     public Image[] eyeBrowImages;
+    public Image[] eyeLidImages;
     public Image[] wrinkleImages;
 
-    [SerializeField] private float _defaultEyeSize = 8.0f;
-    [SerializeField] private float _enlargedEyeSize = 10.0f;
+    public float defaultEyeSize = 8.0f;
+
+    public Face face;
 
     public FaceState faceState;
     public MouthState mouthState;
@@ -42,10 +45,15 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     float _eyeBrowInitialY;
     bool _isFrozen;
 
+    Pupil _pupil_L, _pupil_R;
+
     void Awake()
     {
         _originalEyes = eyes[0].sprite;
         _eyeBrowInitialY = eyeBrows[0].anchoredPosition.y;
+
+        _pupil_R = innerEyes[0].GetComponent<Pupil>();
+        _pupil_L = innerEyes[1].GetComponent<Pupil>();
 
         Init();
     }
@@ -77,7 +85,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             case FaceState.Smile:
                 mouth.sprite = mouthSmile;
-                ToggleEyes(_originalEyes, _defaultEyeSize);
+                ToggleEyes(_originalEyes, defaultEyeSize);
                 foreach (var wrinkle in wrinkleImages)                    
                     wrinkle.enabled = false;
                 foreach (var brow in eyeBrows)                
@@ -94,22 +102,23 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 break;
             case FaceState.Shocked:
                 mouth.sprite = mouthShocked;
-                ToggleEyes(_originalEyes, _enlargedEyeSize);
+                ToggleEyes(_originalEyes);
                 break;
             case FaceState.OMG:
                 mouth.sprite = mouthWideO;
-                ToggleEyes(_originalEyes, _enlargedEyeSize, 3.0f, true, true, false);
+                ToggleEyes(_originalEyes, defaultEyeSize, 3.0f, true, true, false);
                 CenterEyes();
                 if (teeth != null)
                     teeth.enabled = false;
                 break;
             case FaceState.Ouch:
                 mouth.sprite = mouthSlanted;
-                ToggleEyes(ouchEyes, _defaultEyeSize, 3.0f, false, false);
+                ToggleEyes(ouchEyes, defaultEyeSize, 3.0f, false, false);
+                eyeLidImages[0].enabled = eyeLidImages[1].enabled = false;
                 break;
             case FaceState.Neutral:
                 mouth.sprite = mouthNeutral;
-                ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
+                ToggleEyes(_originalEyes, defaultEyeSize, 3.0f, true, true, false);
                 CenterEyes();
                 if (teeth != null)
                     teeth.enabled = false;
@@ -120,7 +129,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 break;
             case FaceState.NoReaction:
                 mouth.sprite = mouthSlanted;
-                ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
+                ToggleEyes(_originalEyes, defaultEyeSize, 3.0f, true, true, false);
                 CenterEyes();
                 if (teeth != null)
                     teeth.enabled = false;
@@ -192,15 +201,35 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             brow.enabled = showBrow;
         }
 
+        // Toggle eyelids
+        if (eyeLidImages.Length != 0)
+        {
+            try
+            {
+                if (Patient.CaseData.face.rightEyeDroop)
+                    eyeLidImages[0].enabled = true;
+                if (Patient.CaseData.face.leftEyeDroop)
+                    eyeLidImages[1].enabled = true;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
+        }
+
         foreach (var innerEye in innerEyes)
             innerEye.SetActive(showInOutEyes);
 
-        foreach (var middleEye in middleEyes)
+        if (_pupil_L != null && _pupil_R != null)
         {
-            middleEye.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, midSize);
-            middleEye.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, midSize);
-            middleEye.SetActive(showInOutEyes);
+            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.normalSize);
+            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.normalSize);
+            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.normalSize);
+            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.normalSize);       
         }
+
+        foreach (var middleEye in middleEyes)
+            middleEye.SetActive(showInOutEyes);
 
         foreach (var pupil in pupils)
         {
@@ -233,7 +262,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         _isRaising = true;
         mouth.sprite = mouthNeutral;
-        ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, true, false);
+        ToggleEyes(_originalEyes, defaultEyeSize, 3.0f, true, true, false);
         CenterEyes();
 
         foreach (var brow in brows)
@@ -256,11 +285,14 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     void Squint(int browIndex, params Image[] eyes)
     {
         mouth.sprite = mouthNeutral;
-        ToggleEyes(_originalEyes, _defaultEyeSize, 3.0f, true, false, false);
+        ToggleEyes(_originalEyes, defaultEyeSize, 3.0f, true, false, false);
         CenterEyes();
 
         foreach (var eye in eyes)
             eye.sprite = squint;
+
+        foreach (var lid in eyeLidImages)
+            lid.enabled = false;
 
         switch (browIndex)
         {

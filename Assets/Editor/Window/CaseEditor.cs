@@ -39,6 +39,18 @@ public class CaseEditor : EditorWindow {
         CaseData.caseDescription = EditorGUILayout.TextArea(CaseData.caseDescription);
         EditorGUILayout.Space();
 
+        // Default face
+        EditorGUILayout.LabelField("Default Face", EditorStyles.boldLabel);
+        CaseData.face.rightEyeDroop = EditorGUILayout.ToggleLeft("Right Eye Droop", CaseData.face.rightEyeDroop);
+        CaseData.face.leftEyeDroop = EditorGUILayout.ToggleLeft("Left Eye Droop", CaseData.face.leftEyeDroop);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Right Pupil State", GUILayout.MaxWidth(100));
+        CaseData.face.rightPupilState = (PupilState)EditorGUILayout.EnumPopup(CaseData.face.rightPupilState);
+        EditorGUILayout.LabelField("Left Pupil State", GUILayout.MaxWidth(100));
+        CaseData.face.leftPupilState = (PupilState)EditorGUILayout.EnumPopup(CaseData.face.leftPupilState);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+
         //Tone
         EditorGUILayout.LabelField("Tone", EditorStyles.boldLabel);
         CaseData.tone = EditorGUILayout.TextArea(CaseData.tone);

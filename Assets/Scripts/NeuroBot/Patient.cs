@@ -14,6 +14,11 @@ public class Patient : MonoBehaviour
 
     public Text caseDescriptionText;            // Case description heading
 
+    public Face face;                           // Default face
+    public HeadReaction head;
+    public Image eyelid_R;
+    public Image eyelid_L;
+
     #region Clinical Exam Variables
     public Text toneText;                       // Tone
     public Text plantarsText;                   // Plantars
@@ -166,6 +171,9 @@ public class Patient : MonoBehaviour
         cerebellarExamText.text = CaseData.cerebellar;          // Cerebellar exam setup
         otherTestsText.text = CaseData.otherTests;              // Other important tests
 
+        // Face
+        face = CaseData.face;
+
         // Upper limbs
         // Shoulder
         UL_Shoulder_AB_R.text = CaseData.UL_Shoulder_AB_R;
@@ -265,6 +273,13 @@ public class Patient : MonoBehaviour
         LL_S1_L.canFeel = CaseData.LL_S1_L;
 
         // Cranial
+        // General
+        eyelid_R.enabled = eyelid_L.enabled = false;
+        if (face.rightEyeDroop)
+            eyelid_R.enabled = true;
+        if (face.leftEyeDroop)
+            eyelid_L.enabled = true;
+
         // Sensation
         face_upper_R.canFeel = CaseData.face_upper_R;
         face_upper_L.canFeel = CaseData.face_upper_R;
@@ -275,9 +290,23 @@ public class Patient : MonoBehaviour
 
         // Torch - Eyes
         if (pupil_L != null)
-            pupil_L.Init(CaseData.state_Pupil_L);
+        {
+            if (face.leftPupilState.Equals(PupilState.Default))
+                pupil_L.Init(CaseData.state_Pupil_L);
+            else if (face.leftPupilState.Equals(PupilState.Dilated))
+                pupil_L.Init(CaseData.state_Pupil_L, 9, 9, 9, 9);
+            else if (face.leftPupilState.Equals(PupilState.Constricted))
+                pupil_L.Init(CaseData.state_Pupil_L);
+        }
         if (pupil_R != null)
-            pupil_R.Init(CaseData.state_Pupil_R);
+        {
+            if (face.rightPupilState.Equals(PupilState.Default))
+                pupil_R.Init(CaseData.state_Pupil_R);
+            else if (face.rightPupilState.Equals(PupilState.Dilated))
+                pupil_R.Init(CaseData.state_Pupil_R, 9, 9, 9, 9);
+            else if (face.rightPupilState.Equals(PupilState.Constricted))
+                pupil_R.Init(CaseData.state_Pupil_R);
+        }
 
         // Palate & Tongue
         if (palate != null)

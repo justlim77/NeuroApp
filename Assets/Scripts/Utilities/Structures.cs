@@ -18,6 +18,11 @@ namespace NeuroApp
         public static float const_default_delta = 1.0f;
         public static float const_zoom_delta = 6.0f;
         public static Color const_tool_use_color = new Color32(65, 255, 84, 255);
+
+        public static float const_default_pupil_normal = 8.0f;
+        public static float const_default_pupil_dilation = 9.0f;
+        public static float const_default_pupil_constrict = 2.0f;
+        public static float const_default_pupil_half = 5.0f;
     }
 
     public enum Orientation

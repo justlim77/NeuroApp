@@ -21,9 +21,13 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {        
     }
 
-    public bool Init(State state)
+    public bool Init(State state, float normal = 8, float half = 5, float dilate = 9, float constrict = 2)
     {
         pupilState = state;
+        normalSize = normal;
+        halfSize = half;
+        dilatedSize = dilate;
+        constrictedSize = constrict;
         return true;
     }
 
@@ -43,11 +47,11 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             case State.Normal:
                 this.ResizeEyes(constrictedSize);
-                otherPupil.ResizeEyes(constrictedSize);
+                otherPupil.ResizeEyes(otherPupil.constrictedSize);
                 break;
             case State.Abnormal:
                 this.ResizeEyes(halfSize);
-                otherPupil.ResizeEyes(halfSize);
+                otherPupil.ResizeEyes(otherPupil.halfSize);
                 break;
         }
 
@@ -56,8 +60,8 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        this.ResizeEyes(normalSize);
-        otherPupil.ResizeEyes(normalSize);
+        this.ResizeEyes(dilatedSize);
+        otherPupil.ResizeEyes(otherPupil.dilatedSize);
         head.SetMouth(MouthState.Neutral);
     }
 }
