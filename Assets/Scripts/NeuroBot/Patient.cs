@@ -158,6 +158,13 @@ public class Patient : MonoBehaviour
     // Case database (DB) reference
     [SerializeField] CaseDatabase _caseDatabase;
 
+    int _numOfCases;    // Cache number of cases
+
+    void Awake()
+    {
+        _numOfCases = _caseDatabase.caseList.caseList.Count;
+    }
+
     void OnDestroy()
     {
         _CaseData = null;
@@ -386,6 +393,11 @@ public class Patient : MonoBehaviour
     public static int CaseIdx = 0;
     public void LoadCase(int idx)
     {
+        if (idx > _numOfCases)
+        {
+            idx = 0;
+        }
+
         CaseData = _caseDatabase.caseList.caseList[idx];
 
         CaseIdx = idx;

@@ -19,11 +19,6 @@ public class ScrollManager : MonoBehaviour {
     void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void OnDestroy()
     {
