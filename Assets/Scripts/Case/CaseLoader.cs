@@ -10,6 +10,7 @@ public class CaseLoader : MonoBehaviour
     public Utilities utilities;
 
     // Reinitialize from scenario selection
+    public LevelsPanel levelsPanel;
     public GameObject localiseButton;
     public ToolControl toolControl;
     public ToolControl cranialToolControl;
@@ -71,6 +72,10 @@ public class CaseLoader : MonoBehaviour
     bool RunReinitializeAll()
     {
         bool result = true;
+
+        result = levelsPanel.Init();
+        if (result == false)
+            print("Failed to reinitialize LevelsPanel");
 
         // Disable localise button
         while (localiseButton.activeInHierarchy == true)
