@@ -20,7 +20,9 @@ public class NeuraxisTest : MonoBehaviour
     [SerializeField] private int numOfLocalisingSteps;
     [SerializeField] private int _hintCost;
 
-    [SerializeField] private Text scoreText;
+    [SerializeField] private NeuraxisAnswerPanel answerPanel;
+    [SerializeField] private Text headerLabel;
+    [SerializeField] private Text scoreLabel;
 
     [SerializeField] private Color32 correctColor;
     [SerializeField] private string correctString = "Good job!";
@@ -67,16 +69,16 @@ public class NeuraxisTest : MonoBehaviour
         bool result = true;
 
         // Re-initialize dictionary
-        neuraxisDict["C"] = !Patient.CaseData.neuraxis_C;
-        neuraxisDict["SC"] = !Patient.CaseData.neuraxis_SC;
-        neuraxisDict["BS"] = !Patient.CaseData.neuraxis_BS;
-        neuraxisDict["SCORD"] = !Patient.CaseData.neuraxis_SCORD;
-        neuraxisDict["AHC"] = !Patient.CaseData.neuraxis_AHC;
-        neuraxisDict["R"] = !Patient.CaseData.neuraxis_R;
-        neuraxisDict["P"] = !Patient.CaseData.neuraxis_P;
-        neuraxisDict["PN"] = !Patient.CaseData.neuraxis_PN;
-        neuraxisDict["NMJ"] = !Patient.CaseData.neuraxis_NMJ;
-        neuraxisDict["M"] = !Patient.CaseData.neuraxis_M;
+        neuraxisDict["C"] = Patient.CaseData.neuraxis_C;
+        neuraxisDict["SC"] = Patient.CaseData.neuraxis_SC;
+        neuraxisDict["BS"] = Patient.CaseData.neuraxis_BS;
+        neuraxisDict["SCORD"] = Patient.CaseData.neuraxis_SCORD;
+        neuraxisDict["AHC"] = Patient.CaseData.neuraxis_AHC;
+        neuraxisDict["R"] = Patient.CaseData.neuraxis_R;
+        neuraxisDict["P"] = Patient.CaseData.neuraxis_P;
+        neuraxisDict["PN"] = Patient.CaseData.neuraxis_PN;
+        neuraxisDict["NMJ"] = Patient.CaseData.neuraxis_NMJ;
+        neuraxisDict["M"] = Patient.CaseData.neuraxis_M;
 
         // Setup buttons
         m_ButtonList.Clear();
@@ -133,6 +135,12 @@ public class NeuraxisTest : MonoBehaviour
         foreach (NeuraxisButton button in m_ButtonList)
             result = button.Init();
 
+        // Initialize answer panel
+        answerPanel.Init();
+
+        // Reset header label
+        headerLabel.text = "Eliminate the unlikely sites.";
+
         if (result == true)
             print("Successfully initialized Neuraxis Test!");
 
@@ -144,10 +152,12 @@ public class NeuraxisTest : MonoBehaviour
         m_NumOfHintsUsed++;
         m_NumOfHintsUsed = Mathf.Clamp(m_NumOfHintsUsed, 0, numOfLocalisingSteps);
 
-        hintText.text = m_NumOfCorrect == m_RequiredCorrect
-            ? string.Format("You got {0} of {1} correct!", m_NumOfCorrect, m_RequiredCorrect) // All correct     
-            : numOfAllowedAttempts > 0 ? GetRandomLocalisation()                              // Show random localising step hint
-            : string.Format("You got {0} of {1} correct. Try again next time.", m_NumOfCorrect, m_RequiredCorrect);
+        hintText.text = GetRandomLocalisation();
+
+        //headerLabel.text = m_NumOfCorrect == m_RequiredCorrect
+        //    ? string.Format("You correctly chose {0} out of {1} eliminations!", m_NumOfCorrect, m_RequiredCorrect) // All correct     
+        //    : numOfAllowedAttempts > 0 ? GetRandomLocalisation()                              // Show random localising step hint
+        //    : string.Format("You correctly chose {0} out of {1} eliminations. You'll do better next time!", m_NumOfCorrect, m_RequiredCorrect);
     }
 
     public void CheckMatches() 
@@ -155,45 +165,37 @@ public class NeuraxisTest : MonoBehaviour
         numOfAllowedAttempts--;
 
         m_NumOfCorrect = 0;
-        for (int i = 0; i < transform.childCount; i++)
+        foreach(var btn in m_ButtonList)
         {
-            NeuraxisButton btn = transform.GetChild(i).GetChild(0).GetComponent<NeuraxisButton>();
             if (btn.NeuraxisMatch())
                 m_NumOfCorrect++;
         }
 
-        hintText.text = m_NumOfCorrect == m_RequiredCorrect
-            ? string.Format("You got {0} of {1} correct!", m_NumOfCorrect, m_RequiredCorrect)
+        headerLabel.text = m_NumOfCorrect == m_RequiredCorrect
+            ? string.Format("You correctly chose {0} out of {1} eliminations!", m_NumOfCorrect, m_RequiredCorrect)
             //: numOfAllowedAttempts > 0 ? string.Format("You got {0} of {1} correct. Please try again.", m_NumOfCorrect, m_RequiredCorrect)            
             : numOfAllowedAttempts > 0 ? "You have one more try."
-            : string.Format("You got {0} of {1} correct. Try again next time.", m_NumOfCorrect, m_RequiredCorrect);
+            : string.Format("You correctly chose {0} out of {1} eliminations. You'll do better next time!", m_NumOfCorrect, m_RequiredCorrect);
 
         bool hasWon = m_NumOfCorrect >= m_RequiredCorrect;
         StartCoroutine(ShowFeedback(hasWon));
         btnNext.SetActive(hasWon);
-
-        //if (hasWon)
-        //{
-        //    for (int i = 0; i < transform.childCount; i++)
-        //    {
-        //        NeuraxisButton btn = transform.GetChild(i).GetChild(0).GetComponent<NeuraxisButton>();
-        //        btn.SetHighlight();
-        //    }
-        //}
 
         // If run out of attempts or got all correct
         if (numOfAllowedAttempts <= 0 || hasWon) 
         {
             ToggleButtons(false);
             btnNext.SetActive(true);
+            hintText.text = "";
 
-            for (int i = 0; i < transform.childCount; i++)
+            foreach (var btn in m_ButtonList)
             {
-                NeuraxisButton btn = transform.GetChild(i).GetChild(0).GetComponent<NeuraxisButton>();
                 btn.SetHighlight();
             }
 
-            scoreText.text = string.Format("You scored {0} out of 100.", Score);
+            answerPanel.UpdateAnswers(m_ButtonList);
+
+            scoreLabel.text = string.Format("You scored {0} out of 100.", Score);
         }
     }
 

@@ -8,20 +8,21 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
     public Color32 neutralColor = new Color32(250, 222, 97, 255);
     public Color32 correctColor = new Color32(134, 188, 61, 255);
     public Color32 wrongColor   = new Color32(100, 100, 100, 255);
+    public Color32 enabledTextColor = Color.white;
+    public Color32 disabledTextColor = new Color32(255, 255, 255, 128);
     public string neuraxisName  = "Enter full neuraxis name";
     public string abbreviation  = "Enter abbreviation";
-    public bool correctAnswer   = false;    // True: eliminate / False: likely to have
+    public bool correctAnswer   = false;    // True: likely / False: eliminate
     public bool eliminate       = false;
-
-    public Image crossImage;
+    public Elimination elimination = Elimination.Likely;
     public Text text;
 
-    private Image m_Image;
+    private Image _image;
     Button _button;
 
     void Awake() 
     {
-        m_Image = GetComponent<Image>();
+        _image = GetComponent<Image>();
         _button = GetComponent<Button>();
     }
 
@@ -34,14 +35,14 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
     {
         bool result = true;
 
-        if (m_Image.color != neutralColor)
-            m_Image.color = neutralColor;
+        _image.color = neutralColor;
+        text.color = Color.white;
 
-        if (eliminate)
-            eliminate = false;
+        _image.CrossFadeAlpha(1, 0, false);
+        text.CrossFadeAlpha(1, 0, false);
 
-        if (crossImage.enabled)
-            crossImage.enabled = false;
+        eliminate = false;
+        elimination = Elimination.Likely;
 
         _button.interactable = true;
 
@@ -68,13 +69,24 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
         //Toggle between selected & deselected
         eliminate = !eliminate;
 
-        //Toggle cross image between off and on
-        crossImage.enabled = !crossImage.enabled;
+        if (eliminate == true)
+        {
+            elimination = Elimination.NotLikely;
+            _image.CrossFadeAlpha(0, .2f, false);
+            text.CrossFadeAlpha(0.5f, .2f, false);
+        }
+        else
+        {
+            elimination = Elimination.Likely;
+            _image.CrossFadeAlpha(1, .2f, false);
+            text.CrossFadeAlpha(1, .2f, false);
+        }
     }
 
     public bool NeuraxisMatch() 
-    {
-        if (eliminate == correctAnswer)
+    {        
+        if ((elimination.Equals(Elimination.Likely) && correctAnswer == true && eliminate == false) ||
+            elimination.Equals(Elimination.NotLikely) && correctAnswer == false && eliminate == true)
             return true;
         else
             return false;
@@ -88,7 +100,13 @@ public class NeuraxisButton : MonoBehaviour, IPointerClickHandler
 
     public void SetHighlight()
     {
-        m_Image.color = correctAnswer ? wrongColor : correctColor;
+        //_image.color = correctAnswer ? wrongColor : correctColor;
         _button.interactable = false;
     }
+}
+
+public enum Elimination
+{
+    Likely,
+    NotLikely
 }

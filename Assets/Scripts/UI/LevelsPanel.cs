@@ -7,6 +7,9 @@ public class LevelsPanel : MonoBehaviour
     public Sprite starEnabledSprite;
     public Sprite starDisabledSprite;
 
+    [Header("WARNING: Bonus star reset!")]
+    [SerializeField] bool reset = false;
+
     [SerializeField] Transform[] children;
     [SerializeField] Image[] starImages;
 
@@ -23,6 +26,8 @@ public class LevelsPanel : MonoBehaviour
         starImages = new Image[childCount];
         for (int i = 0; i < childCount; i++)
         {
+            if(reset)
+                CaseDatabase.Instance.caseList.caseList[i].bonusCorrect = false;
             children[i] = transform.GetChild(i);
             starImages[i] = children[i].GetChild(1).GetChild(0).GetComponent<Image>();
             starImages[i].sprite = CaseDatabase.Instance.caseList.caseList[i].bonusCorrect ? starEnabledSprite : starDisabledSprite;

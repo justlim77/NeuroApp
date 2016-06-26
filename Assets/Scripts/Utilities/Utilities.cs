@@ -12,8 +12,10 @@ public class Utilities : MonoBehaviour
     #region Public Variables
     public KeyCode restartKey;
     public KeyCode quitKey;
+    public KeyCode toggleLocaliseKey;
     public GameObject fadeObject;
     public GameObject welcomePanel;
+    public GameObject localiseBtn;
     #endregion
 
     #region Private Member Variables
@@ -45,8 +47,10 @@ public class Utilities : MonoBehaviour
     {
         if (Input.GetKeyUp(restartKey))
             RestartGame();
-        if (Input.GetKeyUp(quitKey))
+        if (Input.GetKey(quitKey))
             QuitGame();
+        if (Input.GetKeyDown(toggleLocaliseKey))
+            localiseBtn.SetActive(!localiseBtn.activeSelf);
     }
 
     #region Public Methods
