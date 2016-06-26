@@ -130,7 +130,7 @@ public class Patient : MonoBehaviour
     public Text visualFieldsText;
     public Text gagReflexText;
     public Text speechText;
-    public Button speechButton;
+    public GameObject speechButton;
     #endregion
 
     #region Elimination Variables
@@ -172,11 +172,11 @@ public class Patient : MonoBehaviour
     private bool Init()
     {
         // General
-        caseDescriptionText.text = CaseData.caseDescription;    // Case description setup
-        toneText.text = CaseData.tone;                          // Tone setup
-        plantarsText.text = CaseData.plantars;                  // Plantars setup
-        cerebellarExamText.text = CaseData.cerebellar;          // Cerebellar exam setup
-        otherTestsText.text = CaseData.otherTests;              // Other important tests
+        caseDescriptionText.text = CaseData.caseDescription;                                                // Case description setup
+        toneText.text = string.Format("<b>Tone</b>\n{0}", CaseData.tone);                                   // Tone setup
+        plantarsText.text = string.Format("<b>Plantars</b>\n{0}", CaseData.plantars);                       // Plantars setup
+        cerebellarExamText.text = string.Format("<b>Cerebellar examination</b>\n{0}", CaseData.cerebellar); // Cerebellar exam setup
+        otherTestsText.text = string.Format("<b>Other important tests</b>\n{0}", CaseData.otherTests);      // Other important tests
 
         // Face
         face = CaseData.face;
@@ -343,15 +343,20 @@ public class Patient : MonoBehaviour
             face_power_lower.faceState = FaceState.RightGritTeeth;
 
         // Clinical exam
-        hearingText.text = CaseData.hearing;
-        cornealReflexText.text = CaseData.cornealReflex;
-        visualFieldsText.text = CaseData.visualFields;
-        gagReflexText.text = CaseData.gagReflex;
-        string speech = CaseData.speech;
-        if (string.IsNullOrEmpty(speech) || speech == "Normal" || speech == "Nil")
-            speechButton.gameObject.SetActive(false);
+        hearingText.text = string.Format("<b>Hearing</b>\n{0}", CaseData.hearing);
+        cornealReflexText.text = string.Format("<b>Corneal Reflex</b>\n{0}", CaseData.cornealReflex);
+        visualFieldsText.text = string.Format("<b>Visual Fields</b>\n{0}", CaseData.visualFields);
+        gagReflexText.text = string.Format("<b>Gag Reflex</b>\n{0}", CaseData.gagReflex);
+        string speech = CaseData.speech.ToLower();
+        if (string.IsNullOrEmpty(speech) || speech == "normal" || speech == "nil")
+        {
+            speechButton.GetComponent<CanvasGroup>().alpha = 0;
+        }
         else
+        {
             speechText.text = CaseData.speech;
+            speechButton.GetComponent<CanvasGroup>().alpha = 1;
+        }
 
         // Neuraxis Elimination Game setup
         neuraxis_C = CaseData.neuraxis_C;
@@ -379,7 +384,7 @@ public class Patient : MonoBehaviour
         }
         string subContent = CaseData.localisingExplanation;
         if (subContent != string.Empty)
-            content += string.Format("\nExplanation\n{0}", CaseData.localisingExplanation);
+            content += string.Format("\n<b>Explanation</b>\n{0}", CaseData.localisingExplanation);
 
         localisingText.text = content;                                  // Localising setup
         testQuestionText.text = CaseData.testQuestion;                  // Concluding Test Question setup

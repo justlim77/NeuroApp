@@ -4,13 +4,19 @@ using System.Collections;
 using System;
 
 public class ButtonPressed : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+    [SerializeField] bool reversed = false;
+    private float xScale = 0.9f;
+    private float yScale = 0.9f;
+    private float scaleTime = 0.8f;
+    private float scaleBackTime = 0.2f;
 
-    [SerializeField] private float xScale = 0.9f;
-    [SerializeField] private float yScale = 0.9f;
-    [SerializeField] private float scaleTime = 0.8f;
-    [SerializeField] private float scaleBackTime = 0.2f;
-
-    void Start() { }
+    void Start()
+    {
+        if (reversed)
+        {
+            xScale *= -1;
+        }
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -19,6 +25,6 @@ public class ButtonPressed : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        iTween.ScaleTo(gameObject, iTween.Hash("scale", new Vector3(1, 1, 0), "time", scaleBackTime));
+        iTween.ScaleTo(gameObject, iTween.Hash("scale", new Vector3(Mathf.Sign(xScale), 1, 0), "time", scaleBackTime));
     }
 }
