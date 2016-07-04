@@ -44,6 +44,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     Sprite _originalEyes;
     float _eyeBrowInitialY;
     bool _isFrozen;
+    public TestEyeManager testEyeManager { get; private set; }
 
     Pupil _pupil_L, _pupil_R;
 
@@ -54,6 +55,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         _pupil_R = innerEyes[0].GetComponent<Pupil>();
         _pupil_L = innerEyes[1].GetComponent<Pupil>();
+
+        testEyeManager = GetComponent<TestEyeManager>();
 
         Init();
     }
@@ -178,14 +181,14 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (_isFrozen)
+        if (_isFrozen || !testEyeManager.TrackMouse)
             return;
         Reaction(FaceState.Shocked);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (_isFrozen)
+        if (_isFrozen || !testEyeManager.TrackMouse)
             return;
         Reaction(FaceState.Neutral);
     }
@@ -201,7 +204,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             brow.enabled = showBrow;
         }
 
-        // Toggle eyelids
+        // Toggle eyelids - TODO: REMOVE TRY-CATCH BLOCK for WebGL
         if (eyeLidImages.Length != 0)
         {
             try
@@ -246,12 +249,12 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void CenterEyes()
     {
-        foreach (GameObject middleEye in middleEyes)
-        {
-            RectTransform rect = middleEye.GetComponent<RectTransform>();
-            if (rect)
-                rect.localPosition = Vector2.zero;
-        }
+        //foreach (GameObject middleEye in middleEyes)
+        //{
+        //    RectTransform rect = middleEye.GetComponent<RectTransform>();
+        //    if (rect)
+        //        rect.localPosition = Vector2.zero;
+        //}
     }
 
     bool _isRaising = false;
@@ -350,6 +353,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
 
         _isFrozen = state;
+        testEyeManager.TrackMouse = !state;
     }
 
     public void SetMouth(MouthState mouthState)

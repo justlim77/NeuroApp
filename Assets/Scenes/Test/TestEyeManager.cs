@@ -16,6 +16,8 @@ public class TestEyeManager : MonoBehaviour
     public float rightEyeDist;
     public float leftEyeDist;
 
+    public bool TrackMouse { get; set; }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -24,6 +26,12 @@ public class TestEyeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (!TrackMouse)
+        {
+            CenterLook();
+            return;
+        }
+
         rightEyeDist = rightEye.GetDistanceFromMouse();
         leftEyeDist = leftEye.GetDistanceFromMouse();
         converganceDistance = GetConvergeDistance();
@@ -53,6 +61,15 @@ public class TestEyeManager : MonoBehaviour
     {
         Vector3 rightTargetPos = Vector3.Lerp(rightEye.GetAnchoredPosition(), rightEye.GetNormalizedDirection(), followSpeed * Time.deltaTime);
         Vector3 leftTargetPos = Vector3.Lerp(leftEye.GetAnchoredPosition(), leftEye.GetNormalizedDirection(), followSpeed * Time.deltaTime);
+
+        rightEye.SetAnchoredPosition(rightTargetPos);
+        leftEye.SetAnchoredPosition(leftTargetPos);
+    }
+
+    void CenterLook()
+    {
+        Vector3 rightTargetPos = Vector3.Lerp(rightEye.GetAnchoredPosition(), rightEye.GetLocalCenter(), followSpeed * Time.deltaTime);
+        Vector3 leftTargetPos = Vector3.Lerp(leftEye.GetAnchoredPosition(), leftEye.GetLocalCenter(), followSpeed * Time.deltaTime);
 
         rightEye.SetAnchoredPosition(rightTargetPos);
         leftEye.SetAnchoredPosition(leftTargetPos);

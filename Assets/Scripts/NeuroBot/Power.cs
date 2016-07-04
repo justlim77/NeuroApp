@@ -55,12 +55,12 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
             yield break;
 
         _isTesting = true;
-
+        head.testEyeManager.TrackMouse = false;
         head.Reaction(faceState);
         yield return new WaitForSeconds(Constants.const_reaction_delay);
 
         head.Reaction(FaceState.Neutral);
-
+        head.testEyeManager.TrackMouse = true;
         _isTesting = false;
     }
 }

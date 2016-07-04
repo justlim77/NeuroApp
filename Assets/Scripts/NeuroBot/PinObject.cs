@@ -24,8 +24,6 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     Color m_VisibleColor = new Color(1, 1, 1, 1);
     Color m_InvisibleColor = new Color(1, 1, 1, 0);
 
-    void Awake() { }
-
     void OnEnable()
     {
         Init();
@@ -34,11 +32,6 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     void Start()
     {
         Init();
-    }
-
-    void LateUpdate()
-    {
-        //m_Image.enabled = Vector2.Distance(Input.mousePosition, transform.position) < m_ActivationRadius;
     }
 
     public void Init()
@@ -79,12 +72,14 @@ public class PinObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
         head.Reaction(m_ReactionState);
         mainPanel.color = canFeel ? reactionColor : noReactionColor;
         header.text = canFeel ? positiveMessage : negativeMessage;
+        head.testEyeManager.TrackMouse = false;
 
         yield return new WaitForSeconds(Constants.const_reaction_delay);
 
         head.Reaction(FaceState.Neutral);
         mainPanel.color = m_OriginalColor;
         header.text = string.Empty;
+        head.testEyeManager.TrackMouse = true;
 
         _isPoking = false;
     }

@@ -172,10 +172,12 @@ public class NeuraxisTest : MonoBehaviour
         }
 
         headerLabel.text = m_NumOfCorrect == m_RequiredCorrect
-            ? string.Format("You correctly chose {0} out of {1} eliminations!", m_NumOfCorrect, m_RequiredCorrect)
+            //? string.Format("You correctly chose {0} out of {1} eliminations!", m_NumOfCorrect, m_RequiredCorrect)
+            ? "You should consider being a neurologist."
             //: numOfAllowedAttempts > 0 ? string.Format("You got {0} of {1} correct. Please try again.", m_NumOfCorrect, m_RequiredCorrect)            
             : numOfAllowedAttempts > 0 ? "You have one more try."
-            : string.Format("You correctly chose {0} out of {1} eliminations. You'll do better next time!", m_NumOfCorrect, m_RequiredCorrect);
+            //: string.Format("You correctly chose {0} out of {1} eliminations. You'll do better next time!", m_NumOfCorrect, m_RequiredCorrect);
+            : "You'll do better next time!";
 
         bool hasWon = m_NumOfCorrect >= m_RequiredCorrect;
         StartCoroutine(ShowFeedback(hasWon));

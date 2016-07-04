@@ -13,6 +13,7 @@ public class TestEye : MonoBehaviour
     public bool Follow { get; set; }
 
     Vector2 _center;
+    Vector2 _localCenter;
     RectTransform _rectTransform;
 
 	// Use this for initialization
@@ -20,12 +21,18 @@ public class TestEye : MonoBehaviour
     {
         _rectTransform = GetComponent<RectTransform>();
         _center = _rectTransform.position;
+        _localCenter = _rectTransform.anchoredPosition;
         Follow = false;
 	}
 
     public Vector3 GetCenter()
     {
         return _center;
+    }
+
+    public Vector3 GetLocalCenter()
+    {
+        return _localCenter;
     }
 
     public float GetDistanceFromMouse()
