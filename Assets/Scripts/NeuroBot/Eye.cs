@@ -33,7 +33,7 @@ public class Eye : MonoBehaviour
 
     void Update ()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Input.mousePosition, _distance);
+        //transform.position = Vector2.MoveTowards(transform.position, Input.mousePosition, _distance);
 	}
 
     public void SwitchDistanceType(DistanceType type)
