@@ -12,6 +12,7 @@ public class ScrollUpdate : MonoBehaviour {
 
     public bool Init()
     {
+        Canvas.ForceUpdateCanvases();
         scrollBar.value = initialScrollValue;
         Canvas.ForceUpdateCanvases();
 

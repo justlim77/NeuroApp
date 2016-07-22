@@ -163,7 +163,8 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         // Initial swing
         while (Mathf.Abs(limbRect.localEulerAngles.z - targetRotation.eulerAngles.z) > 1)
         {
-            limbRect.localRotation = Quaternion.Slerp(fromRotation, targetRotation, interval += initialInterval);
+            //limbRect.localRotation = Quaternion.Slerp(fromRotation, targetRotation, interval += initialInterval);
+            limbRect.localRotation = Quaternion.Slerp(fromRotation, targetRotation, 100 * (interval += (initialInterval * Time.deltaTime)));
             //Debug.Log(Mathf.Abs(limbSprite.localEulerAngles.z - targetRotation.eulerAngles.z));
             yield return null;
         }
@@ -176,7 +177,9 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
 
         while (Mathf.Abs(limbRect.localEulerAngles.z - targetRotation.eulerAngles.z) > 1)
         {
-            limbRect.localRotation = Quaternion.Slerp(fromRotation, targetRotation, interval += backInterval);
+            //limbRect.localRotation = Quaternion.Slerp(fromRotation, targetRotation, interval += backInterval);
+            limbRect.localRotation = Quaternion.Slerp(fromRotation, targetRotation, 75 * (interval += (backInterval * Time.deltaTime)));
+
             yield return null;
         }
         limbRect.localRotation = targetRotation;

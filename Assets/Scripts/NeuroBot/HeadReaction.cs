@@ -118,6 +118,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 mouth.sprite = mouthSlanted;
                 ToggleEyes(ouchEyes, defaultEyeSize, 3.0f, false, false);
                 eyeLidImages[0].enabled = eyeLidImages[1].enabled = false;
+                eyes[1].rectTransform.localScale = new Vector2(-1,1);   // Flip ouch eye
                 break;
             case FaceState.Neutral:
                 mouth.sprite = mouthNeutral;
@@ -203,6 +204,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             brow.sprite = defaultBrow;
             brow.enabled = showBrow;
         }
+
+        eyes[1].rectTransform.localScale = Vector2.one;
 
         // Toggle eyelids - TODO: REMOVE TRY-CATCH BLOCK for WebGL
         if (eyeLidImages.Length != 0)
