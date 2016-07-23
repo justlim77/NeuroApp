@@ -82,31 +82,31 @@ public class TendonObject : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         switch (tendon.tendonReflex)
         {
             case Tendon.TendonReflex.Hyperactive:
+                //Hyper 60degrees
                 header.text = Constants.const_tap_hyper_msg;
                 mainPanel.color = Constants.const_tap_reaction_color;
-                //Hyper 60degrees
-                m_InitialInterval = 0.1f;
-                m_BackInterval = 0.05f;
+                //m_InitialInterval = 0.1f;
+                //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(60.0f));
                 break;
             case Tendon.TendonReflex.Normal:
                 //Normal 15degrees
                 header.text = Constants.const_tap_norm_msg;
                 mainPanel.color = Constants.const_tap_reaction_color;
-                m_InitialInterval = 0.125f;
-                m_BackInterval = 0.05f;
+                //m_InitialInterval = 0.125f;
+                //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(15.0f));
                 break;
             case Tendon.TendonReflex.Sluggish:  // Deprecated
                 //Hypo 10degrees
                 header.text = Constants.const_tap_hypo_msg;
                 mainPanel.color = Constants.const_tap_reaction_color;
-                m_InitialInterval = 0.1f;
-                m_BackInterval = 0.05f;
+                //m_InitialInterval = 0.1f;
+                //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(10.0f));
                 break;
             case Tendon.TendonReflex.Absent:
-                //ReflexReaction(0.0f);
+                //Absent 0degrees
                 head.Reaction(FaceState.NoReaction);
                 header.text = Constants.const_tap_absent_msg;
                 mainPanel.color = Constants.const_tap_no_reaction_color;

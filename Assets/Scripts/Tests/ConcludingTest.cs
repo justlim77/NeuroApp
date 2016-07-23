@@ -100,7 +100,7 @@ public class ConcludingTest : MonoBehaviour
 
                     // Enable content
                     scrollView.SetActive(true);
-                    scrollView.GetComponent<ScrollUpdate>().Init();
+                    ScrollManager.Instance.ResetScroll(ScrollPanelType.Explanation);
 
                     Core.BroadcastEvent("OnUpdateBonus", this, bonusCorrect);
                     return true;

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScrollManager : MonoBehaviour {
 
@@ -9,35 +11,55 @@ public class ScrollManager : MonoBehaviour {
         get { return _Instance; }
     }
 
-    public ScrollUpdate[] scrollUpdaters;
+    [SerializeField] ScrollablePanel[] _ScrollablePanels;
+
+    [Range(0f, 1f)]
+    [SerializeField] float _InitialScrollValue = 1.0f;
+
+    private Dictionary<ScrollPanelType, ScrollablePanel> _ScrollablePanelDict = new Dictionary<ScrollPanelType, ScrollablePanel>();
 
     void Awake()
     {
-        //if (_Instance == null)
+        if (_Instance == null)
             _Instance = this;
     }
-    void Start () {
-	
-	}
 
     void OnDestroy()
     {
         _Instance = null;
     }
 
+    void Start()
+    {
+        foreach (var panel in _ScrollablePanels)
+        {
+            _ScrollablePanelDict.Add(panel.ScrollPanelType, panel);
+        }
+    }
+
     public bool Init()
     {
-        bool result = false;
-        foreach (ScrollUpdate updater in scrollUpdaters)
+        bool result = true;
+        foreach (ScrollablePanel panel in _ScrollablePanels)
         {
-            result = updater.Init();
+            panel.Reset();
+
             if (result == false)
             {
-                Debug.Log("Failed to initialize " + updater.gameObject.name);
+                Debug.Log("Failed to initialize " + panel.ScrollPanelType.ToString());
                 break;
             }
         }
 
         return result;
+    }
+
+    public void ResetScroll(ScrollPanelType panelType)
+    {
+        ScrollablePanel panel = null;
+        if (_ScrollablePanelDict.TryGetValue(panelType, out panel))
+        {
+            panel.Reset();
+        }
     }
 }
