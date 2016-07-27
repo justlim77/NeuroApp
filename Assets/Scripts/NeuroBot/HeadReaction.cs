@@ -294,6 +294,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         ToggleEyes(_originalEyes, defaultEyeSize, 3.0f, true, false, false);
         CenterEyes();
 
+        eyes[1].rectTransform.localScale = new Vector2(-1, 1);   // Flip left eye
+
         foreach (var eye in eyes)
             eye.sprite = squint;
 
