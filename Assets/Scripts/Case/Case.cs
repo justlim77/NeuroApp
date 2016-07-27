@@ -41,7 +41,8 @@ public class Case {
     // True - Normal
     // False - Decreased
     // Format - LIMB_REGION_SIDE_SECTION
-    // Upper limbs (From shoulder to fingertip)
+    // Upper limbs (From chest to fingertip)
+    public bool UL_T3_1 = true, UL_T3_2 = true, UL_T3_3 = true;
     public bool UL_T1_R = true, UL_T1_L = true;
     public bool UL_C5_R = true, UL_C5_L = true;
     public bool UL_C6_R_1 = true, UL_C6_R_2 = true;

@@ -123,6 +123,11 @@ public class CaseEditor : EditorWindow {
         //Upper limbs
         EditorGUILayout.LabelField("Upper limb regions", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
+        CaseData.UL_T3_1 = EditorGUILayout.ToggleLeft("T3 Top", CaseData.UL_T3_1, GUILayout.MaxWidth(120));
+        CaseData.UL_T3_2 = EditorGUILayout.ToggleLeft("T3 Mid", CaseData.UL_T3_2, GUILayout.MaxWidth(120));
+        CaseData.UL_T3_3 = EditorGUILayout.ToggleLeft("T3 Bottom", CaseData.UL_T3_3, GUILayout.MaxWidth(120));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
         CaseData.UL_T1_R = EditorGUILayout.ToggleLeft("T1 Right", CaseData.UL_T1_R, GUILayout.MaxWidth(120));
         CaseData.UL_T1_L = EditorGUILayout.ToggleLeft("T1 Left", CaseData.UL_T1_L, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();

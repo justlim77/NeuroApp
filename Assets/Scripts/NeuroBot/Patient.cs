@@ -76,7 +76,8 @@ public class Patient : MonoBehaviour
     // True - Normal
     // False - Decreased
     // Format - LIMB_REGION_SIDE_SECTION
-    // Upper limbs (From shoulder to fingertip)
+    // Upper limbs (From chest to fingertip)
+    public PinObject UL_T3_1, UL_T3_2, UL_T3_3;
     public PinObject UL_T1_R, UL_T1_L;
     public PinObject UL_C5_R, UL_C5_L;
     public PinObject UL_C6_R_1, UL_C6_R_2;
@@ -249,6 +250,9 @@ public class Patient : MonoBehaviour
 
         // Sensation setup
         // Upper limbs
+        UL_T3_1.canFeel = CaseData.UL_T3_1;
+        UL_T3_2.canFeel = CaseData.UL_T3_2;
+        UL_T3_3.canFeel = CaseData.UL_T3_3;
         UL_T1_R.canFeel = CaseData.UL_T1_R;
         UL_T1_L.canFeel = CaseData.UL_T1_L;
         UL_C5_R.canFeel = CaseData.UL_C5_R;
