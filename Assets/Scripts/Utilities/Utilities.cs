@@ -2,7 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
-#if UNITY_5_3
+#if UNITY_5_3_OR_NEWER
 using UnityEngine.SceneManagement;
 #endif
 using System.Collections;
@@ -120,7 +120,7 @@ public class Utilities : MonoBehaviour
 
     IEnumerator RunRestartGame()
     {
-#if UNITY_5_3
+#if UNITY_5_3_OR_NEWER
         SceneManager.LoadScene(_currentScene.buildIndex);
 #else
         Application.LoadLevel(Application.loadedLevel);
