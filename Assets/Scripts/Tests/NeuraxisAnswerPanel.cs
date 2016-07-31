@@ -7,6 +7,7 @@ public class NeuraxisAnswerPanel : MonoBehaviour
 {
     public EliminationButton[] buttons;
     public GameObject correctAnswerLabel;
+    public Image AnswerBorder;
 
 	void Start ()
     {
@@ -22,6 +23,7 @@ public class NeuraxisAnswerPanel : MonoBehaviour
             button.Image.CrossFadeAlpha(1, 0, false);
             button.Text.CrossFadeAlpha(1, 0, false);
         }
+        AnswerBorder.CrossFadeAlpha(0, 0, true);
         return true;
     }
 
@@ -46,6 +48,7 @@ public class NeuraxisAnswerPanel : MonoBehaviour
                 buttons[i].Text.CrossFadeAlpha(1, .5f, false);
             }
         }
+        AnswerBorder.CrossFadeAlpha(1, 1, false);
     }
 }
 

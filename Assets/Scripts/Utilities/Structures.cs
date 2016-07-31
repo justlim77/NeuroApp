@@ -9,12 +9,14 @@ namespace NeuroApp
         public static float const_reaction_delay = 1.0f;
         public static float const_absent_delay = 1.0f;
         public static float const_tap_active_radius = 25.0f;
+        public static Color const_background_color = new Color32(13, 65, 89, 255);
         public static Color const_tap_reaction_color = new Color32(251, 221, 97, 255);
         public static Color const_tap_no_reaction_color = new Color32(36, 36, 36, 255);
         public static string const_tap_hyper_msg = "Ouch!";
         public static string const_tap_norm_msg = "Ow!";
         public static string const_tap_hypo_msg = "Hmm.";
         public static string const_tap_absent_msg = "...";
+        public static string const_mouth_open_msg = "Ahhh!";
         public static float const_default_delta = 1.0f;
         public static float const_zoom_delta = 6.0f;
         public static Color const_tool_use_color = new Color32(65, 255, 84, 255);

@@ -22,15 +22,15 @@ public class TutorialSequence : MonoBehaviour
 
     public Transform toolCursor;
 
-    Button button;
-    Image _image;
-    bool _proceed = false;
+    Button _Button;
+    Image _Image;
+    bool _Proceed = false;
 
     void Awake()
     {
-        button = tutorialLabel.GetComponent<Button>();
-        _image = GetComponent<Image>();
-        _image.enabled = false;
+        _Button = tutorialLabel.GetComponent<Button>();
+        _Image = GetComponent<Image>();
+        _Image.enabled = false;
     }
 
     void OnEnable()
@@ -49,7 +49,7 @@ public class TutorialSequence : MonoBehaviour
 
     IEnumerator TutorialRoutine()
     {
-        _image.enabled = true;
+        _Image.enabled = true;
         tutorialLabel.gameObject.SetActive(true);
         PanelManager.Instance.EnablePanel(PanelType.Main);
 
@@ -99,24 +99,24 @@ public class TutorialSequence : MonoBehaviour
         // End
         tutorialLabel.gameObject.SetActive(false);
         //gameObject.SetActive(false);
-        _image.enabled = false;
+        _Image.enabled = false;
 
         yield break;
     }
 
     public void Proceed()
     {
-        _proceed = true;
+        _Proceed = true;
     }
 
     IEnumerator Type(string msg)
     {
-        button.interactable = false;
-        _proceed = false;
+        _Button.interactable = false;
+        _Proceed = false;
         print(msg);
         yield return textTyper.RunTypeText(msg);
-        button.interactable = true;
-        while (!_proceed)
+        _Button.interactable = true;
+        while (!_Proceed)
             yield return null;
     }
 }

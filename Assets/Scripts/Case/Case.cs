@@ -23,26 +23,26 @@ public class Case {
     // (++) - Normal
     // (+) - Sluggish
     // (-) - Absent
-    public Tendon tendon_tricep_R = new Tendon();           // Tendon Tricep R
-    public Tendon tendon_bicep_R = new Tendon();            // Tendon Bicep R
-    public Tendon tendon_supinator_R = new Tendon();        // Tendon Supinator R
-    public Tendon tendon_tricep_L = new Tendon();           // Tendon Tricep L
-    public Tendon tendon_bicep_L = new Tendon();            // Tendon Bicep L
-    public Tendon tendon_supinator_L = new Tendon();        // Tendon Supinator L
-    public Tendon tendon_patellar_R = new Tendon();         // Tendon Patellar R
-    public Tendon tendon_ankle_R = new Tendon();            // Tendon Ankle R
-    public Tendon tendon_plantar_R = new Tendon();          // Tendon Plantar R
-    public Tendon tendon_patellar_L = new Tendon();         // Tendon Patellar L
-    public Tendon tendon_ankle_L = new Tendon();            // Tendon Ankle L
-    public Tendon tendon_plantar_L = new Tendon();          // Tendon Plantar L
+    public TendonData tendon_tricep_R = new TendonData();           // Tendon Tricep R
+    public TendonData tendon_bicep_R = new TendonData();            // Tendon Bicep R
+    public TendonData tendon_supinator_R = new TendonData();        // Tendon Supinator R
+    public TendonData tendon_tricep_L = new TendonData();           // Tendon Tricep L
+    public TendonData tendon_bicep_L = new TendonData();            // Tendon Bicep L
+    public TendonData tendon_supinator_L = new TendonData();        // Tendon Supinator L
+    public TendonData tendon_patellar_R = new TendonData();         // Tendon Patellar R
+    public TendonData tendon_ankle_R = new TendonData();            // Tendon Ankle R
+    public TendonData tendon_plantar_R = new TendonData();          // Tendon Plantar R
+    public TendonData tendon_patellar_L = new TendonData();         // Tendon Patellar L
+    public TendonData tendon_ankle_L = new TendonData();            // Tendon Ankle L
+    public TendonData tendon_plantar_L = new TendonData();          // Tendon Plantar L
     #endregion
 
-    #region Sensation Variables
+    #region Dermatome Variables
     // True - Normal
     // False - Decreased
     // Format - LIMB_REGION_SIDE_SECTION
-    // Upper limbs (From chest to fingertip)
-    public bool UL_T3_1 = true, UL_T3_2 = true, UL_T3_3 = true;
+    // Upper extremity
+    public bool UL_T4 = true, UL_T5_T9 = true, UL_T10 = true;
     public bool UL_T1_R = true, UL_T1_L = true;
     public bool UL_C5_R = true, UL_C5_L = true;
     public bool UL_C6_R_1 = true, UL_C6_R_2 = true;
@@ -50,7 +50,7 @@ public class Case {
     public bool UL_C7_R = true, UL_C7_L = true;
     public bool UL_C8_R_1 = true, UL_C8_R_2 = true;
     public bool UL_C8_L_1 = true, UL_C8_L_2 = true;
-    // Lower limbs (From hip to toe)
+    // Lower extremity
     public bool LL_L2_R = true, LL_L2_L = true;
     public bool LL_L3_R = true, LL_L3_L = true;
     public bool LL_L4_R_1 = true, LL_L4_R_2 = true;

@@ -15,8 +15,8 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public string test;
     public bool hasGradient = false;
     public List<GameObject> interactiveObjects = new List<GameObject>();
-    public Color backgroundColor;
 
+    Color _BackgroundColor;
     ToolControl m_ToolControl;
     bool m_ToolUsed = false;
     ToolCursor m_ToolCursorScript;
@@ -42,6 +42,8 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         m_ToolSprite = _image.sprite;
         cursorSprite = m_ToolSprite;
 
+        _BackgroundColor = Constants.const_background_color;
+
         Init();
     }
 
@@ -55,7 +57,7 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         SetToolCursor();
 
-        PanelManager.Instance.mainPanel.color = backgroundColor;
+        PanelManager.Instance.mainPanel.color = _BackgroundColor;
 
         foreach (GameObject interactiveObject in interactiveObjects)
             interactiveObject.SetActive(true);

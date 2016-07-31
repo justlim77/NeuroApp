@@ -11,17 +11,17 @@ public class ConcludingButton : MonoBehaviour, IPointerClickHandler
     public Color32 wrongColor;
     public float buttonFlashDuration = 1.0f;
 
-    Image _image;
-    Color32 _originalColor;
-    ConcludingTest _concludingTest;
-    RectTransform _rect;
+    Image _Image;
+    Color32 _OriginalColor;
+    ConcludingTest _ConcludingTest;
+    RectTransform _RectTransform;
 
     public void Init()
     {
-        _image = GetComponent<Image>();
-        _originalColor = _image.color;
-        _rect = GetComponent<RectTransform>();
-        _concludingTest = transform.GetComponentInParent<ConcludingTest>();
+        _Image = GetComponent<Image>();
+        _OriginalColor = _Image.color;
+        _RectTransform = GetComponent<RectTransform>();
+        _ConcludingTest = transform.GetComponentInParent<ConcludingTest>();
 
         ResetScale();
     }
@@ -33,19 +33,19 @@ public class ConcludingButton : MonoBehaviour, IPointerClickHandler
 
     public void ResetScale()
     {
-        _rect.localScale = Vector3.one;
+        _RectTransform.localScale = Vector3.one;
     }
 
     IEnumerator ButtonFlash(float flashDuration)
     {
-        bool validate = _concludingTest.ValidateAnswer(option);
+        bool validate = _ConcludingTest.ValidateAnswer(option);
 
-        _image.color = validate ? correctColor : wrongColor;
+        _Image.color = validate ? correctColor : wrongColor;
 
         if (validate) yield break;
 
         yield return new WaitForSeconds(flashDuration);
 
-        _image.color = _originalColor;
+        _Image.color = _OriginalColor;
     }
 }

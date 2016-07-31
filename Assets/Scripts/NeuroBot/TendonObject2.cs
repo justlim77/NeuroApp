@@ -11,7 +11,7 @@ using UnityEditor;
 public class TendonObject2 : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
 {
 
-    public Tendon tendon = new Tendon();
+    public TendonData tendon = new TendonData();
     public SwingDirection swingDirection;
     public HeadReaction head;
     public Text header;
@@ -65,22 +65,22 @@ public class TendonObject2 : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
         mainPanel.color = reactionColor;
         switch (tendon.tendonReflex)
         {
-            case Tendon.TendonReflex.Hyperactive:
+            case TendonData.TendonReflex.Hyperactive:
                 header.text = hyperReflexMessage;
                 //Hyper 60degrees
                 StartCoroutine(ReflexReaction(60.0f));
                 break;
-            case Tendon.TendonReflex.Normal:
+            case TendonData.TendonReflex.Normal:
                 //Normal 30degrees
                 header.text = normalReflexMessage;
                 StartCoroutine(ReflexReaction(30.0f));
                 break;
-            case Tendon.TendonReflex.Sluggish:
+            case TendonData.TendonReflex.Sluggish:
                 //Hypo 10degrees
                 header.text = hypoReflexMessage;
                 StartCoroutine(ReflexReaction(10.0f));
                 break;
-            case Tendon.TendonReflex.Absent:
+            case TendonData.TendonReflex.Absent:
                 //ReflexReaction(0.0f);
                 header.text = absentReflexMessage;
                 break;

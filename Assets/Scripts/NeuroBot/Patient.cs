@@ -72,48 +72,53 @@ public class Patient : MonoBehaviour
     public Text LL_Toe_PF_L;
     #endregion
 
-    #region Sensation Variables
-    // True - Normal
-    // False - Decreased
-    // Format - LIMB_REGION_SIDE_SECTION
-    // Upper limbs (From chest to fingertip)
-    public PinObject UL_T3_1, UL_T3_2, UL_T3_3;
-    public PinObject UL_T1_R, UL_T1_L;
-    public PinObject UL_C5_R, UL_C5_L;
-    public PinObject UL_C6_R_1, UL_C6_R_2;
-    public PinObject UL_C6_L_1, UL_C6_L_2;
-    public PinObject UL_C7_R, UL_C7_L;
-    public PinObject UL_C8_R_1, UL_C8_R_2;
-    public PinObject UL_C8_L_1, UL_C8_L_2;
-    // Lower limbs (From hip to toe)
-    public PinObject LL_L2_R, LL_L2_L;
-    public PinObject LL_L3_R, LL_L3_L;
-    public PinObject LL_L4_R_1, LL_L4_R_2;
-    public PinObject LL_L4_L_1, LL_L4_L_2;
-    public PinObject LL_L5_R_1, LL_L5_R_2;
-    public PinObject LL_L5_L_1, LL_L5_L_2;
-    public PinObject LL_S1_R, LL_S1_L;
+    #region Dermatomes Variables
+    /*  
+     *  True - Normal
+     *  False - Decreased
+     *  Format - LIMB_REGION_SIDE_SECTION
+     */
+    // Upper extremity
+    public Dermatome UL_T1_R, UL_T1_L;      // Inner upper arm
+    public Dermatome UL_C5_R, UL_C5_L;      // Outer upper arm
+    public Dermatome UL_C6_R_1, UL_C6_L_1;  // Outer forearm
+    public Dermatome UL_C6_R_2, UL_C6_L_2;  // Thumb
+    public Dermatome UL_C7_R, UL_C7_L;      // Middle finger
+    public Dermatome UL_C8_R_1, UL_C8_R_2;  // Little finger
+    public Dermatome UL_C8_L_1, UL_C8_L_2;  // Little finger | Inner forearm
+    // Lower extremity
+    public Dermatome LL_L2_R, LL_L2_L;      // Thigh
+    public Dermatome LL_L3_R, LL_L3_L;      // Knee
+    public Dermatome LL_L4_R_1, LL_L4_L_1;  // Medial malleolus
+    public Dermatome LL_L4_R_2, LL_L4_L_2;  // Heel
+    public Dermatome LL_L5_R_1, LL_L5_L_1;  // Dorsum of foot
+    public Dermatome LL_L5_R_2, LL_L5_L_2;  // Toes 1-3
+    public Dermatome LL_S1_R, LL_S1_L;      // Toes 4 and 5; lateral malleolus
+    // Other
+    public Dermatome UL_T4;                 // Nipple
+    public Dermatome UL_T5_T9;              // Nipple to Umbilicus
+    public Dermatome UL_T10;                // Umbilicus
     #endregion
 
     #region Deep Tendon Reflex Variables
     // Deep Tendon Reflexes
-    public TendonObject tendon_tricep_R;
-    public TendonObject tendon_bicep_R;
-    public TendonObject tendon_supinator_R;
-    public TendonObject tendon_tricep_L;
-    public TendonObject tendon_bicep_L;
-    public TendonObject tendon_supinator_L;
-    public TendonObject tendon_patellar_R;
-    public TendonObject tendon_ankle_R;
-    public TendonObject tendon_patellar_L;
-    public TendonObject tendon_ankle_L;
+    public Tendon tendon_tricep_R;
+    public Tendon tendon_bicep_R;
+    public Tendon tendon_supinator_R;
+    public Tendon tendon_tricep_L;
+    public Tendon tendon_bicep_L;
+    public Tendon tendon_supinator_L;
+    public Tendon tendon_patellar_R;
+    public Tendon tendon_ankle_R;
+    public Tendon tendon_patellar_L;
+    public Tendon tendon_ankle_L;
     #endregion
 
     #region Cranial
     // Sensation
-    public PinObject face_upper_R, face_upper_L;
-    public PinObject face_mid_R, face_mid_L;
-    public PinObject face_lower_R, face_lower_L;
+    public Dermatome face_upper_R, face_upper_L;
+    public Dermatome face_mid_R, face_mid_L;
+    public Dermatome face_lower_R, face_lower_L;
 
     public TorchObject palate;
 
@@ -250,9 +255,9 @@ public class Patient : MonoBehaviour
 
         // Sensation setup
         // Upper limbs
-        UL_T3_1.canFeel = CaseData.UL_T3_1;
-        UL_T3_2.canFeel = CaseData.UL_T3_2;
-        UL_T3_3.canFeel = CaseData.UL_T3_3;
+        UL_T4.canFeel = CaseData.UL_T4;
+        UL_T5_T9.canFeel = CaseData.UL_T5_T9;
+        UL_T10.canFeel = CaseData.UL_T10;
         UL_T1_R.canFeel = CaseData.UL_T1_R;
         UL_T1_L.canFeel = CaseData.UL_T1_L;
         UL_C5_R.canFeel = CaseData.UL_C5_R;
