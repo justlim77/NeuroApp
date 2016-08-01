@@ -88,6 +88,14 @@ namespace NeuroApp
     {
         Main
     }
+
+    public enum ColorType
+    {
+        Background,
+        NoReaction,
+        Reaction
+    }
+
     public enum TestType
     {
         Single,

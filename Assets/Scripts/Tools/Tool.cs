@@ -16,6 +16,8 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public bool hasGradient = false;
     public List<GameObject> interactiveObjects = new List<GameObject>();
 
+    public ColorType ColorType;
+
     Color _BackgroundColor;
     ToolControl m_ToolControl;
     bool m_ToolUsed = false;
@@ -42,7 +44,19 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         m_ToolSprite = _image.sprite;
         cursorSprite = m_ToolSprite;
 
-        _BackgroundColor = Constants.const_background_color;
+        switch (ColorType)
+        {
+            case ColorType.Background:
+                _BackgroundColor = Constants.const_background_color;
+                break;
+            case ColorType.Reaction:
+                _BackgroundColor = Constants.const_tap_reaction_color;
+                break;
+            case ColorType.NoReaction:
+                _BackgroundColor = Constants.const_tap_no_reaction_color;
+                break;
+        }
+        //_BackgroundColor = Constants.const_background_color;
 
         Init();
     }

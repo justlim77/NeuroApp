@@ -20,7 +20,6 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
 
     public HeadReaction head;
     public Text header;
-    public Image mainPanel;
 
     private Color m_OriginalColor;
     private float m_OriginalAngle;
@@ -32,7 +31,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
 
     void Start()
     {
-        m_OriginalColor = mainPanel.color;
+        m_OriginalColor = Constants.const_background_color;
         m_OriginalAngle = limbRect.localRotation.z;
         m_Swinging = false;
 
@@ -84,7 +83,8 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
             case TendonData.TendonReflex.Hyperactive:
                 //Hyper 60degrees
                 header.text = Constants.const_tap_hyper_msg;
-                mainPanel.color = Constants.const_tap_reaction_color;
+                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_reaction_color);
+                //mainPanel.color = Constants.const_tap_reaction_color;
                 //m_InitialInterval = 0.1f;
                 //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(60.0f));
@@ -92,7 +92,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
             case TendonData.TendonReflex.Normal:
                 //Normal 15degrees
                 header.text = Constants.const_tap_norm_msg;
-                mainPanel.color = Constants.const_tap_reaction_color;
+                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_reaction_color);
                 //m_InitialInterval = 0.125f;
                 //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(15.0f));
@@ -100,7 +100,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
             case TendonData.TendonReflex.Sluggish:  // Deprecated
                 //Hypo 10degrees
                 header.text = Constants.const_tap_hypo_msg;
-                mainPanel.color = Constants.const_tap_reaction_color;
+                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_reaction_color);
                 //m_InitialInterval = 0.1f;
                 //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(10.0f));
@@ -109,7 +109,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
                 //Absent 0degrees
                 head.Reaction(FaceState.NoReaction);
                 header.text = Constants.const_tap_absent_msg;
-                mainPanel.color = Constants.const_tap_no_reaction_color;
+                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_no_reaction_color);
                 m_InitialInterval = 0.1f;
                 m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(0.0f));
@@ -132,7 +132,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
         //yield return _reactionDelay;
 
         head.Reaction(FaceState.Neutral);
-        mainPanel.color = m_OriginalColor;
+        PanelManager.Instance.PanelColor(PanelType.Main, m_OriginalColor);
         header.text = string.Empty;
 
         ToolCursor.canAnimate = true;
