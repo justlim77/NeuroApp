@@ -4,9 +4,9 @@ using System.Collections;
 public class TestEye : MonoBehaviour
 {
     public RectTransform eyeBounds;
-    public float radius;
     public float scale;
     public float dist;
+    public RectTransform eyesCenter;
 
     public Vector3 normalizedDir;
 
@@ -22,6 +22,7 @@ public class TestEye : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         _center = _rectTransform.position;
         _localCenter = _rectTransform.anchoredPosition;
+        _radius = eyeBounds.rect.width * scale;
         Follow = false;
 	}
 
@@ -40,12 +41,28 @@ public class TestEye : MonoBehaviour
         return Vector3.Distance(Input.mousePosition, _center);
     }
 
+    private float _radius;
+    public float GetRadius()
+    {
+        if (_radius == 0)
+            _radius = eyeBounds.rect.width * scale;
+        return _radius;
+    }
+
     public Vector2 GetNormalizedDirection()
     {
         Vector3 pos = Input.mousePosition - _rectTransform.position;
-        radius = eyeBounds.rect.width * scale;
         pos.Normalize();
-        pos *= radius;
+        pos *= GetRadius();
+        normalizedDir = pos;
+        return pos;
+    }
+
+    public Vector2 GetNormalizedDirection(Vector3 center)
+    {
+        Vector3 pos = Input.mousePosition - center;
+        pos.Normalize();
+        pos *= GetRadius();
         normalizedDir = pos;
         return pos;
     }

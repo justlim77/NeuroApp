@@ -7,7 +7,8 @@ public class TestEyeManager : MonoBehaviour
 {
     public TestEye rightEye;
     public TestEye leftEye;
-
+    public RectTransform eyeCenterRect;
+    
     public float followSpeed = 2.0f;
 
     public float converganceDistance = 10.0f;
@@ -18,9 +19,12 @@ public class TestEyeManager : MonoBehaviour
 
     public bool TrackMouse { get; set; }
 
+    private float _ipd = 0;
+
 	// Use this for initialization
 	void Start ()
     {
+        _ipd = Vector2.Distance(rightEye.GetCenter(), leftEye.GetCenter());
 	}
 	
 	// Update is called once per frame
@@ -32,19 +36,20 @@ public class TestEyeManager : MonoBehaviour
             return;
         }
 
-        rightEyeDist = rightEye.GetDistanceFromMouse();
-        leftEyeDist = leftEye.GetDistanceFromMouse();
-        converganceDistance = GetConvergeDistance();
-        equiDistance = GetEquidistance();
+        //rightEyeDist = rightEye.GetDistanceFromMouse();
+        //leftEyeDist = leftEye.GetDistanceFromMouse();
+        //converganceDistance = GetConvergeDistance();
+        //equiDistance = GetEquidistance();
 
-        if (equiDistance <= converganceDistance)
-        {
-            ConvergeLook();
-        }
-        else
-        {
-            EquidistantLook();
-        }       
+        //if (equiDistance <= converganceDistance)
+        //{
+        //    ConvergeLook();
+        //}
+        //else
+        //{
+            //EquidistantLook();
+            EquidistantCenterLook();
+        //}       
 	}
 
     void EquidistantLook()
@@ -55,6 +60,36 @@ public class TestEyeManager : MonoBehaviour
 
         rightEye.SetAnchoredPosition(direction);
         leftEye.SetAnchoredPosition(direction);
+    }
+
+    void EquidistantCenterLook()
+    {
+
+        Vector3 r_pos = Vector3.Lerp(rightEye.GetAnchoredPosition(), GetNormalizedDirection(rightEye), followSpeed * Time.deltaTime);
+        Vector3 l_pos = Vector3.Lerp(leftEye.GetAnchoredPosition(), GetNormalizedDirection(leftEye), followSpeed * Time.deltaTime);
+
+        rightEye.SetAnchoredPosition(r_pos);
+        leftEye.SetAnchoredPosition(l_pos);
+    }
+
+    Vector2 GetNormalizedDirection(TestEye eye)
+    {
+        Vector3 pos = Input.mousePosition - eyeCenterRect.position;
+        //Debug.Log(pos);
+        //Debug.Log(_ipd);
+        //pos.Normalize();
+        if (pos.x > -_ipd * 0.5f && pos.x < _ipd * 0.5f)
+        {
+            pos.Normalize();
+            pos *= eye.GetRadius();
+            pos.x = 0;
+        }
+        else
+        {
+            pos.Normalize();
+            pos *= eye.GetRadius();
+        }
+        return pos;
     }
 
     void ConvergeLook()
