@@ -288,7 +288,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         _isRaising = false;
     }
 
-    void Squint(int browIndex, params Image[] eyes)
+    void Squint(int browIndex, params Image[] eyeImages)
     {
         mouth.sprite = mouthNeutral;
         ToggleEyes(_originalEyes, defaultEyeSize, 3.0f, true, false, false);
@@ -296,7 +296,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         eyes[1].rectTransform.localScale = new Vector2(-1, 1);   // Flip left eye
 
-        foreach (var eye in eyes)
+        foreach (var eye in eyeImages)
             eye.sprite = squint;
 
         foreach (var lid in eyeLidImages)
