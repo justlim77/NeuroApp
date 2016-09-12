@@ -18,38 +18,54 @@ public class TestEyeManager : MonoBehaviour
     public float leftEyeDist;
 
     public bool TrackMouse { get; set; }
+    public bool ConvergeTest { get; set; }
 
     private float _ipd = 0;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         _ipd = Vector2.Distance(rightEye.GetCenter(), leftEye.GetCenter());
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+        Init();
+    }
+
+    public bool Init()
+    {
+        TrackMouse = true;
+        ConvergeTest = false;
+
+        return true;
+    }
+
+    void OnEnable()
+    {
+        Tool.OnToolSelected += Tool_OnToolSelected;
+    }
+    void OnDisable()
+    {
+        Tool.OnToolSelected -= Tool_OnToolSelected;
+    }
+
+    private void Tool_OnToolSelected(string obj)
+    {
+        ConvergeTest = false;
+        Debug.Log(obj);
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (!TrackMouse)
         {
-            CenterLook();
+            if (ConvergeTest)
+                ConvergeLook();
+            else
+                CenterLook();
             return;
         }
 
-        //rightEyeDist = rightEye.GetDistanceFromMouse();
-        //leftEyeDist = leftEye.GetDistanceFromMouse();
-        //converganceDistance = GetConvergeDistance();
-        //equiDistance = GetEquidistance();
-
-        //if (equiDistance <= converganceDistance)
-        //{
-        //    ConvergeLook();
-        //}
-        //else
-        //{
-            //EquidistantLook();
-            EquidistantCenterLook();
-        //}       
+        EquidistantCenterLook();      
 	}
 
     void EquidistantLook()
@@ -94,8 +110,10 @@ public class TestEyeManager : MonoBehaviour
 
     void ConvergeLook()
     {
-        Vector3 rightTargetPos = Vector3.Lerp(rightEye.GetAnchoredPosition(), rightEye.GetNormalizedDirection(), followSpeed * Time.deltaTime);
-        Vector3 leftTargetPos = Vector3.Lerp(leftEye.GetAnchoredPosition(), leftEye.GetNormalizedDirection(), followSpeed * Time.deltaTime);
+        //Vector3 rightTargetPos = Vector3.Lerp(rightEye.GetAnchoredPosition(), rightEye.GetNormalizedDirection(), followSpeed * Time.deltaTime);
+        //Vector3 leftTargetPos = Vector3.Lerp(leftEye.GetAnchoredPosition(), leftEye.GetNormalizedDirection(), followSpeed * Time.deltaTime);
+        Vector3 rightTargetPos = Vector3.Lerp(rightEye.GetAnchoredPosition(), rightEye.GetConvergePosition(), followSpeed * Time.deltaTime);
+        Vector3 leftTargetPos = Vector3.Lerp(leftEye.GetAnchoredPosition(), leftEye.GetConvergePosition(), followSpeed * Time.deltaTime);
 
         rightEye.SetAnchoredPosition(rightTargetPos);
         leftEye.SetAnchoredPosition(leftTargetPos);

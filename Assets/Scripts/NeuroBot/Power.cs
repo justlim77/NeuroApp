@@ -14,7 +14,7 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
 
     Image _image;
     Color _visibleColor = new Color(1, 1, 1, 1);
-    Color _invisibleColor = new Color(1, 1, 1, 0);
+    Color _invisibleColor = new Color(1, 1, 1, 0);    
 
     void Start()
     {
@@ -38,7 +38,9 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        StartCoroutine(PowerReaction());
+
+        StartCoroutine(PowerReaction(eventData.button));
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -49,18 +51,30 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
     }
 
     static bool _isTesting = false;
-    IEnumerator PowerReaction()
+    IEnumerator PowerReaction(PointerEventData.InputButton button)
     {
         if (_isTesting)
             yield break;
 
         _isTesting = true;
         head.testEyeManager.TrackMouse = false;
-        head.Reaction(faceState);
+
+        switch (button)
+        {
+            case PointerEventData.InputButton.Left:
+                head.Reaction(faceState);
+                break;
+            case PointerEventData.InputButton.Right:
+                head.testEyeManager.ConvergeTest = true;
+                break;
+        }
+        
         yield return new WaitForSeconds(Constants.const_reaction_delay);
 
         head.Reaction(FaceState.Neutral);
         head.testEyeManager.TrackMouse = true;
+        head.testEyeManager.ConvergeTest = false;
+
         _isTesting = false;
     }
 }

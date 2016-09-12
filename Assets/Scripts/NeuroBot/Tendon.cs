@@ -69,7 +69,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
     public void OnPointerDown(PointerEventData eventData)
     {
         // Don't execute if mid-swing
-        if (m_Swinging)
+        if (m_Swinging || eventData.button != PointerEventData.InputButton.Left)
             return;
 
         m_Swinging = true;

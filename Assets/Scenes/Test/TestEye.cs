@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TestEye : MonoBehaviour
 {
+    public EyeType eyeType;
     public RectTransform eyeBounds;
     public float scale;
     public float dist;
@@ -15,6 +16,7 @@ public class TestEye : MonoBehaviour
     Vector2 _center;
     Vector2 _localCenter;
     RectTransform _rectTransform;
+    Vector2 _convergePos = Vector2.zero;
 
 	// Use this for initialization
 	void Start ()
@@ -23,6 +25,7 @@ public class TestEye : MonoBehaviour
         _center = _rectTransform.position;
         _localCenter = _rectTransform.anchoredPosition;
         _radius = eyeBounds.rect.width * scale;
+        _convergePos.x = eyeType == EyeType.Right ? _radius : -_radius;
         Follow = false;
 	}
 
@@ -77,29 +80,14 @@ public class TestEye : MonoBehaviour
         return _rectTransform.anchoredPosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Vector2 GetConvergePosition()
     {
-        //if (Follow == false)
-        //{
-        //    //_rectTransform.anchoredPosition = _center;
-        //    return;
-        //}
-
-        //radius = eyeBounds.rect.width * scale;
-        //Vector3 mousePos = Input.mousePosition;
-        //dist = Vector3.Distance(mousePos, _center);
-
-        //if (dist < radius)
-        //{
-        //    _rectTransform.position = _center;
-        //}
-        //else
-        //{
-        //    Vector3 newPos = mousePos - _rectTransform.position;
-        //    newPos.Normalize();
-        //    newPos *= radius;
-        //    _rectTransform.anchoredPosition = newPos;
-        //}
+        return _convergePos;
     }
+}
+
+public enum EyeType
+{
+    Left,
+    Right
 }

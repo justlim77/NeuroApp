@@ -51,7 +51,10 @@ public class Dermatome : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        StartCoroutine(PinReaction());
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            StartCoroutine(PinReaction());
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)

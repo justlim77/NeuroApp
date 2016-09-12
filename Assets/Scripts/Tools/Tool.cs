@@ -7,6 +7,8 @@ using NeuroApp;
 
 public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public static event System.Action<string> OnToolSelected;
+
     public Sprite cursorSprite;
     public Sprite altCursorSprite;
     public GameObject toolCursor;
@@ -63,6 +65,12 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     void Start() {}
 
+    protected void ToolSelected()
+    {
+        if (OnToolSelected != null)
+            OnToolSelected(string.Format("{0} selected", gameObject.name));
+    }
+
     public void SelectTool()
     {
         m_ToolControl.ResetTools();
@@ -78,6 +86,8 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         // Set tool color to used color
         _image.color = Constants.const_tool_use_color;
+
+        ToolSelected();
     }
 
     public void DeselectTool()
@@ -91,10 +101,13 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!m_ToolUsed)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            m_ToolControl.ToolCount();
-            m_ToolUsed = true;
+            if (!m_ToolUsed)
+            {
+                m_ToolControl.ToolCount();
+                m_ToolUsed = true;
+            }
         }
     }
 
@@ -160,7 +173,6 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         //Disable all interactive objects on awake
         foreach (GameObject interactiveObject in interactiveObjects)
         {
-            //interactiveObject.GetComponent<Image>().enabled = false;
             interactiveObject.SetActive(false);
         }
 

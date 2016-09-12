@@ -58,7 +58,7 @@ public class TendonObject2 : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (m_Swinging)
+        if (m_Swinging || eventData.button != PointerEventData.InputButton.Left)
             return;
 
         head.Reaction(FaceState.Ouch);

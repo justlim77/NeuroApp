@@ -31,10 +31,6 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         return true;
     }
 
-    void Update()
-    {        
-    }
-
     public void ResizeEyes(float pupilSize)
     {
         pupilImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pupilSize);
