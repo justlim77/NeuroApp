@@ -10,19 +10,12 @@ public class Dermatome : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     public HeadReaction head;
     public Text header;
     public Image mainPanel;
-    public Color reactionColor = new Color32(251, 221, 97, 255);
-    public Color noReactionColor = new Color32(36, 36, 36, 255);
-    public float activationRadius = 50.0f;
 
     public bool canFeel = true;
-    public string positiveMessage = "Oww!";
-    public string negativeMessage = "...";
 
-    Color m_OriginalColor;
-    Image m_Image;
-    FaceState m_ReactionState;
-    Color m_VisibleColor = new Color(1, 1, 1, 1);
-    Color m_InvisibleColor = new Color(1, 1, 1, 0);
+    Color m_originalColor;
+    Image m_image;
+    FaceState m_reactionState;
 
     void OnEnable()
     {
@@ -36,16 +29,19 @@ public class Dermatome : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
 
     public void Init()
     {
-        m_OriginalColor = mainPanel.color;
-        m_Image = GetComponent<Image>();
-        m_Image.color = m_Image.color = m_InvisibleColor;
-        m_ReactionState = canFeel ? FaceState.NoReaction : FaceState.Shocked;
+        m_originalColor = mainPanel.color;
+        m_image = GetComponent<Image>();
+
+        if(m_image != null)
+            m_image.CrossFadeAlpha(0.0f, 0.0f, true);
+
+        m_reactionState = canFeel ? FaceState.NoReaction : FaceState.Shocked;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        m_Image.color = m_VisibleColor;
-        if(!_isPoking)
+        m_image.CrossFadeAlpha(1.0f, Constants.const_alpha_fade_duration, true);
+        if (!_isPoking)
             head.Reaction(FaceState.Shocked);
     }
 
@@ -59,7 +55,7 @@ public class Dermatome : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        m_Image.color = m_InvisibleColor;
+        m_image.CrossFadeAlpha(0.0f, Constants.const_alpha_fade_duration, true);
         if(!_isPoking)
             head.Reaction(FaceState.Neutral);
     }
@@ -72,15 +68,15 @@ public class Dermatome : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
 
         _isPoking = true;
 
-        head.Reaction(m_ReactionState);
-        mainPanel.color = canFeel ? reactionColor : noReactionColor;
-        header.text = canFeel ? positiveMessage : negativeMessage;
+        head.Reaction(m_reactionState);
+        mainPanel.color = canFeel ? Constants.const_areflexia_color : Constants.const_normal_color;
+        header.text = canFeel ? Constants.const_norm_msg : Constants.const_absent_msg;
         head.testEyeManager.TrackMouse = false;
 
-        yield return new WaitForSeconds(Constants.const_reaction_delay);
+        yield return new WaitForSeconds(Constants.const_pin_reaction_delay);
 
         head.Reaction(FaceState.Neutral);
-        mainPanel.color = m_OriginalColor;
+        mainPanel.color = m_originalColor;
         header.text = string.Empty;
         head.testEyeManager.TrackMouse = true;
 

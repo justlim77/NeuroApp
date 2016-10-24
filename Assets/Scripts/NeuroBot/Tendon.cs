@@ -36,7 +36,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
         m_Swinging = false;
 
         _tapperDelay = new WaitForSeconds(Constants.const_tapper_delay);
-        _reactionDelay = new WaitForSeconds(Constants.const_reaction_delay);
+        _reactionDelay = new WaitForSeconds(Constants.const_pin_reaction_delay);
         _absentDelay = new WaitForSeconds(Constants.const_absent_delay);
     }
 
@@ -82,8 +82,8 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
         {
             case TendonData.TendonReflex.Hyperactive:
                 //Hyper 60degrees
-                header.text = Constants.const_tap_hyper_msg;
-                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_reaction_color);
+                header.text = Constants.const_hyper_msg;
+                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_hyperreflexia_color);
                 //mainPanel.color = Constants.const_tap_reaction_color;
                 //m_InitialInterval = 0.1f;
                 //m_BackInterval = 0.05f;
@@ -91,25 +91,25 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
                 break;
             case TendonData.TendonReflex.Normal:
                 //Normal 15degrees
-                header.text = Constants.const_tap_norm_msg;
-                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_reaction_color);
+                header.text = Constants.const_norm_msg;
+                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_normal_color);
                 //m_InitialInterval = 0.125f;
                 //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(15.0f));
                 break;
-            case TendonData.TendonReflex.Sluggish:  // Deprecated
-                //Hypo 10degrees
-                header.text = Constants.const_tap_hypo_msg;
-                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_reaction_color);
-                //m_InitialInterval = 0.1f;
-                //m_BackInterval = 0.05f;
-                StartCoroutine(ReflexReaction(10.0f));
-                break;
+            //case TendonData.TendonReflex.Sluggish:  // Deprecated
+            //    //Hypo 10degrees
+            //    header.text = Constants.const_tap_hypo_msg;
+            //    PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_normal_color);
+            //    //m_InitialInterval = 0.1f;
+            //    //m_BackInterval = 0.05f;
+            //    StartCoroutine(ReflexReaction(10.0f));
+            //    break;
             case TendonData.TendonReflex.Absent:
                 //Absent 0degrees
                 head.Reaction(FaceState.NoReaction);
-                header.text = Constants.const_tap_absent_msg;
-                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_tap_no_reaction_color);
+                header.text = Constants.const_absent_msg;
+                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_areflexia_color);
                 m_InitialInterval = 0.1f;
                 m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(0.0f));

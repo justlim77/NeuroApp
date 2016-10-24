@@ -52,10 +52,10 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 _BackgroundColor = Constants.const_background_color;
                 break;
             case ColorType.Reaction:
-                _BackgroundColor = Constants.const_tap_reaction_color;
+                _BackgroundColor = Constants.const_normal_color;
                 break;
             case ColorType.NoReaction:
-                _BackgroundColor = Constants.const_tap_no_reaction_color;
+                _BackgroundColor = Constants.const_areflexia_color;
                 break;
         }
         //_BackgroundColor = Constants.const_background_color;
@@ -85,7 +85,7 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             interactiveObject.SetActive(true);
 
         // Set tool color to used color
-        _image.color = Constants.const_tool_use_color;
+        _image.color = Constants.const_tool_used_color;
 
         ToolSelected();
     }

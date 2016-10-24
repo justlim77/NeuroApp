@@ -12,9 +12,7 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
     public float activationRadius = 50.0f;
     public FaceState faceState;
 
-    Image _image;
-    Color _visibleColor = new Color(1, 1, 1, 1);
-    Color _invisibleColor = new Color(1, 1, 1, 0);    
+    Image m_image;
 
     void Start()
     {
@@ -23,16 +21,16 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
 
     public void Init()
     {
-        if(_image == null)
-            _image = GetComponent<Image>();
+        if(m_image == null)
+            m_image = GetComponent<Image>();
 
-        _image.color = _invisibleColor;
+        m_image.CrossFadeAlpha(0.0f, 0.0f, true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _image.color = _visibleColor;
-        if(!_isTesting)
+        m_image.CrossFadeAlpha(1.0f, Constants.const_alpha_fade_duration, true);
+        if (!_isTesting)
             head.Reaction(FaceState.Shocked);
     }
 
@@ -45,7 +43,7 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _image.color = _invisibleColor;
+        m_image.CrossFadeAlpha(0.0f, Constants.const_alpha_fade_duration, true);
         if (!_isTesting)
             head.Reaction(FaceState.Neutral);
     }
@@ -69,7 +67,7 @@ public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
                 break;
         }
         
-        yield return new WaitForSeconds(Constants.const_reaction_delay);
+        yield return new WaitForSeconds(Constants.const_power_reaction_delay);
 
         head.Reaction(FaceState.Neutral);
         head.testEyeManager.TrackMouse = true;

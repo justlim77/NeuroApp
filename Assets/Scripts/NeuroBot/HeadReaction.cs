@@ -277,7 +277,7 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             brow.anchoredPosition = new Vector2(brow.anchoredPosition.x, brow.anchoredPosition.y + height); 
         }
 
-        yield return new WaitForSeconds(Constants.const_reaction_delay);
+        yield return new WaitForSeconds(Constants.const_pin_reaction_delay);
 
         foreach (var brow in brows)
         {

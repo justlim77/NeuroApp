@@ -21,7 +21,7 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {        
     }
 
-    public bool Init(State state, float normal = 8, float half = 5, float dilate = 9, float constrict = 2)
+    public bool Init(State state, float normal = 8, float half = 5, float dilate = 9, float constrict = 4)
     {
         pupilState = state;
         normalSize = normal;
