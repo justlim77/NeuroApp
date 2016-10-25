@@ -6,12 +6,14 @@ namespace NeuroApp
     public static class Constants
     {
         public static float const_tapper_delay = 0.1f;
+        public static float const_tap_active_radius = 25.0f;        // Deprecated
+        public static float const_reflex_reaction_delay = 0.25f;
+        public static float const_reflex_areflexia_delay = 0.25f;
         public static float const_pin_reaction_delay = 0.25f;
-        public static float const_power_reaction_delay = 0.5f;
-        public static float const_absent_delay = 0.5f;
-        public static float const_tap_active_radius = 25.0f;
         public static float const_pin_active_radius = 50.0f;
+        public static float const_power_reaction_delay = 0.5f;
         public static float const_alpha_fade_duration = 0.1f;
+        public static float const_color_fade_duration = 0.1f;
 
         public static Color const_background_color = new Color32(13, 65, 89, 255);
         public static Color const_normal_color = new Color32(251, 221, 97, 255);

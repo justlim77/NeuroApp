@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ToolCursor : MonoBehaviour {
-
+public class ToolCursor : MonoBehaviour
+{
     public static bool canAnimate;
 
     public CanvasScaler canvasScaler;

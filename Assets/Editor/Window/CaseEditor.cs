@@ -195,140 +195,140 @@ public class CaseEditor : EditorWindow {
         //Power
         EditorGUILayout.LabelField("Power", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("", EditorStyles.boldLabel);
-        EditorGUILayout.LabelField("R", EditorStyles.boldLabel);
-        EditorGUILayout.LabelField("L", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        EditorGUILayout.LabelField("R", EditorStyles.boldLabel, GUILayout.MaxWidth(20));
+        EditorGUILayout.LabelField("L", EditorStyles.boldLabel, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Upper limbs
         //Shoulder
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Shoulder   /   Abduction", EditorStyles.boldLabel);
-        CaseData.UL_Shoulder_AB_R = EditorGUILayout.TextField(CaseData.UL_Shoulder_AB_R);
-        CaseData.UL_Shoulder_AB_L = EditorGUILayout.TextField(CaseData.UL_Shoulder_AB_L);
+        EditorGUILayout.LabelField("Shoulder | Abduction", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Shoulder_AB_R = EditorGUILayout.TextField(CaseData.UL_Shoulder_AB_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Shoulder_AB_L = EditorGUILayout.TextField(CaseData.UL_Shoulder_AB_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Shoulder   /   Adduction", EditorStyles.boldLabel);
-        CaseData.UL_Shoulder_AD_R = EditorGUILayout.TextField(CaseData.UL_Shoulder_AD_R);
-        CaseData.UL_Shoulder_AD_L = EditorGUILayout.TextField(CaseData.UL_Shoulder_AD_L);
+        EditorGUILayout.LabelField("Shoulder | Adduction", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Shoulder_AD_R = EditorGUILayout.TextField(CaseData.UL_Shoulder_AD_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Shoulder_AD_L = EditorGUILayout.TextField(CaseData.UL_Shoulder_AD_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Elbow
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Elbow   /   Flexion", EditorStyles.boldLabel);
-        CaseData.UL_Elbow_F_R = EditorGUILayout.TextField(CaseData.UL_Elbow_F_R);
-        CaseData.UL_Elbow_F_L = EditorGUILayout.TextField(CaseData.UL_Elbow_F_L);
+        EditorGUILayout.LabelField("Elbow | Flexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Elbow_F_R = EditorGUILayout.TextField(CaseData.UL_Elbow_F_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Elbow_F_L = EditorGUILayout.TextField(CaseData.UL_Elbow_F_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Elbow   /   Extension", EditorStyles.boldLabel);
-        CaseData.UL_Elbow_E_R = EditorGUILayout.TextField(CaseData.UL_Elbow_E_R);
-        CaseData.UL_Elbow_E_L = EditorGUILayout.TextField(CaseData.UL_Elbow_E_L);
+        EditorGUILayout.LabelField("Elbow | Extension", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Elbow_E_R = EditorGUILayout.TextField(CaseData.UL_Elbow_E_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Elbow_E_L = EditorGUILayout.TextField(CaseData.UL_Elbow_E_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Wrist
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Wrist   /   Flexion", EditorStyles.boldLabel);
-        CaseData.UL_Wrist_F_R = EditorGUILayout.TextField(CaseData.UL_Wrist_F_R);
-        CaseData.UL_Wrist_F_L = EditorGUILayout.TextField(CaseData.UL_Wrist_F_L);
+        EditorGUILayout.LabelField("Wrist | Flexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Wrist_F_R = EditorGUILayout.TextField(CaseData.UL_Wrist_F_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Wrist_F_L = EditorGUILayout.TextField(CaseData.UL_Wrist_F_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Wrist   /   Extension", EditorStyles.boldLabel);
-        CaseData.UL_Wrist_E_R = EditorGUILayout.TextField(CaseData.UL_Wrist_E_R);
-        CaseData.UL_Wrist_E_L = EditorGUILayout.TextField(CaseData.UL_Wrist_E_L);
+        EditorGUILayout.LabelField("Wrist | Extension", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Wrist_E_R = EditorGUILayout.TextField(CaseData.UL_Wrist_E_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Wrist_E_L = EditorGUILayout.TextField(CaseData.UL_Wrist_E_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Finger
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Finger   /   Flexion", EditorStyles.boldLabel);
-        CaseData.UL_Finger_F_R = EditorGUILayout.TextField(CaseData.UL_Finger_F_R);
-        CaseData.UL_Finger_F_L = EditorGUILayout.TextField(CaseData.UL_Finger_F_L);
+        EditorGUILayout.LabelField("Finger | Flexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Finger_F_R = EditorGUILayout.TextField(CaseData.UL_Finger_F_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Finger_F_L = EditorGUILayout.TextField(CaseData.UL_Finger_F_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Finger   /   Extension", EditorStyles.boldLabel);
-        CaseData.UL_Finger_E_R = EditorGUILayout.TextField(CaseData.UL_Finger_E_R);
-        CaseData.UL_Finger_E_L = EditorGUILayout.TextField(CaseData.UL_Finger_E_L);
+        EditorGUILayout.LabelField("Finger | Extension", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Finger_E_R = EditorGUILayout.TextField(CaseData.UL_Finger_E_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Finger_E_L = EditorGUILayout.TextField(CaseData.UL_Finger_E_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Finger   /   Abduction", EditorStyles.boldLabel);
-        CaseData.UL_Finger_AB_R = EditorGUILayout.TextField(CaseData.UL_Finger_AB_R);
-        CaseData.UL_Finger_AB_L = EditorGUILayout.TextField(CaseData.UL_Finger_AB_L);
+        EditorGUILayout.LabelField("Finger | Abduction", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Finger_AB_R = EditorGUILayout.TextField(CaseData.UL_Finger_AB_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Finger_AB_L = EditorGUILayout.TextField(CaseData.UL_Finger_AB_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Thumb
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Thumb   /   Flexion", EditorStyles.boldLabel);
-        CaseData.UL_Thumb_F_R = EditorGUILayout.TextField(CaseData.UL_Thumb_F_R);
-        CaseData.UL_Thumb_F_L = EditorGUILayout.TextField(CaseData.UL_Thumb_F_L);
+        EditorGUILayout.LabelField("Thumb | Flexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Thumb_F_R = EditorGUILayout.TextField(CaseData.UL_Thumb_F_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Thumb_F_L = EditorGUILayout.TextField(CaseData.UL_Thumb_F_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Thumb   /   Extension", EditorStyles.boldLabel);
-        CaseData.UL_Thumb_E_R = EditorGUILayout.TextField(CaseData.UL_Thumb_E_R);
-        CaseData.UL_Thumb_E_L = EditorGUILayout.TextField(CaseData.UL_Thumb_E_L);
+        EditorGUILayout.LabelField("Thumb | Extension", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Thumb_E_R = EditorGUILayout.TextField(CaseData.UL_Thumb_E_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Thumb_E_L = EditorGUILayout.TextField(CaseData.UL_Thumb_E_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("UL  /   Thumb   /   Abduction", EditorStyles.boldLabel);
-        CaseData.UL_Thumb_AB_R = EditorGUILayout.TextField(CaseData.UL_Thumb_AB_R);
-        CaseData.UL_Thumb_AB_L = EditorGUILayout.TextField(CaseData.UL_Thumb_AB_L);
+        EditorGUILayout.LabelField("Thumb | Abduction", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.UL_Thumb_AB_R = EditorGUILayout.TextField(CaseData.UL_Thumb_AB_R, GUILayout.MaxWidth(20));
+        CaseData.UL_Thumb_AB_L = EditorGUILayout.TextField(CaseData.UL_Thumb_AB_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Lower limbs
         //Hip
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Hip     /   Flexion", EditorStyles.boldLabel);
-        CaseData.LL_Hip_F_R = EditorGUILayout.TextField(CaseData.LL_Hip_F_R);
-        CaseData.LL_Hip_F_L = EditorGUILayout.TextField(CaseData.LL_Hip_F_L);
+        EditorGUILayout.LabelField("Hip | Flexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Hip_F_R = EditorGUILayout.TextField(CaseData.LL_Hip_F_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Hip_F_L = EditorGUILayout.TextField(CaseData.LL_Hip_F_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Hip     /   Extension", EditorStyles.boldLabel);
-        CaseData.LL_Hip_E_R = EditorGUILayout.TextField(CaseData.LL_Hip_E_R);
-        CaseData.LL_Hip_E_L = EditorGUILayout.TextField(CaseData.LL_Hip_E_L);
+        EditorGUILayout.LabelField("Hip | Extension", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Hip_E_R = EditorGUILayout.TextField(CaseData.LL_Hip_E_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Hip_E_L = EditorGUILayout.TextField(CaseData.LL_Hip_E_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Knee
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Knee    /   Flexion", EditorStyles.boldLabel);
-        CaseData.LL_Knee_F_R = EditorGUILayout.TextField(CaseData.LL_Knee_F_R);
-        CaseData.LL_Knee_F_L = EditorGUILayout.TextField(CaseData.LL_Knee_F_L);
+        EditorGUILayout.LabelField("Knee | Flexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Knee_F_R = EditorGUILayout.TextField(CaseData.LL_Knee_F_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Knee_F_L = EditorGUILayout.TextField(CaseData.LL_Knee_F_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Knee    /   Extension", EditorStyles.boldLabel);
-        CaseData.LL_Knee_E_R = EditorGUILayout.TextField(CaseData.LL_Knee_E_R);
-        CaseData.LL_Knee_E_L = EditorGUILayout.TextField(CaseData.LL_Knee_E_L);
+        EditorGUILayout.LabelField("Knee | Extension", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Knee_E_R = EditorGUILayout.TextField(CaseData.LL_Knee_E_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Knee_E_L = EditorGUILayout.TextField(CaseData.LL_Knee_E_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Ankle
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Ankle    /   Dorsiflexion", EditorStyles.boldLabel);
-        CaseData.LL_Ankle_DF_R = EditorGUILayout.TextField(CaseData.LL_Ankle_DF_R);
-        CaseData.LL_Ankle_DF_L = EditorGUILayout.TextField(CaseData.LL_Ankle_DF_L);
+        EditorGUILayout.LabelField("Ankle | Dorsiflexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Ankle_DF_R = EditorGUILayout.TextField(CaseData.LL_Ankle_DF_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Ankle_DF_L = EditorGUILayout.TextField(CaseData.LL_Ankle_DF_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Ankle    /   Plantarflexion", EditorStyles.boldLabel);
-        CaseData.LL_Ankle_PF_R = EditorGUILayout.TextField(CaseData.LL_Ankle_PF_R);
-        CaseData.LL_Ankle_PF_L = EditorGUILayout.TextField(CaseData.LL_Ankle_PF_L);
+        EditorGUILayout.LabelField("Ankle | Plantarflexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Ankle_PF_R = EditorGUILayout.TextField(CaseData.LL_Ankle_PF_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Ankle_PF_L = EditorGUILayout.TextField(CaseData.LL_Ankle_PF_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         //Toe
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Toe    /   Dorsiflexion", EditorStyles.boldLabel);
-        CaseData.LL_Toe_DF_R = EditorGUILayout.TextField(CaseData.LL_Toe_DF_R);
-        CaseData.LL_Toe_DF_L = EditorGUILayout.TextField(CaseData.LL_Toe_DF_L);
+        EditorGUILayout.LabelField("Toe | Dorsiflexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Toe_DF_R = EditorGUILayout.TextField(CaseData.LL_Toe_DF_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Toe_DF_L = EditorGUILayout.TextField(CaseData.LL_Toe_DF_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("LL  /   Toe    /   Plantarflexion", EditorStyles.boldLabel);
-        CaseData.LL_Toe_PF_R = EditorGUILayout.TextField(CaseData.LL_Toe_PF_R);
-        CaseData.LL_Toe_PF_L = EditorGUILayout.TextField(CaseData.LL_Toe_PF_L);
+        EditorGUILayout.LabelField("Toe | Plantarflexion", EditorStyles.boldLabel, GUILayout.MaxWidth(200));
+        CaseData.LL_Toe_PF_R = EditorGUILayout.TextField(CaseData.LL_Toe_PF_R, GUILayout.MaxWidth(20));
+        CaseData.LL_Toe_PF_L = EditorGUILayout.TextField(CaseData.LL_Toe_PF_L, GUILayout.MaxWidth(20));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();

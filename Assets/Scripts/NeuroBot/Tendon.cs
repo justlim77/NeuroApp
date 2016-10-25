@@ -18,10 +18,6 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
     public Tool tool;
     public ToolSwingDirection toolSwingDirection;
 
-    public HeadReaction head;
-    public Text header;
-
-    private Color m_OriginalColor;
     private float m_OriginalAngle;
     private float m_InitialInterval = 0.1f;
     private float m_BackInterval = 0.05f;
@@ -31,13 +27,12 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
 
     void Start()
     {
-        m_OriginalColor = Constants.const_background_color;
         m_OriginalAngle = limbRect.localRotation.z;
         m_Swinging = false;
 
         _tapperDelay = new WaitForSeconds(Constants.const_tapper_delay);
-        _reactionDelay = new WaitForSeconds(Constants.const_pin_reaction_delay);
-        _absentDelay = new WaitForSeconds(Constants.const_absent_delay);
+        _reactionDelay = new WaitForSeconds(Constants.const_reflex_reaction_delay);
+        _absentDelay = new WaitForSeconds(Constants.const_reflex_areflexia_delay);
     }
 
     bool _isNear = false;
@@ -60,7 +55,7 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        head.Reaction(FaceState.Shocked);
+        GUIManager.GetMainHeadReaction().Reaction(FaceState.Shocked);
 
         ToolCursor.canAnimate = true;
     }
@@ -75,15 +70,15 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
         m_Swinging = true;
 
         // Visual feedback: Face reaction
-        head.Reaction(FaceState.Ouch);
+        GUIManager.GetMainHeadReaction().Reaction(FaceState.Ouch);
 
         // Visual feedback: Swing
         switch (tendon.tendonReflex)
         {
             case TendonData.TendonReflex.Hyperactive:
                 //Hyper 60degrees
-                header.text = Constants.const_hyper_msg;
-                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_hyperreflexia_color);
+                GUIManager.ChangeReactionText(Constants.const_hyper_msg);
+                GUIManager.ChangePanelColor(Constants.const_hyperreflexia_color);
                 //mainPanel.color = Constants.const_tap_reaction_color;
                 //m_InitialInterval = 0.1f;
                 //m_BackInterval = 0.05f;
@@ -91,8 +86,8 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
                 break;
             case TendonData.TendonReflex.Normal:
                 //Normal 15degrees
-                header.text = Constants.const_norm_msg;
-                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_normal_color);
+                GUIManager.ChangeReactionText(Constants.const_norm_msg);
+                GUIManager.ChangePanelColor(Constants.const_normal_color);
                 //m_InitialInterval = 0.125f;
                 //m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(15.0f));
@@ -107,9 +102,9 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
             //    break;
             case TendonData.TendonReflex.Absent:
                 //Absent 0degrees
-                head.Reaction(FaceState.NoReaction);
-                header.text = Constants.const_absent_msg;
-                PanelManager.Instance.PanelColor(PanelType.Main, Constants.const_areflexia_color);
+                GUIManager.GetMainHeadReaction().Reaction(FaceState.NoReaction);
+                GUIManager.ChangeReactionText(Constants.const_absent_msg);
+                GUIManager.ChangePanelColor(Constants.const_areflexia_color);
                 m_InitialInterval = 0.1f;
                 m_BackInterval = 0.05f;
                 StartCoroutine(ReflexReaction(0.0f));
@@ -131,9 +126,9 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
 
         //yield return _reactionDelay;
 
-        head.Reaction(FaceState.Neutral);
-        PanelManager.Instance.PanelColor(PanelType.Main, m_OriginalColor);
-        header.text = string.Empty;
+        GUIManager.GetMainHeadReaction().Reaction(FaceState.Neutral);
+        GUIManager.RevertPanelColor();
+        GUIManager.ChangeReactionText(string.Empty);
 
         ToolCursor.canAnimate = true;
         m_Swinging = false;
@@ -191,6 +186,6 @@ public class Tendon : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        head.Reaction(FaceState.Neutral);
+        GUIManager.GetMainHeadReaction().Reaction(FaceState.Neutral);
     }
 }

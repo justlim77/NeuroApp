@@ -31,7 +31,6 @@ public class ToolControl : MonoBehaviour
 
     [SerializeField] bool debug = false;
     [SerializeField] bool activeOnStart = true;
-    [SerializeField] Color panelColor;
 
     void OnEnable()
     {
@@ -179,7 +178,7 @@ public class ToolControl : MonoBehaviour
             speechRectTrans.anchoredPosition = speechOriginalPos;
             speechRectTrans.localScale = Vector3.one;
 
-            PanelManager.Instance.PanelColor(PanelType.Main, panelColor);
+            GUIManager.RevertPanelColor();
 
             if (activeOnStart == true)
                 if (m_ToolUseCount >= tools.Count)

@@ -50,7 +50,6 @@ public class TestEyeManager : MonoBehaviour
     private void Tool_OnToolSelected(string obj)
     {
         ConvergeTest = false;
-        Debug.Log(obj);
     }
 
     // Update is called once per frame

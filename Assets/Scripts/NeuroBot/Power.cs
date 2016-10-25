@@ -2,77 +2,81 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
-using NeuroApp;
 
-[System.Serializable]
-public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
+namespace NeuroApp
 {
-    public HeadReaction head;
-    public Image mainPanel;
-    public float activationRadius = 50.0f;
-    public FaceState faceState;
-
-    Image m_image;
-
-    void Start()
+    [System.Serializable]
+    public class Power : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
     {
-        Init();
-    }
+        public FaceState faceState;
 
-    public void Init()
-    {
-        if(m_image == null)
-            m_image = GetComponent<Image>();
+        private Image m_image;
 
-        m_image.CrossFadeAlpha(0.0f, 0.0f, true);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        m_image.CrossFadeAlpha(1.0f, Constants.const_alpha_fade_duration, true);
-        if (!_isTesting)
-            head.Reaction(FaceState.Shocked);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-
-        StartCoroutine(PowerReaction(eventData.button));
-
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        m_image.CrossFadeAlpha(0.0f, Constants.const_alpha_fade_duration, true);
-        if (!_isTesting)
-            head.Reaction(FaceState.Neutral);
-    }
-
-    static bool _isTesting = false;
-    IEnumerator PowerReaction(PointerEventData.InputButton button)
-    {
-        if (_isTesting)
-            yield break;
-
-        _isTesting = true;
-        head.testEyeManager.TrackMouse = false;
-
-        switch (button)
+        void Start()
         {
-            case PointerEventData.InputButton.Left:
-                head.Reaction(faceState);
-                break;
-            case PointerEventData.InputButton.Right:
-                head.testEyeManager.ConvergeTest = true;
-                break;
+            Init();
         }
-        
-        yield return new WaitForSeconds(Constants.const_power_reaction_delay);
 
-        head.Reaction(FaceState.Neutral);
-        head.testEyeManager.TrackMouse = true;
-        head.testEyeManager.ConvergeTest = false;
+        void OnEnable()
+        {
+            Init();
+        }
 
-        _isTesting = false;
+        public void Init()
+        {
+            if (m_image == null)
+                m_image = GetComponent<Image>();
+
+            if (m_image != null)
+                m_image.CrossFadeAlpha(0.0f, 0.0f, true);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            m_image.CrossFadeAlpha(1.0f, Constants.const_alpha_fade_duration, true);
+            if (!m_Testing)
+                GUIManager.GetMainHeadReaction().Reaction(FaceState.Shocked);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            StartCoroutine(PowerReaction(eventData.button));
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            m_image.CrossFadeAlpha(0.0f, Constants.const_alpha_fade_duration, true);
+            if (!m_Testing)
+                GUIManager.GetMainHeadReaction().Reaction(FaceState.Neutral);
+        }
+
+        static bool m_Testing = false;
+        IEnumerator PowerReaction(PointerEventData.InputButton button)
+        {
+            if (m_Testing)
+                yield break;
+
+            m_Testing = true;
+
+            GUIManager.GetMainHeadReaction().testEyeManager.TrackMouse = false;
+
+            switch (button)
+            {
+                case PointerEventData.InputButton.Left:
+                    GUIManager.GetMainHeadReaction().Reaction(faceState);
+                    break;
+                case PointerEventData.InputButton.Right:
+                    GUIManager.GetMainHeadReaction().testEyeManager.ConvergeTest = true;
+                    break;
+            }
+
+            yield return new WaitForSeconds(Constants.const_power_reaction_delay);
+
+            GUIManager.GetMainHeadReaction().Reaction(FaceState.Neutral);
+            GUIManager.GetMainHeadReaction().testEyeManager.TrackMouse = true;
+            GUIManager.GetMainHeadReaction().testEyeManager.ConvergeTest = false;
+
+            m_Testing = false;
+        }
     }
 }

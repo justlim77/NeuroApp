@@ -2,84 +2,81 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
-using NeuroApp;
 
-[System.Serializable]
-public class Dermatome : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
+namespace NeuroApp
 {
-    public HeadReaction head;
-    public Text header;
-    public Image mainPanel;
-
-    public bool canFeel = true;
-
-    Color m_originalColor;
-    Image m_image;
-    FaceState m_reactionState;
-
-    void OnEnable()
+    [System.Serializable]
+    public class Dermatome : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
     {
-        Init();
-    }
+        public bool canFeel = true;
 
-    void Start()
-    {
-        Init();
-    }
+        private Image m_image;
+        private FaceState m_reactionState;
 
-    public void Init()
-    {
-        m_originalColor = mainPanel.color;
-        m_image = GetComponent<Image>();
-
-        if(m_image != null)
-            m_image.CrossFadeAlpha(0.0f, 0.0f, true);
-
-        m_reactionState = canFeel ? FaceState.NoReaction : FaceState.Shocked;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        m_image.CrossFadeAlpha(1.0f, Constants.const_alpha_fade_duration, true);
-        if (!_isPoking)
-            head.Reaction(FaceState.Shocked);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        void OnEnable()
         {
-            StartCoroutine(PinReaction());
+            Init();
         }
-    }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        m_image.CrossFadeAlpha(0.0f, Constants.const_alpha_fade_duration, true);
-        if(!_isPoking)
-            head.Reaction(FaceState.Neutral);
-    }
+        void Start()
+        {
+            Init();
+        }
 
-    static bool _isPoking = false;
-    IEnumerator PinReaction()
-    {
-        if (_isPoking)
-            yield break;
+        public void Init()
+        {
+            if (m_image == null)
+                m_image = GetComponent<Image>();
 
-        _isPoking = true;
+            if (m_image != null)
+                m_image.CrossFadeAlpha(0.0f, 0.0f, true);
 
-        head.Reaction(m_reactionState);
-        mainPanel.color = canFeel ? Constants.const_areflexia_color : Constants.const_normal_color;
-        header.text = canFeel ? Constants.const_norm_msg : Constants.const_absent_msg;
-        head.testEyeManager.TrackMouse = false;
+            m_reactionState = canFeel ? FaceState.NoReaction : FaceState.Shocked;
+        }
 
-        yield return new WaitForSeconds(Constants.const_pin_reaction_delay);
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            m_image.CrossFadeAlpha(1.0f, Constants.const_alpha_fade_duration, true);
+            if (!m_Testing)
+                GUIManager.GetMainHeadReaction().Reaction(FaceState.Shocked);
+        }
 
-        head.Reaction(FaceState.Neutral);
-        mainPanel.color = m_originalColor;
-        header.text = string.Empty;
-        head.testEyeManager.TrackMouse = true;
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                StartCoroutine(PinReaction());
+            }
+        }
 
-        _isPoking = false;
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            m_image.CrossFadeAlpha(0.0f, Constants.const_alpha_fade_duration, true);
+            if (!m_Testing)
+                GUIManager.GetMainHeadReaction().Reaction(FaceState.Neutral);
+        }
+
+        static bool m_Testing = false;
+        IEnumerator PinReaction()
+        {
+            if (m_Testing)
+                yield break;
+
+            m_Testing = true;
+
+            GUIManager.GetMainHeadReaction().Reaction(m_reactionState);
+            GUIManager.ChangePanelColor(canFeel ? Constants.const_areflexia_color : Constants.const_normal_color);
+            GUIManager.ChangeReactionText(canFeel ? Constants.const_norm_msg : Constants.const_absent_msg);
+            GUIManager.GetMainHeadReaction().testEyeManager.TrackMouse = false;
+
+            yield return new WaitForSeconds(Constants.const_pin_reaction_delay);
+
+            GUIManager.GetMainHeadReaction().Reaction(FaceState.Neutral);
+            GUIManager.RevertPanelColor();
+            GUIManager.ChangeReactionText(string.Empty);
+            GUIManager.GetMainHeadReaction().testEyeManager.TrackMouse = true;
+
+            m_Testing = false;
+        }
     }
 }
