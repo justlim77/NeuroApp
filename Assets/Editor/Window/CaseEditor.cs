@@ -73,46 +73,43 @@ public class CaseEditor : EditorWindow {
 
         //DTR
         EditorGUILayout.LabelField("Deep Tendon Reflexes", EditorStyles.boldLabel);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("", EditorStyles.boldLabel, GUILayout.MaxWidth(100));
+        EditorGUILayout.LabelField("R", EditorStyles.boldLabel, GUILayout.MaxWidth(100));
+        EditorGUILayout.LabelField("L", EditorStyles.boldLabel, GUILayout.MaxWidth(100));
+        EditorGUILayout.EndHorizontal();
 
         //Upper limb group
         EditorGUILayout.LabelField("(Upper Limb)", EditorStyles.miniBoldLabel);
-        //Upper limb - Right
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Right Tricep", GUILayout.MaxWidth(100));
-        CaseData.tendon_tricep_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_tricep_R.tendonReflex);
-        EditorGUILayout.LabelField("Right Bicep", GUILayout.MaxWidth(100));
-        CaseData.tendon_bicep_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_bicep_R.tendonReflex);
-        EditorGUILayout.LabelField("Right Supinator", GUILayout.MaxWidth(100));
-        CaseData.tendon_supinator_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_supinator_R.tendonReflex);
+        EditorGUILayout.LabelField("Tricep", GUILayout.MaxWidth(100));
+        CaseData.tendon_tricep_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_tricep_R.tendonReflex, GUILayout.MaxWidth(100));
+        CaseData.tendon_tricep_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_tricep_L.tendonReflex, GUILayout.MaxWidth(100));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Bicep", GUILayout.MaxWidth(100));
+        CaseData.tendon_bicep_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_bicep_R.tendonReflex, GUILayout.MaxWidth(100));
+        CaseData.tendon_bicep_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_bicep_L.tendonReflex, GUILayout.MaxWidth(100));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Supinator", GUILayout.MaxWidth(100));
+        CaseData.tendon_supinator_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_supinator_R.tendonReflex, GUILayout.MaxWidth(100));
+        CaseData.tendon_supinator_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_supinator_L.tendonReflex, GUILayout.MaxWidth(100));
         EditorGUILayout.EndHorizontal();
 
-        //Upper limb - Left
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Left Tricep", GUILayout.MaxWidth(100));
-        CaseData.tendon_tricep_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_tricep_L.tendonReflex);
-        EditorGUILayout.LabelField("Left Bicep", GUILayout.MaxWidth(100));
-        CaseData.tendon_bicep_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_bicep_L.tendonReflex);
-        EditorGUILayout.LabelField("Left Supinator", GUILayout.MaxWidth(100));
-        CaseData.tendon_supinator_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_supinator_L.tendonReflex);
-        EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         //Lower limb group
         EditorGUILayout.LabelField("(Lower Limb)", EditorStyles.miniBoldLabel);
-        //Lower limb - Right
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Right Patellar", GUILayout.MaxWidth(100));
-        CaseData.tendon_patellar_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_patellar_R.tendonReflex);
-        EditorGUILayout.LabelField("Right Ankle", GUILayout.MaxWidth(100));
-        CaseData.tendon_ankle_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_ankle_R.tendonReflex);
+        EditorGUILayout.LabelField("Patellar", GUILayout.MaxWidth(100));
+        CaseData.tendon_patellar_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_patellar_R.tendonReflex, GUILayout.MaxWidth(100));
+        CaseData.tendon_patellar_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_patellar_L.tendonReflex, GUILayout.MaxWidth(100));
         EditorGUILayout.EndHorizontal();
-
-        //Lower limb - Left
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Left Patellar", GUILayout.MaxWidth(100));
-        CaseData.tendon_patellar_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_patellar_L.tendonReflex);
-        EditorGUILayout.LabelField("Left Ankle", GUILayout.MaxWidth(100));
-        CaseData.tendon_ankle_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_ankle_L.tendonReflex);
+        EditorGUILayout.LabelField("Ankle", GUILayout.MaxWidth(100));
+        CaseData.tendon_ankle_R.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_ankle_R.tendonReflex, GUILayout.MaxWidth(100));
+        CaseData.tendon_ankle_L.tendonReflex = (TendonData.TendonReflex)EditorGUILayout.EnumPopup(CaseData.tendon_ankle_L.tendonReflex, GUILayout.MaxWidth(100));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();
