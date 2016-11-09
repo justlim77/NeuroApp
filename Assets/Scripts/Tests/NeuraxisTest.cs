@@ -38,6 +38,8 @@ public class NeuraxisTest : MonoBehaviour
     private Image m_SubmitImage;
     private Color32 m_OriginalColor;
     private List<NeuraxisButton> m_ButtonList = new List<NeuraxisButton>();
+    private bool m_FirstTry;
+    private bool m_HintUsed;
     #endregion
 
     private void Awake() 
@@ -130,6 +132,8 @@ public class NeuraxisTest : MonoBehaviour
         m_NumOfHintsUsed = 0;   // Reset hints used
         m_NumOfCorrect = 0;
         numOfAllowedAttempts = 2;
+        m_HintUsed = false;
+        m_FirstTry = true;
 
         // Initialize buttons
         foreach (NeuraxisButton button in m_ButtonList)
@@ -182,6 +186,33 @@ public class NeuraxisTest : MonoBehaviour
         bool hasWon = m_NumOfCorrect >= m_RequiredCorrect;
         StartCoroutine(ShowFeedback(hasWon));
         btnNext.SetActive(hasWon);
+
+        // Award stars
+        // First try, no hints used, all correct
+        if (m_FirstTry)
+        {
+            if (m_NumOfHintsUsed == 0 && hasWon)
+            {
+                StarSystem.Instance.StarReward = StarReward.LocaliseOnFirstTry | StarReward.NoHintsUsed;
+                Debug.Log("3-star: No hint and hasWon and firstTry");
+            }
+            else if (m_NumOfHintsUsed > 0 && hasWon)  // Hints were used and won
+            {
+                StarSystem.Instance.StarReward = StarReward.Localised;
+                Debug.Log("2-star: Won on first try BUT hint used");
+            }
+
+            m_FirstTry = false;
+        }
+        else
+        {
+            // Not first try, and won
+            if (hasWon)
+            {
+                StarSystem.Instance.StarReward = StarReward.Localised;
+                Debug.Log("1-star: Win Neuraxistest but not first try");
+            }
+        }
 
         // If run out of attempts or got all correct
         if (numOfAllowedAttempts <= 0 || hasWon) 

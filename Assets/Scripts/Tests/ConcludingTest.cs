@@ -88,6 +88,19 @@ public class ConcludingTest : MonoBehaviour
                     if (m_FirstAttempt)
                     {
                         bonusCorrect = true;
+
+                        // Check if was able to localise (2-star)
+                        if (StarSystem.Instance.StarReward == StarReward.Localised)
+                        {
+                            StarSystem.Instance.StarReward = StarReward.Localised | StarReward.MCQCorrect;
+                            Debug.Log("2-star: Able to localise and first try MCQ correct");
+                        }
+                        else if(StarSystem.Instance.StarReward != (StarReward.LocaliseOnFirstTry | StarReward.NoHintsUsed))
+                        {
+                            StarSystem.Instance.StarReward = StarReward.MCQCorrect;
+                            Debug.Log("1-star: Failed elimination test but first try MCQ correct");
+                        }
+
                         m_FirstAttempt = false;
                     }
 

@@ -123,4 +123,14 @@ namespace NeuroApp
         D = 3,
         E = 4
     }
+
+    [System.Flags]
+    public enum StarReward
+    {
+        None = 0,
+        NoHintsUsed = 1 << 0,           // 1
+        LocaliseOnFirstTry = 1 << 1,    // 2
+        Localised = 1 << 2,             // 4
+        MCQCorrect = 1 << 3,            // 8                
+    }
 }
