@@ -446,8 +446,9 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.Space();
 
         // Explanation
+        EditorGUILayout.LabelField("Explanation", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.localisingImagePath = EditorGUILayout.TextField("Diagram Image Path", CaseData.localisingImagePath);
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Explanation: ", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
         CaseData.localisingExplanation = EditorGUILayout.TextArea(CaseData.localisingExplanation, GUILayout.MaxWidth(600), GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();

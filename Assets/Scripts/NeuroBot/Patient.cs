@@ -155,6 +155,7 @@ public class Patient : MonoBehaviour
     public string[] localisingSteps;    // Localising steps string array
     public Text localisingText;         // Localising Steps text component
     public Text localisingExplainText;  // Localising explanation text component
+    public Sprite localisingDiagram;    // Localising diagram image sprite
     public Text testQuestionText;       // Concluding test question text component
     public string[] concludingTests;    // Concluding tests string array
     public Answer answer;               // Correct test answer enum
@@ -395,11 +396,12 @@ public class Patient : MonoBehaviour
         if (subContent != string.Empty)
             content += string.Format("\n<b>Explanation</b>\n{0}", CaseData.localisingExplanation);
 
-        localisingText.text = content;                                  // Localising setup
-        testQuestionText.text = CaseData.testQuestion;                  // Concluding Test Question setup
-        concludingTests = CaseData.concludingTests;                     // Concluding Test setup
-        answer = CaseData.answer;                                       // Answer setup
-        answerText.text = CaseData.answerExplanation;                   // Answer explanation setup
+        //localisingText.text = content;                                              // Localising setup
+        localisingDiagram = Resources.Load<Sprite>(CaseData.localisingImagePath);   // Load image path of localising diagram image
+        testQuestionText.text = CaseData.testQuestion;                              // Concluding Test Question setup
+        concludingTests = CaseData.concludingTests;                                 // Concluding Test setup
+        answer = CaseData.answer;                                                   // Answer setup
+        answerText.text = CaseData.answerExplanation;                               // Answer explanation setup
 
         return true;
     }

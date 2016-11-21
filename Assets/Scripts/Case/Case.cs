@@ -164,6 +164,10 @@ public class Case {
         "Localising Step #3",
         "Localising Step #4"
     };
+
+    // Localising diagram image path
+    public string localisingImagePath = "<Enter localising image path>";
+
     // Localising explanation
     public string localisingExplanation = "<Enter localising explanation>";
     #endregion

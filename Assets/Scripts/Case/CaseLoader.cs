@@ -16,6 +16,7 @@ namespace NeuroApp
         public GameObject localiseButton;
         public ToolControl toolControl;
         public ToolControl cranialToolControl;
+        public LocaliseView localiseView;
         public NeuraxisTest neuraxisTest;
         public ConcludingTest concludeTest;
         public StarSystem starSystem;
@@ -101,6 +102,11 @@ namespace NeuroApp
             result = neuraxisTest.Init();
             if (result == false)
                 print("Failed to reinitialize NeuraxisTest!");
+
+            // Reinitialize Localising view
+            result = localiseView.Initialize(patient.localisingDiagram, Patient.CaseData.localisingExplanation);
+            if (result == false)
+                print("Failed to reinitialize LocalisingView!");
 
             // Reinitialize Concluding Test
             result = concludeTest.Init();
