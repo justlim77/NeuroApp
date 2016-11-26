@@ -7,9 +7,8 @@ namespace NeuroApp
 {
     public class LevelsPanel : MonoBehaviour
     {
-        public Sprite starEnabledSprite;
-        public Sprite starDisabledSprite;
         public GameObject caseButtonPrefab;
+        public Sprite starSprite;
 
         [Header("WARNING: Bonus star reset!")]
         [SerializeField]
@@ -62,7 +61,7 @@ namespace NeuroApp
 
                 CaseButton caseButton = button.GetComponent<CaseButton>();
                 caseButton.SetName(m_cases[i].caseName);
-                caseButton.CreateStars(Constants.const_max_stars, starDisabledSprite);
+                caseButton.CreateStars(Constants.const_max_stars, starSprite);
                 caseButton.SetLevelText(i + 1);
                 int _idx = i;
                 caseButton.Button.onClick.AddListener(() =>
@@ -78,7 +77,7 @@ namespace NeuroApp
         {
             for (int i = 0; i < m_cases.Count; i++)
             {
-                caseButtons[i].SetScore(m_cases[i].stars, starEnabledSprite, starDisabledSprite);
+                caseButtons[i].SetScore(m_cases[i].stars);
             }
         }
     }

@@ -22,6 +22,7 @@ namespace NeuroApp
         public NeuraxisTest neuraxisTest;
         public ConcludingTest concludeTest;
         public StarSystem starSystem;
+        public UnityEngine.UI.Text caseHeader;
 
         private void Awake()
         {
@@ -135,6 +136,9 @@ namespace NeuroApp
             result = ScrollManager.Instance.Init();
             if (result == false)
                 print("Failed to reinitialize Scroll bars!");
+
+            // Initialize case header for results screen
+            caseHeader.text = Patient.CaseData.caseName;
 
             return result;
         }

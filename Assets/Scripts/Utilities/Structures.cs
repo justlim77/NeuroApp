@@ -36,6 +36,8 @@ namespace NeuroApp
         public static float const_default_pupil_half = 5.0f;
 
         public static int const_max_stars = 3;
+        public static Color const_star_inactive_color = new Color32(36, 36, 36, 255);
+        public static Color const_star_active_color = new Color32(251, 221, 97, 255);
     }
 
     public enum Orientation

@@ -2,65 +2,86 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class CaseButton : MonoBehaviour
+namespace NeuroApp
 {
-    [SerializeField] Button button;
-    [SerializeField] Text levelText;
-    [SerializeField] Transform starParent;
-    [SerializeField] Image[] stars;
-
-    public Button Button
+    public class CaseButton : MonoBehaviour
     {
-        get
+        [SerializeField]
+        Button button;
+
+        [SerializeField]
+        Text levelText;
+
+        [SerializeField]
+        Transform starParent;
+
+        [SerializeField]
+        Image[] stars;
+
+        public Button Button
         {
-            return button;
-        }
-    }
-
-    public Image[] CreateStars(int amount, Sprite defaultSprite = null)
-    {
-        // Clear all stars
-        starParent.Clear();
-
-        stars = new Image[amount];
-
-        for (int i = 0; i < amount; i++)
-        {
-            // Instantiate gameObject
-            GameObject star = Instantiate(new GameObject("Star" + i)) as GameObject;
-            star.transform.SetParent(starParent);
-
-            // Initialize stars
-            Image image = star.AddComponent<Image>();
-            image.sprite = defaultSprite;
-            image.raycastTarget = false;
-            image.preserveAspect = true;
-            stars[i] = image;
+            get
+            {
+                return button;
+            }
         }
 
-        return stars;
-    }
-
-    public void SetLevelText(string level)
-    {
-        levelText.text = level;
-    }
-
-    public void SetLevelText(int level)
-    {
-        levelText.text = level.ToString();
-    }
-
-    public void SetScore(int score, Sprite enabledStar, Sprite disabledStar)
-    {        
-        for(int i = 0; i < stars.Length; i++)
+        public Image[] CreateStars(int amount, Sprite sprite)
         {
-            stars[i].sprite = i < score ? enabledStar : disabledStar;
-        }
-    }
+            // Clear all stars
+            starParent.Clear();
 
-    public void SetName(string name)
-    {
-        this.name = name;
+            stars = new Image[amount];
+
+            for (int i = 0; i < amount; i++)
+            {
+                // Instantiate gameObject
+                GameObject star = Instantiate(new GameObject("Star" + i)) as GameObject;
+                star.transform.SetParent(starParent);
+
+                // Initialize stars
+                Image image = star.AddComponent<Image>();
+                image.sprite = sprite;
+                image.color = Constants.const_star_inactive_color;
+                image.raycastTarget = false;
+                image.preserveAspect = true;
+                stars[i] = image;
+            }
+
+            return stars;
+        }
+
+        public void SetLevelText(string level)
+        {
+            levelText.text = level;
+        }
+
+        public void SetLevelText(int level)
+        {
+            levelText.text = level.ToString();
+        }
+
+        public void SetScore(int score)
+        {
+            SetInactive();
+
+            for (int i = 0; i < stars.Length; i++)
+            {
+                stars[i].color = i < score ? Constants.const_star_active_color : Constants.const_star_inactive_color;
+            }
+        }
+
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+
+        void SetInactive()
+        {
+            foreach (var star in stars)
+            {
+                star.color = Constants.const_star_inactive_color;
+            }
+        }
     }
 }

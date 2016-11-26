@@ -10,8 +10,7 @@ namespace NeuroApp
         public static StarSystem Instance { get; private set; }
 
         public int starCount = 3;
-        public Sprite enabledSprite;
-        public Sprite disabledSprite;
+        public Sprite starSprite;
 
         private StarReward starReward;
         public StarReward StarReward
@@ -68,7 +67,8 @@ namespace NeuroApp
                 GameObject star = (GameObject)new GameObject("star_" + i);
                 star.transform.SetParent(this.transform);
                 stars[i] = star.AddComponent<Image>();
-                stars[i].sprite = disabledSprite;
+                stars[i].sprite = starSprite;
+                stars[i].color = Constants.const_star_inactive_color;
                 stars[i].preserveAspect = true;
             }
 
@@ -79,7 +79,7 @@ namespace NeuroApp
         {
             for (int i = 0; i < m_stars.Length; i++)
             {
-                m_stars[i].sprite = disabledSprite;
+                m_stars[i].color = Constants.const_star_inactive_color;
             }
         }
 
@@ -87,8 +87,11 @@ namespace NeuroApp
         {
             for(int i = 0; i < amount; i++)
             {
-                m_stars[i].sprite = enabledSprite;
+                m_stars[i].color = Constants.const_star_active_color;
             }
+
+            // Update case stars
+            Patient.CaseData.stars = amount;
         }
 
         object OnUpdateBonus(object sender, object args)
@@ -97,7 +100,6 @@ namespace NeuroApp
             {
                 bool bonusCorrect = (bool)args;
                 Patient.CaseData.bonusCorrect = bonusCorrect;
-                ToggleStar(bonusCorrect);
             }
             return null;
         }
