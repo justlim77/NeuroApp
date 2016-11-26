@@ -34,6 +34,8 @@ namespace NeuroApp
         public static float const_default_pupil_dilation = 9.0f;
         public static float const_default_pupil_constrict = 3.0f;
         public static float const_default_pupil_half = 5.0f;
+
+        public static int const_max_stars = 3;
     }
 
     public enum Orientation

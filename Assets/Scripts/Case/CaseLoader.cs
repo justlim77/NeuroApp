@@ -6,6 +6,8 @@ namespace NeuroApp
 {
     public class CaseLoader : MonoBehaviour
     {
+        public static CaseLoader Instance { get; private set; }
+
         public GameObject[] playPanels;
         public GameObject nextPanel;
         public Patient patient;
@@ -20,6 +22,17 @@ namespace NeuroApp
         public NeuraxisTest neuraxisTest;
         public ConcludingTest concludeTest;
         public StarSystem starSystem;
+
+        private void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+        }
+
+        private void OnDestroy()
+        {
+            Instance = null;
+        }
 
         public void LoadCase(int index)
         {

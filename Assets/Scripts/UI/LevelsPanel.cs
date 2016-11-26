@@ -1,51 +1,85 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
-public class LevelsPanel : MonoBehaviour
+namespace NeuroApp
 {
-    public Sprite starEnabledSprite;
-    public Sprite starDisabledSprite;
-
-    [Header("WARNING: Bonus star reset!")]
-    [SerializeField] bool reset = false;
-
-    [SerializeField] Transform[] children;
-    [SerializeField] Image[] starImages;
-
-    [SerializeField] CaseButton[] caseButtons;
-
-    private int m_childCount = 0;
-
-	// Use this for initialization
-	void Start ()
+    public class LevelsPanel : MonoBehaviour
     {
-        m_childCount = CaseDatabase.Instance.caseList.caseList.Count;
+        public Sprite starEnabledSprite;
+        public Sprite starDisabledSprite;
+        public GameObject caseButtonPrefab;
 
-        LogInfo(m_childCount);
+        [Header("WARNING: Bonus star reset!")]
+        [SerializeField]
+        bool reset = false;
 
-        children = new Transform[m_childCount];
+        [SerializeField]
+        CaseButton[] caseButtons;
 
-        Init();
-	}
+        private List<Case> m_cases;
+        private int m_childCount = 0;
 
-    public bool Init()
-    {
-        starImages = new Image[m_childCount];
-        for (int i = 0; i < m_childCount; i++)
+        // Use this for initialization
+        void Start()
         {
-            if(reset)
-                CaseDatabase.Instance.caseList.caseList[i].bonusCorrect = false;
-            children[i] = transform.GetChild(i);
-            starImages[i] = children[i].GetChild(1).GetChild(0).GetComponent<Image>();
-            starImages[i].sprite = CaseDatabase.Instance.caseList.caseList[i].bonusCorrect ? starEnabledSprite : starDisabledSprite;
+            m_cases = CaseDatabase.Instance.caseList.caseList;
+            m_childCount = m_cases.Count;
+
+            LogInfo(m_childCount);
+
+            // Clear children
+            transform.Clear();
+
+            // Initialize case buttons
+            caseButtons = CreateCaseButtons(m_cases.Count);
+
+            Init();
         }
 
-        return true;
-    }
+        public bool Init()
+        {
+            // Initialize stars
+            SetScore();
 
-    private void LogInfo(object message)
-    {
-        Debug.Log(message);
+            return true;
+        }
+
+        private void LogInfo(object message)
+        {
+            //Debug.Log(message);
+        }
+
+        CaseButton[] CreateCaseButtons(int amount)
+        {
+            CaseButton[] buttons = new CaseButton[amount];
+
+            // Spawn buttons
+            for (int i = 0; i < amount; i++)
+            {
+                GameObject button = Instantiate(caseButtonPrefab, this.transform) as GameObject;
+
+                CaseButton caseButton = button.GetComponent<CaseButton>();
+                caseButton.SetName(m_cases[i].caseName);
+                caseButton.CreateStars(Constants.const_max_stars, starDisabledSprite);
+                caseButton.SetLevelText(i + 1);
+                int _idx = i;
+                caseButton.Button.onClick.AddListener(() =>
+                {
+                    CaseLoader.Instance.LoadCase(_idx);
+                });
+                buttons[i] = caseButton;
+            }
+            return buttons;
+        }
+
+        void SetScore()
+        {
+            for (int i = 0; i < m_cases.Count; i++)
+            {
+                caseButtons[i].SetScore(m_cases[i].stars, starEnabledSprite, starDisabledSprite);
+            }
+        }
     }
 }

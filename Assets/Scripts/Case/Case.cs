@@ -8,6 +8,7 @@ public class Case {
     public string caseDescription = "<CaseDescription>";    // A description for the condition
     public int caseScore = 0;                               // Case highest score
     public bool bonusCorrect = false;                       // Case star rating system
+    public int stars = 0;                                   // Number of stars earned
     public string tone = "Normal";                          // Tone
     public string plantars = "Normal";                      // Plantars
     public string cerebellar = "Normal";                    // Cerebellar examination
