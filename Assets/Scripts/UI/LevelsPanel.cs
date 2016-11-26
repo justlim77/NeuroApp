@@ -13,18 +13,26 @@ public class LevelsPanel : MonoBehaviour
     [SerializeField] Transform[] children;
     [SerializeField] Image[] starImages;
 
+    [SerializeField] CaseButton[] caseButtons;
+
+    private int m_childCount = 0;
+
 	// Use this for initialization
 	void Start ()
     {
+        m_childCount = CaseDatabase.Instance.caseList.caseList.Count;
+
+        LogInfo(m_childCount);
+
+        children = new Transform[m_childCount];
+
         Init();
 	}
 
     public bool Init()
     {
-        int childCount = transform.childCount;
-        children = new Transform[childCount];
-        starImages = new Image[childCount];
-        for (int i = 0; i < childCount; i++)
+        starImages = new Image[m_childCount];
+        for (int i = 0; i < m_childCount; i++)
         {
             if(reset)
                 CaseDatabase.Instance.caseList.caseList[i].bonusCorrect = false;
@@ -34,5 +42,10 @@ public class LevelsPanel : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void LogInfo(object message)
+    {
+        Debug.Log(message);
     }
 }
