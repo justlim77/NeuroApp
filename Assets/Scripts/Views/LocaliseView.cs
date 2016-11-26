@@ -2,43 +2,36 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class LocaliseView : MonoBehaviour
+namespace NeuroApp
 {
-    public Image localisingImage;
-    public Button explanationButton;
-    public Button closeExplanationButton;
-    public GameObject explanationPanel;
-    public Text explanationText;
-
-    private void Start()
+    public class LocaliseView : MonoBehaviour
     {
-        explanationButton.onClick.AddListener(ShowExplanation);
-        closeExplanationButton.onClick.AddListener(HideExplanation);
-    }
+        public Image localisingImage;
+        public Button explanationButton;
 
-    private void OnDestroy()
-    {
-        explanationButton.onClick.RemoveAllListeners();
-        closeExplanationButton.onClick.RemoveAllListeners();
-    }
+        private string m_explanation;
 
-    public bool Initialize(Sprite localiseTexture, string explanation)
-    {
-        localisingImage.sprite = localiseTexture;
-        explanationText.text = explanation;
-        explanationButton.enabled = true;
-        HideExplanation();
+        private void Start()
+        {
+            explanationButton.onClick.AddListener(ShowExplanation);
+        }
 
-        return true;
-    }
+        private void OnDestroy()
+        {
+            explanationButton.onClick.RemoveAllListeners();
+        }
 
-    public void ShowExplanation()
-    {
-        explanationPanel.SetActive(true);
-    }
+        public bool Initialize(Sprite localiseTexture, string explanation)
+        {
+            localisingImage.sprite = localiseTexture;
+            m_explanation = explanation;
 
-    public void HideExplanation()
-    {
-        explanationPanel.SetActive(false);
+            return true;
+        }
+
+        public void ShowExplanation()
+        {
+            GUIManager.Instance.ContextPopup.SetContext(m_explanation);
+        }
     }
 }

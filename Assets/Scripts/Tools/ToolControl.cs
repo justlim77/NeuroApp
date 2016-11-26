@@ -8,7 +8,7 @@ public class ToolControl : MonoBehaviour
 {
     public List<Tool> tools = new List<Tool>();
     public GameObject toolCursor;
-    public GameObject localiseButton;
+    //public GameObject localiseButton;
     public Text selectedToolText;
     public GameObject alternateSet;
 
@@ -34,9 +34,11 @@ public class ToolControl : MonoBehaviour
 
     void OnEnable()
     {
-        if (activeOnStart == true)
-            if (m_ToolUseCount >= tools.Count)
-                localiseButton.SetActive(true);
+        // Deprecated
+        //if (activeOnStart == true)
+        //    if (m_ToolUseCount >= tools.Count)
+        //        localiseButton.SetActive(true);
+        //localiseButton.SetActive(true);
     }
 
     void Awake()
@@ -76,12 +78,15 @@ public class ToolControl : MonoBehaviour
         if (result == false)
             print("Failed to deactivate tool cursor image!");
 
+        #region Deprecated
         // Deactivate assess button
-        while (localiseButton.activeInHierarchy)
-            localiseButton.SetActive(false);
-        result = !localiseButton.activeInHierarchy;
-        if (result == false)
-            print("Failed to deactivate localise button!");
+        //while (localiseButton.activeInHierarchy)
+        //    localiseButton.SetActive(false);
+        //localiseButton.SetActive(true);
+        //result = localiseButton.activeInHierarchy;
+        //if (result == false)
+        //    print("Failed to deactivate localise button!");
+        #endregion
 
         // Reset tools and tool count
         m_ToolUseCount = 0;
@@ -128,9 +133,10 @@ public class ToolControl : MonoBehaviour
     {
         m_ToolUseCount++;
 
-        if(activeOnStart && gameObject.activeSelf)
-            if (m_ToolUseCount >= tools.Count)
-                localiseButton.SetActive(true);
+        // Deprecated
+        //if(activeOnStart && gameObject.activeSelf)
+        //    if (m_ToolUseCount >= tools.Count)
+        //        localiseButton.SetActive(true);
     }
 
     public void SwitchToolset()
@@ -165,7 +171,7 @@ public class ToolControl : MonoBehaviour
             speechRectTrans.localScale = cranialSpeechScale;
 
 
-            localiseButton.SetActive(false);
+            //localiseButton.SetActive(false);
 
             Core.BroadcastEvent("OnToggleCranial", this, Constants.const_zoom_delta);
         }
@@ -180,9 +186,12 @@ public class ToolControl : MonoBehaviour
 
             GUIManager.RevertPanelColor();
 
-            if (activeOnStart == true)
-                if (m_ToolUseCount >= tools.Count)
-                    localiseButton.SetActive(true);
+            // Deprecated
+            //if (activeOnStart == true)
+            //    if (m_ToolUseCount >= tools.Count)
+            //        localiseButton.SetActive(true);
+
+            //localiseButton.SetActive(true);
 
             Core.BroadcastEvent("OnToggleCranial", this, Constants.const_default_delta);
         }

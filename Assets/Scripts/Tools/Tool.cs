@@ -67,8 +67,9 @@ public class Tool : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         foreach (GameObject interactiveObject in interactiveObjects)
             interactiveObject.SetActive(true);
 
+        // Deprecated
         // Set tool color to used color
-        _image.color = Constants.const_tool_used_color;
+        //_image.color = Constants.const_tool_used_color;
 
         ToolSelected();
     }

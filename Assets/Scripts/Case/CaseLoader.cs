@@ -137,6 +137,11 @@ namespace NeuroApp
             if (result == false)
                 print("Failed to reinitialize Scroll bars!");
 
+            // Initialize GUI Manager
+            result = GUIManager.Instance.Initialize();
+            if (result == false)
+                print("Failed to reinitialize GUIManager!");
+
             // Initialize case header for results screen
             caseHeader.text = Patient.CaseData.caseName;
 

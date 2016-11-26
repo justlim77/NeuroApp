@@ -19,11 +19,11 @@ public class Patient : MonoBehaviour
     public Image eyelid_R;
     public Image eyelid_L;
 
-    #region Clinical Exam Variables
-    public Text toneText;                       // Tone
-    public Text plantarsText;                   // Plantars
-    public Text cerebellarExamText;             // Cerebellar Exam
-    public Text otherTestsText;                 // Other important tests
+    #region Clinical Exam Variables // DEPRECATED in 0.3.0
+    //public Text toneText;                       // Tone
+    //public Text plantarsText;                   // Plantars
+    //public Text cerebellarExamText;             // Cerebellar Exam
+    //public Text otherTestsText;                 // Other important tests
     #endregion
 
     #region Power Variables
@@ -135,7 +135,7 @@ public class Patient : MonoBehaviour
     public Text cornealReflexText;
     public Text visualFieldsText;
     public Text gagReflexText;
-    public Text speechText;
+    //public Text speechText;
     public GameObject speechButton;
     #endregion
 
@@ -180,10 +180,13 @@ public class Patient : MonoBehaviour
     {
         // General
         caseDescriptionText.text = CaseData.caseDescription;                                                // Case description setup
-        toneText.text = string.Format("<b>Tone</b>\n{0}", CaseData.tone);                                   // Tone setup
-        plantarsText.text = string.Format("<b>Plantars</b>\n{0}", CaseData.plantars);                       // Plantars setup
-        cerebellarExamText.text = string.Format("<b>Cerebellar examination</b>\n{0}", CaseData.cerebellar); // Cerebellar exam setup
-        otherTestsText.text = string.Format("<b>Other important tests</b>\n{0}", CaseData.otherTests);      // Other important tests
+
+        #region DEPRECATED IN 0.3.0
+        //toneText.text = string.Format("<b>Tone</b>\n{0}", CaseData.tone);                                   // Tone setup
+        //plantarsText.text = string.Format("<b>Plantars</b>\n{0}", CaseData.plantars);                       // Plantars setup
+        //cerebellarExamText.text = string.Format("<b>Cerebellar examination</b>\n{0}", CaseData.cerebellar); // Cerebellar exam setup
+        //otherTestsText.text = string.Format("<b>Other important tests</b>\n{0}", CaseData.otherTests);      // Other important tests
+        #endregion
 
         // Face
         face = CaseData.face;
@@ -364,7 +367,7 @@ public class Patient : MonoBehaviour
         }
         else
         {
-            speechText.text = CaseData.speech;
+            //speechText.text = CaseData.speech;    // Deprecated in 0.3.0
             speechButton.GetComponent<CanvasGroup>().alpha = 1;
         }
 
