@@ -17,6 +17,8 @@ public class TestEyeManager : MonoBehaviour
     public float rightEyeDist;
     public float leftEyeDist;
 
+    public float trackingRange = 10.0f;
+
     public bool TrackMouse { get; set; }
     public bool ConvergeTest { get; set; }
 
@@ -64,8 +66,22 @@ public class TestEyeManager : MonoBehaviour
             return;
         }
 
-        EquidistantCenterLook();      
+        if (IsInRange())
+        {
+            EquidistantCenterLook();
+        }
+        else
+        {
+            CenterLook();
+        }
 	}
+
+    bool IsInRange()
+    {
+        float dist = Vector2.Distance(Input.mousePosition, eyeCenterRect.position);
+        print(dist);
+        return dist < trackingRange;
+    }
 
     void EquidistantLook()
     {

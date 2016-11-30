@@ -18,7 +18,7 @@ namespace NeuroApp
         public static Color const_background_color = new Color32(13, 65, 89, 255);
         public static Color const_normal_color = new Color32(251, 221, 97, 255);
         public static Color const_areflexia_color = new Color32(36, 36, 36, 255);
-        public static Color const_hyperreflexia_color = new Color32(251, 97, 97, 255);
+        public static Color const_hyperreflexia_color = new Color32(187, 97, 97, 255);
         public static Color const_tool_used_color = new Color32(65, 255, 84, 255);
 
         public static string const_hyper_msg = "Ouch!";

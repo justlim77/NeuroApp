@@ -35,7 +35,7 @@ namespace NeuroApp
             {
                 if (contextPopup == null)
                 {
-                    contextPopup = CreateContextPopup();                  
+                    contextPopup = CreateContextPopup();
                 }
                 return contextPopup;
             }
@@ -82,7 +82,7 @@ namespace NeuroApp
             GameObject popupObject = Instantiate(popupPrefab, MainCanvas.transform) as GameObject;
             ContextPopup popup = popupObject.GetComponent<ContextPopup>();
             return popup;
-        }        
+        }
 
         public bool Initialize()
         {
@@ -92,9 +92,9 @@ namespace NeuroApp
                 //_MainPanel.CrossFadeColor(Constants.const_background_color, 0.0f, true, true, true);
                 _MainPanel.color = Constants.const_background_color;
             }
-            if(_Header == null)
+            if (_Header == null)
                 _Header = header;
-            if(_MainHeadReaction == null)
+            if (_MainHeadReaction == null)
                 _MainHeadReaction = mainHeadReaction;
 
             // Set clinical exam button to show context
@@ -115,6 +115,11 @@ namespace NeuroApp
             {
                 _MainPanel.color = targetColor;
             }
+        }
+
+        public void DimPanelColor()
+        {
+            _MainPanel.color = Constants.const_areflexia_color;
         }
 
         public static void RevertPanelColor()

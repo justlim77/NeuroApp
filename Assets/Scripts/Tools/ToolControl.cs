@@ -151,6 +151,12 @@ public class ToolControl : MonoBehaviour
        
     }
 
+    public void Activate()
+    {
+        alternateSet.SetActive(false);
+        this.gameObject.SetActive(true);
+    }
+
     public void ToggleCranial(bool value)
     {
         foreach (Image image in toggledImages)
