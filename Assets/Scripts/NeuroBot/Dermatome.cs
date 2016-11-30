@@ -65,7 +65,7 @@ namespace NeuroApp
             m_Testing = true;
 
             GUIManager.GetMainHeadReaction().Reaction(m_reactionState);
-            GUIManager.ChangePanelColor(canFeel ? Constants.const_areflexia_color : Constants.const_normal_color);
+            GUIManager.ChangePanelColor(canFeel ?Constants.const_normal_color : Constants.const_areflexia_color);
             GUIManager.ChangeReactionText(canFeel ? Constants.const_norm_msg : Constants.const_absent_msg);
             GUIManager.GetMainHeadReaction().testEyeManager.TrackMouse = false;
 
