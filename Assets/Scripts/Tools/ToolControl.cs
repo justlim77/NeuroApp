@@ -53,6 +53,9 @@ public class ToolControl : MonoBehaviour
         bedOriginalScale = bedRectTrans.localScale;
         speechOriginalScale = speechRectTrans.localScale;
 
+        // Deprecated
+        speechRectTrans.gameObject.SetActive(false);
+
         //Init();
         ResetTools();
 
@@ -108,11 +111,11 @@ public class ToolControl : MonoBehaviour
         // Deselect any active tools
         ResetTools();
 
-        if(activeOnStart == false)
-            while (gameObject.activeInHierarchy)
-                gameObject.SetActive(false);
-        else
-            ToggleCranial(false);
+        //if(activeOnStart == false)
+        //    while (gameObject.activeInHierarchy)
+        //        gameObject.SetActive(false);
+        //else
+        //    ToggleCranial(false);
 
         return result;
     }
@@ -175,7 +178,6 @@ public class ToolControl : MonoBehaviour
 
             speechRectTrans.anchoredPosition = cranialSpeechPos;
             speechRectTrans.localScale = cranialSpeechScale;
-
 
             //localiseButton.SetActive(false);
 

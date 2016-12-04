@@ -79,7 +79,7 @@ public class TestEyeManager : MonoBehaviour
     bool IsInRange()
     {
         float dist = Vector2.Distance(Input.mousePosition, eyeCenterRect.position);
-        print(dist);
+        //print(dist);
         return dist < trackingRange;
     }
 

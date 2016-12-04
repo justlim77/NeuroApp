@@ -17,6 +17,8 @@ namespace NeuroApp
         [SerializeField] Button ClinicalExamButton;
         [SerializeField] Button SpeechButton;
 
+        public TutorialView TutorialView;
+
         [Header("Context Popup")]
         [SerializeField] GameObject popupPrefab;
 

@@ -96,21 +96,24 @@ namespace NeuroApp
                 print("Failed to reinitialize LevelsPanel");
 
             // Disable localise button
-            while (localiseButton.activeInHierarchy == true)
-                localiseButton.SetActive(false);
-            result = !localiseButton.activeInHierarchy;
+            //while (localiseButton.activeInHierarchy == true)
+            //    localiseButton.SetActive(false);
+            localiseButton.SetActive(true);
+            result = localiseButton.activeInHierarchy;
             if (result == false)
-                print("Failed to disable localise button!");
+                print("Failed to enable localise button!");
 
             // Reinitialize Tool Control
             result = toolControl.Init();
             if (result == false)
                 print("Failed to reinitialize ToolControl!");
 
+            toolControl.Activate();
+
             // Reinitialize Cranial Tool Control
-            result = cranialToolControl.Init();
-            if (result == false)
-                print("Failed to reinitialize Cranial ToolControl!");
+            //result = cranialToolControl.Init();
+            //if (result == false)
+            //    print("Failed to reinitialize Cranial ToolControl!");
 
             // Reinitialize Neuraxis Test
             result = neuraxisTest.Init();
