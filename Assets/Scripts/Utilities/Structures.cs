@@ -114,11 +114,22 @@ namespace NeuroApp
         Single,
         Multiple
     }
+
     public enum Tone
     {
         Normal,
         Abnormal
     }
+
+    [System.Serializable]
+    public enum ReflexType
+    {
+        Nil,
+        Normal,
+        Areflexia,
+        Hyperreflexia
+    }
+
     public enum Answer
     {
         A = 0,

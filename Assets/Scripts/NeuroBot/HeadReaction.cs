@@ -381,4 +381,37 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 break;
         }
     }
+
+    public void DemoHyperreflexia()
+    {
+        Reaction(FaceState.Ouch);
+        GUIManager.ChangePanelColor(Constants.const_hyperreflexia_color);
+        testEyeManager.TrackMouse = false;
+    }
+
+    public void DemoAreflexia()
+    {
+        Reaction(FaceState.NoReaction);
+        GUIManager.ChangePanelColor(Constants.const_areflexia_color);
+        testEyeManager.TrackMouse = false;
+    }
+
+    public void DemoNormalReflex()
+    {
+        Reaction(FaceState.Ouch);
+        GUIManager.ChangePanelColor(Constants.const_normal_color);
+        testEyeManager.TrackMouse = false;
+    }
+
+    public void DemoNilReaction()
+    {
+        Reaction(FaceState.Smile);
+        GUIManager.ChangePanelColor(Constants.const_background_color);
+        testEyeManager.TrackMouse = true;
+    }
+
+    public void ResumeEyeTracking(bool resume = true)
+    {
+        testEyeManager.TrackMouse = resume;
+    }
 }
