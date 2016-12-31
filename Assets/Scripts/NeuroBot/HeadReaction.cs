@@ -228,10 +228,18 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         if (_pupil_L != null && _pupil_R != null)
         {
+            // Normal:
+            //if(Patient.CaseData.pu)
             middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.normalSize);
             middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.normalSize);
             middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.normalSize);
-            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.normalSize);       
+            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.normalSize);
+
+            // Dilated:
+            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.normalSize);
+            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.normalSize);
+            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.normalSize);
+            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.normalSize);
         }
 
         foreach (var middleEye in middleEyes)

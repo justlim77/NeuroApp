@@ -109,15 +109,24 @@ public class TestEyeManager : MonoBehaviour
         //Debug.Log(pos);
         //Debug.Log(_ipd);
         //pos.Normalize();
+
         if (pos.x > -_ipd * 0.5f && pos.x < _ipd * 0.5f)
         {
             pos.Normalize();
+            if (eye.IsClamped)
+            {
+                pos = eye.GetClampedNormalizedDirection(pos);
+            }
             pos *= eye.GetRadius();
             pos.x = 0;
         }
         else
         {
             pos.Normalize();
+            if (eye.IsClamped)
+            {
+                pos = eye.GetClampedNormalizedDirection(pos);
+            }
             pos *= eye.GetRadius();
         }
         return pos;
