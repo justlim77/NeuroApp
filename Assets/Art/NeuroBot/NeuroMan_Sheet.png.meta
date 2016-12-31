@@ -62,12 +62,12 @@ TextureImporter:
     21300110: NeuroMan_Sheet_34
     21300112: NeuroMan_Sheet_35
     21300114: NeuroMan_Sheet_36
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -79,10 +79,8 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -93,9 +91,7 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -103,12 +99,44 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: NeuroMan_Sheet_0
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_0
       rect:
         serializedVersion: 2
         x: 15
@@ -118,19 +146,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 59.5, y: 106}
-        - {x: -59.5, y: 106}
-        - {x: -60.5, y: 105}
-        - {x: -64.5, y: 100}
-        - {x: -64.5, y: -100}
-        - {x: -61.5, y: -104}
-        - {x: -57.5, y: -106}
-        - {x: 58.5, y: -106}
-        - {x: 60.5, y: -105}
-        - {x: 64.5, y: -101}
-        - {x: 64.5, y: 102}
-    - name: NeuroMan_Sheet_1
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_1
       rect:
         serializedVersion: 2
         x: 165
@@ -140,15 +159,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -34.5, y: 31}
-        - {x: -43.5, y: 28}
-        - {x: -43.5, y: -4}
-        - {x: 4.5, y: -31}
-        - {x: 43.5, y: -31}
-        - {x: 43.5, y: 11}
-        - {x: 10.5, y: 31}
-    - name: NeuroMan_Sheet_2
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_2
       rect:
         serializedVersion: 2
         x: 280
@@ -158,15 +172,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -26, y: -21.5}
-        - {x: -25, y: -27.5}
-        - {x: 12, y: -27.5}
-        - {x: 26, y: -19.5}
-        - {x: 26, y: 23.5}
-        - {x: 25, y: 27.5}
-        - {x: -26, y: 27.5}
-    - name: NeuroMan_Sheet_3
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_3
       rect:
         serializedVersion: 2
         x: 455
@@ -176,19 +185,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7.5, y: 84}
-        - {x: -19.5, y: 84}
-        - {x: -26.5, y: 76}
-        - {x: -28.5, y: 74}
-        - {x: -28.5, y: 45}
-        - {x: -5.5, y: -81}
-        - {x: -4.5, y: -84}
-        - {x: 25.5, y: -84}
-        - {x: 28.5, y: -74}
-        - {x: 28.5, y: -3}
-        - {x: 21.5, y: 70}
-    - name: NeuroMan_Sheet_4
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_4
       rect:
         serializedVersion: 2
         x: 539
@@ -198,16 +198,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -48, y: 56.5}
-        - {x: -51, y: 48.5}
-        - {x: -51, y: 9.5}
-        - {x: 28, y: -56.5}
-        - {x: 44, y: -56.5}
-        - {x: 51, y: -41.5}
-        - {x: 51, y: -16.5}
-        - {x: -11, y: 56.5}
-    - name: NeuroMan_Sheet_5
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_5
       rect:
         serializedVersion: 2
         x: 675
@@ -218,7 +212,9 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: NeuroMan_Sheet_6
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_6
       rect:
         serializedVersion: 2
         x: 783
@@ -228,16 +224,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -25.5, y: 28.5}
-        - {x: -26.5, y: 22.5}
-        - {x: -26.5, y: -9.5}
-        - {x: -6.5, y: -28.5}
-        - {x: 15.5, y: -28.5}
-        - {x: 26.5, y: -23.5}
-        - {x: 26.5, y: 25.5}
-        - {x: 23.5, y: 28.5}
-    - name: NeuroMan_Sheet_7
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_7
       rect:
         serializedVersion: 2
         x: 867
@@ -247,17 +237,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 13.5, y: 72.5}
-        - {x: -78.5, y: -21.5}
-        - {x: -78.5, y: -65.5}
-        - {x: -73.5, y: -72.5}
-        - {x: -56.5, y: -72.5}
-        - {x: 77.5, y: 23.5}
-        - {x: 78.5, y: 26.5}
-        - {x: 78.5, y: 63.5}
-        - {x: 72.5, y: 72.5}
-    - name: NeuroMan_Sheet_8
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_8
       rect:
         serializedVersion: 2
         x: 155
@@ -267,16 +250,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 51.5, y: 50.5}
-        - {x: 33.5, y: 50.5}
-        - {x: -54.5, y: -12.5}
-        - {x: -54.5, y: -50.5}
-        - {x: -15.5, y: -50.5}
-        - {x: 23.5, y: -10.5}
-        - {x: 54.5, y: 22.5}
-        - {x: 54.5, y: 44.5}
-    - name: NeuroMan_Sheet_9
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_9
       rect:
         serializedVersion: 2
         x: 280
@@ -286,19 +263,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -33, y: 72.5}
-        - {x: -64, y: 72.5}
-        - {x: -80, y: 60.5}
-        - {x: -80, y: 30.5}
-        - {x: -75, y: 20.5}
-        - {x: -45, y: 2.5}
-        - {x: 59, y: -72.5}
-        - {x: 69, y: -72.5}
-        - {x: 72, y: -70.5}
-        - {x: 80, y: -44.5}
-        - {x: 80, y: -25.5}
-    - name: NeuroMan_Sheet_10
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_10
       rect:
         serializedVersion: 2
         x: 673
@@ -308,16 +276,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 36.5, y: 31}
-        - {x: -13.5, y: 31}
-        - {x: -43.5, y: 8}
-        - {x: -43.5, y: -31}
-        - {x: 16.5, y: -31}
-        - {x: 27.5, y: -29}
-        - {x: 43.5, y: -4}
-        - {x: 43.5, y: 27}
-    - name: NeuroMan_Sheet_11
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_11
       rect:
         serializedVersion: 2
         x: 15
@@ -327,15 +289,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -49.5, y: 31.5}
-        - {x: -64.5, y: -13.5}
-        - {x: -64.5, y: -31.5}
-        - {x: -37.5, y: -31.5}
-        - {x: 60.5, y: 8.5}
-        - {x: 64.5, y: 11.5}
-        - {x: 64.5, y: 31.5}
-    - name: NeuroMan_Sheet_12
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_12
       rect:
         serializedVersion: 2
         x: 181
@@ -345,15 +302,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20.5, y: 83.5}
-        - {x: -78.5, y: 54.5}
-        - {x: -82.5, y: 42.5}
-        - {x: -82.5, y: -83.5}
-        - {x: 82.5, y: -83.5}
-        - {x: 82.5, y: 75.5}
-        - {x: 75.5, y: 83.5}
-    - name: NeuroMan_Sheet_13
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_13
       rect:
         serializedVersion: 2
         x: 675
@@ -363,15 +315,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -54, y: 50.5}
-        - {x: -54, y: 18.5}
-        - {x: -34, y: -33.5}
-        - {x: 8, y: -50.5}
-        - {x: 54, y: -50.5}
-        - {x: 54, y: -7.5}
-        - {x: -36, y: 50.5}
-    - name: NeuroMan_Sheet_14
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_14
       rect:
         serializedVersion: 2
         x: 820
@@ -381,15 +328,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -21, y: 83}
-        - {x: -30, y: 43}
-        - {x: -30, y: -83}
-        - {x: 7, y: -83}
-        - {x: 30, y: 21}
-        - {x: 30, y: 72}
-        - {x: 23, y: 83}
-    - name: NeuroMan_Sheet_15
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_15
       rect:
         serializedVersion: 2
         x: 908
@@ -399,17 +341,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 5, y: 56.5}
-        - {x: -51, y: -21.5}
-        - {x: -51, y: -37.5}
-        - {x: -44, y: -56.5}
-        - {x: -29, y: -56.5}
-        - {x: 15, y: -44.5}
-        - {x: 51, y: 9.5}
-        - {x: 51, y: 55.5}
-        - {x: 49, y: 56.5}
-    - name: NeuroMan_Sheet_16
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_16
       rect:
         serializedVersion: 2
         x: 15
@@ -419,16 +354,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -29, y: 37.5}
-        - {x: -27, y: 26.5}
-        - {x: -42, y: -24.5}
-        - {x: -42, y: -37.5}
-        - {x: -27, y: -37.5}
-        - {x: 42, y: -7.5}
-        - {x: 42, y: -0.5}
-        - {x: -13, y: 37.5}
-    - name: NeuroMan_Sheet_17
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_17
       rect:
         serializedVersion: 2
         x: 15
@@ -438,18 +367,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -64.5, y: 64}
-        - {x: -64.5, y: -40}
-        - {x: -31.5, y: -64}
-        - {x: 42.5, y: -64}
-        - {x: 64.5, y: -60}
-        - {x: 64.5, y: 64}
-      - - {x: -36.5, y: -28}
-        - {x: -10.5, y: 44}
-        - {x: 34.5, y: 30}
-        - {x: 38.5, y: -23}
-    - name: NeuroMan_Sheet_18
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_18
       rect:
         serializedVersion: 2
         x: 190
@@ -459,16 +380,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -44, y: 27.5}
-        - {x: -71, y: 27.5}
-        - {x: -71, y: 11.5}
-        - {x: -69, y: 9.5}
-        - {x: 50, y: -27.5}
-        - {x: 71, y: -27.5}
-        - {x: 71, y: -9.5}
-        - {x: 67, y: -6.5}
-    - name: NeuroMan_Sheet_19
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_19
       rect:
         serializedVersion: 2
         x: 8
@@ -478,16 +393,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -48, y: 26}
-        - {x: -69, y: 11}
-        - {x: -69, y: -23}
-        - {x: -58, y: -26}
-        - {x: 64, y: -26}
-        - {x: 70, y: -16}
-        - {x: 70, y: 16}
-        - {x: 51, y: 26}
-    - name: NeuroMan_Sheet_20
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_20
       rect:
         serializedVersion: 2
         x: 193
@@ -497,14 +406,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -70.5, y: 38.5}
-        - {x: -70.5, y: -4.5}
-        - {x: -36.5, y: -38.5}
-        - {x: 43.5, y: -38.5}
-        - {x: 70.5, y: -1.5}
-        - {x: 70.5, y: 38.5}
-    - name: NeuroMan_Sheet_21
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_21
       rect:
         serializedVersion: 2
         x: 380
@@ -514,18 +419,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 48.5, y: 67.5}
-        - {x: -63.5, y: 67.5}
-        - {x: -120.5, y: 52.5}
-        - {x: -131.5, y: 18.5}
-        - {x: -131.5, y: -23.5}
-        - {x: -87.5, y: -67.5}
-        - {x: 70.5, y: -67.5}
-        - {x: 120.5, y: -46.5}
-        - {x: 131.5, y: -22.5}
-        - {x: 131.5, y: 10.5}
-    - name: NeuroMan_Sheet_22
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_22
       rect:
         serializedVersion: 2
         x: 378
@@ -535,22 +432,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 119, y: 48}
-        - {x: 60, y: 69}
-        - {x: -63, y: 69}
-        - {x: -72, y: 68}
-        - {x: -105, y: 55}
-        - {x: -134, y: 28}
-        - {x: -134, y: -26}
-        - {x: -125, y: -54}
-        - {x: -67, y: -69}
-        - {x: 50, y: -69}
-        - {x: 64, y: -67}
-        - {x: 116, y: -44}
-        - {x: 134, y: -18}
-        - {x: 134, y: 18}
-    - name: NeuroMan_Sheet_23
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_23
       rect:
         serializedVersion: 2
         x: 384
@@ -560,16 +445,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -126, y: 57.5}
-        - {x: -128, y: 55.5}
-        - {x: -128, y: -44.5}
-        - {x: -120, y: -57.5}
-        - {x: 96, y: -57.5}
-        - {x: 128, y: -7.5}
-        - {x: 128, y: 37.5}
-        - {x: 122, y: 57.5}
-    - name: NeuroMan_Sheet_24
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_24
       rect:
         serializedVersion: 2
         x: 179
@@ -579,14 +458,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -78.5, y: 23}
-        - {x: -78.5, y: 2}
-        - {x: -49.5, y: -23}
-        - {x: 49.5, y: -23}
-        - {x: 77.5, y: 3}
-        - {x: 77.5, y: 23}
-    - name: NeuroMan_Sheet_25
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_25
       rect:
         serializedVersion: 2
         x: 712
@@ -596,16 +471,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -103, y: 49.5}
-        - {x: -130, y: 49.5}
-        - {x: -130, y: 35.5}
-        - {x: 84, y: -44.5}
-        - {x: 106, y: -49.5}
-        - {x: 130, y: -49.5}
-        - {x: 130, y: -35.5}
-        - {x: 36, y: 10.5}
-    - name: NeuroMan_Sheet_26
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_26
       rect:
         serializedVersion: 2
         x: 658
@@ -615,15 +484,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -93.5, y: 27}
-        - {x: -100.5, y: 22}
-        - {x: -100.5, y: -27}
-        - {x: -15.5, y: -27}
-        - {x: 100.5, y: -16}
-        - {x: 100.5, y: 14}
-        - {x: 8.5, y: 27}
-    - name: NeuroMan_Sheet_27
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_27
       rect:
         serializedVersion: 2
         x: 879
@@ -633,19 +497,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -62, y: 27}
-        - {x: -62, y: 9}
-        - {x: 33, y: -27}
-        - {x: 62, y: -27}
-        - {x: 62, y: 27}
-      - - {x: 35, y: 27}
-        - {x: 35, y: 23}
-        - {x: 59, y: 1}
-        - {x: 62, y: 1}
-        - {x: 62, y: 13}
-        - {x: 46, y: 27}
-    - name: NeuroMan_Sheet_28
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_28
       rect:
         serializedVersion: 2
         x: 11
@@ -656,7 +511,9 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: NeuroMan_Sheet_29
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_29
       rect:
         serializedVersion: 2
         x: 669
@@ -666,16 +523,10 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 10, y: 0}
-        - {x: 0, y: -18}
-        - {x: 0, y: -109}
-        - {x: 29, y: -121}
-        - {x: 118, y: -121}
-        - {x: 136, y: -99}
-        - {x: 136, y: -28}
-        - {x: 109, y: 0}
-    - name: NeuroMan_Sheet_30
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_30
       rect:
         serializedVersion: 2
         x: 846
@@ -685,16 +536,10 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 21, y: 0}
-        - {x: 10, y: -2}
-        - {x: 0, y: -17}
-        - {x: 0, y: -93}
-        - {x: 10, y: -122}
-        - {x: 136, y: -122}
-        - {x: 136, y: -1}
-        - {x: 134, y: 0}
-    - name: NeuroMan_Sheet_31
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_31
       rect:
         serializedVersion: 2
         x: 11
@@ -704,14 +549,10 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 125, y: 0}
-        - {x: 0, y: -183}
-        - {x: 0, y: -193}
-        - {x: 35, y: -193}
-        - {x: 136, y: -38}
-        - {x: 136, y: 0}
-    - name: NeuroMan_Sheet_32
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_32
       rect:
         serializedVersion: 2
         x: 192
@@ -721,14 +562,10 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: 0}
-        - {x: 0, y: -38}
-        - {x: 14, y: -44}
-        - {x: 124, y: -44}
-        - {x: 129, y: -40}
-        - {x: 129, y: 0}
-    - name: NeuroMan_Sheet_33
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_33
       rect:
         serializedVersion: 2
         x: 408
@@ -738,13 +575,10 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: 0}
-        - {x: 0, y: -130}
-        - {x: 124, y: -130}
-        - {x: 128, y: -122}
-        - {x: 128, y: 0}
-    - name: NeuroMan_Sheet_34
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_34
       rect:
         serializedVersion: 2
         x: 558
@@ -754,14 +588,10 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: 0}
-        - {x: 0, y: -107}
-        - {x: 26, y: -130}
-        - {x: 85, y: -130}
-        - {x: 128, y: -43}
-        - {x: 128, y: 0}
-    - name: NeuroMan_Sheet_35
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_35
       rect:
         serializedVersion: 2
         x: 722
@@ -771,18 +601,10 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 149, y: -3}
-        - {x: 121, y: 0}
-        - {x: 1, y: 0}
-        - {x: 0, y: -5}
-        - {x: 0, y: -69}
-        - {x: 4, y: -82}
-        - {x: 29, y: -86}
-        - {x: 208, y: -86}
-        - {x: 208, y: -39}
-        - {x: 199, y: -14}
-    - name: NeuroMan_Sheet_36
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: NeuroMan_Sheet_36
       rect:
         serializedVersion: 2
         x: 172
@@ -792,13 +614,8 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: 0}
-        - {x: 0, y: -63}
-        - {x: 52, y: -80}
-        - {x: 168, y: -80}
-        - {x: 196, y: -55}
-        - {x: 196, y: 0}
+      outline: []
+      tessellationDetail: -1
     outline: []
   spritePackingTag: neurobot
   userData: 
