@@ -189,7 +189,7 @@ public class Patient : MonoBehaviour
         #endregion
 
         // Face
-        face = CaseData.face;
+        face = CaseData.Face;
 
         // Upper limbs
         // Shoulder
@@ -294,11 +294,20 @@ public class Patient : MonoBehaviour
 
         // Cranial
         // General
+
+        // Face behaviors
+        // Eyelid Drooping
         eyelid_R.enabled = eyelid_L.enabled = false;
         if (face.rightEyeDroop)
             eyelid_R.enabled = true;
         if (face.leftEyeDroop)
             eyelid_L.enabled = true;
+
+        // Visual Fields Tracking
+        head.testEyeManager.rightEye.trackingFieldMin = face.visualFieldMin_R;
+        head.testEyeManager.rightEye.trackingFieldMax = face.visualFieldMax_R;
+        head.testEyeManager.leftEye.trackingFieldMin = face.visualFieldMin_L;
+        head.testEyeManager.leftEye.trackingFieldMax = face.visualFieldMax_L;
 
         // Sensation
         face_upper_R.canFeel = CaseData.face_upper_R;
@@ -314,18 +323,18 @@ public class Patient : MonoBehaviour
             if (face.leftPupilState.Equals(PupilState.Default))
                 pupil_L.Init(CaseData.state_Pupil_L);
             else if (face.leftPupilState.Equals(PupilState.Dilated))
-                pupil_L.Init(CaseData.state_Pupil_L, 9, 9, 9, 9);
+                pupil_L.Init(CaseData.state_Pupil_L, PupilState.Dilated, 9, 9, 9, 9);
             else if (face.leftPupilState.Equals(PupilState.Constricted))
-                pupil_L.Init(CaseData.state_Pupil_L);
+                pupil_L.Init(CaseData.state_Pupil_L, PupilState.Constricted, 4, 4, 4, 4);
         }
         if (pupil_R != null)
         {
             if (face.rightPupilState.Equals(PupilState.Default))
                 pupil_R.Init(CaseData.state_Pupil_R);
             else if (face.rightPupilState.Equals(PupilState.Dilated))
-                pupil_R.Init(CaseData.state_Pupil_R, 9, 9, 9, 9);
+                pupil_R.Init(CaseData.state_Pupil_R, PupilState.Dilated, 9, 9, 9, 9);
             else if (face.rightPupilState.Equals(PupilState.Constricted))
-                pupil_R.Init(CaseData.state_Pupil_R);
+                pupil_R.Init(CaseData.state_Pupil_R, PupilState.Constricted, 4, 4, 4, 4);
         }
 
         // Palate & Tongue

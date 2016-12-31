@@ -41,13 +41,13 @@ public class CaseEditor : EditorWindow {
 
         // Default face
         EditorGUILayout.LabelField("Default Face", EditorStyles.boldLabel);
-        CaseData.face.rightEyeDroop = EditorGUILayout.ToggleLeft("Right Eye Droop", CaseData.face.rightEyeDroop);
-        CaseData.face.leftEyeDroop = EditorGUILayout.ToggleLeft("Left Eye Droop", CaseData.face.leftEyeDroop);
+        CaseData.Face.rightEyeDroop = EditorGUILayout.ToggleLeft("Right Eye Droop", CaseData.Face.rightEyeDroop);
+        CaseData.Face.leftEyeDroop = EditorGUILayout.ToggleLeft("Left Eye Droop", CaseData.Face.leftEyeDroop);
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Right Pupil State", GUILayout.MaxWidth(100));
-        CaseData.face.rightPupilState = (PupilState)EditorGUILayout.EnumPopup(CaseData.face.rightPupilState);
+        CaseData.Face.rightPupilState = (PupilState)EditorGUILayout.EnumPopup(CaseData.Face.rightPupilState);
         EditorGUILayout.LabelField("Left Pupil State", GUILayout.MaxWidth(100));
-        CaseData.face.leftPupilState = (PupilState)EditorGUILayout.EnumPopup(CaseData.face.leftPupilState);
+        CaseData.Face.leftPupilState = (PupilState)EditorGUILayout.EnumPopup(CaseData.Face.leftPupilState);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -407,6 +407,16 @@ public class CaseEditor : EditorWindow {
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Visual Fields", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
         CaseData.visualFields = EditorGUILayout.TextField(CaseData.visualFields);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Right Eye", EditorStyles.miniBoldLabel, GUILayout.MaxWidth(120));
+        CaseData.Face.visualFieldMin_R = EditorGUILayout.Vector2Field("Visual Fields Min", CaseData.Face.visualFieldMin_R, GUILayout.MaxWidth(120));
+        CaseData.Face.visualFieldMax_R = EditorGUILayout.Vector2Field("Visual Fields Max", CaseData.Face.visualFieldMax_R, GUILayout.MaxWidth(120));
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Left Eye", EditorStyles.miniBoldLabel, GUILayout.MaxWidth(120));
+        CaseData.Face.visualFieldMin_L = EditorGUILayout.Vector2Field("Visual Fields Min", CaseData.Face.visualFieldMin_L, GUILayout.MaxWidth(120));
+        CaseData.Face.visualFieldMax_L = EditorGUILayout.Vector2Field("Visual Fields Max", CaseData.Face.visualFieldMax_L, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Gag Reflex", EditorStyles.boldLabel, GUILayout.MaxWidth(120));

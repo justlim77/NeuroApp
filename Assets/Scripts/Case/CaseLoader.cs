@@ -6,6 +6,9 @@ namespace NeuroApp
 {
     public class CaseLoader : MonoBehaviour
     {
+        public delegate void LoadCaseEventHandler(object sender, EventArgs e);
+        public static event LoadCaseEventHandler OnLoadCase;
+
         public static CaseLoader Instance { get; private set; }
 
         public GameObject[] playPanels;
@@ -147,6 +150,9 @@ namespace NeuroApp
 
             // Initialize case header for results screen
             caseHeader.text = Patient.CaseData.caseName;
+
+            if (OnLoadCase != null)
+                OnLoadCase(this, null);
 
             return result;
         }

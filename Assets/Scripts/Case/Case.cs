@@ -1,4 +1,6 @@
 ﻿using NeuroApp;
+using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class Case {
@@ -16,7 +18,7 @@ public class Case {
     #endregion
 
     #region Face
-    public Face face;
+    public Face Face;
     #endregion
 
     #region Deep Tendon Reflexes (DTR)
@@ -136,6 +138,17 @@ public class Case {
     public string visualFields = "Normal";
     public string gagReflex = "Normal";
     public string speech = "Nil";
+
+    /// <summary>
+    /// Visual Fields
+    /// (-1, 1)     (0, 1)      (1, 1)
+    /// (-1, 0)     (0, 0)      (1, 0)
+    /// (-1, -1)    (0, -1)     (1, -1)
+    /// </summary>
+    //public Vector2 visualFieldMin_R = -Vector2.one;
+    //public Vector2 visualFieldMax_R = Vector2.one;
+    //public Vector2 visualFieldMin_L = -Vector2.one;
+    //public Vector2 visualFieldMax_L = Vector2.one;
     #endregion
 
     #region Neuroaxis Variables

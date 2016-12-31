@@ -7,7 +7,8 @@ using System;
 
 public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public State pupilState = State.Normal;
+    public State state = State.Normal;
+    public PupilState PupilState = PupilState.Default;
     public Pupil otherPupil;
     public HeadReaction head;
     public RectTransform pupilImage;
@@ -21,9 +22,10 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {        
     }
 
-    public bool Init(State state, float normal = 8, float half = 5, float dilate = 9, float constrict = 4)
+    public bool Init(State state = State.Normal, PupilState pupilState = PupilState.Default, float normal = 8, float half = 5, float dilate = 10, float constrict = 4)
     {
-        pupilState = state;
+        this.state = state;
+        this.PupilState = pupilState;
         normalSize = normal;
         halfSize = half;
         dilatedSize = dilate;
@@ -39,7 +41,7 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        switch (pupilState)
+        switch (state)
         {
             case State.Normal:
                 this.ResizeEyes(constrictedSize);

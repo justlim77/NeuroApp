@@ -50,6 +50,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void Awake()
     {
+        CaseLoader.OnLoadCase += CaseLoader_OnLoadCase;
+
         _originalEyes = eyes[0].sprite;
         _eyeBrowInitialY = eyeBrows[0].anchoredPosition.y;
 
@@ -57,8 +59,18 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         _pupil_L = innerEyes[1].GetComponent<Pupil>();
 
         testEyeManager = GetComponent<TestEyeManager>();
+    }
 
+    private void CaseLoader_OnLoadCase(object sender, EventArgs e)
+    {
         Init();
+
+        Reaction(FaceState.Neutral);
+    }
+
+    private void OnDestroy()
+    {
+        CaseLoader.OnLoadCase -= CaseLoader_OnLoadCase;
     }
 
     void Init()
@@ -80,6 +92,8 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             dimpleRight.enabled = false;
 
         FreezeState(false);
+
+        //ToggleEyes(_originalEyes);
     }
 
     public void Reaction(FaceState _faceState)
@@ -212,9 +226,9 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             try
             {
-                if (Patient.CaseData.face.rightEyeDroop)
+                if (Patient.CaseData.Face.rightEyeDroop)
                     eyeLidImages[0].enabled = true;
-                if (Patient.CaseData.face.leftEyeDroop)
+                if (Patient.CaseData.Face.leftEyeDroop)
                     eyeLidImages[1].enabled = true;
             }
             catch (Exception e)
@@ -226,33 +240,63 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         foreach (var innerEye in innerEyes)
             innerEye.SetActive(showInOutEyes);
 
-        if (_pupil_L != null && _pupil_R != null)
-        {
-            // Normal:
-            //if(Patient.CaseData.pu)
-            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.normalSize);
-            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.normalSize);
-            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.normalSize);
-            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.normalSize);
+        foreach (var pupil in pupils)
+            pupil.gameObject.SetActive(true);
 
-            // Dilated:
-            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.normalSize);
-            middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.normalSize);
-            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.normalSize);
-            middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.normalSize);
+        if (_pupil_R != null && _pupil_L != null)
+        {
+            // Right pupil:
+            switch (_pupil_R.PupilState)
+            {
+                case PupilState.Default:
+                    middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.normalSize);
+                    middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.normalSize);
+                    break;
+                case PupilState.Constricted:
+                    middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.constrictedSize);
+                    middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.constrictedSize);
+
+                    // Hide white inner pupil
+                    pupils[0].gameObject.SetActive(false);
+                    break;
+                case PupilState.Dilated:
+                    middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_R.dilatedSize);
+                    middleEyes[0].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_R.dilatedSize);
+                    break;
+            }
+
+            // Left pupil:
+            switch (_pupil_L.PupilState)
+            {
+                case PupilState.Default:
+                    middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.normalSize);
+                    middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.normalSize);
+                    break;
+                case PupilState.Constricted:
+                    middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.constrictedSize);
+                    middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.constrictedSize);
+
+                    // Hide white inner pupil
+                    pupils[1].gameObject.SetActive(false);
+                    break;
+                case PupilState.Dilated:
+                    middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _pupil_L.dilatedSize);
+                    middleEyes[1].GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _pupil_L.dilatedSize);
+                    break;
+            }
         }
 
         foreach (var middleEye in middleEyes)
             middleEye.SetActive(showInOutEyes);
 
-        foreach (var pupil in pupils)
-        {
-            if (pupil != null)
-            {
-                pupil.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pupilSize);
-                pupil.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, pupilSize);
-            }
-        }
+        //foreach (var pupil in pupils)
+        //{
+        //    if (pupil != null)
+        //    {
+        //        pupil.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pupilSize);
+        //        pupil.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, pupilSize);
+        //    }
+        //}
 
         foreach (var eye in eyeScripts)
             eye.enabled = follow;
