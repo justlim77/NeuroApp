@@ -65,9 +65,10 @@ namespace NeuroApp
                 case PointerEventData.InputButton.Left:
                     GUIManager.GetMainHeadReaction().Reaction(faceState);
                     break;
-                case PointerEventData.InputButton.Right:
-                    GUIManager.GetMainHeadReaction().testEyeManager.ConvergeTest = true;
-                    break;
+                // Deprecated in 0.3.
+                //case PointerEventData.InputButton.Right:
+                //    GUIManager.GetMainHeadReaction().testEyeManager.ConvergeTest = true;
+                //    break;
             }
 
             yield return new WaitForSeconds(Constants.const_power_reaction_delay);

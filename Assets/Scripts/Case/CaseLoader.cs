@@ -148,8 +148,9 @@ namespace NeuroApp
             if (result == false)
                 print("Failed to reinitialize GUIManager!");
 
+            // DEPRECATED
             // Initialize case header for results screen
-            caseHeader.text = Patient.CaseData.caseName;
+            //caseHeader.text = Patient.CaseData.caseName;
 
             if (OnLoadCase != null)
                 OnLoadCase(this, null);

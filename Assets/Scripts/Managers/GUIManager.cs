@@ -124,6 +124,11 @@ namespace NeuroApp
             _MainPanel.color = Constants.const_areflexia_color;
         }
 
+        public void SetCheatContext(Sprite context)
+        {
+            SetContext(context, Alignment.BottomLeft);
+        }
+
         public static void RevertPanelColor()
         {
             ChangePanelColor(Constants.const_background_color);
@@ -146,6 +151,11 @@ namespace NeuroApp
         public void SetContext(Sprite context)
         {
             ContextPopup.SetContext(context);
+        }
+
+        public void SetContext(Sprite context, Alignment alignment)
+        {
+            ContextPopup.SetContext(context, alignment);
         }
 
         public void SetContext(string context, TextAnchor textAnchor)

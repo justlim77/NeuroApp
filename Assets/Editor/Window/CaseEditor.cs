@@ -44,6 +44,10 @@ public class CaseEditor : EditorWindow {
         CaseData.Face.rightEyeDroop = EditorGUILayout.ToggleLeft("Right Eye Droop", CaseData.Face.rightEyeDroop);
         CaseData.Face.leftEyeDroop = EditorGUILayout.ToggleLeft("Left Eye Droop", CaseData.Face.leftEyeDroop);
         EditorGUILayout.BeginHorizontal();
+        CaseData.Face.rightEyeDefaultOffset = EditorGUILayout.Vector2Field("Right Eye Default Offset", CaseData.Face.rightEyeDefaultOffset);
+        CaseData.Face.leftEyeDefaultOffset = EditorGUILayout.Vector2Field("Left Eye Default Offset", CaseData.Face.leftEyeDefaultOffset);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Right Pupil State", GUILayout.MaxWidth(100));
         CaseData.Face.rightPupilState = (PupilState)EditorGUILayout.EnumPopup(CaseData.Face.rightPupilState);
         EditorGUILayout.LabelField("Left Pupil State", GUILayout.MaxWidth(100));

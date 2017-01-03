@@ -102,6 +102,14 @@ namespace NeuroApp
         Main
     }
 
+    [System.Serializable]
+    public enum Alignment
+    {
+        BottomCenter,
+        BottomRight,
+        BottomLeft
+    }
+
     public enum ColorType
     {
         Background,

@@ -303,6 +303,10 @@ public class Patient : MonoBehaviour
         if (face.leftEyeDroop)
             eyelid_L.enabled = true;
 
+        // Default Eye Offset
+        head.testEyeManager.rightEye.defaultEyeCenterOffset = face.rightEyeDefaultOffset;
+        head.testEyeManager.leftEye.defaultEyeCenterOffset = face.leftEyeDefaultOffset;
+
         // Visual Fields Tracking
         head.testEyeManager.rightEye.trackingFieldMin = face.visualFieldMin_R;
         head.testEyeManager.rightEye.trackingFieldMax = face.visualFieldMax_R;

@@ -4,16 +4,20 @@ using System.Collections;
 public class TestEye : MonoBehaviour
 {
     public EyeType eyeType;
-    public RectTransform eyeBounds;
+    public RectTransform outerEyeBounds;
+    public RectTransform innerEyeBounds;
     public float scale;
     public float dist;
-    public RectTransform eyesCenter;
 
     public Vector3 normalizedDir;
 
     [Header("Tracking Field")]
     public Vector2 trackingFieldMin = -Vector2.one;
     public Vector2 trackingFieldMax = Vector2.one;
+
+    [Header("Eye center")]
+    public Vector2 defaultEyeCenterOffset = Vector2.zero;
+    public RectTransform eyesCenter;
 
     public bool Follow { get; set; }
     public bool IsClamped
@@ -31,13 +35,38 @@ public class TestEye : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        _rectTransform = GetComponent<RectTransform>();
+        Init();
+	}
+
+    public bool Init()
+    {
+        _rectTransform = GetComponent<RectTransform>(); // Cache rect transform component
+        _rectTransform.anchoredPosition = Vector2.zero; // Reset to zero (if not already)
+
         _center = _rectTransform.position;
         _localCenter = _rectTransform.anchoredPosition;
-        _radius = eyeBounds.rect.width * scale;
-        _convergePos.x = eyeType == EyeType.Right ? _radius : -_radius;
-        Follow = false;
-	}
+        scale = innerEyeBounds.rect.width / _rectTransform.rect.width;
+        GetRadius();
+        //_radius = innerEyeBounds.rect.width * scale;
+
+        //print(scale);
+        SetLocalCenter(defaultEyeCenterOffset);
+
+        // Deprecated in 0.3.6
+        // TODO: FIX "Lazily" setting converge position based on eye laziness
+        if (defaultEyeCenterOffset != Vector2.zero)
+        {
+            _convergePos = _localCenter;
+        }
+        else
+        {
+            _convergePos.x = eyeType == EyeType.Right ? _radius : -_radius;
+        }
+
+        Follow = false;        
+
+        return true;
+    }
 
     public Vector3 GetCenter()
     {
@@ -49,16 +78,26 @@ public class TestEye : MonoBehaviour
         return _localCenter;
     }
 
+    public void SetLocalCenter(Vector2 offset)
+    {
+        Vector2 scaledOffset = offset * _radius;
+        _localCenter += scaledOffset;
+    }
+
     public float GetDistanceFromMouse()
     {
         return Vector3.Distance(Input.mousePosition, _center);
     }
 
-    private float _radius;
+    [SerializeField] float _radius;
     public float GetRadius()
     {
         if (_radius == 0)
-            _radius = eyeBounds.rect.width * scale;
+        {
+            //_radius = innerEyeBounds.rect.width * scale;
+            _radius = (innerEyeBounds.rect.width - _rectTransform.rect.width) * 0.5f;
+        }
+        //print("Radius: " + _radius);
         return _radius;
     }
 
