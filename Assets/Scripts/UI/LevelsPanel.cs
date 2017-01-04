@@ -35,6 +35,9 @@ namespace NeuroApp
             caseButtons = CreateCaseButtons(m_cases.Count);
 
             Init();
+
+            if (reset)
+                WipeScore();
         }
 
         public bool Init()
@@ -78,6 +81,15 @@ namespace NeuroApp
             for (int i = 0; i < m_cases.Count; i++)
             {
                 caseButtons[i].SetScore(m_cases[i].stars);
+            }
+        }
+
+        void WipeScore()
+        {
+            for (int i = 0; i < m_cases.Count; i++)
+            {
+                m_cases[i].stars = 0;
+                caseButtons[i].SetScore(0);
             }
         }
     }
