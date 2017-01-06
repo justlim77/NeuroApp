@@ -65,30 +65,40 @@ public class CaseListEditor : EditorWindow {
         EditorGUILayout.Space();
 
         //Add New Condition Button
-        if (caseList != null) {
+        if (caseList != null)
+        {
             GUILayout.Label("2. Edit cases in selected case list.", EditorStyles.boldLabel);
-            if (GUILayout.Button("Add New Case")) {
+            if (GUILayout.Button("Add New Case"))
+            {
                 AddCase();
             }
 
             //Scroll View for Conditions in List
-            if (caseList.caseList != null) {
-                scrollPos = EditorGUILayout.BeginScrollView(scrollPos, false, true, GUILayout.Width(EditorGUIUtility.currentViewWidth), GUILayout.Height(100));
-                for (var i = 0; i < caseList.caseList.Count; i++) {
+            if (caseList.caseList != null)
+            {
+                scrollPos = EditorGUILayout.BeginScrollView(scrollPos, false, true, GUILayout.Width(EditorGUIUtility.currentViewWidth), GUILayout.MaxHeight(500));
+                for (var i = 0; i < caseList.caseList.Count; i++)
+                {
                     EditorGUILayout.BeginHorizontal();
-                    caseList.caseList[i].isEnabled = EditorGUILayout.ToggleLeft(new GUIContent(caseList.caseList[i].caseName), caseList.caseList[i].isEnabled);
-                    if (GUILayout.Button("Edit")) {
+                    caseList.caseList[i].isEnabled = EditorGUILayout.ToggleLeft(new GUIContent(string.Format("{0}. {1}", i + 1, caseList.caseList[i].caseName)), caseList.caseList[i].isEnabled);
+                    if (GUILayout.Button("Edit"))
+                    {
                         CaseEditor.Init(caseList.caseList[i]);
                     }
-                    if (GUILayout.Button("Delete")) {
+                    if (GUILayout.Button("Delete"))
+                    {
                         caseList.caseList.Remove(caseList.caseList[i]);
-                        if (caseList.caseList.Contains(null)) caseList.caseList.Remove(null);
+                        if (caseList.caseList.Contains(null))
+                        {
+                            caseList.caseList.Remove(null);
+                        }
                     }
                     EditorGUILayout.EndHorizontal();
                 }
                 EditorGUILayout.EndScrollView();
             }
-            if (GUI.changed) {
+            if (GUI.changed)
+            {
                 EditorUtility.SetDirty(caseList);
             }
         }
@@ -135,7 +145,8 @@ public class CaseListEditor : EditorWindow {
 
     void AddCase() {
         Case newCase = new Case();
-        newCase.caseName = "New Case";
+        int caseNum = caseList.caseList.Count + 1;
+        newCase.caseName = "NewCase" + caseNum;
         caseList.caseList.Add(newCase);
     }
 

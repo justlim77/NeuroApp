@@ -315,7 +315,7 @@ public class Patient : MonoBehaviour
 
         // Sensation
         face_upper_R.canFeel = CaseData.face_upper_R;
-        face_upper_L.canFeel = CaseData.face_upper_R;
+        face_upper_L.canFeel = CaseData.face_upper_L;
         face_mid_R.canFeel = CaseData.face_mid_R;
         face_mid_L.canFeel = CaseData.face_mid_L;
         face_lower_R.canFeel = CaseData.face_lower_R;
