@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TestEye : MonoBehaviour
@@ -18,6 +19,40 @@ public class TestEye : MonoBehaviour
     [Header("Eye center")]
     public Vector2 defaultEyeCenterOffset = Vector2.zero;
     public RectTransform eyesCenter;
+
+    [Header("Inner White Pupil")]
+    public GameObject InnerWhitePupil;
+
+    private RectTransform innerPupilRect;
+    public RectTransform InnerPupilRect
+    {
+        get
+        {
+            if (innerPupilRect == null)
+            {
+                innerPupilRect = InnerWhitePupil.GetComponent<RectTransform>();
+                if (innerPupilRect == null)
+                    innerPupilRect = this.transform.GetComponentInChildren<RectTransform>();
+            }
+            
+            return innerPupilRect;
+        }
+    }
+
+    private Image innerPupilImage;
+    public Image InnerPupilImage
+    {
+        get
+        {
+            if (innerPupilImage == null)
+            {
+                innerPupilImage = InnerWhitePupil.GetComponent<Image>();
+                if (innerPupilImage == null)
+                    innerPupilImage = this.transform.GetComponentInChildren<Image>();
+            }
+            return innerPupilImage;
+        }
+    }
 
     public bool Follow { get; set; }
     public bool IsClamped

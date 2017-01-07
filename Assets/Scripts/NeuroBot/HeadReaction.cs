@@ -245,6 +245,9 @@ public class HeadReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         if (_pupil_R != null && _pupil_L != null)
         {
+            pupils[0].gameObject.SetActive(true);
+            pupils[1].gameObject.SetActive(true);
+
             // Right pupil:
             switch (_pupil_R.PupilState)
             {

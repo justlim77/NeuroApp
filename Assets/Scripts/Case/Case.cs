@@ -56,8 +56,8 @@ public class Case {
     // Lower extremity
     public bool LL_L2_R = true, LL_L2_L = true;
     public bool LL_L3_R = true, LL_L3_L = true;
-    public bool LL_L4_R_1 = true, LL_L4_R_2 = true;
-    public bool LL_L4_L_1 = true, LL_L4_L_2 = true;
+    public bool LL_L4_R_1 = true;/* LL_L4_R_2 = true; *Deprecated in #0.3.7.1*/
+    public bool LL_L4_L_1 = true;/* LL_L4_L_2 = true; *Deprecated in #0.3.7.1*/
     public bool LL_L5_R_1 = true, LL_L5_R_2 = true;
     public bool LL_L5_L_1 = true, LL_L5_L_2 = true;
     public bool LL_S1_R = true, LL_S1_L = true;

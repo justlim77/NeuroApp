@@ -12,6 +12,11 @@ public class Patient : MonoBehaviour
         set { _CaseData = value; }
     }
 
+    public static Patient Instance
+    {
+        get; private set;
+    }
+
     public Text caseDescriptionText;            // Case description heading
 
     public Face face;                           // Default face
@@ -90,7 +95,7 @@ public class Patient : MonoBehaviour
     public Dermatome LL_L2_R, LL_L2_L;      // Thigh
     public Dermatome LL_L3_R, LL_L3_L;      // Knee
     public Dermatome LL_L4_R_1, LL_L4_L_1;  // Medial malleolus
-    public Dermatome LL_L4_R_2, LL_L4_L_2;  // Heel
+    //public Dermatome LL_L4_R_2, LL_L4_L_2;  // Heel *DEPRECATED IN #0.3.7.1
     public Dermatome LL_L5_R_1, LL_L5_L_1;  // Dorsum of foot
     public Dermatome LL_L5_R_2, LL_L5_L_2;  // Toes 1-3
     public Dermatome LL_S1_R, LL_S1_L;      // Toes 4 and 5; lateral malleolus
@@ -169,12 +174,18 @@ public class Patient : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+
         _numOfCases = _caseDatabase.caseList.caseList.Count;
     }
 
     void OnDestroy()
     {
         _CaseData = null;
+
+        if (Instance != null)
+            Destroy(Instance);
     }
     private bool Init()
     {
@@ -283,8 +294,8 @@ public class Patient : MonoBehaviour
         LL_L3_L.canFeel = CaseData.LL_L3_L;
         LL_L4_R_1.canFeel = CaseData.LL_L4_R_1;
         LL_L4_L_1.canFeel = CaseData.LL_L4_L_1;
-        LL_L4_R_2.canFeel = CaseData.LL_L4_R_2;
-        LL_L4_L_2.canFeel = CaseData.LL_L4_L_2;
+        //LL_L4_R_2.canFeel = CaseData.LL_L4_R_2;   *Deprecated in #0.3.7.1
+        //LL_L4_L_2.canFeel = CaseData.LL_L4_L_2;   *Deprecated in #0.3.7.1
         LL_L5_R_1.canFeel = CaseData.LL_L5_R_1;
         LL_L5_L_1.canFeel = CaseData.LL_L5_L_1;
         LL_L5_R_2.canFeel = CaseData.LL_L5_R_2;

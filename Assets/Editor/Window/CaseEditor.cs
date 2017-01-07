@@ -166,10 +166,11 @@ public class CaseEditor : EditorWindow {
         CaseData.LL_L4_R_1 = EditorGUILayout.ToggleLeft("L4 Right 1", CaseData.LL_L4_R_1, GUILayout.MaxWidth(120));
         CaseData.LL_L4_L_1 = EditorGUILayout.ToggleLeft("L4 Left 1", CaseData.LL_L4_L_1, GUILayout.MaxWidth(120));
         EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
-        CaseData.LL_L4_R_2 = EditorGUILayout.ToggleLeft("L4 Right 2", CaseData.LL_L4_R_2, GUILayout.MaxWidth(120));
-        CaseData.LL_L4_L_2 = EditorGUILayout.ToggleLeft("L4 Left 2", CaseData.LL_L4_L_2, GUILayout.MaxWidth(120));
-        EditorGUILayout.EndHorizontal();
+        // *Deprecated in #0.3.7.1
+        //EditorGUILayout.BeginHorizontal();
+        //CaseData.LL_L4_R_2 = EditorGUILayout.ToggleLeft("L4 Right 2", CaseData.LL_L4_R_2, GUILayout.MaxWidth(120));
+        //CaseData.LL_L4_L_2 = EditorGUILayout.ToggleLeft("L4 Left 2", CaseData.LL_L4_L_2, GUILayout.MaxWidth(120));
+        //EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         CaseData.LL_L5_R_1 = EditorGUILayout.ToggleLeft("L5 Right 1", CaseData.LL_L5_R_1, GUILayout.MaxWidth(120));
         CaseData.LL_L5_L_1 = EditorGUILayout.ToggleLeft("L5 Left 1", CaseData.LL_L5_L_1, GUILayout.MaxWidth(120));

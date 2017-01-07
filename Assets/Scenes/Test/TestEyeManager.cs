@@ -10,7 +10,7 @@ namespace NeuroApp
         public TestEye rightEye;
         public TestEye leftEye;
         public RectTransform eyeCenterRect;
-    
+
         public float followSpeed = 2.0f;
 
         public float converganceDistance = 10.0f;
@@ -48,17 +48,9 @@ namespace NeuroApp
             CaseLoader.OnLoadCase -= CaseLoader_OnLoadCase;
         }
 
-        public bool Init()
-        {
-            TrackMouse = true;
-            ConvergeTest = false;
-
-            return true;
-        }
-
         void OnEnable()
         {
-            Tool.OnToolSelected += Tool_OnToolSelected;            
+            Tool.OnToolSelected += Tool_OnToolSelected;
         }
         void OnDisable()
         {
@@ -71,7 +63,7 @@ namespace NeuroApp
         }
 
         // Update is called once per frame
-        void Update ()
+        void Update()
         {
             if (!TrackMouse)
             {
@@ -90,7 +82,7 @@ namespace NeuroApp
             {
                 CenterLook();
             }
-	    }
+        }
 
         bool IsInRange()
         {
@@ -175,12 +167,36 @@ namespace NeuroApp
 
         float GetConvergeDistance()
         {
-            return Vector3.Distance(rightEye.GetCenter(),leftEye.GetCenter()) * 0.5f;
+            return Vector3.Distance(rightEye.GetCenter(), leftEye.GetCenter()) * 0.5f;
         }
 
         public void OnTrackingSpeedSliderChanged(float value)
         {
             followSpeed = value;
         }
+
+        #region Public methods
+        public bool Init()
+        {
+            TrackMouse = true;
+            ConvergeTest = false;
+            ShowInnerPupils();
+
+            return true;
+        }
+
+        private Color _invisibleColor = new Color(1, 1, 1, 0);
+        public void ShowInnerPupils(bool value = true)
+        {
+            SetInnerPupilColor(value ? Color.white : _invisibleColor);
+        }
+
+        public void SetInnerPupilColor(Color color)
+        {
+            rightEye.InnerPupilImage.color = color;
+            leftEye.InnerPupilImage.color = color;
+        }
+
+        #endregion
     }
 } 

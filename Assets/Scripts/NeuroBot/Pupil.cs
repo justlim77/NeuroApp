@@ -12,6 +12,7 @@ public class Pupil : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Pupil otherPupil;
     public HeadReaction head;
     public RectTransform pupilImage;
+    public GameObject innerPupil;
     public float activationRadius = 40.0f;
     public float normalSize;
     public float halfSize;

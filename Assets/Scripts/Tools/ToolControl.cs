@@ -123,13 +123,15 @@ public class ToolControl : MonoBehaviour
     void Update()
     {
         //Debug.Log("Bed anchored position: " + bedRectTrans.anchoredPosition);
-        //Debug.Log("Speech bubble anchored position: " + speechRectTrans.anchoredPosition);
+        //Debug.Log("Speech bubble anchored position: " + speechRectTrans.anchoredPosition);       
     }
 
     public void ResetTools()
     {
         foreach (var tool in tools)
             tool.DeselectTool();
+
+        Patient.Instance.head.testEyeManager.ShowInnerPupils();
     }
 
     public void ToolCount()
