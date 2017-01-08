@@ -431,12 +431,13 @@ public class Patient : MonoBehaviour
         if (subContent != string.Empty)
             content += string.Format("\n<b>Explanation</b>\n{0}", CaseData.localisingExplanation);
 
-        //localisingText.text = content;                                              // Localising setup
-        localisingDiagram = Resources.Load<Sprite>(CaseData.localisingImagePath);   // Load image path of localising diagram image
-        testQuestionText.text = CaseData.testQuestion;                              // Concluding Test Question setup
-        concludingTests = CaseData.concludingTests;                                 // Concluding Test setup
-        answer = CaseData.answer;                                                   // Answer setup
-        answerText.text = CaseData.answerExplanation;                               // Answer explanation setup
+        //localisingText.text = content;                                                    // Localising setup
+        //localisingDiagram = Resources.Load<Sprite>(CaseData.localisingImagePath);           // Load image path of localising diagram image
+        localisingDiagram = Utilities.GetAlgorithmTexture(CaseData.localisingAlgorithm);    // Load image path of localising diagram image
+        testQuestionText.text = CaseData.testQuestion;                                      // Concluding Test Question setup
+        concludingTests = CaseData.concludingTests;                                         // Concluding Test setup
+        answer = CaseData.answer;                                                           // Answer setup
+        answerText.text = CaseData.answerExplanation;                                       // Answer explanation setup
 
         return true;
     }

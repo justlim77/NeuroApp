@@ -140,6 +140,11 @@ namespace NeuroApp
             SetContext(context, Alignment.BottomLeft);
         }
 
+        public void SetPeronealContext(Sprite context)
+        {
+            SetContext(context, true);
+        }
+
         public static void RevertPanelColor()
         {
             ChangePanelColor(Constants.const_background_color);
@@ -188,6 +193,11 @@ namespace NeuroApp
         public void SetContext(Sprite context)
         {
             ContextPopup.SetContext(context);
+        }
+
+        public void SetContext(Sprite context, bool setNativeSize)
+        {
+            ContextPopup.SetContext(context, setNativeSize);
         }
 
         public void SetContext(Sprite context, Alignment alignment)

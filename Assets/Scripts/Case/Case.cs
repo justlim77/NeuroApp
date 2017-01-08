@@ -179,8 +179,8 @@ public class Case {
         "Localising Step #4"
     };
 
-    // Localising diagram image path
-    public string localisingImagePath = "<Enter localising image path>";
+    // Localising algorithm image
+    public LocalisingAlgorithm localisingAlgorithm = LocalisingAlgorithm.UMNThoracicCord;
 
     // Localising explanation
     public string localisingExplanation = "<Enter localising explanation>";

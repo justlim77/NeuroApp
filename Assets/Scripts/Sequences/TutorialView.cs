@@ -49,6 +49,7 @@ namespace NeuroApp
         public Button PrevBtn;
         public Button NextBtn;
         public Button CloseBtn;
+        public Button QuitBtn;
 
         [Header("Head Component")]
         public HeadReaction HeadReaction;
@@ -70,7 +71,7 @@ namespace NeuroApp
             PrevBtn.onClick.AddListener(PrevPage);
             NextBtn.onClick.AddListener(NextPage);
             CloseBtn.onClick.AddListener(ClosePage);
-            CloseBtn.onClick.AddListener(() => { GUIManager.Instance.SetPatientView(PatientView.Full); });
+            QuitBtn.onClick.AddListener(ClosePage);
 
             SetTutorial(0);
         }
@@ -80,6 +81,7 @@ namespace NeuroApp
             PrevBtn.onClick.RemoveAllListeners();
             NextBtn.onClick.RemoveAllListeners();
             CloseBtn.onClick.RemoveAllListeners();
+            QuitBtn.onClick.RemoveAllListeners();
         }
 
         private void PrevPage()
@@ -101,7 +103,9 @@ namespace NeuroApp
             // Reset to default state
             HeadReaction.FreezeState(false);
             HeadReaction.Reaction(FaceState.Smile);
+
             GUIManager.RevertPanelColor();
+            GUIManager.Instance.SetPatientView(PatientView.Full);
 
             this.gameObject.SetActive(false);
         }
@@ -114,6 +118,7 @@ namespace NeuroApp
             // Set buttons
             PrevBtn.gameObject.SetActive(index <= 0 ? false : true);
             NextBtn.gameObject.SetActive(index >= m_tutorialSetCount - 1 ? false : true);
+            CloseBtn.gameObject.SetActive(index >= m_tutorialSetCount - 1? true : false);
 
             // Set tutorial data set
             TutorialSet set = TutorialSets[index];

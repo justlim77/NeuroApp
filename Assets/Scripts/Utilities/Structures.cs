@@ -105,6 +105,8 @@ namespace NeuroApp
     [System.Serializable]
     public enum Alignment
     {
+        TopCenter,
+        MiddleCenter,
         BottomCenter,
         BottomRight,
         BottomLeft
@@ -143,6 +145,26 @@ namespace NeuroApp
     {
         Full,
         Face
+    }
+
+    [System.Serializable]
+    public enum LocalisingAlgorithm
+    {
+        UMNThoracicCord = 1,
+        UMNCervicalCord = 2,
+        UMNBrainstem = 3,
+        UMNSubcortex = 4,
+        UMNCortex = 5,
+        LMNRoot = 6,
+        LMNPlexusOrRoots = 7,
+        LMNRoots = 8,
+        LMNPNGloveAndStocking = 9,
+        LMNPNIsolatedNerve = 10,
+        LMNNeuroMuscularJunction = 11,
+        LMNMuscle = 12,
+        LMNAHC = 13,
+        MIXAHC = 14,
+        MIXPathology = 15
     }
 
     public enum Answer

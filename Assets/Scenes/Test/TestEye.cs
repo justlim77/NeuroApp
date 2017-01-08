@@ -28,6 +28,10 @@ public class TestEye : MonoBehaviour
     {
         get
         {
+            // Check if inner pupil assigned
+            if (InnerWhitePupil == null)
+                return null;
+
             if (innerPupilRect == null)
             {
                 innerPupilRect = InnerWhitePupil.GetComponent<RectTransform>();
@@ -44,6 +48,10 @@ public class TestEye : MonoBehaviour
     {
         get
         {
+            // Check if inner pupil assigned
+            if (InnerWhitePupil == null)
+                return null;
+
             if (innerPupilImage == null)
             {
                 innerPupilImage = InnerWhitePupil.GetComponent<Image>();

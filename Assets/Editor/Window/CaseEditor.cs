@@ -462,7 +462,8 @@ public class CaseEditor : EditorWindow {
 
         // Explanation
         EditorGUILayout.LabelField("Explanation", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
-        CaseData.localisingImagePath = EditorGUILayout.TextField("Diagram Image Path", CaseData.localisingImagePath);
+        EditorGUILayout.LabelField("Localising Algorithm", EditorStyles.boldLabel, GUILayout.MaxWidth(145));
+        CaseData.localisingAlgorithm = (LocalisingAlgorithm)EditorGUILayout.EnumPopup(CaseData.localisingAlgorithm, GUILayout.MaxWidth(100));
         EditorGUILayout.BeginHorizontal();
         CaseData.localisingExplanation = EditorGUILayout.TextArea(CaseData.localisingExplanation, GUILayout.MaxWidth(600), GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();

@@ -15,6 +15,7 @@ public class ConcludingTest : MonoBehaviour
     public GameObject m_EndButton;
     public Text[] m_RationaleTexts;
     public GameObject scrollView;
+    public GameObject showTableBtn;
 
     Answer m_Answer;
     bool m_FirstAttempt;
@@ -37,7 +38,10 @@ public class ConcludingTest : MonoBehaviour
             text.enabled = false;
 
         // Disable scroll view
-        scrollView.SetActive(false);        
+        scrollView.SetActive(false);
+
+        // Disable peroneal table
+        showTableBtn.SetActive(false);      
 
         // Clear any previous instantiated buttons
         transform.Clear();
@@ -114,6 +118,10 @@ public class ConcludingTest : MonoBehaviour
                     // Enable content
                     scrollView.SetActive(true);
                     ScrollManager.Instance.ResetScroll(ScrollPanelType.Explanation);
+
+                    // TODO: Implement serialized field
+                    if (Patient.CaseData.caseName == "Nerves")
+                        showTableBtn.SetActive(true);
 
                     Core.BroadcastEvent("OnUpdateBonus", this, bonusCorrect);
                     return true;

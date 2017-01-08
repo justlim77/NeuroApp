@@ -19,6 +19,7 @@ namespace NeuroApp
 
         private bool m_initialized = false;
 
+        #region Unity functions
         // Use this for initialization
         void Start()
         {
@@ -48,22 +49,51 @@ namespace NeuroApp
 
             this.gameObject.SetActive(false);
         }
+        #endregion
 
-        public void SetContext(Sprite context)
+        #region Private methods
+        private void ResetContext()
         {
             if (!m_initialized)
                 Start();
 
+            m_cachedImage.preserveAspect = false;
+            m_cachedImage.raycastTarget = true;
+            m_cachedImage.rectTransform.anchoredPosition = Vector2.zero;    // Reset position
+            m_cachedImage.rectTransform.offsetMin = Vector2.zero;
+            m_cachedImage.rectTransform.offsetMax = Vector2.zero;
             m_cachedImage.color = Color.white;
-            m_cachedImage.sprite = context;
             text.text = string.Empty;
 
             // Reset close button position
             m_cachedButtonRectTrans.anchoredPosition = m_cachedButtonPos;
+        }
 
+        private void ShowContext()
+        {
             this.transform.SetAsLastSibling();
 
             this.gameObject.SetActive(true);
+        }
+        #endregion
+
+        #region Public functions
+        public void SetContext(Sprite context)
+        {
+            ResetContext();
+
+            m_cachedImage.sprite = context;
+
+            ShowContext();
+        }
+
+        public void SetContext(Sprite context, bool preserveAspect)
+        {
+            SetContext(context, new Vector2(0, 0.25f));
+
+            m_cachedImage.preserveAspect = true;
+            m_cachedImage.raycastTarget = false;
+            m_cachedImage.rectTransform.anchoredPosition = new Vector2(0, 145);
         }
 
         public void SetContext(Sprite context, Alignment alignment)
@@ -75,6 +105,14 @@ namespace NeuroApp
 
             switch (alignment)
             {
+                case Alignment.TopCenter:
+                    pos.x = 0;
+                    pos.y = Screen.height * 0.9f;
+                    break;
+                case Alignment.MiddleCenter:
+                    pos.x = 0;
+                    pos.y = Screen.height * 0.5f;
+                    break;
                 case Alignment.BottomCenter:
                     pos.x = 0;
                     pos.y = m_cachedButtonPos.y;
@@ -92,10 +130,16 @@ namespace NeuroApp
             m_cachedButtonRectTrans.anchoredPosition = pos;
         }
 
+        public void SetContext(Sprite context, Vector2 scale)
+        {
+            SetContext(context);
+
+            m_cachedButtonRectTrans.anchoredPosition = new Vector2(Screen.width * scale.x, Screen.height * scale.y);
+        }
+
         public void SetContext(string context, TextAnchor textAnchor = TextAnchor.MiddleCenter)
         {
-            if (!m_initialized)
-                Start();
+            ResetContext();
 
             m_cachedImage.color = backgroundColor;
             m_cachedImage.sprite = backgroundImage;
@@ -103,12 +147,8 @@ namespace NeuroApp
             text.alignment = textAnchor;
             text.text = context;
 
-            // Reset close button position
-            m_cachedButtonRectTrans.anchoredPosition = m_cachedButtonPos;
-
-            this.transform.SetAsLastSibling();
-
-            this.gameObject.SetActive(true);
+            ShowContext();
         }
+        #endregion
     }
 }
