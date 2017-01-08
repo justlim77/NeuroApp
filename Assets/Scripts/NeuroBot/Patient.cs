@@ -381,7 +381,7 @@ public class Patient : MonoBehaviour
         if (CaseData.state_Mouth_R == State.Normal && CaseData.state_Mouth_L == State.Normal)
             face_power_lower.faceState = FaceState.BothGritTeeth;
         else if (CaseData.state_Mouth_R == State.Abnormal && CaseData.state_Mouth_L == State.Abnormal)
-            face_power_mid.faceState = FaceState.NoReaction;
+            face_power_lower.faceState = FaceState.NoReaction;
         else if (CaseData.state_Mouth_R == State.Abnormal)
             face_power_lower.faceState = FaceState.LeftGritTeeth;
         else if (CaseData.state_Mouth_L == State.Abnormal)

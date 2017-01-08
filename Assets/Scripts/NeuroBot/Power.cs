@@ -40,7 +40,8 @@ namespace NeuroApp
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            StartCoroutine(PowerReaction(eventData.button));
+            if(eventData.button == PointerEventData.InputButton.Left)
+                StartCoroutine(PowerReaction(eventData.button));
         }
 
         public void OnPointerExit(PointerEventData eventData)

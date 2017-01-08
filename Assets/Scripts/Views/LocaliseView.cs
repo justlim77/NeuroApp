@@ -31,7 +31,7 @@ namespace NeuroApp
 
         public void ShowExplanation()
         {
-            GUIManager.Instance.ContextPopup.SetContext(m_explanation);
+            GUIManager.Instance.ContextPopup.SetContext(m_explanation, textAnchor:TextAnchor.MiddleLeft);            
         }
     }
 }
