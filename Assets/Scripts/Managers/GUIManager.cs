@@ -17,6 +17,14 @@ namespace NeuroApp
         [SerializeField] Button ClinicalExamButton;
         [SerializeField] Button SpeechButton;
 
+        [Header("Patient View")]
+        [SerializeField] RectTransform BedRectTrans;
+        [SerializeField] Vector2 BedOriginalOffsetMin;
+        [SerializeField] Vector2 BedOriginalOffsetMax;
+        [SerializeField] Vector2 CranialBedPos;
+        [SerializeField] Vector2 CranialBedScale;
+        [SerializeField] Graphic[] ToggleableGraphics;
+
         public TutorialView TutorialView;
 
         [Header("Context Popup")]
@@ -29,6 +37,7 @@ namespace NeuroApp
         private static Text _Header = null;
         private static HeadReaction _MainHeadReaction = null;
         private static bool _Animate = true;
+        private Vector2 _bedOriginalScale = Vector2.zero;
 
         private ContextPopup contextPopup = null;
         public ContextPopup ContextPopup
@@ -50,6 +59,8 @@ namespace NeuroApp
         {
             if (Instance == null)
                 Instance = this;
+
+            _bedOriginalScale = BedRectTrans.localScale;
         }
 
         private void OnDestroy()
@@ -145,6 +156,32 @@ namespace NeuroApp
         public static HeadReaction GetMainHeadReaction()
         {
             return _MainHeadReaction;
+        }
+
+        public void SetPatientView(PatientView view)
+        {
+            switch (view)
+            {
+                case PatientView.Full:
+                    BedRectTrans.offsetMin = BedOriginalOffsetMin;
+                    BedRectTrans.offsetMax = BedOriginalOffsetMax;
+                    BedRectTrans.localScale = Vector3.one;
+                    SetToggleableVisibility(true);
+                    break;
+                case PatientView.Face:
+                    BedRectTrans.anchoredPosition = CranialBedPos;
+                    BedRectTrans.localScale = CranialBedScale;
+                    SetToggleableVisibility(false);
+                    break;
+            }
+        }
+
+        public void SetToggleableVisibility(bool value = true)
+        {
+            foreach (var graphic in ToggleableGraphics)
+            {
+                graphic.enabled = value;
+            }
         }
 
         #region Wrapper functions

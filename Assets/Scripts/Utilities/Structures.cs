@@ -138,6 +138,13 @@ namespace NeuroApp
         Hyperreflexia
     }
 
+    [System.Serializable]
+    public enum PatientView
+    {
+        Full,
+        Face
+    }
+
     public enum Answer
     {
         A = 0,

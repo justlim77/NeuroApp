@@ -19,6 +19,11 @@ namespace NeuroApp
 
             public ReflexType ReflexType = ReflexType.Nil;
 
+            /// <summary>
+            /// Choose to focus on body or head
+            /// </summary>
+            public PatientView PatientView = PatientView.Full;
+
             [TextArea]
             public string Message = "";
 
@@ -65,8 +70,16 @@ namespace NeuroApp
             PrevBtn.onClick.AddListener(PrevPage);
             NextBtn.onClick.AddListener(NextPage);
             CloseBtn.onClick.AddListener(ClosePage);
+            CloseBtn.onClick.AddListener(() => { GUIManager.Instance.SetPatientView(PatientView.Full); });
 
             SetTutorial(0);
+        }
+
+        private void OnDestroy()
+        {
+            PrevBtn.onClick.RemoveAllListeners();
+            NextBtn.onClick.RemoveAllListeners();
+            CloseBtn.onClick.RemoveAllListeners();
         }
 
         private void PrevPage()
@@ -121,6 +134,9 @@ namespace NeuroApp
                     HeadReaction.DemoHyperreflexia();
                     break;
             }
+
+            // Set patient view
+            GUIManager.Instance.SetPatientView(set.PatientView);
 
             // Set blocking rect size
             MaskImage.sprite = set.MaskSprite;
