@@ -360,20 +360,28 @@ public class Patient : MonoBehaviour
         // Upper - Eyebrows raising
         if (CaseData.state_Brow_R == State.Normal && CaseData.state_Brow_L == State.Normal)
             face_power_upper.faceState = FaceState.BothEyebrowsUp;
+        else if (CaseData.state_Brow_R == State.Abnormal && CaseData.state_Brow_L == State.Abnormal)
+            face_power_upper.faceState = FaceState.NoReaction;
         else if (CaseData.state_Brow_R == State.Abnormal)
             face_power_upper.faceState = FaceState.LeftEyebrowUp;
         else if (CaseData.state_Brow_L == State.Abnormal)
             face_power_upper.faceState = FaceState.RightEyebrowUp;
+
         // Mid - Eyes squinting
         if (CaseData.state_Eye_R == State.Normal && CaseData.state_Eye_L == State.Normal)
             face_power_mid.faceState = FaceState.BothSquint;
+        else if (CaseData.state_Eye_R == State.Abnormal && CaseData.state_Eye_L == State.Abnormal)
+            face_power_mid.faceState = FaceState.NoReaction;
         else if (CaseData.state_Eye_R == State.Abnormal)
             face_power_mid.faceState = FaceState.LeftSquint;
         else if (CaseData.state_Eye_L == State.Abnormal)
             face_power_mid.faceState = FaceState.RightSquint;
+
         // Lower - Teeth gritting
         if (CaseData.state_Mouth_R == State.Normal && CaseData.state_Mouth_L == State.Normal)
             face_power_lower.faceState = FaceState.BothGritTeeth;
+        else if (CaseData.state_Mouth_R == State.Abnormal && CaseData.state_Mouth_L == State.Abnormal)
+            face_power_mid.faceState = FaceState.NoReaction;
         else if (CaseData.state_Mouth_R == State.Abnormal)
             face_power_lower.faceState = FaceState.LeftGritTeeth;
         else if (CaseData.state_Mouth_L == State.Abnormal)
