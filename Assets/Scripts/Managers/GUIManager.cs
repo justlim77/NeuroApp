@@ -38,6 +38,7 @@ namespace NeuroApp
         private static HeadReaction _MainHeadReaction = null;
         private static bool _Animate = true;
         private Vector2 _bedOriginalScale = Vector2.zero;
+        private static CanvasScaler _canvasScaler = null;
 
         private ContextPopup contextPopup = null;
         public ContextPopup ContextPopup
@@ -61,6 +62,7 @@ namespace NeuroApp
                 Instance = this;
 
             _bedOriginalScale = BedRectTrans.localScale;
+            _canvasScaler = MainCanvas.GetComponent<CanvasScaler>();
         }
 
         private void OnDestroy()
@@ -187,6 +189,11 @@ namespace NeuroApp
             {
                 graphic.enabled = value;
             }
+        }
+
+        public static Vector2 GetReferenceResolution()
+        {
+            return _canvasScaler.referenceResolution;
         }
 
         #region Wrapper functions

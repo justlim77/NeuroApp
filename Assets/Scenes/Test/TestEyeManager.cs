@@ -25,6 +25,8 @@ namespace NeuroApp
         public bool ConvergeTest { get; set; }
 
         private float _ipd = 0;
+        private float _scaledRange = 0;
+        private Vector2 _cachedRes;
 
         // Use this for initialization
         void Start()
@@ -34,6 +36,8 @@ namespace NeuroApp
             Init();
 
             CaseLoader.OnLoadCase += CaseLoader_OnLoadCase;
+            _cachedRes = new Vector2(Screen.width, Screen.height);
+            _scaledRange = ScreenScaledRange(trackingRange);
         }
 
         private void CaseLoader_OnLoadCase(object sender, System.EventArgs e)
@@ -65,6 +69,13 @@ namespace NeuroApp
         // Update is called once per frame
         void Update()
         {
+            // Check for any changes in screen resolution
+            if (DidScreenChange())
+            {
+                _scaledRange = ScreenScaledRange(trackingRange);
+                _cachedRes = new Vector2(Screen.width, Screen.height);
+            }
+
             if (!TrackMouse)
             {
                 if (ConvergeTest)
@@ -87,8 +98,13 @@ namespace NeuroApp
         bool IsInRange()
         {
             float dist = Vector2.Distance(Input.mousePosition, eyeCenterRect.position);
-            //print(dist);
-            return dist < trackingRange;
+            //print("Range: " + _scaledRange + "Dist: " + dist + " Width: " + Screen.width);
+            return dist < _scaledRange;
+        }
+
+        float ScreenScaledRange(float trackingRange)
+        {
+            return (trackingRange / GUIManager.GetReferenceResolution().x) * Screen.width;
         }
 
         void EquidistantLook()
@@ -99,6 +115,11 @@ namespace NeuroApp
 
             rightEye.SetAnchoredPosition(direction);
             leftEye.SetAnchoredPosition(direction);
+        }
+
+        bool DidScreenChange()
+        {            
+            return _cachedRes.x != Screen.width || _cachedRes.y != Screen.height;
         }
 
         void EquidistantCenterLook()
