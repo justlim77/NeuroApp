@@ -53,6 +53,8 @@ namespace NeuroApp
             qualityIndex = QualitySettings.GetQualityLevel();
 
             // Populate algorithm path dictionary
+            _AlgorithmPaths.Clear();
+
             foreach (var set in LocalisingAlgorithmSets)
             {
                 _AlgorithmPaths.Add(set.AlgorithmType, set.ResourcePath);
