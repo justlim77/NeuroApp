@@ -15,4 +15,9 @@ public static class TransformEx {
         }
         return transform;
     }
+
+    public static void ResetScale(this Transform transform)
+    {
+        transform.localScale = Vector3.one;
+    }
 }

@@ -36,7 +36,7 @@ namespace NeuroApp
             for (int i = 0; i < amount; i++)
             {
                 // Instantiate gameObject
-                GameObject star = Instantiate(new GameObject("Star" + i)) as GameObject;
+                GameObject star = new GameObject(string.Format("star_{0}", i));
                 star.transform.SetParent(starParent);
 
                 // Initialize stars

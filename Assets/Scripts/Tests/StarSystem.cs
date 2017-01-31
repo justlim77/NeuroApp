@@ -64,12 +64,13 @@ namespace NeuroApp
 
             for (int i = 0; i < amount; i++)
             {
-                GameObject star = (GameObject)new GameObject("star_" + i);
+                GameObject star = (GameObject)new GameObject("reward_star_" + i);
                 star.transform.SetParent(this.transform);
                 stars[i] = star.AddComponent<Image>();
                 stars[i].sprite = starSprite;
                 stars[i].color = Constants.const_star_inactive_color;
                 stars[i].preserveAspect = true;
+                star.transform.localScale = Vector3.one;
             }
 
             return stars;

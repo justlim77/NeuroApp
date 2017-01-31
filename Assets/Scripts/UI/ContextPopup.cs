@@ -65,6 +65,8 @@ namespace NeuroApp
             m_cachedImage.color = Color.white;
             text.text = string.Empty;
 
+            this.transform.localScale = Vector3.one;    // Reset scale
+
             // Reset close button position
             m_cachedButtonRectTrans.anchoredPosition = m_cachedButtonPos;
         }

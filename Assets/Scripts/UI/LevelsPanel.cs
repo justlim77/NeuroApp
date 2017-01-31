@@ -61,7 +61,7 @@ namespace NeuroApp
             for (int i = 0; i < amount; i++)
             {
                 GameObject button = Instantiate(caseButtonPrefab, this.transform) as GameObject;
-
+                button.ScaleTo(Vector3.one, 0, 0);
                 CaseButton caseButton = button.GetComponent<CaseButton>();
                 caseButton.SetName(m_cases[i].caseName);
                 caseButton.CreateStars(Constants.const_max_stars, starSprite);
